@@ -1,1 +1,1216 @@
-# nikkihilljohnson.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikki Johnson | Senior Social Media Marketing Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --pink: #E8368F;
+            --purple: #7B5EA7;
+            --purple-light: #F3EFF8;
+            --orange: #F27649;
+            --dark: #1a1a2e;
+            --gray-900: #2d2d3f;
+            --gray-600: #6b6b80;
+            --gray-300: #d1d1dd;
+            --gray-100: #f5f5f8;
+            --white: #ffffff;
+            --font-body: 'DM Sans', sans-serif;
+            --font-display: 'Playfair Display', serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--gray-900);
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- NAV ---- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-300);
+            transition: box-shadow 0.3s;
+        }
+        nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--pink); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--pink); }
+
+        /* ---- HERO ---- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 2rem 80px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--purple-light) 50%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(232,54,143,0.06) 0%, transparent 70%);
+        }
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+        .hero-text h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        .hero-text h1 .accent { color: var(--pink); }
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--purple);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 520px;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--pink);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(232,54,143,0.3);
+        }
+        .btn-primary:hover {
+            background: #d42d7e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(232,54,143,0.35);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--purple);
+            border: 2px solid var(--purple);
+        }
+        .btn-secondary:hover {
+            background: var(--purple);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero-photo {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .photo-frame {
+            width: 380px;
+            height: 460px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            padding: 5px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(123,94,167,0.2);
+        }
+        .photo-frame-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .photo-frame-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+        .hero-float-card {
+            position: absolute;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .float-card-1 {
+            bottom: 40px;
+            left: -30px;
+            color: var(--pink);
+        }
+        .float-card-1 .big-num { font-size: 1.5rem; display: block; }
+        .float-card-2 {
+            top: 40px;
+            right: -20px;
+            color: var(--purple);
+        }
+        .float-card-2 .big-num { font-size: 1.5rem; display: block; }
+
+        /* ---- SECTION SHARED ---- */
+        section { padding: 100px 2rem; }
+        .section-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: var(--pink);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .section-header { margin-bottom: 3.5rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* ---- METRICS BAR ---- */
+        .metrics-bar {
+            background: var(--dark);
+            padding: 50px 2rem;
+            overflow: hidden;
+        }
+        .metrics-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        .metric-item .metric-value {
+            font-family: var(--font-display);
+            font-size: 2.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .metric-item .metric-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+
+        /* ---- ABOUT ---- */
+        .about { background: var(--white); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .about-text p {
+            color: var(--gray-600);
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .skills-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--purple-light);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--purple);
+            transition: all 0.2s;
+        }
+        .skill-tag:hover {
+            background: var(--purple);
+            color: var(--white);
+        }
+        .about-highlights {
+            display: grid;
+            gap: 1.25rem;
+        }
+        .highlight-card {
+            background: var(--gray-100);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--pink);
+            transition: transform 0.2s;
+        }
+        .highlight-card:hover { transform: translateX(4px); }
+        .highlight-card h4 {
+            font-size: 0.95rem;
+            color: var(--dark);
+            margin-bottom: 0.4rem;
+        }
+        .highlight-card p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* ---- EXPERIENCE ---- */
+        .experience { background: var(--gray-100); }
+        .timeline { position: relative; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--pink), var(--purple), var(--orange));
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 64px;
+            margin-bottom: 2.5rem;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 16px;
+            top: 6px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--pink);
+            z-index: 1;
+        }
+        .timeline-item:nth-child(2) .timeline-dot { border-color: var(--purple); }
+        .timeline-item:nth-child(3) .timeline-dot { border-color: var(--orange); }
+        .timeline-item:nth-child(4) .timeline-dot { border-color: var(--pink); }
+        .timeline-item:nth-child(5) .timeline-dot { border-color: var(--purple); }
+        .timeline-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .timeline-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .timeline-company {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            background: var(--gray-100);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+        .timeline-role {
+            font-size: 0.9rem;
+            color: var(--purple);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        .timeline-wins {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .win-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.75rem;
+            background: linear-gradient(135deg, rgba(232,54,143,0.08), rgba(123,94,167,0.08));
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .win-badge .arrow { color: var(--pink); }
+
+        /* ---- CASE STUDIES ---- */
+        .case-studies { background: var(--white); }
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .case-card {
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+        .case-banner {
+            height: 8px;
+        }
+        .case-banner-pink { background: linear-gradient(90deg, var(--pink), var(--purple)); }
+        .case-banner-purple { background: linear-gradient(90deg, var(--purple), var(--orange)); }
+        .case-banner-orange { background: linear-gradient(90deg, var(--orange), var(--pink)); }
+        .case-content {
+            padding: 2rem;
+        }
+        .case-type {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--pink);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .case-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+        .case-desc {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+        .case-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--gray-300);
+        }
+        .case-stat-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        .case-stat-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+        }
+
+        /* ---- SERVICES / WHAT I DO ---- */
+        .services { background: var(--dark); color: var(--white); }
+        .services .section-label { color: var(--orange); }
+        .services .section-title { color: var(--white); }
+        .services .section-subtitle { color: rgba(255,255,255,0.6); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .service-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        .service-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(232,54,143,0.3);
+            transform: translateY(-2px);
+        }
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .si-pink { background: rgba(232,54,143,0.15); }
+        .si-purple { background: rgba(123,94,167,0.2); }
+        .si-orange { background: rgba(242,118,73,0.15); }
+        .service-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+        .service-card p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.6;
+        }
+
+        /* ---- TESTIMONIAL ---- */
+        .testimonial {
+            background: linear-gradient(135deg, var(--purple-light) 0%, var(--white) 100%);
+            text-align: center;
+        }
+        .testimonial-quote {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .quote-mark {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            color: var(--pink);
+            line-height: 1;
+            opacity: 0.3;
+        }
+        .testimonial-quote blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--dark);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .testimonial-author {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* ---- CTA / CONTACT ---- */
+        .contact {
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            text-align: center;
+            color: var(--white);
+        }
+        .contact .section-label { color: rgba(255,255,255,0.7); }
+        .contact .section-title { color: var(--white); font-size: 2.75rem; }
+        .contact .section-subtitle { color: rgba(255,255,255,0.85); margin: 0 auto 2rem; }
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .contact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            backdrop-filter: blur(8px);
+        }
+        .contact-pill:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        .btn-white {
+            background: var(--white);
+            color: var(--pink);
+            font-weight: 700;
+        }
+        .btn-white:hover {
+            background: var(--gray-100);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            background: var(--dark);
+            text-align: center;
+            padding: 2rem;
+        }
+        footer p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-text p { margin: 0 auto 2rem; }
+            .hero-ctas { justify-content: center; }
+            .hero-photo { order: -1; }
+            .photo-frame { width: 280px; height: 340px; }
+            .float-card-1 { left: 0; bottom: 20px; }
+            .float-card-2 { right: 0; top: 20px; }
+            .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 2rem; }
+            .nav-links { display: none; }
+            .cases-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .timeline-item { padding-left: 50px; }
+        }
+
+        /* ---- OPTION A: EARLIER CAREER EXPANDABLE ---- */
+        .earlier-career-toggle {
+            text-align: center;
+            margin-top: 2rem;
+            padding-left: 64px;
+        }
+        .toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            background: transparent;
+            border: 2px dashed var(--gray-300);
+            border-radius: 50px;
+            color: var(--gray-600);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .toggle-btn:hover {
+            border-color: var(--purple);
+            color: var(--purple);
+            background: rgba(123,94,167,0.04);
+        }
+        .toggle-btn .chevron {
+            transition: transform 0.3s;
+            font-size: 0.75rem;
+        }
+        .toggle-btn.open .chevron {
+            transform: rotate(180deg);
+        }
+        .earlier-career-cards {
+            display: none;
+            padding-left: 64px;
+            margin-top: 1.5rem;
+            gap: 1rem;
+        }
+        .earlier-career-cards.show {
+            display: grid;
+        }
+        .early-card {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: start;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            border-left: 3px solid var(--gray-300);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .early-card:hover {
+            border-left-color: var(--purple);
+            transform: translateX(3px);
+        }
+        .early-card-logo {
+            font-size: 1.25rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--purple-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .early-card-content h4 {
+            font-size: 0.95rem;
+            color: var(--dark);
+            margin-bottom: 0.15rem;
+        }
+        .early-card-content .early-role {
+            font-size: 0.82rem;
+            color: var(--purple);
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+        }
+        .early-card-content p {
+            font-size: 0.82rem;
+            color: var(--gray-600);
+            line-height: 1.55;
+        }
+
+        /* ---- EARLIER CAREER NARRATIVE (inside expandable) ---- */
+        .earlier-career-narrative {
+            padding: 1.5rem 1.75rem 1.25rem;
+            background: linear-gradient(135deg, rgba(123,94,167,0.06), rgba(232,54,143,0.04));
+            border-radius: 14px;
+            border-left: 4px solid var(--purple);
+        }
+        .earlier-career-narrative .foundation-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--purple);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .earlier-career-narrative p {
+            font-size: 0.92rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 0.6rem;
+        }
+        .earlier-career-narrative p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .earlier-career-toggle,
+            .earlier-career-cards { padding-left: 50px; }
+        }
+
+        /* ---- ANIMATIONS ---- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">Nikki<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h1>Hi, I'm <span class="accent">Nikki</span> Johnson</h1>
+            <p class="hero-tagline">Senior Social Media Marketing Manager</p>
+            <p>I build marketing strategies that connect and convert through social, content, and paid media. 15+ years of turning audience insights into campaigns that people actually care about. Also fluent in meme.</p>
+            <div class="hero-ctas">
+                <a href="#work" class="btn btn-primary">See My Work</a>
+                <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+            </div>
+        </div>
+        <div class="hero-photo">
+            <div class="photo-frame">
+                <div class="photo-frame-inner">
+                    <img src="https://nikkihilljohnson.my.canva.site/_assets/media/098e93cac96858c266f477382f40e0ea.jpg" alt="Nikki Johnson">
+                </div>
+            </div>
+            <div class="hero-float-card float-card-1">
+                <span class="big-num">~50x</span>
+                ROI on social
+            </div>
+            <div class="hero-float-card float-card-2">
+                <span class="big-num">15+</span>
+                Years of impact
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- METRICS BAR -->
+<div class="metrics-bar">
+    <div class="metrics-inner">
+        <div class="metric-item fade-up">
+            <div class="metric-value">$6.4M</div>
+            <div class="metric-label">Launch Campaign</div>
+        </div>
+        <div class="metric-item fade-up">
+            <div class="metric-value">231K+</div>
+            <div class="metric-label">Engagements Driven</div>
+        </div>
+        <div class="metric-item fade-up">
+            <div class="metric-value">135%</div>
+            <div class="metric-label">Impressions Growth</div>
+        </div>
+        <div class="metric-item fade-up">
+            <div class="metric-value">$1M+</div>
+            <div class="metric-label">Revenue Generated</div>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="section-header">
+                    <p class="section-label">About Me</p>
+                    <h2 class="section-title">Empathy first. Algorithms second.</h2>
+                </div>
+                <p>I'm a creative, data-driven social media leader who's spent the last 15 years helping brands grow through smart social strategy, creative storytelling, and campaigns that deliver real, measurable results.</p>
+                <p>I believe the best marketing starts with understanding people, not platforms. When you lead with empathy and back it with data, you build trust, create connection, and drive the kind of growth that actually lasts.</p>
+                <p>Based in Mount Pleasant, SC. Remote-first since before it was cool.</p>
+                <div class="skills-cloud">
+                    <span class="skill-tag">Content Strategy</span>
+                    <span class="skill-tag">Social Media Strategy</span>
+                    <span class="skill-tag">Creative Direction</span>
+                    <span class="skill-tag">Data Analytics</span>
+                    <span class="skill-tag">Copywriting</span>
+                    <span class="skill-tag">Community Building</span>
+                    <span class="skill-tag">Trendspotting</span>
+                    <span class="skill-tag">GA4 / Looker / Heap</span>
+                    <span class="skill-tag">Video Production</span>
+                    <span class="skill-tag">Influencer Strategy</span>
+                    <span class="skill-tag">Cultural Strategy</span>
+                    <span class="skill-tag">Project Management</span>
+                </div>
+            </div>
+            <div class="about-highlights">
+                <div class="highlight-card fade-up">
+                    <h4>Storyteller at Heart</h4>
+                    <p>Known for a strong voice and the ability to translate brand values into content that connects and converts across every platform.</p>
+                </div>
+                <div class="highlight-card fade-up">
+                    <h4>Data Meets Creativity</h4>
+                    <p>Every campaign is backed by performance insights. I use GA4, Heap, Looker, and social analytics to turn gut feelings into proven strategies.</p>
+                </div>
+                <div class="highlight-card fade-up">
+                    <h4>Team Builder</h4>
+                    <p>Collaborative, hands-on leader who elevates creative teams and partners to deliver innovative, on-brand content consistently.</p>
+                </div>
+                <div class="highlight-card fade-up">
+                    <h4>Full-Funnel Thinker</h4>
+                    <p>From awareness to conversion, I design social strategies that move people through the entire customer journey.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">Career</p>
+            <h2 class="section-title">Where I've Made an Impact</h2>
+            <p class="section-subtitle">A track record of growing brands, leading teams, and delivering campaigns that move the needle.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-company">Trane Technologies / HVAC.com</span>
+                        <span class="timeline-date">2023 - 2025</span>
+                    </div>
+                    <div class="timeline-role">Senior Social Media & Content Strategist</div>
+                    <p class="timeline-desc">Led social strategy and multi-platform content for a SaaS-driven home-services brand, managing content creation, video production, and editorial planning.</p>
+                    <div class="timeline-wins">
+                        <span class="win-badge"><span class="arrow">&#8599;</span> ~50x ROI</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> $0.57 CPC</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 135% impression growth</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 83% video view increase</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-company">Level Five Publishing / James Wedmore</span>
+                        <span class="timeline-date">2022 - 2023</span>
+                    </div>
+                    <div class="timeline-role">Creative Content Director</div>
+                    <p class="timeline-desc">Directed social media and content strategy, leading editorial planning, short-form video, and real-time social coverage of live launches and mastermind events.</p>
+                    <div class="timeline-wins">
+                        <span class="win-badge"><span class="arrow">&#8599;</span> $6.4M launch</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 4 viral videos in 30 days</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 3%+ engagement rate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-company">Carolina Farm Trust</span>
+                        <span class="timeline-date">2021 - 2022</span>
+                    </div>
+                    <div class="timeline-role">Senior Marketing & Communications Manager</div>
+                    <p class="timeline-desc">Led social media and mission-driven storytelling for a nonprofit focused on sustainable agriculture, managing multi-channel communication and engagement.</p>
+                    <div class="timeline-wins">
+                        <span class="win-badge"><span class="arrow">&#8599;</span> $15K+ grants secured</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 30% traffic increase</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 20% volunteer growth</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-company">Self Employed</span>
+                        <span class="timeline-date">2019 - 2022</span>
+                    </div>
+                    <div class="timeline-role">Digital Marketing Strategist</div>
+                    <p class="timeline-desc">Developed social, content, and launch strategies for D2C clients, managing multi-platform storytelling and performance analytics.</p>
+                    <div class="timeline-wins">
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 28.5% revenue increase</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-company">BODi</span>
+                        <span class="timeline-date">2013 - 2021</span>
+                    </div>
+                    <div class="timeline-role">Digital Marketing & Community Growth Strategist</div>
+                    <p class="timeline-desc">Built a large, community-driven digital business through social content, storytelling, and engagement strategies over 8 years.</p>
+                    <div class="timeline-wins">
+                        <span class="win-badge"><span class="arrow">&#8599;</span> $1M+ revenue</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 1,000+ member community</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> Keynote speaker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Earlier Career: Expandable with narrative intro -->
+            <div class="earlier-career-toggle fade-up">
+                <button class="toggle-btn" onclick="toggleEarlierCareer(this)">
+                    Earlier in My Career <span class="chevron">&#9660;</span>
+                </button>
+            </div>
+            <div class="earlier-career-cards" id="earlierCareer">
+                <div class="earlier-career-narrative fade-up">
+                    <p class="foundation-label">Where It Started</p>
+                    <p>Before the launches, the viral videos, and the data dashboards, I was building digital content when "content strategy" wasn't even a job title yet. I managed editorial and community at AOL during the early days of digital media, ran my own social media consulting practice, and helped build online communities from scratch.</p>
+                    <p>That foundation in content, community, and storytelling is still the backbone of everything I do today.</p>
+                </div>
+                <div class="early-card fade-up">
+                    <div class="early-card-logo">&#128188;</div>
+                    <div class="early-card-content">
+                        <h4>Nikki Johnson Social Media Consulting</h4>
+                        <div class="early-role">Owner</div>
+                        <p>Developed social media content and engagement strategies for lifestyle and consumer brands. Created platform-native content and editorial calendars to support audience growth.</p>
+                    </div>
+                </div>
+                <div class="early-card fade-up">
+                    <div class="early-card-logo">&#128172;</div>
+                    <div class="early-card-content">
+                        <h4>Pure Matters</h4>
+                        <div class="early-role">Online Community Manager</div>
+                        <p>Managed daily community engagement across Facebook, Twitter, and Pinterest. Monitored analytics and audience insights to improve performance and strengthen brand presence.</p>
+                    </div>
+                </div>
+                <div class="early-card fade-up">
+                    <div class="early-card-logo">&#127760;</div>
+                    <div class="early-card-content">
+                        <h4>AOL</h4>
+                        <div class="early-role">Content Manager & Music Programming</div>
+                        <p>Managed content, UX updates, and platform improvements for AOL Lifestyle channels. Supported major site launches and rebrands including StyleList and KitchenDaily. Earlier roles in music content, radio production, and SEO programming.</p>
+                    </div>
+                </div>
+                <div class="early-card fade-up">
+                    <div class="early-card-logo">&#128640;</div>
+                    <div class="early-card-content">
+                        <h4>URS Corporation</h4>
+                        <div class="early-role">Marketing & Outreach Coordinator</div>
+                        <p>Supported community outreach, partnership development, and incentive-driven marketing initiatives for transportation programs.</p>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="case-studies" id="work">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">From Idea to Impact</p>
+            <h2 class="section-title">Campaigns I've Led</h2>
+            <p class="section-subtitle">Where data, creativity, and strategy come together to drive measurable growth.</p>
+        </div>
+        <div class="cases-grid">
+            <div class="case-card fade-up">
+                <div class="case-banner case-banner-pink"></div>
+                <div class="case-content">
+                    <p class="case-type">SaaS / Home Services</p>
+                    <h3 class="case-title">Full-Funnel Social for HVAC.com</h3>
+                    <p class="case-desc">Built and optimized social campaigns across paid and organic channels for a tech-enabled home services brand, from strategy through execution.</p>
+                    <div class="case-stats">
+                        <div>
+                            <div class="case-stat-value">~50x</div>
+                            <div class="case-stat-label">Return on Investment</div>
+                        </div>
+                        <div>
+                            <div class="case-stat-value">$71</div>
+                            <div class="case-stat-label">Cost Per Lead</div>
+                        </div>
+                        <div>
+                            <div class="case-stat-value">231K+</div>
+                            <div class="case-stat-label">Total Engagements</div>
+                        </div>
+                        <div>
+                            <div class="case-stat-value">~6%</div>
+                            <div class="case-stat-label">Of Total Company Sales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="case-card fade-up">
+                <div class="case-banner case-banner-purple"></div>
+                <div class="case-content">
+                    <p class="case-type">Personal Brand / Digital Products</p>
+                    <h3 class="case-title">$6.4M Launch Campaign</h3>
+                    <p class="case-desc">Led social storytelling and content execution for a major digital product launch, ensuring brand consistency and audience resonance across all channels.</p>
+                    <div class="case-stats">
+                        <div>
+                            <div class="case-stat-value">$6.4M</div>
+                            <div class="case-stat-label">Campaign Size</div>
+                        </div>
+                        <div>
+                            <div class="case-stat-value">4</div>
+                            <div class="case-stat-label">Viral Videos in 30 Days</div>
+                        </div>
+                        <div>
+                            <div class="case-stat-value">50+</div>
+                            <div class="case-stat-label">Weekly Assets Produced</div>
+                        </div>
+                        <div>
+                            <div class="case-stat-value">3%+</div>
+                            <div class="case-stat-label">Weekly Engagement Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="case-card fade-up">
+                <div class="case-banner case-banner-orange"></div>
+                <div class="case-content">
+                    <p class="case-type">Nonprofit / Agriculture</p>
+                    <h3 class="case-title">Mission-Driven Growth for Carolina Farm Trust</h3>
+                    <p class="case-desc">Developed storytelling and community-focused campaigns for a nonprofit, driving donor engagement, event sales, and volunteer growth.</p>
+                    <div class="case-stats">
+                        <div>
+                            <div class="case-stat-value">$15K+</div>
+                            <div class="case-stat-label">Grants Secured</div>
+                        </div>
+                        <div>
+                            <div class="case-stat-value">8.6%</div>
+                            <div class="case-stat-label">Engagement Lift (3 mo.)</div>
+                        </div>
+                        <div>
+                            <div class="case-stat-value">30%</div>
+                            <div class="case-stat-label">Website Traffic Increase</div>
+                        </div>
+                        <div>
+                            <div class="case-stat-value">20%</div>
+                            <div class="case-stat-label">Volunteer Sign-Up Growth</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">What I Do</p>
+            <h2 class="section-title">How I Help Brands Grow</h2>
+            <p class="section-subtitle">Whether you need a full social strategy or a creative partner to bring your vision to life.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-up">
+                <div class="service-icon si-pink">&#127919;</div>
+                <h3>Social Media Strategy</h3>
+                <p>Full-funnel social strategies that align with business goals, from awareness to conversion. Platform-specific plans backed by audience insights and competitive analysis.</p>
+            </div>
+            <div class="service-card fade-up">
+                <div class="service-icon si-purple">&#127916;</div>
+                <h3>Content Creation & Video</h3>
+                <p>Short-form video, graphics, copywriting, and editorial planning. I produce content that stops the scroll and drives action.</p>
+            </div>
+            <div class="service-card fade-up">
+                <div class="service-icon si-orange">&#128200;</div>
+                <h3>Analytics & Optimization</h3>
+                <p>Campaign performance analysis using GA4, Heap, Looker, and native social insights. Data-driven decisions that improve ROI continuously.</p>
+            </div>
+            <div class="service-card fade-up">
+                <div class="service-icon si-pink">&#129309;</div>
+                <h3>Community Building</h3>
+                <p>Scalable frameworks for audience development, engagement, and retention. Building communities that drive long-term brand loyalty.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+    <div class="container">
+        <div class="testimonial-quote fade-up">
+            <div class="quote-mark">"</div>
+            <blockquote>Placeholder for a client or colleague testimonial. Something about Nikki's ability to blend creativity with strategy and deliver measurable results.</blockquote>
+            <p class="testimonial-author">-- Name, Title, Company</p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">Get In Touch</p>
+            <h2 class="section-title">Let's Create Something That Connects</h2>
+            <p class="section-subtitle">Whether you're hiring, looking for a creative partner, or just want to talk social strategy, I'd love to hear from you.</p>
+        </div>
+        <div class="contact-methods">
+            <a href="mailto:nikki.hill.johnson@gmail.com" class="contact-pill">
+                ✉️ nikki.hill.johnson@gmail.com
+            </a>
+            <a href="https://linkedin.com/in/nikkihilljohnson" target="_blank" class="contact-pill">
+                &#128279; LinkedIn
+            </a>
+            <a href="tel:703-328-2000" class="contact-pill">
+                &#128222; 703-328-2000
+            </a>
+        </div>
+        <a href="mailto:nikki.hill.johnson@gmail.com" class="btn btn-white">Start a Conversation</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 Nikki Johnson</p>
+</footer>
+
+<script>
+    // Scroll-triggered animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Nav shadow on scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Toggle earlier career section (Option A)
+    function toggleEarlierCareer(btn) {
+        const cards = document.getElementById('earlierCareer');
+        btn.classList.toggle('open');
+        cards.classList.toggle('show');
+        if (cards.classList.contains('show')) {
+            // Trigger fade-up animations for newly visible cards
+            cards.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        }
+    }
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
