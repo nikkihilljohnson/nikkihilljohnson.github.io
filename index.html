@@ -63,7 +63,12 @@
             text-decoration: none;
         }
         .nav-logo span { color: var(--pink); }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links { 
+            display: flex; 
+            gap: 2rem; 
+            list-style: none;
+            align-items: center;
+        }
         .nav-links a {
             text-decoration: none;
             color: var(--gray-600);
@@ -72,6 +77,53 @@
             transition: color 0.2s;
         }
         .nav-links a:hover { color: var(--pink); }
+        
+        /* DROPDOWN NAV */
+        .nav-dropdown {
+            position: relative;
+        }
+        .nav-dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-dropdown-toggle:hover {
+            color: var(--pink);
+        }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 1rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            padding: 0.5rem 0;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--gray-900);
+            transition: background 0.2s;
+        }
+        .nav-dropdown-menu a:hover {
+            background: var(--purple-light);
+            color: var(--pink);
+        }
 
         /* ---- HERO ---- */
         .hero {
@@ -525,30 +577,63 @@
         /* ---- TESTIMONIAL ---- */
         .testimonial {
             background: linear-gradient(135deg, var(--purple-light) 0%, var(--white) 100%);
-            text-align: center;
+            padding: 100px 2rem;
         }
-        .testimonial-quote {
-            max-width: 700px;
+        .testimonial-slider {
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+        }
+        .testimonial-track {
+            overflow: hidden;
+        }
+        .testimonial-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 2rem;
+            text-align: center;
         }
         .quote-mark {
             font-family: var(--font-display);
-            font-size: 5rem;
+            font-size: 4rem;
             color: var(--pink);
             line-height: 1;
             opacity: 0.3;
         }
-        .testimonial-quote blockquote {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-size: 1.5rem;
+        .testimonial-slide blockquote {
+            font-size: 1.25rem;
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 1.5rem;
+            font-style: italic;
         }
         .testimonial-author {
             font-size: 0.9rem;
             color: var(--gray-600);
+            font-weight: 600;
+        }
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gray-300);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .testimonial-dot.active {
+            background: var(--pink);
+            width: 30px;
+            border-radius: 5px;
         }
 
         /* ---- CTA / CONTACT ---- */
@@ -627,7 +712,7 @@
             .timeline-item { padding-left: 50px; }
         }
 
-        /* ---- OPTION A: EARLIER CAREER EXPANDABLE ---- */
+        /* ---- EARLIER CAREER ---- */
         .earlier-career-toggle {
             text-align: center;
             margin-top: 2rem;
@@ -711,8 +796,6 @@
             color: var(--gray-600);
             line-height: 1.55;
         }
-
-        /* ---- EARLIER CAREER NARRATIVE (inside expandable) ---- */
         .earlier-career-narrative {
             padding: 1.5rem 1.75rem 1.25rem;
             background: linear-gradient(135deg, rgba(123,94,167,0.06), rgba(232,54,143,0.04));
@@ -763,7 +846,15 @@
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
-            <li><a href="#work">Work</a></li>
+            <li class="nav-dropdown">
+                <span class="nav-dropdown-toggle">
+                    Work <span style="font-size:0.7rem;">▼</span>
+                </span>
+                <div class="nav-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="creative-work.html">Creative Work</a>
+                </div>
+            </li>
             <li><a href="#services">Services</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -961,51 +1052,50 @@
             </div>
         </div>
 
-            <!-- Earlier Career: Expandable with narrative intro -->
-            <div class="earlier-career-toggle fade-up">
-                <button class="toggle-btn" onclick="toggleEarlierCareer(this)">
-                    Earlier in My Career <span class="chevron">&#9660;</span>
-                </button>
+        <div class="earlier-career-toggle fade-up">
+            <button class="toggle-btn" onclick="toggleEarlierCareer(this)">
+                Earlier in My Career <span class="chevron">&#9660;</span>
+            </button>
+        </div>
+        <div class="earlier-career-cards" id="earlierCareer">
+            <div class="earlier-career-narrative fade-up">
+                <p class="foundation-label">Where It Started</p>
+                <p>Before the launches, the viral videos, and the data dashboards, I was building digital content when "content strategy" wasn't even a job title yet. I managed editorial and community at AOL during the early days of digital media, ran my own social media consulting practice, and helped build online communities from scratch.</p>
+                <p>That foundation in content, community, and storytelling is still the backbone of everything I do today.</p>
             </div>
-            <div class="earlier-career-cards" id="earlierCareer">
-                <div class="earlier-career-narrative fade-up">
-                    <p class="foundation-label">Where It Started</p>
-                    <p>Before the launches, the viral videos, and the data dashboards, I was building digital content when "content strategy" wasn't even a job title yet. I managed editorial and community at AOL during the early days of digital media, ran my own social media consulting practice, and helped build online communities from scratch.</p>
-                    <p>That foundation in content, community, and storytelling is still the backbone of everything I do today.</p>
-                </div>
-                <div class="early-card fade-up">
-                    <div class="early-card-logo">&#128188;</div>
-                    <div class="early-card-content">
-                        <h4>Nikki Johnson Social Media Consulting</h4>
-                        <div class="early-role">Owner</div>
-                        <p>Developed social media content and engagement strategies for lifestyle and consumer brands. Created platform-native content and editorial calendars to support audience growth.</p>
-                    </div>
-                </div>
-                <div class="early-card fade-up">
-                    <div class="early-card-logo">&#128172;</div>
-                    <div class="early-card-content">
-                        <h4>Pure Matters</h4>
-                        <div class="early-role">Online Community Manager</div>
-                        <p>Managed daily community engagement across Facebook, Twitter, and Pinterest. Monitored analytics and audience insights to improve performance and strengthen brand presence.</p>
-                    </div>
-                </div>
-                <div class="early-card fade-up">
-                    <div class="early-card-logo">&#127760;</div>
-                    <div class="early-card-content">
-                        <h4>AOL</h4>
-                        <div class="early-role">Content Manager & Music Programming</div>
-                        <p>Managed content, UX updates, and platform improvements for AOL Lifestyle channels. Supported major site launches and rebrands including StyleList and KitchenDaily. Earlier roles in music content, radio production, and SEO programming.</p>
-                    </div>
-                </div>
-                <div class="early-card fade-up">
-                    <div class="early-card-logo">&#128640;</div>
-                    <div class="early-card-content">
-                        <h4>URS Corporation</h4>
-                        <div class="early-role">Marketing & Outreach Coordinator</div>
-                        <p>Supported community outreach, partnership development, and incentive-driven marketing initiatives for transportation programs.</p>
-                    </div>
+            <div class="early-card fade-up">
+                <div class="early-card-logo">&#128188;</div>
+                <div class="early-card-content">
+                    <h4>Nikki Johnson Social Media Consulting</h4>
+                    <div class="early-role">Owner</div>
+                    <p>Developed social media content and engagement strategies for lifestyle and consumer brands. Created platform-native content and editorial calendars to support audience growth.</p>
                 </div>
             </div>
+            <div class="early-card fade-up">
+                <div class="early-card-logo">&#128172;</div>
+                <div class="early-card-content">
+                    <h4>Pure Matters</h4>
+                    <div class="early-role">Online Community Manager</div>
+                    <p>Managed daily community engagement across Facebook, Twitter, and Pinterest. Monitored analytics and audience insights to improve performance and strengthen brand presence.</p>
+                </div>
+            </div>
+            <div class="early-card fade-up">
+                <div class="early-card-logo">&#127760;</div>
+                <div class="early-card-content">
+                    <h4>AOL</h4>
+                    <div class="early-role">Content Manager & Music Programming</div>
+                    <p>Managed content, UX updates, and platform improvements for AOL Lifestyle channels. Supported major site launches and rebrands including StyleList and KitchenDaily. Earlier roles in music content, radio production, and SEO programming.</p>
+                </div>
+            </div>
+            <div class="early-card fade-up">
+                <div class="early-card-logo">&#128640;</div>
+                <div class="early-card-content">
+                    <h4>URS Corporation</h4>
+                    <div class="early-role">Marketing & Outreach Coordinator</div>
+                    <p>Supported community outreach, partnership development, and incentive-driven marketing initiatives for transportation programs.</p>
+                </div>
+            </div>
+        </div>
 
     </div>
 </section>
@@ -1134,13 +1224,50 @@
     </div>
 </section>
 
-<!-- TESTIMONIAL -->
+<!-- TESTIMONIALS -->
 <section class="testimonial">
     <div class="container">
-        <div class="testimonial-quote fade-up">
-            <div class="quote-mark">"</div>
-            <blockquote>Placeholder for a client or colleague testimonial. Something about Nikki's ability to blend creativity with strategy and deliver measurable results.</blockquote>
-            <p class="testimonial-author">-- Name, Title, Company</p>
+        <div class="section-header" style="text-align: center;">
+            <p class="section-label">What People Say</p>
+            <h2 class="section-title">Client Testimonials</h2>
+        </div>
+        <div class="testimonial-slider">
+            <div class="testimonial-track">
+                <div class="testimonial-slides" id="testimonial-slides">
+                    <div class="testimonial-slide">
+                        <div class="quote-mark">"</div>
+                        <blockquote>I've been recommending Nikki to other businesses because her content is sharp and instantly elevates how professional our social media looks.</blockquote>
+                        <p class="testimonial-author">Garrett, StoneSmith Countertops</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="quote-mark">"</div>
+                        <blockquote>Nikki has a rare ability to make even complex products relatable while staying grounded in data. She built campaigns that didn't just look good. They performed. She consistently connected creative storytelling to real business outcomes.</blockquote>
+                        <p class="testimonial-author">Kevin, Product Manager, HVAC.com (Trane Technologies)</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="quote-mark">"</div>
+                        <blockquote>Nikki can take an undefined space and turn it into something cohesive, engaging, and scalable. She combines strong creative instincts with real audience insight, and she brings an energy that makes collaboration genuinely enjoyable.</blockquote>
+                        <p class="testimonial-author">Lee, Creative Strategist</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="quote-mark">"</div>
+                        <blockquote>Nikki consistently drove results across both paid and organic social while staying organized, creative, and proactive. Even with limited resources, she found fresh ways to connect with audiences and move the business forward.</blockquote>
+                        <p class="testimonial-author">Shelby Geyer, Marketing Leader</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="quote-mark">"</div>
+                        <blockquote>Nikki blends creative intuition with analytical precision. She understands how social strategy connects to the full funnel and consistently turns ad budgets into measurable results.</blockquote>
+                        <p class="testimonial-author">Jonathan Poston, Growth Leader</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-nav">
+                <button class="testimonial-dot active" data-slide="0"></button>
+                <button class="testimonial-dot" data-slide="1"></button>
+                <button class="testimonial-dot" data-slide="2"></button>
+                <button class="testimonial-dot" data-slide="3"></button>
+                <button class="testimonial-dot" data-slide="4"></button>
+            </div>
         </div>
     </div>
 </section>
@@ -1190,16 +1317,38 @@
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    // Toggle earlier career section (Option A)
+    // Toggle earlier career section
     function toggleEarlierCareer(btn) {
         const cards = document.getElementById('earlierCareer');
         btn.classList.toggle('open');
         cards.classList.toggle('show');
         if (cards.classList.contains('show')) {
-            // Trigger fade-up animations for newly visible cards
             cards.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
         }
     }
+
+    // Testimonial slider
+    let currentSlide = 0;
+    const slides = document.getElementById('testimonial-slides');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    const totalSlides = dots.length;
+
+    function goToSlide(n) {
+        currentSlide = n;
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => goToSlide(i));
+    });
+
+    // Auto-advance testimonials every 6 seconds
+    setInterval(() => {
+        goToSlide((currentSlide + 1) % totalSlides);
+    }, 6000);
 
     // Smooth scroll for nav links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

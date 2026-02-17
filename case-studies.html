@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies | Nikki Johnson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --pink: #E8368F;
+            --purple: #7B5EA7;
+            --purple-light: #F3EFF8;
+            --orange: #F27649;
+            --dark: #1a1a2e;
+            --gray-900: #2d2d3f;
+            --gray-600: #6b6b80;
+            --gray-300: #d1d1dd;
+            --gray-100: #f5f5f8;
+            --white: #ffffff;
+            --font-body: 'DM Sans', sans-serif;
+            --font-display: 'Playfair Display', serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--gray-900);
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-300);
+            transition: box-shadow 0.3s;
+        }
+        nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--pink); }
+        .nav-links { 
+            display: flex; 
+            gap: 2rem; 
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--pink); }
+        
+        .nav-dropdown {
+            position: relative;
+        }
+        .nav-dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 1rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            padding: 0.5rem 0;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--gray-900);
+            transition: background 0.2s;
+        }
+        .nav-dropdown-menu a:hover {
+            background: var(--purple-light);
+            color: var(--pink);
+        }
+
+        /* HERO */
+        .page-hero {
+            padding: 140px 2rem 80px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--purple-light) 50%, var(--white) 100%);
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .page-hero p {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* CASE STUDY SECTIONS */
+        .case-study {
+            padding: 80px 2rem;
+        }
+        .case-study:nth-child(even) {
+            background: var(--gray-100);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .case-header {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+        .case-logo {
+            width: 120px;
+            height: 120px;
+            background: var(--white);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 1rem;
+        }
+        .case-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .case-title-block h2 {
+            font-family: var(--font-display);
+            font-size: 2.25rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        .case-subtitle {
+            font-size: 0.95rem;
+            color: var(--purple);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .case-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .case-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .case-box {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .case-box h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--pink);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .case-box p, .case-box ul {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+        .case-box ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        .case-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        .case-box.results {
+            background: linear-gradient(135deg, rgba(232,54,143,0.08), rgba(123,94,167,0.08));
+            border-left: 4px solid var(--pink);
+        }
+        .case-box.strategy {
+            background: linear-gradient(135deg, rgba(123,94,167,0.08), rgba(242,118,73,0.08));
+            border-left: 4px solid var(--purple);
+        }
+
+        .case-visual {
+            margin-top: 2rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .case-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            text-align: center;
+            padding: 2rem;
+        }
+        footer p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: 2rem; }
+            .case-header { grid-template-columns: 1fr; text-align: center; }
+            .case-logo { margin: 0 auto; }
+            .case-meta { justify-content: center; }
+            .case-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Nikki<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li class="nav-dropdown">
+                <span class="nav-dropdown-toggle">
+                    <a href="#">Work</a> <span style="font-size:0.7rem;">▼</span>
+                </span>
+                <div class="nav-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="creative-work.html">Creative Work</a>
+                </div>
+            </li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+    <h1>Case Studies</h1>
+    <p>Where data, creativity, and strategy come together to drive measurable growth. A look at the campaigns I've led from strategy through execution.</p>
+</section>
+
+<!-- HVAC.COM CASE STUDY -->
+<section class="case-study">
+    <div class="container">
+        <div class="case-header">
+            <div class="case-logo">
+                <div style="font-family: var(--font-display); font-size: 1.5rem; color: var(--orange); font-weight: 700;">HVAC<span style="font-size:0.8rem;">.com</span></div>
+            </div>
+            <div class="case-title-block">
+                <h2>Full-Funnel Social Strategy for HVAC.com</h2>
+                <p class="case-subtitle">Home Services / SaaS Brand</p>
+                <div class="case-meta">
+                    <span class="case-meta-item">📅 Sep 2023 – Oct 2025</span>
+                    <span class="case-meta-item">🎯 Social Strategy & Meta Ads Optimization</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-grid">
+            <div class="case-box results">
+                <h3>Results</h3>
+                <ul>
+                    <li>Generated 1.35M+ impressions and 423 qualified leads with a 2.97% CTR and ~$58K budget</li>
+                    <li>Meta campaigns attributed to 6% of total company sales</li>
+                    <li>Reduced CPL through creative and audience optimization</li>
+                    <li>Grew social audience by 4,000% and maintained a 2.9% engagement rate</li>
+                </ul>
+            </div>
+            <div class="case-box strategy">
+                <h3>Strategy</h3>
+                <p>Built a full-funnel social and paid strategy that turns an overlooked home service category into an engaging, trust-driven brand. The strategy focused on empathy and education, reaching homeowners long BEFORE their system breaks.</p>
+                <p style="margin-top:1rem;">Aligned organic storytelling with performance-driven Meta campaigns to build awareness and engagement, while retargeting nurtures ready-to-buy audiences.</p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">~50x</div>
+                <div class="stat-label">Return on Investment</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">$71</div>
+                <div class="stat-label">Cost Per Lead</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">231K+</div>
+                <div class="stat-label">Total Engagements</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">~6%</div>
+                <div class="stat-label">Of Total Company Sales</div>
+            </div>
+        </div>
+
+        <div class="case-visual">
+            <img src="4.png" alt="HVAC.com analytics dashboard" style="width:100%;">
+        </div>
+    </div>
+</section>
+
+<!-- JAMES WEDMORE CASE STUDY -->
+<section class="case-study">
+    <div class="container">
+        <div class="case-header">
+            <div class="case-logo" style="background: linear-gradient(135deg, var(--pink), var(--purple));">
+                <div style="font-family: var(--font-display); font-size: 1.2rem; color: white; font-weight: 700; text-align:center;">JW</div>
+            </div>
+            <div class="case-title-block">
+                <h2>$6.4M Launch Campaign</h2>
+                <p class="case-subtitle">Personal Brand / Digital Products</p>
+                <div class="case-meta">
+                    <span class="case-meta-item">📅 2022 – 2023</span>
+                    <span class="case-meta-item">🎯 Social Growth & Content Optimization</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-grid">
+            <div class="case-box results">
+                <h3>Results Within First 30 Days</h3>
+                <ul>
+                    <li>17 IG Reels >10k views</li>
+                    <li>6 IG Reels >20k views</li>
+                    <li>1 IG Reel: 49k views</li>
+                    <li>Grew following from 111K → 125K</li>
+                    <li>Maintained 3%+ weekly engagement</li>
+                    <li>Averaged one 10–20K view Reel per week</li>
+                </ul>
+            </div>
+            <div class="case-box strategy">
+                <h3>Strategy</h3>
+                <p>Implemented a data-led content calendar focused on storytelling, trends, and engagement triggers. Optimized video hooks and cross-platform repurposing to increase reach and retention.</p>
+                <p style="margin-top:1rem;">YouTube Shorts was a secondary focus with content repurposed from Instagram. All content supported a major digital product launch.</p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">$6.4M</div>
+                <div class="stat-label">Campaign Size</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Viral Videos in 30 Days</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">50+</div>
+                <div class="stat-label">Weekly Assets Produced</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">3%+</div>
+                <div class="stat-label">Weekly Engagement Rate</div>
+            </div>
+        </div>
+
+        <div class="case-visual">
+            <img src="5.png" alt="James Wedmore social analytics" style="width:100%;">
+        </div>
+    </div>
+</section>
+
+<!-- STONESMITH CASE STUDY -->
+<section class="case-study">
+    <div class="container">
+        <div class="case-header">
+            <div class="case-logo">
+                <div style="font-family: var(--font-display); font-size: 1.8rem; color: #4A5C78; font-weight: 700;">S</div>
+            </div>
+            <div class="case-title-block">
+                <h2>Social Brand Launch for StoneSmith</h2>
+                <p class="case-subtitle">Home Improvement / Local Business</p>
+                <div class="case-meta">
+                    <span class="case-meta-item">📅 Launch date: 10/13/25</span>
+                    <span class="case-meta-item">🎯 Social Content Strategy & Brand Positioning</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-grid">
+            <div class="case-box results">
+                <h3>Results (First 30 Days)</h3>
+                <ul>
+                    <li>Established consistent posting cadence and cohesive visual identity across platforms</li>
+                    <li>Grew Instagram reach by 7.4K% and achieved 4.2% average engagement rate</li>
+                    <li>Content performance indicates strong audience response to local project features and storytelling</li>
+                    <li>Built scalable foundation for paid campaign testing and future lead generation</li>
+                </ul>
+            </div>
+            <div class="case-box strategy">
+                <h3>Strategy</h3>
+                <p>Established a foundational social presence and visual identity for StoneSmith as both high-end and approachable within the local market.</p>
+                <p style="margin-top:1rem;">Built a content system that blends education, project storytelling, and lifestyle inspiration to guide audiences from aspiration to inquiry. Implemented consistent design templates, on-brand voice, and approachable visuals to showcase expertise while humanizing the brand.</p>
+            </div>
+        </div>
+
+        <div class="case-visual">
+            <img src="6.png" alt="StoneSmith social content examples" style="width:100%;">
+        </div>
+    </div>
+</section>
+
+<!-- NOT YOUR AVERAGE GRANDMA CASE STUDY -->
+<section class="case-study">
+    <div class="container">
+        <div class="case-header">
+            <div class="case-logo" style="background: var(--purple-light);">
+                <div style="font-family: var(--font-display); font-size: 1rem; color: var(--purple); font-weight: 700; text-align:center; line-height:1.2;">NOT YOUR<br>GRANDMA</div>
+            </div>
+            <div class="case-title-block">
+                <h2>Visual Brand Refresh for Not Your Average Grandma</h2>
+                <p class="case-subtitle">Personal Brand / Online Education</p>
+                <div class="case-meta">
+                    <span class="case-meta-item">🎯 Content Strategy & Visual Brand Development</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-grid">
+            <div class="case-box results">
+                <h3>Results</h3>
+                <ul>
+                    <li>103% increase in reach</li>
+                    <li>67% increase in engagement</li>
+                    <li>17% increase in followers</li>
+                </ul>
+            </div>
+            <div class="case-box strategy">
+                <h3>Strategy</h3>
+                <p>Refocused the brand's social presence around authenticity, storytelling, and visual consistency to better connect with a midlife female audience.</p>
+                <p style="margin-top:1rem;">Identified inconsistent visuals and a lack of direction as barriers to engagement, and developed a unified look and voice that feels both polished and personal. Repurposed podcast clips and long-form content into short-form videos that expand reach, drive consistency, and reinforce brand voice across platforms.</p>
+            </div>
+        </div>
+
+        <div class="case-visual">
+            <img src="7.png" alt="Not Your Average Grandma before and after" style="width:100%;">
+        </div>
+    </div>
+</section>
+
+<!-- CAROLINA FARM TRUST CASE STUDY -->
+<section class="case-study">
+    <div class="container">
+        <div class="case-header">
+            <div class="case-logo">
+                <div style="font-size: 2.5rem;">🌾</div>
+            </div>
+            <div class="case-title-block">
+                <h2>Mission-Driven Growth for Carolina Farm Trust</h2>
+                <p class="case-subtitle">Nonprofit / Sustainability & Community Development</p>
+                <div class="case-meta">
+                    <span class="case-meta-item">📅 2021 – 2022</span>
+                    <span class="case-meta-item">🎯 Full-Scale Marketing Strategy & Digital Transformation</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-grid">
+            <div class="case-box results">
+                <h3>Results</h3>
+                <ul>
+                    <li>8.65% social media audience growth in three months</li>
+                    <li>Developed and launched a new ticket-sales platform for the annual fundraiser, driving a 5% increase in profits year over year through targeted Meta ad campaigns</li>
+                    <li>Established a new TikTok channel to reach younger audiences and diversify donor engagement</li>
+                    <li>Designed and wrote nonprofit grant proposals, securing $15K+ in grants</li>
+                </ul>
+            </div>
+            <div class="case-box strategy">
+                <h3>Strategy</h3>
+                <p>Unified Carolina Farm Trust's fragmented marketing efforts under a single, mission-driven narrative to strengthen donor engagement and brand credibility.</p>
+                <p style="margin-top:1rem;">Aligned messaging across web, email, and social channels to amplify awareness and connect fundraising, storytelling, and community impact under one consistent voice.</p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">$15K+</div>
+                <div class="stat-label">Grants Secured</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">8.6%</div>
+                <div class="stat-label">Engagement Lift (3 mo.)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">30%</div>
+                <div class="stat-label">Website Traffic Increase</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">20%</div>
+                <div class="stat-label">Volunteer Sign-Up Growth</div>
+            </div>
+        </div>
+
+        <div class="case-visual">
+            <img src="8.png" alt="Carolina Farm Trust marketing materials" style="width:100%;">
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 Nikki Johnson</p>
+</footer>
+
+<script>
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+</script>
+
+</body>
+</html>

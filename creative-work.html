@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Work | Nikki Johnson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --pink: #E8368F;
+            --purple: #7B5EA7;
+            --purple-light: #F3EFF8;
+            --orange: #F27649;
+            --dark: #1a1a2e;
+            --gray-900: #2d2d3f;
+            --gray-600: #6b6b80;
+            --gray-300: #d1d1dd;
+            --gray-100: #f5f5f8;
+            --white: #ffffff;
+            --font-body: 'DM Sans', sans-serif;
+            --font-display: 'Playfair Display', serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--gray-900);
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-300);
+            transition: box-shadow 0.3s;
+        }
+        nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--pink); }
+        .nav-links { 
+            display: flex; 
+            gap: 2rem; 
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--pink); }
+        
+        .nav-dropdown {
+            position: relative;
+        }
+        .nav-dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 1rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            padding: 0.5rem 0;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--gray-900);
+            transition: background 0.2s;
+        }
+        .nav-dropdown-menu a:hover {
+            background: var(--purple-light);
+            color: var(--pink);
+        }
+
+        /* HERO */
+        .page-hero {
+            padding: 140px 2rem 60px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--purple-light) 50%, var(--white) 100%);
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .page-hero p {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* FILTER TABS */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 0.65rem 1.75rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 50px;
+            background: var(--white);
+            color: var(--gray-600);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover {
+            border-color: var(--purple);
+            color: var(--purple);
+        }
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: var(--white);
+            border-color: transparent;
+        }
+
+        /* GALLERY */
+        .gallery-section {
+            padding: 60px 2rem 100px;
+            background: var(--white);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            background: var(--white);
+        }
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        /* CATEGORY HEADERS */
+        .category-header {
+            margin: 4rem 0 2rem;
+            text-align: center;
+        }
+        .category-header h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        .category-header p {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .lightbox-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            text-align: center;
+            padding: 2rem;
+        }
+        footer p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .filter-tabs { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Nikki<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li class="nav-dropdown">
+                <span class="nav-dropdown-toggle">
+                    <a href="#">Work</a> <span style="font-size:0.7rem;">▼</span>
+                </span>
+                <div class="nav-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="creative-work.html">Creative Work</a>
+                </div>
+            </li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+    <h1>Creative Work</h1>
+    <p>A peek at the posts, short-form videos, and creative content that turned ideas into engagement and made people stop scrolling.</p>
+    
+    <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="videos">Short-Form Videos</button>
+        <button class="filter-btn" data-filter="carousels">Carousels</button>
+        <button class="filter-btn" data-filter="memes">Memes</button>
+        <button class="filter-btn" data-filter="static">Static Images</button>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+    <div class="container">
+        
+        <!-- SHORT-FORM VIDEOS -->
+        <div class="category-header">
+            <h2>Short-Form Videos</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="videos" data-image="10.png">
+                <img src="10.png" alt="Short-form video examples">
+            </div>
+        </div>
+
+        <!-- CAROUSELS -->
+        <div class="category-header">
+            <h2>Carousels</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="carousels" data-image="11.png">
+                <img src="11.png" alt="Carousel post examples">
+            </div>
+        </div>
+
+        <!-- MEMES -->
+        <div class="category-header">
+            <h2>Memes</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="memes" data-image="12.png">
+                <img src="12.png" alt="Meme content examples">
+            </div>
+        </div>
+
+        <!-- STATIC IMAGES -->
+        <div class="category-header">
+            <h2>Static Images</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="static" data-image="13.png">
+                <img src="13.png" alt="Static image post examples">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-close" onclick="closeLightbox()">×</div>
+    <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="">
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 Nikki Johnson</p>
+</footer>
+
+<script>
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.dataset.filter;
+
+            // Filter items
+            galleryItems.forEach(item => {
+                if (filter === 'all' || item.dataset.category === filter) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    // Lightbox functionality
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const imgSrc = item.dataset.image;
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox').classList.add('active');
+        });
+    });
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+    }
+
+    // Close lightbox on background click
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+        if (e.target.id === 'lightbox') {
+            closeLightbox();
+        }
+    });
+
+    // Close lightbox on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+</script>
+
+</body>
+</html>
