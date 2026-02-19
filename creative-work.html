@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creative Work | Nikki Johnson</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --pink: #E8368F;
-            --purple: #7B5EA7;
-            --purple-light: #F3EFF8;
-            --orange: #F27649;
-            --dark: #1a1a2e;
+            --pink: #fe00ae;
+            --lime: #c1fe1a;
+            --purple: #7B00C7;
+            --purple-light: #fdf0ff;
+            --dark: #0d0d1a;
             --gray-900: #2d2d3f;
             --gray-600: #6b6b80;
             --gray-300: #d1d1dd;
@@ -25,262 +26,286 @@
         }
 
         html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--gray-900); line-height: 1.6; background: var(--white); -webkit-font-smoothing: antialiased; }
 
-        body {
-            font-family: var(--font-body);
-            color: var(--gray-900);
-            line-height: 1.6;
-            background: var(--white);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--gray-300);
-            transition: box-shadow 0.3s;
-        }
-        nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 64px;
-        }
-        .nav-logo {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--dark);
-            text-decoration: none;
-        }
+        /* ---- NAV ---- */
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, box-shadow 0.3s; }
+        nav.scrolled { border-color: var(--gray-300); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--dark); text-decoration: none; }
         .nav-logo span { color: var(--pink); }
-        .nav-links { 
-            display: flex; 
-            gap: 2rem; 
-            list-style: none;
-            align-items: center;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--gray-600);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--pink); }
-        
-        .nav-dropdown {
-            position: relative;
-        }
-        .nav-dropdown-toggle {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-        .nav-dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-top: 1rem;
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            padding: 0.5rem 0;
-            min-width: 180px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s, visibility 0.2s;
-        }
-        .nav-dropdown:hover .nav-dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-        }
-        .nav-dropdown-menu a {
-            display: block;
-            padding: 0.75rem 1.5rem;
-            color: var(--gray-900);
-            transition: background 0.2s;
-        }
-        .nav-dropdown-menu a:hover {
-            background: var(--purple-light);
-            color: var(--pink);
-        }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--pink); }
 
-        /* HERO */
-        .page-hero {
-            padding: 140px 2rem 60px;
-            background: linear-gradient(135deg, var(--white) 0%, var(--purple-light) 50%, var(--white) 100%);
+        /* DROPDOWN */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle { cursor: pointer; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; display: flex; align-items: center; gap: 0.35rem; user-select: none; }
+        .nav-dropdown:hover .nav-dropdown-toggle { color: var(--pink); }
+        .nav-dropdown-menu { position: absolute; top: calc(100% + 0.75rem); left: 50%; transform: translateX(-50%) translateY(-6px); background: white; border: 1px solid var(--gray-300); border-radius: 14px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); min-width: 180px; padding: 0.5rem; opacity: 0; visibility: hidden; transition: opacity 0.22s, visibility 0.22s, transform 0.22s; z-index: 200; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .nav-dropdown-menu a { display: block; padding: 0.625rem 1rem; color: var(--gray-600); text-decoration: none; font-size: 0.875rem; font-weight: 500; border-radius: 8px; transition: all 0.15s; }
+        .nav-dropdown-menu a:hover, .nav-dropdown-menu a.active { background: var(--purple-light); color: var(--purple); }
+
+        /* ---- HERO ---- */
+        .hero {
+            padding: 9rem 2rem 6rem;
             text-align: center;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
         }
-        .page-hero h1 {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 65% 30%, rgba(254,0,174,0.22) 0%, transparent 60%),
+                        radial-gradient(ellipse at 25% 80%, rgba(193,254,26,0.1) 0%, transparent 50%);
         }
-        .page-hero p {
-            font-size: 1.15rem;
-            color: var(--gray-600);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
+        .hero-inner { position: relative; z-index: 1; }
+        .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); margin-bottom: 1rem; display: block; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); color: white; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto; }
 
-        /* FILTER TABS */
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
+        /* ---- TAB BAR ---- */
+        .tab-bar {
+            position: sticky;
+            top: 68px;
+            z-index: 50;
+            background: var(--dark);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
-        .filter-btn {
-            padding: 0.65rem 1.75rem;
-            border: 2px solid var(--gray-300);
-            border-radius: 50px;
-            background: var(--white);
-            color: var(--gray-600);
+        .tab-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; gap: 0; }
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            padding: 1.1rem 1rem;
             font-family: var(--font-body);
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.4);
             cursor: pointer;
-            transition: all 0.2s;
+            transition: color 0.22s, border-color 0.22s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            white-space: nowrap;
         }
-        .filter-btn:hover {
-            border-color: var(--purple);
-            color: var(--purple);
-        }
-        .filter-btn.active {
-            background: linear-gradient(135deg, var(--pink), var(--purple));
-            color: var(--white);
-            border-color: transparent;
-        }
+        .tab-btn:hover { color: rgba(255,255,255,0.75); }
+        .tab-btn.active { color: white; border-bottom-color: var(--pink); }
+        .tab-count { background: rgba(255,255,255,0.12); border-radius: 100px; padding: 0.1rem 0.5rem; font-size: 0.7rem; }
+        .tab-btn.active .tab-count { background: var(--pink); }
 
-        /* GALLERY */
-        .gallery-section {
-            padding: 60px 2rem 100px;
-            background: var(--white);
+        /* ---- TAB PANELS ---- */
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* ---- VIDEOS PANEL ---- */
+        .videos-panel {
+            background: #0d0d1a;
+            padding: 3rem 2rem 5rem;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .gallery-item {
+        .panel-inner { max-width: 1200px; margin: 0 auto; }
+        .panel-header { margin-bottom: 2.5rem; }
+        .panel-header h2 { font-family: var(--font-display); font-size: 1.75rem; color: white; margin-bottom: 0.4rem; }
+        .panel-header p { color: rgba(255,255,255,0.45); font-size: 0.95rem; }
+
+        .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        @media (max-width: 720px) { .video-grid { grid-template-columns: 1fr; } }
+
+        .video-card {
+            position: relative;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: #0d0d1a;
             cursor: pointer;
-            background: var(--white);
+            aspect-ratio: 16 / 9;
+            transition: transform 0.25s, box-shadow 0.25s;
         }
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        .video-card:hover { transform: scale(1.02); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+        .video-card video, .video-card .video-fallback {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
         }
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .video-fallback {
+            background: linear-gradient(135deg, #0d0d1a, #2a0050);
+            display: flex; align-items: center; justify-content: center;
         }
-        .gallery-item.hidden {
-            display: none;
+        .video-fallback img { max-width: 45%; max-height: 45%; object-fit: contain; filter: brightness(0) invert(1) opacity(0.5); }
+        .video-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 1.5rem;
         }
+        .video-brand { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink); margin-bottom: 0.3rem; }
+        .video-title { font-size: 1rem; font-weight: 600; color: white; line-height: 1.3; }
+        .play-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 60px; height: 60px;
+            background: rgba(255,255,255,0.9); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: var(--pink);
+            transition: transform 0.22s, background 0.22s;
+            pointer-events: none;
+        }
+        .video-card:hover .play-btn { transform: translate(-50%, -50%) scale(1.12); background: var(--pink); color: white; }
 
-        /* CATEGORY HEADERS */
-        .category-header {
-            margin: 4rem 0 2rem;
-            text-align: center;
-        }
-        .category-header h2 {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-        .category-header p {
-            font-size: 1.05rem;
-            color: var(--gray-600);
-        }
+        /* ---- CAROUSELS PANEL ---- */
+        .carousels-panel { background: var(--gray-100); padding: 3rem 2rem 5rem; }
+        .carousel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+        @media (max-width: 720px) { .carousel-grid { grid-template-columns: 1fr; } }
 
-        /* LIGHTBOX */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-        .lightbox.active {
-            display: flex;
-        }
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 12px;
+        .carousel-card {
+            background: white;
+            border-radius: 20px;
             overflow: hidden;
-        }
-        .lightbox-content img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            font-size: 2rem;
-            color: white;
             cursor: pointer;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.25s, box-shadow 0.25s;
         }
-        .lightbox-close:hover {
-            background: rgba(255,255,255,0.2);
+        .carousel-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+        .carousel-preview {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: var(--gray-100);
         }
+        .carousel-preview img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+        .carousel-card:hover .carousel-preview img { transform: scale(1.04); }
+        .slide-count-badge {
+            position: absolute; bottom: 0.75rem; right: 0.75rem;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+            color: white; font-size: 0.72rem; font-weight: 700;
+            padding: 0.25rem 0.7rem; border-radius: 100px;
+            letter-spacing: 0.06em;
+        }
+        .carousel-info { padding: 1.25rem 1.5rem; }
+        .carousel-info .info-brand { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink); margin-bottom: 0.3rem; }
+        .carousel-info h3 { font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: 0.25rem; }
+        .carousel-info p { font-size: 0.82rem; color: var(--gray-600); }
+        .view-carousel-btn { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.75rem; font-size: 0.82rem; font-weight: 600; color: var(--purple); background: var(--purple-light); border: none; border-radius: 100px; padding: 0.4rem 0.9rem; cursor: pointer; transition: all 0.2s; }
+        .view-carousel-btn:hover { background: var(--purple); color: white; }
 
-        /* FOOTER */
-        footer {
+        /* ---- MEMES PANEL ---- */
+        .memes-panel {
             background: var(--dark);
-            text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem 5rem;
         }
-        footer p {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.8rem;
-        }
+        .memes-panel .panel-header h2 { color: white; }
+        .memes-panel .panel-header p { color: rgba(255,255,255,0.45); }
+        .memes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
 
+        .meme-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+            transition: transform 0.25s;
+        }
+        .meme-card:hover { transform: scale(1.03); }
+        .meme-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .meme-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 55%);
+            opacity: 0; transition: opacity 0.25s;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 1.1rem;
+        }
+        .meme-card:hover .meme-overlay { opacity: 1; }
+        .meme-brand { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink); margin-bottom: 0.2rem; }
+        .meme-title { font-size: 0.88rem; font-weight: 600; color: white; }
+
+        /* ---- STATIC PANEL ---- */
+        .static-panel { background: white; padding: 3rem 2rem 5rem; }
+        .static-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+
+        .static-card {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+            background: var(--gray-100);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .static-card:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+        .static-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+        .static-card:hover img { transform: scale(1.05); }
+        .static-overlay {
+            position: absolute; inset: 0;
+            background: rgba(26,26,46,0.72);
+            opacity: 0; transition: opacity 0.25s;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 1.25rem; text-align: center;
+        }
+        .static-card:hover .static-overlay { opacity: 1; }
+        .static-brand { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink); margin-bottom: 0.4rem; }
+        .static-title { font-size: 0.9rem; font-weight: 600; color: white; line-height: 1.3; }
+        .zoom-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+
+        /* ---- IMAGE LIGHTBOX ---- */
+        .lb { position: fixed; inset: 0; background: rgba(0,0,0,0.94); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 1.5rem; }
+        .lb.active { display: flex; }
+        .lb-img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: 10px; display: block; }
+        .lb-close { position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 46px; height: 46px; color: white; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .lb-close:hover { background: rgba(255,255,255,0.28); }
+
+        /* ---- VIDEO MODAL ---- */
+        .vm { position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 1001; display: none; align-items: center; justify-content: center; padding: 1.5rem; }
+        .vm.active { display: flex; }
+        .vm-wrap { position: relative; width: 100%; max-width: 900px; }
+        .vm video { width: 100%; border-radius: 12px; max-height: 80vh; background: #000; display: block; }
+        .vm-close { position: absolute; top: -3rem; right: 0; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 46px; height: 46px; color: white; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .vm-close:hover { background: rgba(255,255,255,0.28); }
+        .vm-label { position: absolute; bottom: -2.5rem; left: 0; color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+        /* ---- CAROUSEL LIGHTBOX ---- */
+        .clb { position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 1000; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; }
+        .clb.active { display: flex; }
+        .clb-wrap { position: relative; max-width: 600px; width: 100%; }
+        .clb-track { display: flex; transition: transform 0.38s cubic-bezier(0.25,0.46,0.45,0.94); border-radius: 12px; overflow: hidden; }
+        .clb-slide { min-width: 100%; }
+        .clb-slide img { width: 100%; max-height: 76vh; object-fit: contain; display: block; }
+        .clb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 48px; height: 48px; color: white; font-size: 1.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10; }
+        .clb-nav:hover { background: rgba(255,255,255,0.3); }
+        .clb-prev { left: -3.5rem; }
+        .clb-next { right: -3.5rem; }
+        .clb-close { position: fixed; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 46px; height: 46px; color: white; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .clb-footer { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+        .clb-dots { display: flex; gap: 0.4rem; }
+        .clb-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; transition: all 0.2s; padding: 0; }
+        .clb-dot.active { background: var(--pink); width: 20px; border-radius: 4px; }
+        .clb-counter { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+        /* ---- CTA ---- */
+        .cta-section { background: var(--dark); padding: 6rem 2rem; text-align: center; }
+        .cta-section h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: white; margin-bottom: 1rem; }
+        .cta-section p { color: rgba(255,255,255,0.55); font-size: 1.05rem; max-width: 460px; margin: 0 auto 2rem; }
+        .btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-pink { display: inline-block; padding: 0.875rem 2rem; background: var(--pink); color: white; text-decoration: none; border-radius: 100px; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-pink:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(254,0,174,0.4); }
+        .btn-outline { display: inline-block; padding: 0.875rem 2rem; border: 1.5px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); text-decoration: none; border-radius: 100px; font-weight: 600; transition: all 0.2s; }
+        .btn-outline:hover { border-color: white; color: white; }
+
+        /* ---- FOOTER ---- */
+        footer { padding: 2rem; text-align: center; color: var(--gray-600); font-size: 0.875rem; border-top: 1px solid var(--gray-100); }
+
+        /* ---- RESPONSIVE ---- */
         @media (max-width: 768px) {
-            .page-hero h1 { font-size: 2rem; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-            .filter-tabs { padding: 0 1rem; }
+            .tab-btn { font-size: 0.72rem; padding: 0.9rem 0.5rem; gap: 0.3rem; }
+            .tab-count { display: none; }
+            .clb-prev { left: -2rem; }
+            .clb-next { right: -2rem; }
+        }
+        @media (max-width: 480px) {
+            .nav-links { gap: 1rem; font-size: 0.82rem; }
+            .nav-links li:last-child { display: none; }
         }
     </style>
 </head>
@@ -294,12 +319,10 @@
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#experience">Experience</a></li>
             <li class="nav-dropdown">
-                <span class="nav-dropdown-toggle">
-                    <a href="#">Work</a> <span style="font-size:0.7rem;">▼</span>
-                </span>
+                <span class="nav-dropdown-toggle">Work <span style="font-size:0.7rem;">▼</span></span>
                 <div class="nav-dropdown-menu">
                     <a href="case-studies.html">Case Studies</a>
-                    <a href="creative-work.html">Creative Work</a>
+                    <a href="creative-work.html" class="active">Creative Work</a>
                 </div>
             </li>
             <li><a href="index.html#services">Services</a></li>
@@ -309,135 +332,576 @@
 </nav>
 
 <!-- HERO -->
-<section class="page-hero">
-    <h1>Creative Work</h1>
-    <p>A peek at the posts, short-form videos, and creative content that turned ideas into engagement and made people stop scrolling.</p>
-    
-    <div class="filter-tabs">
-        <button class="filter-btn active" data-filter="all">All Work</button>
-        <button class="filter-btn" data-filter="videos">Short-Form Videos</button>
-        <button class="filter-btn" data-filter="carousels">Carousels</button>
-        <button class="filter-btn" data-filter="memes">Memes</button>
-        <button class="filter-btn" data-filter="static">Static Images</button>
+<section class="hero">
+    <div class="hero-inner">
+        <span class="section-label">Portfolio</span>
+        <h1>The Highlight Reel</h1>
+        <p>Posts, short-form videos, and creative content that made people stop scrolling.</p>
     </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery-section">
-    <div class="container">
-        
-        <!-- SHORT-FORM VIDEOS -->
-        <div class="category-header">
-            <h2>Short-Form Videos</h2>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item" data-category="videos" data-image="10.png">
-                <img src="10.png" alt="Short-form video examples">
-            </div>
-        </div>
-
-        <!-- CAROUSELS -->
-        <div class="category-header">
-            <h2>Carousels</h2>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item" data-category="carousels" data-image="11.png">
-                <img src="11.png" alt="Carousel post examples">
-            </div>
-        </div>
-
-        <!-- MEMES -->
-        <div class="category-header">
-            <h2>Memes</h2>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item" data-category="memes" data-image="12.png">
-                <img src="12.png" alt="Meme content examples">
-            </div>
-        </div>
-
-        <!-- STATIC IMAGES -->
-        <div class="category-header">
-            <h2>Static Images</h2>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item" data-category="static" data-image="13.png">
-                <img src="13.png" alt="Static image post examples">
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-    <div class="lightbox-close" onclick="closeLightbox()">×</div>
-    <div class="lightbox-content">
-        <img id="lightbox-img" src="" alt="">
+<!-- TAB BAR -->
+<div class="tab-bar" id="tab-bar">
+    <div class="tab-inner">
+        <button class="tab-btn active" data-tab="videos">
+            🎬 Videos <span class="tab-count">15</span>
+        </button>
+        <button class="tab-btn" data-tab="carousels">
+            🖼 Carousels <span class="tab-count">5</span>
+        </button>
+        <button class="tab-btn" data-tab="memes">
+            😂 Memes <span class="tab-count">4</span>
+        </button>
+        <button class="tab-btn" data-tab="static">
+            📸 Static Posts <span class="tab-count">10</span>
+        </button>
     </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-    <p>&copy; 2026 Nikki Johnson</p>
-</footer>
+<!-- ======================================================
+     TAB: VIDEOS
+     ====================================================== -->
+<div class="tab-panel active" id="tab-videos">
+    <div class="videos-panel">
+        <div class="panel-inner">
+            <div class="panel-header">
+                <h2>Short-Form Videos & Reels</h2>
+                <p>Scroll-stopping video content — meme-driven, story-led, and built to perform.</p>
+            </div>
+            <div class="video-grid">
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/HVAC%20Look%20at%20This%20One.mp4','HVAC.com — Look at This One')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/HVAC%20Look%20at%20This%20One.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">HVAC.com</div>
+                        <div class="video-title">Look at This One</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/HVAC%20Quotescore%20Kelsey.mp4','HVAC.com — Quotescore Kelsey')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/HVAC%20Quotescore%20Kelsey.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">HVAC.com</div>
+                        <div class="video-title">Quotescore — Kelsey</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/HVAC%20Walking%20Dead%20Meme.mp4','HVAC.com — Walking Dead Meme Reel')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/HVAC%20Walking%20Dead%20Meme.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">HVAC.com</div>
+                        <div class="video-title">Walking Dead Meme Reel</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Harry%20Potter.mp4','James Wedmore — Harry Potter Reel')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/Wedmore%20Harry%20Potter.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">James Wedmore</div>
+                        <div class="video-title">Harry Potter Reel</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/James%20Hermione%20Reel.mp4','James Wedmore — Hermione Reel')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/James%20Hermione%20Reel.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">James Wedmore</div>
+                        <div class="video-title">Hermione Reel</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Launch%20.mp4','James Wedmore — Launch Reel')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/Wedmore%20Launch%20.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">James Wedmore</div>
+                        <div class="video-title">$6.4M Launch Reel</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Thought%20of%20the%20Day.mp4','James Wedmore — Thought of the Day')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/Wedmore%20Thought%20of%20the%20Day.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">James Wedmore</div>
+                        <div class="video-title">Thought of the Day</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Text%20over%20Video.mp4','James Wedmore — Text Over Video')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/Wedmore%20Text%20over%20Video.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">James Wedmore</div>
+                        <div class="video-title">Text Over Video Style</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20Dance%20Meme.mp4','NYAG — Dance Meme Reel')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/NYAG%20Dance%20Meme.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">NYAG</div>
+                        <div class="video-title">Dance Meme Reel</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20David.mp4','NYAG — David Reel')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/NYAG%20David.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">NYAG</div>
+                        <div class="video-title">David Reel</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20Google%20Search%20Retreat.mp4','NYAG — Google Search Style Reel')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/NYAG%20Google%20Search%20Retreat.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">NYAG</div>
+                        <div class="video-title">Google Search Style Reel</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/NYAGRetreatMontage.mp4','NYAG — Retreat Montage')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/NYAGRetreatMontage.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">NYAG</div>
+                        <div class="video-title">Retreat Montage</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20Taylor%20meme.mp4','NYAG — Taylor Meme Reel')">
+                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/NYAG%20Taylor%20meme.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-brand">NYAG</div>
+                        <div class="video-title">Taylor Meme Reel</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/Maple%20Air%20Install%20Day.mov','Maple Air — Install Day')">
+                    <div class="video-fallback">
+                        <img src="Assets/Logos/Maple%20Air%20Logo.svg" alt="Maple Air">
+                    </div>
+                    <div class="video-overlay">
+                        <div class="video-brand">Maple Air</div>
+                        <div class="video-title">Install Day</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="video-card" onclick="openVideo('Assets/Videos/Maple%20Air%20Unboxing.mov','Maple Air — Product Unboxing')">
+                    <div class="video-fallback">
+                        <img src="Assets/Logos/Maple%20Air%20Logo.svg" alt="Maple Air">
+                    </div>
+                    <div class="video-overlay">
+                        <div class="video-brand">Maple Air</div>
+                        <div class="video-title">Product Unboxing</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================================
+     TAB: CAROUSELS
+     ====================================================== -->
+<div class="tab-panel" id="tab-carousels">
+    <div class="carousels-panel">
+        <div class="panel-inner">
+            <div class="panel-header" style="margin-bottom:2.5rem;">
+                <h2 style="font-family:var(--font-display);font-size:1.75rem;color:var(--dark);margin-bottom:0.4rem;">Carousel Posts</h2>
+                <p style="color:var(--gray-600);font-size:0.95rem;">Multi-slide educational and engagement content designed to keep people swiping.</p>
+            </div>
+            <div class="carousel-grid">
+
+                <div class="carousel-card" onclick="openCarousel(['Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/1.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/2.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/3.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/4.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/5.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/6.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/7.png'])">
+                    <div class="carousel-preview">
+                        <img src="Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/1.png" alt="5 Reasons carousel">
+                        <div class="slide-count-badge">7 slides</div>
+                    </div>
+                    <div class="carousel-info">
+                        <div class="info-brand">HVAC.com</div>
+                        <h3>5 Reasons Your House Helps Illness Spread in Winter</h3>
+                        <p>Educational carousel on air quality and home health</p>
+                        <button class="view-carousel-btn">View All Slides →</button>
+                    </div>
+                </div>
+
+                <div class="carousel-card" onclick="openCarousel(['Assets/Carousels/Mold%20in%20Military%20Housing/1.png','Assets/Carousels/Mold%20in%20Military%20Housing/2.png','Assets/Carousels/Mold%20in%20Military%20Housing/3.png','Assets/Carousels/Mold%20in%20Military%20Housing/4.png','Assets/Carousels/Mold%20in%20Military%20Housing/5.png','Assets/Carousels/Mold%20in%20Military%20Housing/6.png','Assets/Carousels/Mold%20in%20Military%20Housing/7.png'])">
+                    <div class="carousel-preview">
+                        <img src="Assets/Carousels/Mold%20in%20Military%20Housing/1.png" alt="Mold carousel">
+                        <div class="slide-count-badge">7 slides</div>
+                    </div>
+                    <div class="carousel-info">
+                        <div class="info-brand">HVAC.com</div>
+                        <h3>Mold in Military Housing</h3>
+                        <p>Timely awareness content connecting brand to a cultural conversation</p>
+                        <button class="view-carousel-btn">View All Slides →</button>
+                    </div>
+                </div>
+
+                <div class="carousel-card" onclick="openCarousel(['Assets/Carousels/Goals/1.png','Assets/Carousels/Goals/2.png','Assets/Carousels/Goals/3.png','Assets/Carousels/Goals/4.png','Assets/Carousels/Goals/5.png'])">
+                    <div class="carousel-preview">
+                        <img src="Assets/Carousels/Goals/1.png" alt="Goals carousel">
+                        <div class="slide-count-badge">5 slides</div>
+                    </div>
+                    <div class="carousel-info">
+                        <div class="info-brand">James Wedmore</div>
+                        <h3>Goals</h3>
+                        <p>Motivational carousel driving engagement and saves</p>
+                        <button class="view-carousel-btn">View All Slides →</button>
+                    </div>
+                </div>
+
+                <div class="carousel-card" onclick="openCarousel([&quot;Assets/Carousels/New Year\u2019s gym resolutions/1.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/2.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/3.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/4.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/5.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/6.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/7.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/8.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/9.png&quot;])">
+                    <div class="carousel-preview">
+                        <img src="Assets/Carousels/New Year&#x2019;s gym resolutions/1.png" alt="New Year gym carousel">
+                        <div class="slide-count-badge">9 slides</div>
+                    </div>
+                    <div class="carousel-info">
+                        <div class="info-brand">NYAG</div>
+                        <h3>New Year's Gym Resolutions</h3>
+                        <p>High-save content connecting with a midlife female fitness audience</p>
+                        <button class="view-carousel-btn">View All Slides →</button>
+                    </div>
+                </div>
+
+                <div class="carousel-card" onclick="openCarousel(['Assets/Carousels/Timeless%20Kitchen/1.png','Assets/Carousels/Timeless%20Kitchen/2.png','Assets/Carousels/Timeless%20Kitchen/3.png','Assets/Carousels/Timeless%20Kitchen/4.png','Assets/Carousels/Timeless%20Kitchen/5.png','Assets/Carousels/Timeless%20Kitchen/6.png','Assets/Carousels/Timeless%20Kitchen/7.png','Assets/Carousels/Timeless%20Kitchen/8.png'])">
+                    <div class="carousel-preview">
+                        <img src="Assets/Carousels/Timeless%20Kitchen/1.png" alt="Timeless Kitchen carousel">
+                        <div class="slide-count-badge">8 slides</div>
+                    </div>
+                    <div class="carousel-info">
+                        <div class="info-brand">StoneSmith</div>
+                        <h3>Timeless Kitchen Design</h3>
+                        <p>Aspirational lifestyle carousel blending education with visual storytelling</p>
+                        <button class="view-carousel-btn">View All Slides →</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================================
+     TAB: MEMES
+     ====================================================== -->
+<div class="tab-panel" id="tab-memes">
+    <div class="memes-panel">
+        <div class="panel-inner">
+            <div class="panel-header">
+                <h2>Memes &amp; Culture-Forward Content</h2>
+                <p>Because the best way to make people care about HVAC is to make them laugh first.</p>
+            </div>
+            <div class="memes-grid">
+
+                <div class="meme-card" onclick="openLB('Assets/Memes/HVAC%20Kendrick%20Meme.png')">
+                    <img src="Assets/Memes/HVAC%20Kendrick%20Meme.png" alt="HVAC Kendrick meme">
+                    <div class="meme-overlay">
+                        <div class="meme-brand">HVAC.com</div>
+                        <div class="meme-title">Kendrick Meme</div>
+                    </div>
+                </div>
+
+                <div class="meme-card" onclick="openLB('Assets/Memes/HVAC%20Snoop%20Meme.jpg')">
+                    <img src="Assets/Memes/HVAC%20Snoop%20Meme.jpg" alt="HVAC Snoop meme">
+                    <div class="meme-overlay">
+                        <div class="meme-brand">HVAC.com</div>
+                        <div class="meme-title">Snoop Meme</div>
+                    </div>
+                </div>
+
+                <div class="meme-card" onclick="openLB('Assets/Memes/HVAC%20Taylor%20and%20Travis%20Meme.png')">
+                    <img src="Assets/Memes/HVAC%20Taylor%20and%20Travis%20Meme.png" alt="HVAC Taylor & Travis meme">
+                    <div class="meme-overlay">
+                        <div class="meme-brand">HVAC.com</div>
+                        <div class="meme-title">Taylor &amp; Travis Meme</div>
+                    </div>
+                </div>
+
+                <div class="meme-card" onclick="openLB('Assets/Memes/NYAG%20Kardashian%20Meme.png')">
+                    <img src="Assets/Memes/NYAG%20Kardashian%20Meme.png" alt="NYAG Kardashian meme">
+                    <div class="meme-overlay">
+                        <div class="meme-brand">NYAG</div>
+                        <div class="meme-title">Kardashian Meme</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================================
+     TAB: STATIC POSTS
+     ====================================================== -->
+<div class="tab-panel" id="tab-static">
+    <div class="static-panel">
+        <div class="panel-inner">
+            <div class="panel-header" style="margin-bottom:2.5rem;">
+                <h2 style="font-family:var(--font-display);font-size:1.75rem;color:var(--dark);margin-bottom:0.4rem;">Static Posts &amp; Graphics</h2>
+                <p style="color:var(--gray-600);font-size:0.95rem;">Branded graphics, testimonials, and social posts designed to stop the scroll.</p>
+            </div>
+            <div class="static-grid">
+
+                <div class="static-card" onclick="openLB('Assets/Images/Your%20HVAC%20-%201.png')">
+                    <img src="Assets/Images/Your%20HVAC%20-%201.png" alt="HVAC post">
+                    <div class="static-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="static-brand">HVAC.com</div>
+                        <div class="static-title">HVAC Awareness Post</div>
+                    </div>
+                </div>
+
+                <div class="static-card" onclick="openLB('Assets/Images/HVAC%20Reddit%20Testimonial.png')">
+                    <img src="Assets/Images/HVAC%20Reddit%20Testimonial.png" alt="HVAC Reddit testimonial">
+                    <div class="static-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="static-brand">HVAC.com</div>
+                        <div class="static-title">Reddit Testimonial Graphic</div>
+                    </div>
+                </div>
+
+                <div class="static-card" onclick="openLB('Assets/Images/Wedmore%20Graphic.png')">
+                    <img src="Assets/Images/Wedmore%20Graphic.png" alt="Wedmore graphic">
+                    <div class="static-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="static-brand">James Wedmore</div>
+                        <div class="static-title">Brand Graphic</div>
+                    </div>
+                </div>
+
+                <div class="static-card" onclick="openLB('Assets/Images/Wedmore%20All%20We%20Do%20Is%20Win%20Wednesday%2001%20-%203.png')">
+                    <img src="Assets/Images/Wedmore%20All%20We%20Do%20Is%20Win%20Wednesday%2001%20-%203.png" alt="Win Wednesday">
+                    <div class="static-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="static-brand">James Wedmore</div>
+                        <div class="static-title">Win Wednesday</div>
+                    </div>
+                </div>
+
+                <div class="static-card" onclick="openLB('Assets/Images/Wedmore%20Testimonial.png')">
+                    <img src="Assets/Images/Wedmore%20Testimonial.png" alt="Wedmore testimonial">
+                    <div class="static-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="static-brand">James Wedmore</div>
+                        <div class="static-title">Testimonial Graphic</div>
+                    </div>
+                </div>
+
+                <div class="static-card" onclick="openLB('Assets/Images/StoneSmith%20Kitchen%20choices.png')">
+                    <img src="Assets/Images/StoneSmith%20Kitchen%20choices.png" alt="StoneSmith kitchen">
+                    <div class="static-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="static-brand">StoneSmith</div>
+                        <div class="static-title">Kitchen Choices Post</div>
+                    </div>
+                </div>
+
+                <div class="static-card" onclick="openLB('Assets/Images/StoneSmith%20Testimonial%20-%201.png')">
+                    <img src="Assets/Images/StoneSmith%20Testimonial%20-%201.png" alt="StoneSmith testimonial">
+                    <div class="static-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="static-brand">StoneSmith</div>
+                        <div class="static-title">Client Testimonial</div>
+                    </div>
+                </div>
+
+                <div class="static-card" onclick="openLB('Assets/Images/NYAG%20Alarm%20Clock%20Love%20Instagram%20Post%20-%201.png')">
+                    <img src="Assets/Images/NYAG%20Alarm%20Clock%20Love%20Instagram%20Post%20-%201.png" alt="NYAG alarm clock">
+                    <div class="static-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="static-brand">NYAG</div>
+                        <div class="static-title">Alarm Clock Love Post</div>
+                    </div>
+                </div>
+
+                <div class="static-card" onclick="openLB('Assets/Images/NYAG%20Anatomy%20of%20a%20Scared%20Settler%20-%201.png')">
+                    <img src="Assets/Images/NYAG%20Anatomy%20of%20a%20Scared%20Settler%20-%201.png" alt="NYAG anatomy">
+                    <div class="static-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="static-brand">NYAG</div>
+                        <div class="static-title">Anatomy of a Scared Settler</div>
+                    </div>
+                </div>
+
+                <div class="static-card" onclick="openLB('Assets/Images/Pleople%20Pleaser.png')">
+                    <img src="Assets/Images/Pleople%20Pleaser.png" alt="People pleaser">
+                    <div class="static-overlay">
+                        <div class="zoom-icon">🔍</div>
+                        <div class="static-brand">NYAG</div>
+                        <div class="static-title">People Pleaser Post</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2>Like what you see?</h2>
+    <p>Let's create content that stops the scroll and drives results.</p>
+    <div class="btn-row">
+        <a href="index.html#contact" class="btn-pink">Let's Talk</a>
+        <a href="case-studies.html" class="btn-outline">View Case Studies →</a>
+    </div>
+</section>
+
+<footer>© 2026 Nikki Johnson</footer>
+
+<!-- IMAGE LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLB(event)">
+    <button class="lb-close" onclick="closeLB()">✕</button>
+    <img class="lb-img" id="lb-img" src="" alt="">
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="vm" id="vm" onclick="closeVM(event)">
+    <div class="vm-wrap">
+        <button class="vm-close" onclick="closeVM()">✕</button>
+        <video id="vm-video" controls preload="none" playsinline>
+            <source id="vm-src" src="" type="video/mp4">
+        </video>
+        <div class="vm-label" id="vm-label"></div>
+    </div>
+</div>
+
+<!-- CAROUSEL LIGHTBOX -->
+<div class="clb" id="clb">
+    <button class="clb-close" onclick="closeCLB()">✕</button>
+    <div class="clb-wrap">
+        <div class="clb-track" id="clb-track"></div>
+        <button class="clb-nav clb-prev" onclick="moveCLB(-1)">‹</button>
+        <button class="clb-nav clb-next" onclick="moveCLB(1)">›</button>
+    </div>
+    <div class="clb-footer">
+        <div class="clb-dots" id="clb-dots"></div>
+        <div class="clb-counter" id="clb-counter"></div>
+    </div>
+</div>
 
 <script>
-    // Nav scroll effect
-    window.addEventListener('scroll', () => {
-        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+// ---- NAV ----
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ---- TABS ----
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+        // Scroll tab bar into view
+        document.getElementById('tab-bar').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
+});
 
-    // Filter functionality
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update active button
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filter = btn.dataset.filter;
-
-            // Filter items
-            galleryItems.forEach(item => {
-                if (filter === 'all' || item.dataset.category === filter) {
-                    item.classList.remove('hidden');
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
-        });
-    });
-
-    // Lightbox functionality
-    galleryItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const imgSrc = item.dataset.image;
-            document.getElementById('lightbox-img').src = imgSrc;
-            document.getElementById('lightbox').classList.add('active');
-        });
-    });
-
-    function closeLightbox() {
-        document.getElementById('lightbox').classList.remove('active');
+// ---- LIGHTBOX ----
+function openLB(src) {
+    document.getElementById('lb-img').src = src;
+    document.getElementById('lb').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeLB(e) {
+    if (!e || e.target === document.getElementById('lb') || e.target.classList.contains('lb-close')) {
+        document.getElementById('lb').classList.remove('active');
+        document.body.style.overflow = '';
     }
+}
 
-    // Close lightbox on background click
-    document.getElementById('lightbox').addEventListener('click', (e) => {
-        if (e.target.id === 'lightbox') {
-            closeLightbox();
-        }
-    });
+// ---- VIDEO MODAL ----
+function openVideo(src, label) {
+    const srcEl = document.getElementById('vm-src');
+    srcEl.src = src;
+    srcEl.type = src.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4';
+    document.getElementById('vm-video').load();
+    document.getElementById('vm-label').textContent = label;
+    document.getElementById('vm').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('vm-video').play().catch(() => {});
+}
+function closeVM(e) {
+    if (!e || e.target === document.getElementById('vm') || e.target.classList.contains('vm-close')) {
+        document.getElementById('vm-video').pause();
+        document.getElementById('vm').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
 
-    // Close lightbox on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeLightbox();
-        }
-    });
+// ---- CAROUSEL LIGHTBOX ----
+let clbSlides = [], clbIdx = 0;
+
+function openCarousel(slides) {
+    clbSlides = slides; clbIdx = 0;
+    document.getElementById('clb-track').innerHTML =
+        slides.map(s => `<div class="clb-slide"><img src="${s}" alt=""></div>`).join('');
+    document.getElementById('clb-dots').innerHTML =
+        slides.map((_,i) => `<button class="clb-dot${i===0?' active':''}" onclick="goCLB(${i})"></button>`).join('');
+    updateCLB();
+    document.getElementById('clb').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function moveCLB(dir) { goCLB((clbIdx + dir + clbSlides.length) % clbSlides.length); }
+function goCLB(i) {
+    clbIdx = i;
+    updateCLB();
+}
+function updateCLB() {
+    document.getElementById('clb-track').style.transform = `translateX(-${clbIdx * 100}%)`;
+    document.querySelectorAll('.clb-dot').forEach((d, i) => d.classList.toggle('active', i === clbIdx));
+    document.getElementById('clb-counter').textContent = `${clbIdx + 1} / ${clbSlides.length}`;
+}
+function closeCLB() { document.getElementById('clb').classList.remove('active'); document.body.style.overflow = ''; }
+
+// ---- KEYBOARD ----
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeLB({target:document.getElementById('lb')}); closeVM({target:document.getElementById('vm')}); closeCLB(); }
+    if (e.key === 'ArrowLeft' && document.getElementById('clb').classList.contains('active')) moveCLB(-1);
+    if (e.key === 'ArrowRight' && document.getElementById('clb').classList.contains('active')) moveCLB(1);
+});
 </script>
-
 </body>
 </html>
