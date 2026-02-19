@@ -10,11 +10,11 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --pink: #E8368F;
-            --purple: #7B5EA7;
-            --purple-light: #F3EFF8;
-            --orange: #F27649;
-            --dark: #1a1a2e;
+    --pink: #fe00ae;
+    --lime: #c1fe1a;
+    --purple: #7B00C7;
+    --purple-light: #fdf0ff;
+    --dark: #0d0d1a;
             --gray-900: #2d2d3f;
             --gray-600: #6b6b80;
             --gray-300: #d1d1dd;
@@ -844,11 +844,18 @@
     <div class="nav-inner">
         <a href="#" class="nav-logo">Nikki<span>.</span></a>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li class="nav-dropdown">
+        <span class="nav-dropdown-toggle">Work <span style="font-size:0.7rem;">▼</span></span>
+        <div class="nav-dropdown-menu">
+            <a href="case-studies.html">Case Studies</a>
+            <a href="creative-work.html">Creative Work</a>
+        </div>
+    </li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+</ul>
     </div>
 </nav>
 
