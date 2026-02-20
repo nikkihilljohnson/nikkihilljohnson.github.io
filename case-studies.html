@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -155,10 +156,10 @@
         /* Before / After */
         .ba-label-row { display: flex; justify-content: space-between; margin-top: 0.6rem; }
         .ba-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-600); }
-        .ba-wrap { position: relative; border-radius: 16px; overflow: hidden; cursor: ew-resize; user-select: none; touch-action: none; }
+        .ba-wrap { position: relative; border-radius: 16px; overflow: hidden; cursor: ew-resize; user-select: none; touch-action: none; max-width: 480px; margin: 0 auto; }
         .ba-wrap img.ba-bg { display: block; width: 100%; border-radius: 16px; }
         .ba-overlay { position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden; }
-        .ba-overlay img { display: block; width: 100%; position: absolute; top: 0; left: 0; }
+        .ba-overlay img { display: block; width: 480px; max-width: none; position: absolute; top: 0; left: 0; }
         .ba-divider { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 3px; height: 100%; background: white; z-index: 5; }
         .ba-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 46px; height: 46px; background: white; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--gray-600); z-index: 6; }
         .ba-note { font-size: 0.8rem; color: var(--gray-600); text-align: center; margin-top: 0.5rem; font-style: italic; }
@@ -232,6 +233,7 @@
         <a href="#stonesmith" class="jump-pill">Local Business</a>
         <a href="#nyag" class="jump-pill">Online Education</a>
         <a href="#cft" class="jump-pill">Nonprofit</a>
+        <a href="#mapleair" class="jump-pill">Air Purification</a>
     </div>
 </section>
 
@@ -281,20 +283,21 @@
             </div>
         </div>
 
-        <!-- Challenge + Strategy -->
+        <!-- Objective + Strategy -->
         <div class="cs-grid fade-up">
             <div class="cs-block">
-                <h3>The Challenge</h3>
-                <p>Homeowners don't think about HVAC until it breaks. Building brand presence in a category people actively avoid—and making it interesting enough to scroll-stop, engage, and convert—required rethinking social content from the ground up.</p>
+                <h3>Objective</h3>
+                <p>Build brand awareness and drive qualified leads through organic social and Meta ad campaigns in a low-interest category. The challenge: homeowners don't think about HVAC until it breaks — making it essential to reach them long before they need to make a purchase.</p>
             </div>
             <div class="cs-block">
                 <h3>The Approach</h3>
                 <ul>
                     <li>Built full-funnel paid & organic social strategy from scratch</li>
-                    <li>Developed empathetic brand voice: educational, relatable, occasionally witty</li>
-                    <li>Awareness campaigns reaching homeowners before systems fail</li>
-                    <li>Retargeting nurturing ready-to-buy audiences into leads</li>
-                    <li>Weekly performance optimization via GA4, Looker & Meta insights</li>
+                    <li>Defined HVAC.com's brand voice and paid media foundation from the ground up</li>
+                    <li>Led with empathy and education — reaching homeowners before their system breaks</li>
+                    <li>Awareness campaigns building trust through relatable, problem-solving content</li>
+                    <li>Retargeting to nurture ready-to-buy audiences into qualified leads</li>
+                    <li>Aligned organic storytelling with performance-driven Meta campaigns</li>
                 </ul>
             </div>
         </div>
@@ -333,30 +336,6 @@
             </ul>
         </div>
 
-        <!-- Media Carousel -->
-        <div class="media-section fade-up">
-            <h3>Campaign Content</h3>
-            <div class="carousel-wrap" id="hvac-c">
-                <div class="carousel-track">
-                    <img class="carousel-slide" src="Assets/Images/Your%20HVAC%20-%201.png" alt="HVAC social post">
-                    <img class="carousel-slide" src="Assets/Images/HVAC%20Reddit%20Testimonial.png" alt="HVAC Reddit testimonial">
-                    <img class="carousel-slide" src="Assets/Memes/HVAC%20Kendrick%20Meme.png" alt="HVAC Kendrick meme">
-                    <img class="carousel-slide" src="Assets/Memes/HVAC%20Snoop%20Meme.jpg" alt="HVAC Snoop meme">
-                    <img class="carousel-slide" src="Assets/Memes/HVAC%20Taylor%20and%20Travis%20Meme.png" alt="HVAC Taylor & Travis meme">
-                    <img class="carousel-slide" src="Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/1.png" alt="5 Reasons carousel - slide 1">
-                    <img class="carousel-slide" src="Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/2.png" alt="5 Reasons carousel - slide 2">
-                    <img class="carousel-slide" src="Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/3.png" alt="5 Reasons carousel - slide 3">
-                    <img class="carousel-slide" src="Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/4.png" alt="5 Reasons carousel - slide 4">
-                    <img class="carousel-slide" src="Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/5.png" alt="5 Reasons carousel - slide 5">
-                    <img class="carousel-slide" src="Assets/Carousels/Mold%20in%20Military%20Housing/1.png" alt="Mold carousel - slide 1">
-                    <img class="carousel-slide" src="Assets/Carousels/Mold%20in%20Military%20Housing/2.png" alt="Mold carousel - slide 2">
-                    <img class="carousel-slide" src="Assets/Carousels/Mold%20in%20Military%20Housing/3.png" alt="Mold carousel - slide 3">
-                </div>
-                <button class="c-btn prev" onclick="moveCarousel('hvac-c',-1)">‹</button>
-                <button class="c-btn next" onclick="moveCarousel('hvac-c', 1)">›</button>
-            </div>
-            <div class="carousel-dots" id="hvac-c-dots"></div>
-        </div>
 
         <!-- Analytics -->
         <div class="media-section fade-up">
@@ -423,13 +402,13 @@
 
         <div class="cs-grid fade-up">
             <div class="cs-block">
-                <h3>The Challenge</h3>
-                <p>A 100K+ following sounds impressive—but stagnant engagement and a plateauing growth curve told a different story. The goal was to reinvigorate the content strategy, drive real audience growth, and execute a blockbuster product launch all at once.</p>
+                <h3>Objective</h3>
+                <p>Increase following and engagement on Instagram and YouTube Shorts through improved short-form storytelling and strategic posting cadence. Reinvigorate a plateauing content strategy and execute a high-stakes $6.4M product launch.</p>
             </div>
             <div class="cs-block">
                 <h3>The Approach</h3>
                 <ul>
-                    <li>Data-led content calendar focused on storytelling, trends & engagement triggers</li>
+                    <li>Implemented a data-led content calendar focused on storytelling, trends, and engagement triggers</li>
                     <li>Optimized video hooks for first-3-second retention</li>
                     <li>Cross-platform repurposing (IG → YouTube Shorts) to maximize reach</li>
                     <li>Real-time social coverage of live launches and mastermind events</li>
@@ -460,25 +439,6 @@
             </ul>
         </div>
 
-        <div class="media-section fade-up">
-            <h3>Campaign Content</h3>
-            <div class="carousel-wrap" id="wedmore-c">
-                <div class="carousel-track">
-                    <img class="carousel-slide" src="Assets/Images/Wedmore%20Graphic.png" alt="Wedmore graphic">
-                    <img class="carousel-slide" src="Assets/Images/Wedmore%20All%20We%20Do%20Is%20Win%20Wednesday%2001%20-%203.png" alt="Win Wednesday">
-                    <img class="carousel-slide" src="Assets/Images/Wedmore%20Success.png" alt="Wedmore success post">
-                    <img class="carousel-slide" src="Assets/Images/Wedmore%20Testimonial.png" alt="Wedmore testimonial">
-                    <img class="carousel-slide" src="Assets/Carousels/Goals/1.png" alt="Goals carousel - 1">
-                    <img class="carousel-slide" src="Assets/Carousels/Goals/2.png" alt="Goals carousel - 2">
-                    <img class="carousel-slide" src="Assets/Carousels/Goals/3.png" alt="Goals carousel - 3">
-                    <img class="carousel-slide" src="Assets/Carousels/Goals/4.png" alt="Goals carousel - 4">
-                    <img class="carousel-slide" src="Assets/Carousels/Goals/5.png" alt="Goals carousel - 5">
-                </div>
-                <button class="c-btn prev" onclick="moveCarousel('wedmore-c',-1)">‹</button>
-                <button class="c-btn next" onclick="moveCarousel('wedmore-c', 1)">›</button>
-            </div>
-            <div class="carousel-dots" id="wedmore-c-dots"></div>
-        </div>
 
         <div class="media-section fade-up">
             <h3>Analytics &amp; Performance Data</h3>
@@ -532,16 +492,16 @@
 
         <div class="cs-grid fade-up">
             <div class="cs-block">
-                <h3>The Challenge</h3>
-                <p>StoneSmith had incredible craftsmanship and zero social presence to show for it. The task was to build a brand from scratch—one that felt both high-end and approachable in a competitive local market—while creating content systems that could scale.</p>
+                <h3>Objective</h3>
+                <p>Build local brand awareness and drive qualified leads by developing a cohesive social strategy that blends visual storytelling, lifestyle appeal, and consistent content showcasing StoneSmith's craftsmanship and credibility.</p>
             </div>
             <div class="cs-block">
                 <h3>The Approach</h3>
                 <ul>
-                    <li>Established foundational visual identity and brand voice for social</li>
-                    <li>Built content system blending education, project storytelling, and lifestyle</li>
-                    <li>Created consistent design templates aligned with brand aesthetic</li>
-                    <li>Humanized the brand through behind-the-scenes and transformation content</li>
+                    <li>Established foundational social presence and visual identity from scratch</li>
+                    <li>Built a content system blending education, project storytelling, and lifestyle inspiration</li>
+                    <li>Guided audiences from aspiration to inquiry through consistent brand voice</li>
+                    <li>Implemented design templates and on-brand visuals that showcase expertise while humanizing the brand</li>
                     <li>Built scalable foundation for future paid campaign testing</li>
                 </ul>
             </div>
@@ -571,26 +531,6 @@
             </ul>
         </div>
 
-        <div class="media-section fade-up">
-            <h3>Campaign Content</h3>
-            <div class="carousel-wrap" id="stonesmith-c">
-                <div class="carousel-track">
-                    <img class="carousel-slide" src="Assets/Images/StoneSmith%20Kitchen%20choices.png" alt="StoneSmith kitchen content">
-                    <img class="carousel-slide" src="Assets/Images/StoneSmith%20Testimonial%20-%201.png" alt="StoneSmith testimonial">
-                    <img class="carousel-slide" src="Assets/Carousels/Timeless%20Kitchen/1.png" alt="Timeless Kitchen - 1">
-                    <img class="carousel-slide" src="Assets/Carousels/Timeless%20Kitchen/2.png" alt="Timeless Kitchen - 2">
-                    <img class="carousel-slide" src="Assets/Carousels/Timeless%20Kitchen/3.png" alt="Timeless Kitchen - 3">
-                    <img class="carousel-slide" src="Assets/Carousels/Timeless%20Kitchen/4.png" alt="Timeless Kitchen - 4">
-                    <img class="carousel-slide" src="Assets/Carousels/Timeless%20Kitchen/5.png" alt="Timeless Kitchen - 5">
-                    <img class="carousel-slide" src="Assets/Carousels/Timeless%20Kitchen/6.png" alt="Timeless Kitchen - 6">
-                    <img class="carousel-slide" src="Assets/Carousels/Timeless%20Kitchen/7.png" alt="Timeless Kitchen - 7">
-                    <img class="carousel-slide" src="Assets/Carousels/Timeless%20Kitchen/8.png" alt="Timeless Kitchen - 8">
-                </div>
-                <button class="c-btn prev" onclick="moveCarousel('stonesmith-c',-1)">‹</button>
-                <button class="c-btn next" onclick="moveCarousel('stonesmith-c', 1)">›</button>
-            </div>
-            <div class="carousel-dots" id="stonesmith-c-dots"></div>
-        </div>
 
         <div class="media-section fade-up">
             <h3>Analytics &amp; Performance Data</h3>
@@ -616,7 +556,7 @@
                     <span class="cs-tag tag-industry">Personal Brand / Online Education</span>
                     <span class="cs-tag tag-role">Content Strategist</span>
                 </div>
-                <h2>Visual Rebrand, Audience Growth &amp; Content Strategy for Midlife Audience</h2>
+                <h2>Visual Rebrand, Audience Growth &amp; Short-Form Video Strategy</h2>
             </div>
         </div>
 
@@ -637,17 +577,17 @@
 
         <div class="cs-grid fade-up">
             <div class="cs-block">
-                <h3>The Challenge</h3>
-                <p>Inconsistent visuals and a scattered brand voice were creating friction with a midlife female audience that craves authenticity. The goal was to create a unified, recognizable presence that felt both polished and real—while dramatically increasing reach and engagement.</p>
+                <h3>Objective</h3>
+                <p>Improve visual branding, increase followers and engagement, and create a cohesive, recognizable presence across platforms — connecting authentically with a midlife female audience that values both honesty and aspiration.</p>
             </div>
             <div class="cs-block">
                 <h3>The Approach</h3>
                 <ul>
                     <li>Refocused brand around authenticity, storytelling, and visual consistency</li>
-                    <li>Developed unified look and voice tailored to midlife women</li>
-                    <li>Created repeatable design templates for brand recognition at a glance</li>
-                    <li>Repurposed podcast clips and long-form content into high-performing short-form video</li>
-                    <li>Built a content system that expands reach while reinforcing brand values</li>
+                    <li>Identified inconsistent visuals and lack of direction as key barriers to engagement</li>
+                    <li>Developed a unified look and voice that feels both polished and personal</li>
+                    <li>Repurposed podcast clips and long-form content into short-form videos that expand reach</li>
+                    <li>Built a content system that drives consistency and reinforces brand voice across platforms</li>
                 </ul>
             </div>
         </div>
@@ -694,25 +634,6 @@
             <p class="ba-note">Drag to compare • Touch-enabled</p>
         </div>
 
-        <div class="media-section fade-up">
-            <h3>Campaign Content</h3>
-            <div class="carousel-wrap" id="nyag-c">
-                <div class="carousel-track">
-                    <img class="carousel-slide" src="Assets/Images/NYAG%20Alarm%20Clock%20Love%20Instagram%20Post%20-%201.png" alt="NYAG alarm clock post">
-                    <img class="carousel-slide" src="Assets/Images/NYAG%20Anatomy%20of%20a%20Scared%20Settler%20-%201.png" alt="NYAG anatomy post">
-                    <img class="carousel-slide" src="Assets/Images/Pleople%20Pleaser.png" alt="NYAG people pleaser post">
-                    <img class="carousel-slide" src="Assets/Memes/NYAG%20Kardashian%20Meme.png" alt="NYAG meme">
-                    <img class="carousel-slide" src="Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/1.png" alt="New Year's gym - 1">
-                    <img class="carousel-slide" src="Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/2.png" alt="New Year's gym - 2">
-                    <img class="carousel-slide" src="Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/3.png" alt="New Year's gym - 3">
-                    <img class="carousel-slide" src="Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/4.png" alt="New Year's gym - 4">
-                    <img class="carousel-slide" src="Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/5.png" alt="New Year's gym - 5">
-                </div>
-                <button class="c-btn prev" onclick="moveCarousel('nyag-c',-1)">‹</button>
-                <button class="c-btn next" onclick="moveCarousel('nyag-c', 1)">›</button>
-            </div>
-            <div class="carousel-dots" id="nyag-c-dots"></div>
-        </div>
 
         <div class="media-section fade-up">
             <h3>Analytics &amp; Performance Data</h3>
@@ -768,16 +689,16 @@
 
         <div class="cs-grid fade-up">
             <div class="cs-block">
-                <h3>The Challenge</h3>
-                <p>Carolina Farm Trust had a powerful mission but fragmented, inconsistent marketing across web, email, and social. Fundraising efforts were underperforming, and there was no unified brand narrative to rally donors, volunteers, and community members.</p>
+                <h3>Objective</h3>
+                <p>Complete marketing overhaul to strengthen fundraising efforts, grow audience engagement, manage donor communications, and modernize the organization's digital presence under a single, mission-driven narrative.</p>
             </div>
             <div class="cs-block">
                 <h3>The Approach</h3>
                 <ul>
-                    <li>Unified all marketing under a single mission-driven narrative</li>
-                    <li>Aligned messaging across web, email, and social channels</li>
+                    <li>Unified Carolina Farm Trust's fragmented marketing under a single mission-driven narrative</li>
+                    <li>Aligned messaging across web, email, and social to amplify awareness</li>
                     <li>Launched new ticket-sales platform with targeted Meta ad campaigns</li>
-                    <li>Established TikTok presence to reach younger donor audiences</li>
+                    <li>Connected fundraising, storytelling, and community impact under one consistent voice</li>
                     <li>Wrote and designed grant proposals securing $15K+ in funding</li>
                 </ul>
             </div>
@@ -818,6 +739,76 @@
     </div>
 </section>
 
+<!-- ============================================================
+     CASE STUDY 6 — Maple Air
+     ============================================================ -->
+<section class="cs-section tinted" id="mapleair">
+    <div class="cs-inner">
+
+        <div class="cs-header fade-up">
+            <img src="Assets/Logos/Maple%20Air%20Logo.svg" alt="Maple Air" class="cs-logo">
+            <div class="cs-meta">
+                <div class="cs-tags">
+                    <span class="cs-tag tag-industry">Whole House Air Purification</span>
+                    <span class="cs-tag tag-years">2025 – Present</span>
+                    <span class="cs-tag tag-role">Fractional Marketing Strategist</span>
+                </div>
+                <h2>Brand Launch, Social Strategy &amp; Content Creation for a Health-Forward Product</h2>
+            </div>
+        </div>
+
+        <div class="cs-metrics fade-up">
+            <div class="metric-card">
+                <div class="metric-value"><span class="metric-num" data-target="0">—</span></div>
+                <span class="metric-label">Analytics Coming Soon</span>
+            </div>
+        </div>
+
+        <div class="cs-grid fade-up">
+            <div class="cs-block">
+                <h3>Objective</h3>
+                <p>Build Maple Air's brand presence from the ground up — establishing a social identity, content strategy, and paid media foundation for a whole-house air purification system in a health-conscious market.</p>
+            </div>
+            <div class="cs-block">
+                <h3>The Approach</h3>
+                <ul>
+                    <li>Developed brand voice, visual identity, and content pillars from scratch</li>
+                    <li>Created educational and lifestyle content connecting air quality to everyday health</li>
+                    <li>Produced short-form video content including installs, unboxings, and awareness reels</li>
+                    <li>Built organic social strategy aligned with product education and trust-building</li>
+                    <li>Leveraged cultural moments and relatable storytelling to grow audience engagement</li>
+                </ul>
+            </div>
+        </div>
+
+        <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
+        <div class="cs-expanded">
+            <h4>The Opportunity</h4>
+            <p>Maple Air sits at the intersection of home improvement and health-conscious living — a powerful but underutilized position. The strategy focused on making air quality feel personal and urgent without being fear-driven, positioning Maple Air as the smart choice for families who care about what's in their home.</p>
+
+            <h4>Content Strategy</h4>
+            <ul>
+                <li>Educational content on indoor air quality, allergens, and whole-home health</li>
+                <li>Behind-the-scenes install and unboxing content to build credibility and relatability</li>
+                <li>Timely awareness carousels tied to seasonal health conversations (flu season, mold, contamination)</li>
+                <li>Lifestyle-forward content connecting clean air to better sleep, fewer sick days, and family wellbeing</li>
+            </ul>
+
+            <h4>Results</h4>
+            <p>Analytics in progress — campaign is actively running. Full performance data will be added as results are gathered.</p>
+        </div>
+
+        <div class="media-section fade-up">
+            <h3>Campaign Assets</h3>
+            <div class="analytics-grid">
+                <img src="Assets/Analytics%20Screenshots/Maple%20Air/Maple%20Air%20Analytics.png" alt="Maple Air analytics" onclick="openLB(this.src)" onerror="this.style.display='none'">
+            </div>
+            <p style="color:var(--gray-600);font-size:0.875rem;margin-top:1rem;font-style:italic;">Analytics screenshots will be added as campaign data becomes available.</p>
+        </div>
+
+    </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section">
     <h2>Ready to write your own case study?</h2>
@@ -828,7 +819,17 @@
     </div>
 </section>
 
-<footer>© 2026 Nikki Johnson</footer>
+<footer>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1.25rem;margin-bottom:0.75rem;">
+        <a href="https://instagram.com/nikkihilljohnson" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gray-100);color:var(--gray-600);text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--pink)';this.style.color='white'" onmouseout="this.style.background='var(--gray-100)';this.style.color='var(--gray-600)'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/nikkihilljohnson/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gray-100);color:var(--gray-600);text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='#0077B5';this.style.color='white'" onmouseout="this.style.background='var(--gray-100)';this.style.color='var(--gray-600)'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+    </div>
+    <p>© 2026 Nikki Johnson</p>
+</footer>
 
 <!-- LIGHTBOX -->
 <div class="lb-overlay" id="lb-overlay" onclick="closeLB(event)">
