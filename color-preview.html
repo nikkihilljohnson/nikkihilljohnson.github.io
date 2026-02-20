@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Palette Preview — Nikki Hill Johnson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   COMPARISON TOGGLE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+/* ---- Palette Switcher Bar ---- */
+.switcher {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9999;
+  background: #0d0d0d;
+  border-bottom: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  flex-wrap: wrap;
+}
+.switcher-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  white-space: nowrap;
+}
+.switcher-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+.switcher-btn {
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  border: 2px solid #444;
+  background: transparent;
+  color: #ccc;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.switcher-btn .swatch {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.switcher-btn.active, .switcher-btn:hover {
+  border-color: #fe00ae;
+  color: #fff;
+  background: rgba(254,0,174,0.12);
+}
+.switcher-btn.old.active, .switcher-btn.old:hover {
+  border-color: #7B5EA7;
+  background: rgba(123,94,167,0.15);
+}
+.switcher-note {
+  font-size: 0.78rem;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   NEW PALETTE TOKENS
+============================================================ */
+body.palette-new {
+  --pink: #fe00ae;
+  --lime: #c1fe1a;
+  --purple: #7B00C7;
+  --purple-light: #fdf0ff;
+  --dark: #0d0d1a;
+  --mid-dark: #131325;
+  --gray-100: #f8f8f8;
+  --gray-300: #e0e0e0;
+  --gray-600: #555;
+  --text: #1a1a2e;
+}
+
+/* ============================================================
+   OLD PALETTE TOKENS
+============================================================ */
+body.palette-old {
+  --pink: #E8368F;
+  --lime: #E8368F; /* same, no lime */
+  --purple: #7B5EA7;
+  --purple-light: #F3EFF8;
+  --dark: #1a1a2e;
+  --mid-dark: #1a1a2e;
+  --gray-100: #f8f8f8;
+  --gray-300: #e2e8f0;
+  --gray-600: #64748b;
+  --text: #1a1a2e;
+}
+
+/* ============================================================
+   SITE PREVIEW WRAPPER
+============================================================ */
+.preview-wrap {
+  margin-top: 58px; /* height of switcher bar */
+  /* no transforms — full-width rendering */
+}
+
+/* ============================================================
+   SECTION LABELS (overlay)
+============================================================ */
+.section-tag {
+  display: inline-block;
+  background: #fe00ae;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+}
+body.palette-old .section-tag { background: #E8368F; }
+
+/* ============================================================
+   1. NAV
+============================================================ */
+.pv-nav {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-300);
+  padding: 0 2rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+}
+.pv-nav-inner {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pv-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.pv-logo span { color: var(--pink); }
+.pv-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.pv-links a {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.pv-links a:hover,
+.pv-links a.active { color: var(--pink); }
+.pv-cta {
+  background: var(--pink);
+  color: #fff;
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.pv-cta:hover { opacity: 0.85; }
+
+/* ============================================================
+   2. HERO
+============================================================ */
+.pv-hero {
+  background: var(--dark);
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.pv-hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -80px;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(254,0,174,0.22) 0%, transparent 65%);
+  pointer-events: none;
+}
+.pv-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -60px;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(193,254,26,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+body.palette-old .pv-hero::after { display: none; }
+body.palette-old .pv-hero::before {
+  background: radial-gradient(circle, rgba(232,54,143,0.18) 0%, transparent 65%);
+}
+.pv-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.pv-eyebrow {
+  display: inline-block;
+  border: 1.5px solid var(--pink);
+  color: var(--pink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+.pv-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  max-width: 600px;
+}
+.pv-hero h1 em {
+  font-style: italic;
+  color: var(--pink);
+}
+.pv-hero p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+.pv-hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--pink);
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-outline {
+  border: 2px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.85);
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+.btn-outline:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+body.palette-old .btn-outline:hover {
+  border-color: rgba(255,255,255,0.6);
+  color: #fff;
+}
+
+/* lime accent badge on hero (new palette only) */
+.pv-lime-badge {
+  position: absolute;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: var(--lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 1rem;
+}
+body.palette-old .pv-lime-badge {
+  background: var(--purple);
+}
+.pv-lime-badge .lb-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #0d0d1a;
+  line-height: 1;
+}
+body.palette-old .pv-lime-badge .lb-num { color: #fff; }
+.pv-lime-badge .lb-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(13,13,26,0.7);
+  margin-top: 0.25rem;
+}
+body.palette-old .pv-lime-badge .lb-label { color: rgba(255,255,255,0.75); }
+
+/* ============================================================
+   3. METRICS STRIP
+============================================================ */
+.pv-metrics {
+  background: var(--pink);
+  padding: 2.5rem 2rem;
+}
+.pv-metrics-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+.metric-item .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+/* lime accent on new palette */
+body.palette-new .metric-item .num {
+  color: var(--lime);
+}
+.metric-item .lbl {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  margin-top: 0.35rem;
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   4. SERVICES / CARDS
+============================================================ */
+.pv-services {
+  background: var(--gray-100);
+  padding: 5rem 2rem;
+}
+.pv-section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.pv-section-hd {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.pv-section-hd h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.pv-section-hd h2 span { color: var(--pink); }
+.pv-section-hd p {
+  color: var(--gray-600);
+  font-size: 1rem;
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.service-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid var(--gray-300);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.service-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+}
+.sc-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: var(--purple-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+.service-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.service-card p {
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+.sc-link {
+  color: var(--pink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.sc-link::after { content: '→'; }
+
+/* ============================================================
+   5. ABOUT / DARK SECTION
+============================================================ */
+.pv-about {
+  background: var(--dark);
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.pv-about::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  width: 600px; height: 600px;
+  transform: translateX(-50%) translateY(-50%);
+  background: radial-gradient(circle, rgba(254,0,174,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+body.palette-old .pv-about::before {
+  background: radial-gradient(circle, rgba(123,94,167,0.15) 0%, transparent 60%);
+}
+.pv-about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.about-text .overline {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 0.75rem;
+}
+.about-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+.about-text h2 em {
+  font-style: italic;
+  color: var(--pink);
+}
+.about-text p {
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  font-size: 0.98rem;
+  margin-bottom: 1rem;
+}
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.about-tag {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.8);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+/* lime highlight on new palette */
+body.palette-new .about-tag:first-child {
+  background: rgba(193,254,26,0.12);
+  border-color: rgba(193,254,26,0.3);
+  color: var(--lime);
+}
+.about-visual {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+.stat-row .s-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--pink);
+}
+body.palette-new .stat-row:nth-child(even) .s-num { color: var(--lime); }
+.stat-row .s-lbl {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+}
+.stat-row .s-bar {
+  flex: 1;
+  height: 5px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 999px;
+  margin: 0 1.5rem;
+  overflow: hidden;
+}
+.stat-row .s-fill {
+  height: 100%;
+  background: var(--pink);
+  border-radius: 999px;
+}
+body.palette-new .stat-row:nth-child(even) .s-fill { background: var(--lime); }
+
+/* ============================================================
+   6. CTA SECTION
+============================================================ */
+.pv-cta-section {
+  background: var(--pink);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+body.palette-new .pv-cta-section {
+  background: linear-gradient(135deg, #fe00ae 0%, #7B00C7 100%);
+}
+body.palette-old .pv-cta-section {
+  background: linear-gradient(135deg, #E8368F 0%, #7B5EA7 100%);
+}
+.pv-cta-section::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  pointer-events: none;
+}
+.pv-cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -40px;
+  width: 250px; height: 250px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+.cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 580px;
+  margin: 0 auto;
+}
+.cta-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
+}
+body.palette-new .cta-inner h2 em {
+  font-style: italic;
+  color: var(--lime);
+}
+.cta-inner p {
+  color: rgba(255,255,255,0.82);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+.cta-btn {
+  background: #fff;
+  color: var(--pink);
+  padding: 0.9rem 2.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+body.palette-new .cta-btn { color: var(--pink); }
+body.palette-old .cta-btn { color: #E8368F; }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+
+/* ============================================================
+   7. PALETTE SWATCH SECTION
+============================================================ */
+.pv-swatches {
+  background: #0d0d1a;
+  padding: 4rem 2rem;
+}
+.pv-swatches-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.pv-swatches h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+.pv-swatches .sub {
+  color: #666;
+  font-size: 0.88rem;
+  margin-bottom: 2.5rem;
+}
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 1.25rem;
+}
+.swatch-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #222;
+}
+.swatch-color {
+  height: 100px;
+}
+.swatch-info {
+  padding: 0.9rem 1rem;
+  background: #161616;
+}
+.swatch-info .sw-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ddd;
+  margin-bottom: 0.2rem;
+}
+.swatch-info .sw-hex {
+  font-size: 0.75rem;
+  font-family: 'Courier New', monospace;
+  color: #666;
+}
+.swatch-info .sw-role {
+  font-size: 0.72rem;
+  color: #555;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+/* old palette swatches always visible */
+.swatch-grid-old { display: none; }
+body.palette-old .swatch-grid-new { display: none; }
+body.palette-old .swatch-grid-old { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.25rem; }
+body.palette-new .swatch-grid-new { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.25rem; }
+
+/* ============================================================
+   FOOTER NOTE
+============================================================ */
+.pv-footer {
+  background: #0a0a14;
+  padding: 2rem;
+  text-align: center;
+  color: #444;
+  font-size: 0.8rem;
+  border-top: 1px solid #1a1a2e;
+}
+.pv-footer a { color: var(--pink); text-decoration: none; }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 768px) {
+  .pv-metrics-inner { grid-template-columns: repeat(2, 1fr); }
+  .service-cards { grid-template-columns: 1fr; }
+  .pv-about-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .pv-lime-badge { display: none; }
+  .pv-links { gap: 1rem; }
+}
+</style>
+</head>
+<body class="palette-new">
+
+<!-- ============================================================
+     SWITCHER BAR
+============================================================ -->
+<div class="switcher">
+  <span class="switcher-label">Preview palette →</span>
+  <div class="switcher-btns">
+    <button class="switcher-btn active" onclick="setPalette('new')">
+      <span class="swatch" style="background:#fe00ae;"></span>
+      New — Electric
+    </button>
+    <button class="switcher-btn old" onclick="setPalette('old')">
+      <span class="swatch" style="background:#E8368F;"></span>
+      Current — Original
+    </button>
+  </div>
+  <span class="switcher-note">Toggle to compare palettes</span>
+</div>
+
+<!-- ============================================================
+     PREVIEW WRAPPER
+============================================================ -->
+<div class="preview-wrap">
+
+  <!-- 1. NAV -->
+  <nav class="pv-nav">
+    <div class="pv-nav-inner">
+      <a href="#" class="pv-logo">Nikki<span>.</span></a>
+      <ul class="pv-links">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Experience</a></li>
+        <li><a href="#" class="active">Work ▾</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <a href="#" class="pv-cta">Let's talk</a>
+    </div>
+  </nav>
+
+  <!-- 2. HERO -->
+  <section class="pv-hero">
+    <div class="pv-hero-inner">
+      <div class="pv-eyebrow">Social Media Strategist & Content Creator</div>
+      <h1>Content that <em>converts,</em><br>brands that stick.</h1>
+      <p>I help businesses grow on social with strategy-first content — from scroll-stopping reels to campaigns that actually move the needle.</p>
+      <div class="pv-hero-btns">
+        <a href="#" class="btn-primary">See my work</a>
+        <a href="#" class="btn-outline">Let's talk</a>
+      </div>
+    </div>
+    <div class="pv-lime-badge">
+      <span class="lb-num">5+</span>
+      <span class="lb-label">Years of<br>experience</span>
+    </div>
+  </section>
+
+  <!-- 3. METRICS STRIP -->
+  <div class="pv-metrics">
+    <div class="pv-metrics-inner">
+      <div class="metric-item">
+        <div class="num">850K+</div>
+        <div class="lbl">Impressions Generated</div>
+      </div>
+      <div class="metric-item">
+        <div class="num">40%+</div>
+        <div class="lbl">Avg. Engagement Lift</div>
+      </div>
+      <div class="metric-item">
+        <div class="num">12+</div>
+        <div class="lbl">Brands Grown</div>
+      </div>
+      <div class="metric-item">
+        <div class="num">100+</div>
+        <div class="lbl">Pieces of Content</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. SERVICES CARDS -->
+  <section class="pv-services">
+    <div class="pv-section-inner">
+      <div class="pv-section-hd">
+        <span class="section-tag">What I do</span>
+        <h2>Services built to <span>grow</span></h2>
+        <p>From strategy to scroll-worthy content, I handle every piece of the puzzle.</p>
+      </div>
+      <div class="service-cards">
+        <div class="service-card">
+          <div class="sc-icon">📱</div>
+          <h3>Social Media Management</h3>
+          <p>Full-service social presence — content calendars, scheduling, community management, and reporting.</p>
+          <a href="#" class="sc-link">Learn more</a>
+        </div>
+        <div class="service-card">
+          <div class="sc-icon">🎬</div>
+          <h3>Video & Reel Production</h3>
+          <p>Short-form video strategy and production designed for maximum reach and algorithmic favor.</p>
+          <a href="#" class="sc-link">Learn more</a>
+        </div>
+        <div class="service-card">
+          <div class="sc-icon">📊</div>
+          <h3>Content Strategy</h3>
+          <p>Data-backed strategy that aligns your content to business goals and audience behavior.</p>
+          <a href="#" class="sc-link">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. ABOUT (DARK) -->
+  <section class="pv-about">
+    <div class="pv-about-inner">
+      <div class="about-text">
+        <div class="overline">About Nikki</div>
+        <h2>I make brands <em>impossible</em> to scroll past.</h2>
+        <p>With five years of social media experience across industries — from home services to personal brands — I combine creative instinct with data-driven strategy.</p>
+        <p>Every piece of content I create is built with a purpose: to stop the scroll, build trust, and drive real results.</p>
+        <div class="about-tags">
+          <span class="about-tag">Content Strategy</span>
+          <span class="about-tag">Short-Form Video</span>
+          <span class="about-tag">Analytics</span>
+          <span class="about-tag">Brand Voice</span>
+          <span class="about-tag">Community Building</span>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="stat-row">
+          <div class="s-num">5+</div>
+          <div class="s-bar"><div class="s-fill" style="width:80%"></div></div>
+          <div class="s-lbl">Years experience</div>
+        </div>
+        <div class="stat-row">
+          <div class="s-num">12+</div>
+          <div class="s-bar"><div class="s-fill" style="width:65%"></div></div>
+          <div class="s-lbl">Brands managed</div>
+        </div>
+        <div class="stat-row">
+          <div class="s-num">850K</div>
+          <div class="s-bar"><div class="s-fill" style="width:90%"></div></div>
+          <div class="s-lbl">Total impressions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CTA -->
+  <section class="pv-cta-section">
+    <div class="cta-inner">
+      <h2>Ready to make <em>noise?</em></h2>
+      <p>Let's build something bold together. Whether you need a full social strategy or stunning content, I'd love to help.</p>
+      <a href="#" class="cta-btn">Let's work together →</a>
+    </div>
+  </section>
+
+  <!-- 7. PALETTE SWATCHES -->
+  <section class="pv-swatches">
+    <div class="pv-swatches-inner">
+      <h3>New Palette — Electric</h3>
+      <p class="sub">Proposed color system for nikkihilljohnson.github.io</p>
+
+      <!-- NEW PALETTE SWATCHES -->
+      <div class="swatch-grid-new swatch-grid">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#fe00ae;"></div>
+          <div class="swatch-info">
+            <div class="sw-name">Electric Magenta</div>
+            <div class="sw-hex">#fe00ae</div>
+            <div class="sw-role">Primary action, links, highlights, logo dot</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#c1fe1a;"></div>
+          <div class="swatch-info">
+            <div class="sw-name">Electric Lime</div>
+            <div class="sw-hex">#c1fe1a</div>
+            <div class="sw-role">Accent on dark bgs — stats, numbers, call-outs</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#7B00C7;"></div>
+          <div class="swatch-info">
+            <div class="sw-name">Deep Violet</div>
+            <div class="sw-hex">#7B00C7</div>
+            <div class="sw-role">CTA gradients, dark supporting color</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#0d0d1a;"></div>
+          <div class="swatch-info">
+            <div class="sw-name">Near Black</div>
+            <div class="sw-hex">#0d0d1a</div>
+            <div class="sw-role">Dark section backgrounds, hero bg</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#fdf0ff;"></div>
+          <div class="swatch-info">
+            <div class="sw-name">Blush White</div>
+            <div class="sw-hex">#fdf0ff</div>
+            <div class="sw-role">Light section bg (replaces purple-light)</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#f8f8f8;"></div>
+          <div class="swatch-info">
+            <div class="sw-name">Off White</div>
+            <div class="sw-hex">#f8f8f8</div>
+            <div class="sw-role">Card and section backgrounds</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OLD PALETTE SWATCHES (shown when toggled) -->
+      <div class="swatch-grid-old swatch-grid">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#E8368F;"></div>
+          <div class="swatch-info">
+            <div class="sw-name">Original Pink</div>
+            <div class="sw-hex">#E8368F</div>
+            <div class="sw-role">Primary action, links, highlights</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#7B5EA7;"></div>
+          <div class="swatch-info">
+            <div class="sw-name">Soft Purple</div>
+            <div class="sw-hex">#7B5EA7</div>
+            <div class="sw-role">Secondary — active states, hover, gradients</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#F3EFF8;"></div>
+          <div class="swatch-info">
+            <div class="sw-name">Lavender Tint</div>
+            <div class="sw-hex">#F3EFF8</div>
+            <div class="sw-role">Light section backgrounds</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#1a1a2e;"></div>
+          <div class="swatch-info">
+            <div class="sw-name">Dark Navy</div>
+            <div class="sw-hex">#1a1a2e</div>
+            <div class="sw-role">Dark section backgrounds</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#f8f8f8;"></div>
+          <div class="swatch-info">
+            <div class="sw-name">Off White</div>
+            <div class="sw-hex">#f8f8f8</div>
+            <div class="sw-role">Card and section backgrounds</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER NOTE -->
+  <div class="pv-footer">
+    This is a color preview only — toggle above to compare palettes. Changes are applied to your site by updating CSS variables in <code>index.html</code>, <code>case-studies.html</code>, and <code>creative-work.html</code>.
+  </div>
+
+</div><!-- /preview-wrap -->
+
+<script>
+function setPalette(name) {
+  document.body.classList.remove('palette-new', 'palette-old');
+  document.body.classList.add('palette-' + name);
+  document.querySelectorAll('.switcher-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.switcher-btn.' + (name === 'new' ? 'active' : 'old')).classList.add('active');
+  // re-target: both btns
+  document.querySelectorAll('.switcher-btn').forEach(b => {
+    if ((name === 'new' && !b.classList.contains('old')) ||
+        (name === 'old' && b.classList.contains('old'))) {
+      b.classList.add('active');
+    }
+  });
+  // update swatch section title
+  const h3 = document.querySelector('.pv-swatches h3');
+  const sub = document.querySelector('.pv-swatches .sub');
+  if (name === 'new') {
+    h3.textContent = 'New Palette — Electric';
+    sub.textContent = 'Proposed color system for nikkihilljohnson.github.io';
+  } else {
+    h3.textContent = 'Current Palette — Original';
+    sub.textContent = 'Existing color system for nikkihilljohnson.github.io';
+  }
+}
+
+// fix active logic on load
+document.querySelectorAll('.switcher-btn').forEach(b => {
+  b.addEventListener('click', function() {
+    const isNew = !this.classList.contains('old');
+    setPalette(isNew ? 'new' : 'old');
+  });
+});
+</script>
+</body>
+</html>
