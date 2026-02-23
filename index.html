@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikki Johnson | Senior Social Media Marketing Manager</title>
+    <title>Nikki Johnson | Senior Social Media & Paid Media Strategist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -67,9 +67,9 @@
             text-decoration: none;
         }
         .nav-logo span { color: var(--pink); }
-        .nav-links { 
-            display: flex; 
-            gap: 2rem; 
+        .nav-links {
+            display: flex;
+            gap: 2rem;
             list-style: none;
             align-items: center;
         }
@@ -81,7 +81,7 @@
             transition: color 0.2s;
         }
         .nav-links a:hover { color: var(--pink); }
-        
+
         /* DROPDOWN NAV */
         .nav-dropdown {
             position: relative;
@@ -329,11 +329,19 @@
             line-height: 1.8;
             font-size: 1.05rem;
         }
+        .skills-section-header {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray-600);
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
         .skills-cloud {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1.5rem;
         }
         .skill-tag {
             padding: 0.5rem 1rem;
@@ -350,23 +358,25 @@
         }
         .about-highlights {
             display: grid;
-            gap: 1.25rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
         }
         .highlight-card {
             background: var(--gray-100);
             border-radius: 16px;
-            padding: 1.5rem;
+            padding: 1.25rem 1.5rem;
             border-left: 4px solid var(--pink);
             transition: transform 0.2s;
         }
         .highlight-card:hover { transform: translateX(4px); }
         .highlight-card h4 {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--dark);
             margin-bottom: 0.4rem;
+            font-weight: 700;
         }
         .highlight-card p {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--gray-600);
             line-height: 1.6;
         }
@@ -488,9 +498,9 @@
         .case-banner {
             height: 8px;
         }
-        .case-banner-pink { background: linear-gradient(90deg, var(--pink), var(--purple)); }
-        .case-banner-purple { background: linear-gradient(90deg, var(--purple), var(--lime)); }
-.case-banner-orange { background: linear-gradient(90deg, var(--lime), var(--pink)); }
+        .case-banner-pink { background: var(--pink); }
+        .case-banner-purple { background: var(--purple); }
+        .case-banner-orange { background: var(--lime); }
         .case-content {
             padding: 2rem;
         }
@@ -526,6 +536,10 @@
             font-weight: 700;
             color: var(--dark);
         }
+        .case-stat-value.stat-highlight {
+            font-size: 1.75rem;
+            color: var(--pink);
+        }
         .case-stat-label {
             font-size: 0.75rem;
             color: var(--gray-600);
@@ -543,14 +557,15 @@
         }
         .service-card {
             background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 2px solid rgba(255,255,255,0.08);
             border-radius: 16px;
             padding: 2rem;
             transition: all 0.3s;
         }
         .service-card:hover {
             background: rgba(255,255,255,0.1);
-            border-color: rgba(var(--pink-rgb), 0.3);
+            border-color: rgba(var(--pink-rgb), 0.45);
+            box-shadow: 0 0 22px rgba(var(--pink-rgb), 0.13);
             transform: translateY(-2px);
         }
         .service-icon {
@@ -560,12 +575,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             margin-bottom: 1rem;
         }
-       .si-pink { background: rgba(var(--pink-rgb), 0.15); }
-.si-purple { background: rgba(var(--purple-rgb), 0.2); }
-.si-orange { background: rgba(var(--lime-rgb), 0.20); }
+        .si-pink { background: rgba(var(--pink-rgb), 0.15); color: var(--pink); }
+        .si-purple { background: rgba(var(--purple-rgb), 0.2); color: #c06aff; }
+        .si-lime { background: rgba(var(--lime-rgb), 0.20); color: var(--lime); }
         .service-card h3 {
             font-size: 1.05rem;
             margin-bottom: 0.5rem;
@@ -576,6 +590,18 @@
             color: rgba(255,255,255,0.55);
             line-height: 1.6;
         }
+        .services-footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .services-footer a {
+            color: var(--pink);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .services-footer a:hover { text-decoration: underline; }
 
         /* ---- TESTIMONIAL ---- */
         .testimonial {
@@ -708,6 +734,7 @@
             .float-card-2 { right: 0; top: 20px; }
             .metrics-inner { grid-template-columns: repeat(2, 1fr); }
             .about-grid { grid-template-columns: 1fr; }
+            .about-highlights { grid-template-columns: 1fr; }
             .section-title { font-size: 2rem; }
             .nav-links { display: none; }
             .cases-grid { grid-template-columns: 1fr; }
@@ -773,11 +800,14 @@
             transform: translateX(3px);
         }
         .early-card-logo {
-            font-size: 1.25rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             width: 40px;
             height: 40px;
             border-radius: 10px;
             background: var(--purple-light);
+            color: var(--purple);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -874,8 +904,8 @@
     <div class="hero-inner">
         <div class="hero-text">
             <h1>Hi, I'm <span class="accent">Nikki</span> Johnson</h1>
-            <p class="hero-tagline">Senior Social Media Marketing Manager</p>
-            <p>I build marketing strategies that connect and convert through social, content, and paid media. 15+ years of turning audience insights into campaigns that people actually care about. Also fluent in meme.</p>
+            <p class="hero-tagline">Senior Social Media &amp; Paid Media Strategist</p>
+            <p>I help brands grow revenue with social and paid strategies designed for humans first, algorithms second. For 15+ years, I've translated audience insight into campaigns people actually care about. They perform, they convert, and occasionally they make someone laugh. Fluent in meme. Also fluent in the metrics that prove it worked.</p>
             <div class="hero-ctas">
                 <a href="#work" class="btn btn-primary">See My Work</a>
                 <a href="#contact" class="btn btn-secondary">Let's Talk</a>
@@ -903,20 +933,20 @@
 <div class="metrics-bar">
     <div class="metrics-inner">
         <div class="metric-item fade-up">
-            <div class="metric-value">$6.4M</div>
-            <div class="metric-label">Launch Campaign</div>
-        </div>
-        <div class="metric-item fade-up">
-            <div class="metric-value">500K+</div>
+            <div class="metric-value">4M+</div>
             <div class="metric-label">Engagements Driven</div>
         </div>
         <div class="metric-item fade-up">
             <div class="metric-value">135%</div>
-            <div class="metric-label">Impressions Growth</div>
+            <div class="metric-label">Audience Growth</div>
         </div>
         <div class="metric-item fade-up">
-            <div class="metric-value">$71</div>
-            <div class="metric-label">Avg. Cost Per Lead</div>
+            <div class="metric-value">$750k</div>
+            <div class="metric-label">Paid Media Managed</div>
+        </div>
+        <div class="metric-item fade-up">
+            <div class="metric-value">221</div>
+            <div class="metric-label">Campaigns Launched</div>
         </div>
     </div>
 </div>
@@ -930,40 +960,50 @@
                     <p class="section-label">About Me</p>
                     <h2 class="section-title">Empathy first. Algorithms second.</h2>
                 </div>
-                <p>I'm a creative, data-driven social media leader who's spent the last 15 years helping brands grow through smart social strategy, creative storytelling, and campaigns that deliver real, measurable results.</p>
+                <p>I help brands grow by combining audience psychology with performance strategy. For 15+ years, I've built social, content, and paid campaigns that deliver measurable results and occasionally make someone say, "Okay fine, that was good."</p>
                 <p>I believe the best marketing starts with understanding people, not platforms. When you lead with empathy and back it with data, you build trust, create connection, and drive the kind of growth that actually lasts.</p>
                 <p>Based in Mount Pleasant, SC. Remote-first since before it was cool.</p>
+                <p class="skills-section-header">Where I Spend Most of My Time</p>
                 <div class="skills-cloud">
                     <span class="skill-tag">Content Strategy</span>
                     <span class="skill-tag">Social Media Strategy</span>
                     <span class="skill-tag">Creative Direction</span>
                     <span class="skill-tag">Data Analytics</span>
-                    <span class="skill-tag">Copywriting</span>
-                    <span class="skill-tag">Community Building</span>
-                    <span class="skill-tag">Trendspotting</span>
+                    <span class="skill-tag">Strategic Copywriting</span>
+                    <span class="skill-tag">Audience Development</span>
+                    <span class="skill-tag">Cultural Trendspotting</span>
                     <span class="skill-tag">Paid Social Analytics</span>
                     <span class="skill-tag">Video Production</span>
                     <span class="skill-tag">Influencer Strategy</span>
                     <span class="skill-tag">Cultural Strategy</span>
-                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Marketing Operations</span>
+                    <span class="skill-tag">Chronically Online So You Don't Have To Be</span>
                 </div>
             </div>
             <div class="about-highlights">
                 <div class="highlight-card fade-up">
                     <h4>Storyteller at Heart</h4>
-                    <p>Known for a strong voice and the ability to translate brand values into content that connects and converts across every platform.</p>
+                    <p>I translate brand positioning into stories people actually care about. Because facts tell, but stories sell. And yes, sometimes the story includes a meme.</p>
                 </div>
                 <div class="highlight-card fade-up">
-                    <h4>Data Meets Creativity</h4>
-                    <p>Every campaign is backed by performance insights. I track what matters — from Meta Ads Manager to native social analytics — and use data to turn gut feelings into proven strategies.</p>
+                    <h4>Creative With Receipts</h4>
+                    <p>Big ideas are great. Proving they worked is better. I love a strong hook, a clean dashboard, and campaigns that deliver both vibes and ROI.</p>
                 </div>
                 <div class="highlight-card fade-up">
-                    <h4>Team Builder</h4>
-                    <p>Collaborative, hands-on leader who elevates creative teams and partners to deliver innovative, on-brand content consistently.</p>
+                    <h4>Algorithm Survivor</h4>
+                    <p>I've worked through every platform shift, reach panic, and "this changes everything" moment. Xennial status confirmed. I survived the Oregon Trail. I can survive an algorithm update.</p>
                 </div>
                 <div class="highlight-card fade-up">
-                    <h4>Full-Funnel Thinker</h4>
-                    <p>From awareness to conversion, I design social strategies that move people through the entire customer journey.</p>
+                    <h4>Full-Funnel Adult</h4>
+                    <p>Awareness is nice. Revenue is nicer. I design social and paid strategies that support the entire customer journey, not just top-of-funnel applause.</p>
+                </div>
+                <div class="highlight-card fade-up">
+                    <h4>Multitasking Gold Medalist</h4>
+                    <p>Campaigns, deadlines, kids' schedules, group chats, and whatever the school just emailed about. Marketing logistics? Honestly relaxing.</p>
+                </div>
+                <div class="highlight-card fade-up">
+                    <h4>Internet Culture Translator</h4>
+                    <p>I help brands sound human online without trying too hard, being cringe (as the youths say), or jumping on trends after their expiration date.</p>
                 </div>
             </div>
         </div>
@@ -987,7 +1027,7 @@
                         <span class="timeline-date">Nov 2025 – Present</span>
                     </div>
                     <div class="timeline-role">Fractional Marketing Strategist — Social &amp; Paid Media</div>
-                    <p class="timeline-desc">Lead social and paid media strategy for B2C and B2B brands, with a focus on service-based and growth-stage companies. Partner with founders and internal teams to provide senior-level strategic direction without adding full-time headcount.</p>
+                    <p class="timeline-desc">Lead social and paid media strategy for B2C and B2B brands, with a focus on service-based and growth-stage companies. I partner with founders and internal teams to provide senior-level strategic direction without adding full-time headcount, including work with community-focused and advocacy-driven initiatives alongside commercial brands.</p>
                     <div class="timeline-wins">
                         <span class="win-badge"><span class="arrow">&#8599;</span> Full-funnel social strategy</span>
                         <span class="win-badge"><span class="arrow">&#8599;</span> Meta paid social end-to-end</span>
@@ -1020,7 +1060,7 @@
                         <span class="timeline-date">2022 - 2023</span>
                     </div>
                     <div class="timeline-role">Creative Content Director</div>
-                    <p class="timeline-desc">Directed social media and content strategy, leading editorial planning, short-form video, and real-time social coverage of live launches and mastermind events.</p>
+                    <p class="timeline-desc">Directed social and content strategy for major launches, including editorial planning, short-form video, and real-time event coverage.</p>
                     <div class="timeline-wins">
                         <span class="win-badge"><span class="arrow">&#8599;</span> $6.4M launch</span>
                         <span class="win-badge"><span class="arrow">&#8599;</span> 4 viral videos in 30 days</span>
@@ -1052,7 +1092,7 @@
                         <span class="timeline-date">2019 - 2022</span>
                     </div>
                     <div class="timeline-role">Digital Marketing Strategist</div>
-                    <p class="timeline-desc">Developed social, content, and launch strategies for D2C clients, managing multi-platform storytelling and performance analytics.</p>
+                    <p class="timeline-desc">Developed social, content, and launch strategies for D2C brands, leading multi-platform storytelling and performance optimization.</p>
                     <div class="timeline-wins">
                         <span class="win-badge"><span class="arrow">&#8599;</span> 28.5% revenue increase</span>
                     </div>
@@ -1084,19 +1124,11 @@
         <div class="earlier-career-cards" id="earlierCareer">
             <div class="earlier-career-narrative fade-up">
                 <p class="foundation-label">Where It Started</p>
-                <p>Before the launches, the viral videos, and the data dashboards, I was building digital content when "content strategy" wasn't even a job title yet. I managed editorial and community at AOL during the early days of digital media, ran my own social media consulting practice, and helped build online communities from scratch.</p>
-                <p>That foundation in content, community, and storytelling is still the backbone of everything I do today.</p>
+                <p>Before launches, viral videos, and dashboards, I was building digital communities when "content strategy" wasn't even a job title. I managed editorial and community work at AOL during the early days of digital media, ran my own consulting practice, and helped brands grow audiences from scratch.</p>
+                <p>That foundation in storytelling, community, and audience insight still drives how I approach marketing today.</p>
             </div>
             <div class="early-card fade-up">
-                <div class="early-card-logo">&#128188;</div>
-                <div class="early-card-content">
-                    <h4>Nikki Johnson Social Media Consulting</h4>
-                    <div class="early-role">Owner</div>
-                    <p>Developed social media content and engagement strategies for lifestyle and consumer brands. Created platform-native content and editorial calendars to support audience growth.</p>
-                </div>
-            </div>
-            <div class="early-card fade-up">
-                <div class="early-card-logo">&#128172;</div>
+                <div class="early-card-logo">PM</div>
                 <div class="early-card-content">
                     <h4>Pure Matters</h4>
                     <div class="early-role">Online Community Manager</div>
@@ -1104,7 +1136,7 @@
                 </div>
             </div>
             <div class="early-card fade-up">
-                <div class="early-card-logo">&#127760;</div>
+                <div class="early-card-logo">AOL</div>
                 <div class="early-card-content">
                     <h4>AOL</h4>
                     <div class="early-role">Content Manager & Music Programming</div>
@@ -1112,7 +1144,7 @@
                 </div>
             </div>
             <div class="early-card fade-up">
-                <div class="early-card-logo">&#128640;</div>
+                <div class="early-card-logo">URS</div>
                 <div class="early-card-content">
                     <h4>URS Corporation</h4>
                     <div class="early-role">Marketing & Outreach Coordinator</div>
@@ -1130,7 +1162,7 @@
         <div class="section-header">
             <p class="section-label">From Idea to Impact</p>
             <h2 class="section-title">Campaigns I've Led</h2>
-            <p class="section-subtitle">Where data, creativity, and strategy come together to drive measurable growth.</p>
+            <p class="section-subtitle">Where strategy, creative, and performance actually work together.</p>
         </div>
         <div class="cases-grid">
             <div class="case-card fade-up">
@@ -1153,7 +1185,7 @@
                             <div class="case-stat-label">Total Engagements</div>
                         </div>
                         <div>
-                            <div class="case-stat-value">~6%</div>
+                            <div class="case-stat-value stat-highlight">~6%</div>
                             <div class="case-stat-label">Of Total Company Sales</div>
                         </div>
                     </div>
@@ -1164,10 +1196,10 @@
                 <div class="case-content">
                     <p class="case-type">Personal Brand / Digital Products</p>
                     <h3 class="case-title">$6.4M Launch Campaign</h3>
-                    <p class="case-desc">Led social storytelling and content execution for a major digital product launch, ensuring brand consistency and audience resonance across all channels.</p>
+                    <p class="case-desc">Led full-funnel social strategy and launch storytelling for a $6.4M digital product release, aligning content, community engagement, and performance across channels.</p>
                     <div class="case-stats">
                         <div>
-                            <div class="case-stat-value">$6.4M</div>
+                            <div class="case-stat-value stat-highlight">$6.4M</div>
                             <div class="case-stat-label">Campaign Size</div>
                         </div>
                         <div>
@@ -1190,7 +1222,7 @@
                 <div class="case-content">
                     <p class="case-type">Nonprofit / Agriculture</p>
                     <h3 class="case-title">Mission-Driven Growth for Carolina Farm Trust</h3>
-                    <p class="case-desc">Developed storytelling and community-focused campaigns for a nonprofit, driving donor engagement, event sales, and volunteer growth.</p>
+                    <p class="case-desc">Developed and led storytelling and community-focused campaigns for a nonprofit, driving donor engagement, event sales, and volunteer growth.</p>
                     <div class="case-stats">
                         <div>
                             <div class="case-stat-value">$15K+</div>
@@ -1205,17 +1237,17 @@
                             <div class="case-stat-label">Website Traffic Increase</div>
                         </div>
                         <div>
-                            <div class="case-stat-value">20%</div>
+                            <div class="case-stat-value stat-highlight">20%</div>
                             <div class="case-stat-label">Volunteer Sign-Up Growth</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="case-card fade-up">
-                <div class="case-banner" style="background: linear-gradient(135deg, var(--lime), #a0d900);"></div>
+                <div class="case-banner" style="background: var(--lime);"></div>
                 <div class="case-content">
                     <p class="case-type">Personal Brand / Online Education</p>
-                    <h3 class="case-title">Rebrand &amp; Growth for Not Your Average Grandma</h3>
+                    <h3 class="case-title">Rebrand to Results: Social Growth Strategy</h3>
                     <p class="case-desc">Revamped visual identity, content strategy, and short-form video approach for a midlife lifestyle brand — turning scattered content into a cohesive, high-performing social presence.</p>
                     <div class="case-stats">
                         <div>
@@ -1223,16 +1255,16 @@
                             <div class="case-stat-label">Reach Increase</div>
                         </div>
                         <div>
-                            <div class="case-stat-value">67%</div>
+                            <div class="case-stat-value stat-highlight">67%</div>
                             <div class="case-stat-label">Engagement Increase</div>
                         </div>
                         <div>
-                            <div class="case-stat-value">Before →</div>
-                            <div class="case-stat-label">After IG Grid Rebrand</div>
+                            <div class="case-stat-value">1.70%</div>
+                            <div class="case-stat-label">Follower Growth</div>
                         </div>
                         <div>
-                            <div class="case-stat-value">Viral</div>
-                            <div class="case-stat-label">Short-Form Video Content</div>
+                            <div class="case-stat-value">Podcast</div>
+                            <div class="case-stat-label">to Short-Form Video</div>
                         </div>
                     </div>
                 </div>
@@ -1250,30 +1282,39 @@
         <div class="section-header">
             <p class="section-label">What I Do</p>
             <h2 class="section-title">How I Help Brands Grow</h2>
-            <p class="section-subtitle">Whether you need a full social strategy or a creative partner to bring your vision to life.</p>
+            <p class="section-subtitle">Whether you need strategy, creative, or someone who can translate "we should post more" into an actual plan.</p>
         </div>
         <div class="services-grid">
             <div class="service-card fade-up">
-                <div class="service-icon si-pink">🎯</div>
+                <div class="service-icon si-pink">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                </div>
                 <h3>Social Media Strategy</h3>
-                <p>Full-funnel social strategies built around your business goals — not just likes. I develop platform-specific plans grounded in audience insights, competitive analysis, and content pillars that align organic storytelling with paid performance. From brand voice to content cadence, I create a system that works.</p>
+                <p>Full-funnel social strategies built around business goals, not vanity metrics. I develop platform-specific plans grounded in audience insight, competitive context, and performance data. From brand voice to content cadence, I build systems that actually work.</p>
             </div>
             <div class="service-card fade-up">
-                <div class="service-icon si-purple">🎬</div>
-                <h3>Content Creation & Video</h3>
-                <p>Short-form video, graphics, copywriting, and editorial planning — built to stop the scroll and drive action. I produce content that feels native to the platform, speaks your audience's language, and serves a real strategic purpose. Creative that looks good and actually performs.</p>
+                <div class="service-icon si-purple">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <h3>Content Creation & Video Strategy</h3>
+                <p>Short-form video, graphics, copywriting, and editorial planning designed to stop the scroll and drive action. Content that feels native to the platform, speaks your audience's language, and supports real business goals. Creative that looks good and performs.</p>
             </div>
             <div class="service-card fade-up">
-                <div class="service-icon si-orange">📊</div>
-                <h3>Paid Social & Meta Ads</h3>
-                <p>End-to-end Meta campaign management — from audience development and creative direction to testing frameworks and performance analysis. I manage the full paid social loop: build, launch, optimize, report. Every decision is backed by data, and every dollar is accountable.</p>
+                <div class="service-icon si-lime">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+                </div>
+                <h3>Paid Social & Meta Strategy</h3>
+                <p>End-to-end paid social strategy, from audience definition and creative direction to testing frameworks and performance optimization. I manage the full paid social lifecycle so every decision is backed by data and every dollar works harder.</p>
             </div>
             <div class="service-card fade-up">
-                <div class="service-icon si-pink">🤝</div>
+                <div class="service-icon si-pink">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </div>
                 <h3>Fractional Strategy & Consulting</h3>
-                <p>Senior-level marketing strategy without the full-time price tag. I partner with founders and growing teams to develop messaging frameworks, channel strategy, and brand positioning that connect with the right audience and support real revenue goals. Strategic clarity when you need it most.</p>
+                <p>Senior-level marketing leadership without the full-time overhead. I partner with founders and teams to clarify messaging, strengthen positioning, align creative and performance, and support revenue growth. Strategic clarity when you need it most.</p>
             </div>
         </div>
+        <p class="services-footer">Not sure which bucket you fit into? Most clients need a blend. <a href="#contact">Let's talk.</a></p>
     </div>
 </section>
 
