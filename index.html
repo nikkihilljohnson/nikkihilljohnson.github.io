@@ -583,9 +583,10 @@
             border-color: #6e4d40;
         }
         .rcat.coat-calico {
-            --fur: #f7f0e5;
+            --fur: #f0e5d0;
             --fur-dark: #242424;
-            --fur-light: #ffffff;
+            --fur-light: #f8efe0;
+            filter: drop-shadow(0 0 2px rgba(80,50,10,0.30)) drop-shadow(0 6px 10px rgba(0,0,0,0.22));
         }
         .rcat.coat-calico .body {
             background:
@@ -607,21 +608,22 @@
             transform: translateX(-50%) scale(0.8);
         }
         .cat-top-impact.cat-sit .body {
-            left: 21px;
-            top: 20px;
-            width: 40px;
-            height: 23px;
-            border-radius: 16px;
+            left: 24px;
+            top: 18px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50% 50% 38% 38%;
         }
         .cat-top-impact.cat-sit .head {
-            right: 12px;
-            top: 6px;
+            right: 10px;
+            top: 4px;
         }
         .cat-top-impact.cat-sit .tail {
-            left: 6px;
-            top: 15px;
-            width: 18px;
-            height: 22px;
+            left: 10px;
+            top: 28px;
+            width: 14px;
+            height: 18px;
+            border-radius: 18px 0 0 0;
         }
         .cat-top-impact.cat-sit .leg.fl,
         .cat-top-impact.cat-sit .leg.fr,
@@ -631,14 +633,14 @@
         }
         .cat-top-impact.cat-sit .paw {
             position: absolute;
-            width: 8px;
-            height: 6px;
+            width: 9px;
+            height: 7px;
             background: var(--fur-dark);
             border-radius: 10px;
-            top: 41px;
+            top: 43px;
         }
-        .cat-top-impact.cat-sit .paw.left { left: 37px; }
-        .cat-top-impact.cat-sit .paw.right { left: 48px; }
+        .cat-top-impact.cat-sit .paw.left { left: 34px; }
+        .cat-top-impact.cat-sit .paw.right { left: 46px; }
         .cat-top-impact.cat-sit { animation: cat-sit-breathe 2.6s ease-in-out infinite; }
         .metrics-bar { position: relative; }
         .cat-stats-runner {
@@ -668,28 +670,28 @@
         .cat-impact-peek .leg.fl,
         .cat-impact-peek .leg.fr {
             display: block;
-            top: 32px;
-            height: 10px;
-            width: 8px;
-            animation: paw-peek 1.4s ease-in-out infinite;
+            top: 18px;
+            height: 14px;
+            width: 10px;
+            border-radius: 8px;
+            animation: paw-peek 1.8s ease-in-out infinite;
         }
-        .cat-impact-peek .leg.fl { left: 31px; }
-        .cat-impact-peek .leg.fr { left: 41px; }
+        .cat-impact-peek .leg.fl { left: 28px; }
+        .cat-impact-peek .leg.fr { left: 42px; }
         .cat-impact-peek.show {
-            opacity: 1;
-            animation: pop-peek 0.45s cubic-bezier(.2,.8,.24,1) forwards;
+            animation: pop-peek 0.65s cubic-bezier(.15,.85,.2,1.1) both;
         }
         .cat-impact-peek.show .head,
         .cat-impact-peek.show .ear,
         .cat-impact-peek.show .eye,
         .cat-impact-peek.show .nose {
-            animation: tiny-head-bob 1.6s ease-in-out infinite;
+            animation: tiny-head-bob 2s ease-in-out infinite 0.65s;
         }
         .services { position: relative; overflow: visible; }
         .cat-service-play {
-            top: -18px;
+            top: -26px;
             left: 50%;
-            transform: translateX(-50%) rotate(180deg) scale(0.72);
+            transform: translateX(-50%) scale(0.72);
         }
         .cat-service-play .ball {
             position: absolute;
@@ -708,7 +710,7 @@
             top: -28px;
             left: 50%;
             transform: translateX(120px) scale(0.62);
-            animation: cat-rub-fig8 4.2s linear infinite;
+            animation: cat-rub-fig8 5.8s linear infinite;
         }
         .contact { position: relative; overflow: hidden; }
         @keyframes leg-step-a {
@@ -744,28 +746,40 @@
             50% { transform: translateY(2px); }
         }
         @keyframes pop-peek {
-            0% { transform: scale(0.54) translateY(18px); }
-            70% { transform: scale(0.62) translateY(-2px); }
-            100% { transform: scale(0.58) translateY(0); }
+            0%   { transform: scale(0.52) translateY(36px); opacity: 0; }
+            30%  { opacity: 1; }
+            65%  { transform: scale(0.64) translateY(-7px); opacity: 1; }
+            82%  { transform: scale(0.56) translateY(4px); opacity: 1; }
+            100% { transform: scale(0.58) translateY(0); opacity: 1; }
         }
         @keyframes tiny-head-bob {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-1.5px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            35%      { transform: translateY(-2.5px) rotate(-3deg); }
+            65%      { transform: translateY(-1px) rotate(2deg); }
         }
         @keyframes ball-bop {
             0%, 100% { transform: translateY(0) translateX(0); }
             50% { transform: translateY(-7px) translateX(6px); }
         }
         @keyframes cat-rub-fig8 {
-            0% { transform: translateX(120px) translateY(0) scale(0.62) rotate(0deg); }
-            12% { transform: translateX(108px) translateY(-6px) scale(0.62) rotate(-5deg); }
-            25% { transform: translateX(96px) translateY(0) scale(0.62) rotate(-2deg); }
-            37% { transform: translateX(108px) translateY(6px) scale(0.62) rotate(4deg); }
-            50% { transform: translateX(120px) translateY(0) scale(0.62) rotate(0deg); }
-            62% { transform: translateX(132px) translateY(-6px) scale(0.62) rotate(-4deg); }
-            75% { transform: translateX(144px) translateY(0) scale(0.62) rotate(2deg); }
-            87% { transform: translateX(132px) translateY(6px) scale(0.62) rotate(5deg); }
-            100% { transform: translateX(120px) translateY(0) scale(0.62) rotate(0deg); }
+            /* Lissajous figure-8: x=24*sin(t), y=11*sin(2t), center at translateX(120px) */
+            0%   { transform: translateX(120px) translateY(0px)   scale(0.62) rotate(0deg); }
+            6%   { transform: translateX(129px) translateY(-7px)  scale(0.62) rotate(-7deg); }
+            12%  { transform: translateX(137px) translateY(-11px) scale(0.62) rotate(-5deg); }
+            19%  { transform: translateX(142px) translateY(-7px)  scale(0.62) rotate(2deg); }
+            25%  { transform: translateX(144px) translateY(0px)   scale(0.62) rotate(5deg); }
+            31%  { transform: translateX(142px) translateY(7px)   scale(0.62) rotate(7deg); }
+            37%  { transform: translateX(137px) translateY(11px)  scale(0.62) rotate(4deg); }
+            44%  { transform: translateX(129px) translateY(7px)   scale(0.62) rotate(-2deg); }
+            50%  { transform: translateX(120px) translateY(0px)   scale(0.62) rotate(-6deg); }
+            56%  { transform: translateX(111px) translateY(-7px)  scale(0.62) rotate(-7deg); }
+            62%  { transform: translateX(103px) translateY(-11px) scale(0.62) rotate(-4deg); }
+            69%  { transform: translateX(98px)  translateY(-7px)  scale(0.62) rotate(2deg); }
+            75%  { transform: translateX(96px)  translateY(0px)   scale(0.62) rotate(6deg); }
+            81%  { transform: translateX(98px)  translateY(7px)   scale(0.62) rotate(7deg); }
+            87%  { transform: translateX(103px) translateY(11px)  scale(0.62) rotate(4deg); }
+            94%  { transform: translateX(111px) translateY(7px)   scale(0.62) rotate(-2deg); }
+            100% { transform: translateX(120px) translateY(0px)   scale(0.62) rotate(0deg); }
         }
 
         /* ---- EXPERIENCE ---- */
@@ -1147,11 +1161,31 @@
                 transform: scale(0.5);
             }
             .cat-service-play {
-                top: -12px;
-                transform: translateX(-50%) rotate(180deg) scale(0.66);
+                top: -20px;
+                transform: translateX(-50%) scale(0.66);
             }
             .cat-testimonial-rub {
-                transform: translateX(78px) scale(0.55);
+                top: -22px;
+                animation: cat-rub-fig8-sm 5.8s linear infinite;
+            }
+            @keyframes cat-rub-fig8-sm {
+                0%   { transform: translateX(80px)  translateY(0px)   scale(0.52) rotate(0deg); }
+                6%   { transform: translateX(87px)  translateY(-6px)  scale(0.52) rotate(-7deg); }
+                12%  { transform: translateX(93px)  translateY(-9px)  scale(0.52) rotate(-5deg); }
+                19%  { transform: translateX(97px)  translateY(-6px)  scale(0.52) rotate(2deg); }
+                25%  { transform: translateX(98px)  translateY(0px)   scale(0.52) rotate(5deg); }
+                31%  { transform: translateX(97px)  translateY(6px)   scale(0.52) rotate(7deg); }
+                37%  { transform: translateX(93px)  translateY(9px)   scale(0.52) rotate(4deg); }
+                44%  { transform: translateX(87px)  translateY(6px)   scale(0.52) rotate(-2deg); }
+                50%  { transform: translateX(80px)  translateY(0px)   scale(0.52) rotate(-6deg); }
+                56%  { transform: translateX(73px)  translateY(-6px)  scale(0.52) rotate(-7deg); }
+                62%  { transform: translateX(67px)  translateY(-9px)  scale(0.52) rotate(-4deg); }
+                69%  { transform: translateX(63px)  translateY(-6px)  scale(0.52) rotate(2deg); }
+                75%  { transform: translateX(62px)  translateY(0px)   scale(0.52) rotate(6deg); }
+                81%  { transform: translateX(63px)  translateY(6px)   scale(0.52) rotate(7deg); }
+                87%  { transform: translateX(67px)  translateY(9px)   scale(0.52) rotate(4deg); }
+                94%  { transform: translateX(73px)  translateY(6px)   scale(0.52) rotate(-2deg); }
+                100% { transform: translateX(80px)  translateY(0px)   scale(0.52) rotate(0deg); }
             }
         }
         @media (prefers-reduced-motion: reduce) {
@@ -1748,7 +1782,7 @@
 
 <!-- SERVICES -->
 <section class="services" id="services">
-    <div class="rcat coat-siamese walk cat-service-play" aria-hidden="true">
+    <div class="rcat coat-calico walk cat-service-play" aria-hidden="true">
         <span class="tail"></span>
         <span class="body"></span>
         <span class="head"></span>
