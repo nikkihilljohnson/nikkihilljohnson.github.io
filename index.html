@@ -231,20 +231,6 @@
             display: flex;
             justify-content: center;
         }
-        .snapshot-badge {
-            position: absolute;
-            border-radius: 14px;
-            border: 2px solid rgba(var(--lime-rgb), 0.9);
-            box-shadow: 0 10px 24px rgba(var(--purple-rgb), 0.18);
-            object-fit: cover;
-            z-index: 4;
-        }
-        .hero-photo .snapshot-badge {
-            width: 98px;
-            height: 74px;
-            left: -50px;
-            top: 36px;
-        }
         .photo-frame {
             width: 380px;
             height: 460px;
@@ -454,192 +440,245 @@
         }
 
         /* ---- CAT ELEMENTS ---- */
-        .mini-cat {
-            --fur: #222222;
-            --fur-2: #333333;
-            --fur-3: #151515;
+        .rcat {
+            --fur: #202020;
+            --fur-dark: #131313;
+            --fur-light: #2d2d2d;
+            --nose: #f1b6b6;
+            --eye: #b8ff59;
             position: absolute;
-            width: 58px;
-            height: 36px;
-            z-index: 6;
+            width: 88px;
+            height: 56px;
             pointer-events: none;
-            filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.18));
-            transform-origin: 70% 75%;
+            z-index: 7;
+            filter: drop-shadow(0 7px 10px rgba(0,0,0,0.22));
         }
-        .mini-cat .cat-body {
+        .rcat .body {
             position: absolute;
-            left: 8px;
-            top: 14px;
-            width: 34px;
-            height: 16px;
-            border-radius: 12px 13px 10px 10px;
-            background: linear-gradient(145deg, var(--fur), var(--fur-2));
+            left: 14px;
+            top: 18px;
+            width: 50px;
+            height: 24px;
+            border-radius: 14px 16px 14px 12px;
+            background: linear-gradient(165deg, var(--fur-light), var(--fur));
         }
-        .mini-cat .cat-head {
+        .rcat .head {
             position: absolute;
             right: 10px;
-            top: 6px;
-            width: 17px;
-            height: 14px;
-            border-radius: 9px;
-            background: linear-gradient(145deg, var(--fur), var(--fur-3));
+            top: 8px;
+            width: 24px;
+            height: 20px;
+            border-radius: 11px;
+            background: linear-gradient(160deg, var(--fur-light), var(--fur-dark));
         }
-        .mini-cat .cat-ear-left,
-        .mini-cat .cat-ear-right {
+        .rcat .ear {
             position: absolute;
-            top: 1px;
-            width: 7px;
-            height: 7px;
-            background: var(--fur-3);
+            top: 2px;
+            width: 10px;
+            height: 10px;
+            background: var(--fur-dark);
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
         }
-        .mini-cat .cat-ear-left { right: 20px; }
-        .mini-cat .cat-ear-right { right: 11px; }
-        .mini-cat .cat-tail {
+        .rcat .ear.left { right: 26px; }
+        .rcat .ear.right { right: 14px; }
+        .rcat .eye {
             position: absolute;
-            left: 0;
-            top: 6px;
-            width: 14px;
-            height: 20px;
-            border: 3px solid var(--fur-3);
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--eye);
+            top: 15px;
+        }
+        .rcat .eye.left { right: 24px; }
+        .rcat .eye.right { right: 18px; }
+        .rcat .nose {
+            position: absolute;
+            width: 4px;
+            height: 3px;
+            border-radius: 40% 40% 55% 55%;
+            background: var(--nose);
+            right: 20px;
+            top: 18px;
+        }
+        .rcat .tail {
+            position: absolute;
+            left: 2px;
+            top: 11px;
+            width: 22px;
+            height: 24px;
+            border: 4px solid var(--fur-dark);
             border-right: 0;
             border-bottom: 0;
-            border-radius: 14px 0 0 0;
-            transform: rotate(-5deg);
+            border-radius: 22px 0 0 0;
+            transform-origin: 80% 100%;
+            animation: tail-swish 1.8s ease-in-out infinite;
         }
-        .mini-cat .cat-eye {
+        .rcat .leg {
             position: absolute;
-            right: 13px;
-            top: 11px;
-            width: 2px;
-            height: 2px;
-            border-radius: 50%;
-            background: #b4ff62;
+            width: 7px;
+            height: 16px;
+            border-radius: 7px;
+            background: var(--fur-dark);
+            top: 34px;
+            transform-origin: 50% 2px;
         }
-        .mini-cat .cat-eye.eye-2 { right: 18px; top: 11px; }
-        .mini-cat .cat-leg {
+        .rcat .leg.fl { left: 28px; }
+        .rcat .leg.fr { left: 39px; }
+        .rcat .leg.bl { left: 17px; }
+        .rcat .leg.br { left: 49px; }
+        .rcat.walk .leg.fl,
+        .rcat.walk .leg.br { animation: leg-step-a 0.45s linear infinite; }
+        .rcat.walk .leg.fr,
+        .rcat.walk .leg.bl { animation: leg-step-b 0.45s linear infinite; }
+        .rcat.coat-black {
+            --fur: #1f1f1f;
+            --fur-dark: #101010;
+            --fur-light: #323232;
+        }
+        .rcat.coat-ginger {
+            --fur: #d06c2a;
+            --fur-dark: #a94d14;
+            --fur-light: #e68c47;
+        }
+        .rcat.coat-ginger .body {
+            background:
+                repeating-linear-gradient(90deg, rgba(125,58,19,.22) 0 4px, transparent 4px 9px),
+                linear-gradient(165deg, var(--fur-light), var(--fur));
+        }
+        .rcat.coat-siamese {
+            --fur: #e6d1b4;
+            --fur-dark: #6e4d40;
+            --fur-light: #f1dfc5;
+            --eye: #8cff5f;
+        }
+        .rcat.coat-siamese .head,
+        .rcat.coat-siamese .ear,
+        .rcat.coat-siamese .tail,
+        .rcat.coat-siamese .leg {
+            background: #6e4d40;
+            border-color: #6e4d40;
+        }
+        .rcat.coat-calico {
+            --fur: #f7f0e5;
+            --fur-dark: #242424;
+            --fur-light: #ffffff;
+        }
+        .rcat.coat-calico .body {
+            background:
+                radial-gradient(circle at 30% 52%, #ef8c3f 0 22%, transparent 23%),
+                radial-gradient(circle at 68% 68%, #2b2b2b 0 19%, transparent 20%),
+                radial-gradient(circle at 75% 26%, #f3b44d 0 17%, transparent 18%),
+                linear-gradient(165deg, var(--fur-light), var(--fur));
+        }
+        .rcat.coat-calico .head {
+            background:
+                radial-gradient(circle at 72% 33%, #ef8c3f 0 28%, transparent 29%),
+                radial-gradient(circle at 26% 72%, #2b2b2b 0 24%, transparent 25%),
+                linear-gradient(165deg, var(--fur-light), var(--fur));
+        }
+        .float-card-2 { overflow: visible; }
+        .cat-top-impact {
+            top: -38px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.78);
+        }
+        .cat-top-impact .leg { display: none; }
+        .cat-top-impact .paw {
             position: absolute;
-            top: 27px;
-            width: 4px;
-            height: 8px;
-            border-radius: 4px;
-            background: var(--fur-3);
+            width: 8px;
+            height: 6px;
+            background: var(--fur-dark);
+            border-radius: 10px;
+            top: 39px;
         }
-        .mini-cat .cat-leg.leg-1 { left: 14px; }
-        .mini-cat .cat-leg.leg-2 { left: 30px; }
-        .mini-cat.cat-black {
-            --fur: #2b2b2b;
-            --fur-2: #1d1d1d;
-            --fur-3: #0f0f0f;
-        }
-        .mini-cat.cat-ginger {
-            --fur: #f28b30;
-            --fur-2: #df6f16;
-            --fur-3: #b85410;
-        }
-        .mini-cat.cat-ginger .cat-body {
-            background:
-                repeating-linear-gradient(
-                    90deg,
-                    rgba(140, 62, 10, 0.18) 0 3px,
-                    rgba(242, 139, 48, 0.0) 3px 8px
-                ),
-                linear-gradient(145deg, var(--fur), var(--fur-2));
-        }
-        .mini-cat.cat-siamese {
-            --fur: #f0ddc2;
-            --fur-2: #e8d1b4;
-            --fur-3: #7b5949;
-        }
-        .mini-cat.cat-siamese .cat-head,
-        .mini-cat.cat-siamese .cat-ear-left,
-        .mini-cat.cat-siamese .cat-ear-right,
-        .mini-cat.cat-siamese .cat-tail,
-        .mini-cat.cat-siamese .cat-leg {
-            background: #6b4c3f;
-            border-color: #6b4c3f;
-        }
-        .mini-cat.cat-calico {
-            --fur: #f8f3ea;
-            --fur-2: #ebe2d3;
-            --fur-3: #2e2e2e;
-        }
-        .mini-cat.cat-calico .cat-body {
-            background:
-                radial-gradient(circle at 25% 45%, #ef8c3f 0 22%, transparent 23%),
-                radial-gradient(circle at 60% 65%, #222 0 20%, transparent 21%),
-                radial-gradient(circle at 75% 30%, #f3b44d 0 18%, transparent 19%),
-                linear-gradient(145deg, var(--fur), var(--fur-2));
-        }
-        .mini-cat.cat-calico .cat-head {
-            background:
-                radial-gradient(circle at 75% 30%, #ef8c3f 0 30%, transparent 31%),
-                radial-gradient(circle at 28% 68%, #2a2a2a 0 24%, transparent 25%),
-                linear-gradient(145deg, var(--fur), var(--fur-2));
-        }
-        .cat-idle {
-            animation: cat-bob 3.6s ease-in-out infinite;
-        }
-        .cat-peek {
-            bottom: -20px;
-            left: 14px;
-            animation: cat-peek 5.2s ease-in-out infinite;
-        }
-        .cat-runner {
-            position: fixed;
-            left: -90px;
-            bottom: 20px;
-            z-index: 120;
+        .cat-top-impact .paw.left { left: 31px; }
+        .cat-top-impact .paw.right { left: 41px; }
+        .metrics-bar { position: relative; }
+        .cat-stats-runner {
+            left: -110px;
+            bottom: 8px;
+            transform: scale(0.75);
             opacity: 0;
         }
-        .cat-runner.is-running {
+        .cat-stats-runner.run {
             opacity: 1;
-            animation: run-across 6.5s linear forwards;
+            animation: run-stats 5.4s linear forwards;
         }
-        .hero .mini-cat.hero-cat {
-            top: -12px;
-            right: 4px;
+        .timeline .timeline-item:first-child .timeline-card {
+            overflow: visible;
         }
-        .testimonial .mini-cat {
+        .cat-impact-peek {
             top: -18px;
-            left: 36px;
+            right: 26px;
+            transform: scale(0.58);
+        }
+        .cat-impact-peek .body,
+        .cat-impact-peek .tail,
+        .cat-impact-peek .leg.bl,
+        .cat-impact-peek .leg.br { display: none; }
+        .cat-impact-peek .leg.fl,
+        .cat-impact-peek .leg.fr {
+            display: block;
+            top: 31px;
+            height: 10px;
+            width: 8px;
+            animation: paw-peek 1.9s ease-in-out infinite;
+        }
+        .services { position: relative; overflow: visible; }
+        .services .container { position: relative; }
+        .cat-service-play {
+            top: -52px;
+            left: 50%;
+            transform: translateX(-50%) rotate(162deg) scale(0.78);
+        }
+        .cat-service-play .ball {
+            position: absolute;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff, var(--lime));
+            right: -4px;
+            top: 20px;
+            box-shadow: 0 0 0 2px rgba(var(--pink-rgb),0.35);
+            animation: ball-bop 1.4s ease-in-out infinite;
         }
         .testimonial .container { position: relative; }
-        .testimonial .snapshot-badge {
-            width: 110px;
-            height: 84px;
-            right: 48px;
-            bottom: 38px;
-            border-color: rgba(var(--pink-rgb), 0.8);
+        .testimonial .section-header { position: relative; }
+        .cat-testimonial-rub {
+            top: -28px;
+            left: 50%;
+            transform: translateX(120px) scale(0.62);
+            animation: cat-rub 3.8s ease-in-out infinite;
         }
-        @keyframes cat-bob {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-5px) rotate(-2deg); }
+        .contact { position: relative; overflow: hidden; }
+        @keyframes leg-step-a {
+            0%, 100% { transform: rotate(-11deg); }
+            50% { transform: rotate(18deg); }
         }
-        @keyframes cat-peek {
-            0%, 25%, 100% { transform: translateY(18px); }
-            42%, 75% { transform: translateY(0); }
+        @keyframes leg-step-b {
+            0%, 100% { transform: rotate(16deg); }
+            50% { transform: rotate(-14deg); }
         }
-        @keyframes run-across {
-            0% { transform: translateX(0) scaleX(1); }
-            100% { transform: translateX(calc(100vw + 120px)) scaleX(1); }
+        @keyframes tail-swish {
+            0%, 100% { transform: rotate(-6deg); }
+            50% { transform: rotate(14deg); }
         }
-        .contact {
-            position: relative;
-            overflow: hidden;
+        @keyframes run-stats {
+            0% { transform: translateX(0) scale(0.75); }
+            100% { transform: translateX(calc(100vw + 150px)) scale(0.75); }
         }
-        .contact .container { position: relative; }
-        .contact .mini-cat {
-            right: 2rem;
-            bottom: 1.2rem;
+        @keyframes paw-peek {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(2px); }
         }
-        .contact .snapshot-badge {
-            width: 88px;
-            height: 88px;
-            right: 7.5rem;
-            bottom: 1rem;
-            border-radius: 50%;
-            border-color: rgba(255, 255, 255, 0.85);
+        @keyframes ball-bop {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-7px) translateX(6px); }
+        }
+        @keyframes cat-rub {
+            0%, 100% { transform: translateX(120px) scale(0.62) rotate(0deg); }
+            30% { transform: translateX(102px) scale(0.62) rotate(-6deg); }
+            58% { transform: translateX(116px) scale(0.62) rotate(3deg); }
         }
 
         /* ---- EXPERIENCE ---- */
@@ -1014,38 +1053,28 @@
             .cases-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
             .timeline-item { padding-left: 50px; }
-            .hero .mini-cat.hero-cat { top: -6px; right: 6px; }
-            .hero-photo .snapshot-badge {
-                left: -8px;
-                top: 8px;
-                width: 78px;
-                height: 58px;
+            .cat-top-impact { top: -32px; }
+            .cat-impact-peek {
+                top: -13px;
+                right: 12px;
+                transform: scale(0.5);
             }
-            .testimonial .mini-cat { left: auto; right: 18px; top: -20px; }
-            .testimonial .snapshot-badge {
-                right: 16px;
-                bottom: 24px;
-                width: 84px;
-                height: 64px;
+            .cat-service-play {
+                top: -38px;
+                transform: translateX(-50%) rotate(162deg) scale(0.66);
             }
-            .contact .mini-cat {
-                right: 0.9rem;
-                bottom: 0.9rem;
-            }
-            .contact .snapshot-badge {
-                right: 4.8rem;
-                width: 70px;
-                height: 70px;
-            }
-            .cat-runner {
-                transform: scale(0.85);
-                transform-origin: left bottom;
+            .cat-testimonial-rub {
+                transform: translateX(78px) scale(0.55);
             }
         }
         @media (prefers-reduced-motion: reduce) {
-            .cat-idle,
-            .cat-peek,
-            .cat-runner.is-running {
+            .rcat .tail,
+            .rcat.walk .leg,
+            .cat-stats-runner.run,
+            .cat-impact-peek .leg.fl,
+            .cat-impact-peek .leg.fr,
+            .cat-service-play .ball,
+            .cat-testimonial-rub {
                 animation: none;
             }
         }
@@ -1225,7 +1254,6 @@
                     <img src="https://nikkihilljohnson.my.canva.site/_assets/media/098e93cac96858c266f477382f40e0ea.jpg" alt="Nikki Johnson">
                 </div>
             </div>
-            <img src="9.png" alt="Nikki Johnson portrait" class="snapshot-badge fade-up">
             <div class="hero-float-card float-card-1">
                 <span class="big-num">~50x</span>
                 ROI on social
@@ -1233,17 +1261,18 @@
             <div class="hero-float-card float-card-2">
                 <span class="big-num">15+</span>
                 Years of impact
-            </div>
-            <div class="mini-cat cat-black cat-idle hero-cat fade-up" aria-hidden="true">
-                <span class="cat-tail"></span>
-                <span class="cat-body"></span>
-                <span class="cat-head"></span>
-                <span class="cat-ear-left"></span>
-                <span class="cat-ear-right"></span>
-                <span class="cat-eye"></span>
-                <span class="cat-eye eye-2"></span>
-                <span class="cat-leg leg-1"></span>
-                <span class="cat-leg leg-2"></span>
+                <div class="rcat coat-black cat-top-impact" aria-hidden="true">
+                    <span class="tail"></span>
+                    <span class="body"></span>
+                    <span class="head"></span>
+                    <span class="ear left"></span>
+                    <span class="ear right"></span>
+                    <span class="eye left"></span>
+                    <span class="eye right"></span>
+                    <span class="nose"></span>
+                    <span class="paw left"></span>
+                    <span class="paw right"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -1268,6 +1297,20 @@
             <div class="metric-value">221</div>
             <div class="metric-label">Campaigns Launched</div>
         </div>
+    </div>
+    <div id="statsRunnerCat" class="rcat coat-ginger walk cat-stats-runner" aria-hidden="true">
+        <span class="tail"></span>
+        <span class="body"></span>
+        <span class="head"></span>
+        <span class="ear left"></span>
+        <span class="ear right"></span>
+        <span class="eye left"></span>
+        <span class="eye right"></span>
+        <span class="nose"></span>
+        <span class="leg fl"></span>
+        <span class="leg fr"></span>
+        <span class="leg bl"></span>
+        <span class="leg br"></span>
     </div>
 </div>
 
@@ -1328,19 +1371,8 @@
                     </div>
                 </div>
                 <div class="about-photo-panel fade-up">
-                    <img src="1.png" alt="Nikki Johnson working at a laptop">
+                    <img src="https://nikkihilljohnson.my.canva.site/_assets/media/098e93cac96858c266f477382f40e0ea.jpg" alt="Nikki Johnson smiling">
                     <p class="about-photo-note">Built from Mount Pleasant, SC with strategy, storytelling, and just enough chaos to keep the internet interested.</p>
-                    <div class="mini-cat cat-calico cat-peek" aria-hidden="true">
-                        <span class="cat-tail"></span>
-                        <span class="cat-body"></span>
-                        <span class="cat-head"></span>
-                        <span class="cat-ear-left"></span>
-                        <span class="cat-ear-right"></span>
-                        <span class="cat-eye"></span>
-                        <span class="cat-eye eye-2"></span>
-                        <span class="cat-leg leg-1"></span>
-                        <span class="cat-leg leg-2"></span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1362,6 +1394,20 @@
                     <div class="timeline-header">
                         <span class="timeline-company">Nikki Hill Johnson Consulting</span>
                         <span class="timeline-date">Nov 2025 – Present</span>
+                    </div>
+                    <div class="rcat coat-calico cat-impact-peek" aria-hidden="true">
+                        <span class="head"></span>
+                        <span class="ear left"></span>
+                        <span class="ear right"></span>
+                        <span class="eye left"></span>
+                        <span class="eye right"></span>
+                        <span class="nose"></span>
+                        <span class="body"></span>
+                        <span class="tail"></span>
+                        <span class="leg fl"></span>
+                        <span class="leg fr"></span>
+                        <span class="leg bl"></span>
+                        <span class="leg br"></span>
                     </div>
                     <div class="timeline-role">Fractional Marketing Strategist — Social &amp; Paid Media</div>
                     <p class="timeline-desc">Lead social and paid media strategy for B2C and B2B brands, with a focus on service-based and growth-stage companies. I partner with founders and internal teams to provide senior-level strategic direction without adding full-time headcount, including work with community-focused and advocacy-driven initiatives alongside commercial brands.</p>
@@ -1616,6 +1662,21 @@
 <!-- SERVICES -->
 <section class="services" id="services">
     <div class="container">
+        <div class="rcat coat-siamese walk cat-service-play" aria-hidden="true">
+            <span class="tail"></span>
+            <span class="body"></span>
+            <span class="head"></span>
+            <span class="ear left"></span>
+            <span class="ear right"></span>
+            <span class="eye left"></span>
+            <span class="eye right"></span>
+            <span class="nose"></span>
+            <span class="leg fl"></span>
+            <span class="leg fr"></span>
+            <span class="leg bl"></span>
+            <span class="leg br"></span>
+            <span class="ball"></span>
+        </div>
         <div class="section-header">
             <p class="section-label">What I Do</p>
             <h2 class="section-title">How I Help Brands Grow</h2>
@@ -1658,22 +1719,24 @@
 <!-- TESTIMONIALS -->
 <section class="testimonial">
     <div class="container">
-        <div class="mini-cat cat-siamese cat-idle fade-up" aria-hidden="true">
-            <span class="cat-tail"></span>
-            <span class="cat-body"></span>
-            <span class="cat-head"></span>
-            <span class="cat-ear-left"></span>
-            <span class="cat-ear-right"></span>
-            <span class="cat-eye"></span>
-            <span class="cat-eye eye-2"></span>
-            <span class="cat-leg leg-1"></span>
-            <span class="cat-leg leg-2"></span>
-        </div>
         <div class="section-header" style="text-align: center;">
             <p class="section-label">What People Say</p>
             <h2 class="section-title">Client Testimonials</h2>
+            <div class="rcat coat-black cat-testimonial-rub" aria-hidden="true">
+                <span class="tail"></span>
+                <span class="body"></span>
+                <span class="head"></span>
+                <span class="ear left"></span>
+                <span class="ear right"></span>
+                <span class="eye left"></span>
+                <span class="eye right"></span>
+                <span class="nose"></span>
+                <span class="leg fl"></span>
+                <span class="leg fr"></span>
+                <span class="leg bl"></span>
+                <span class="leg br"></span>
+            </div>
         </div>
-        <img src="8.png" alt="Nikki Johnson on podcast" class="snapshot-badge fade-up">
         <div class="testimonial-slider">
             <div class="testimonial-track">
                 <div class="testimonial-slides" id="testimonial-slides">
@@ -1735,18 +1798,6 @@
             </a>
         </div>
         <a href="mailto:nikki.hill.johnson@gmail.com" class="btn btn-white">Start a Conversation</a>
-        <img src="7.png" alt="Nikki Johnson at work" class="snapshot-badge fade-up">
-        <div class="mini-cat cat-ginger cat-idle" aria-hidden="true">
-            <span class="cat-tail"></span>
-            <span class="cat-body"></span>
-            <span class="cat-head"></span>
-            <span class="cat-ear-left"></span>
-            <span class="cat-ear-right"></span>
-            <span class="cat-eye"></span>
-            <span class="cat-eye eye-2"></span>
-            <span class="cat-leg leg-1"></span>
-            <span class="cat-leg leg-2"></span>
-        </div>
     </div>
 </section>
 
@@ -1762,18 +1813,6 @@
     </div>
     <p>&copy; 2026 Nikki Johnson</p>
 </footer>
-
-<div id="scrollRunnerCat" class="mini-cat cat-black cat-runner" aria-hidden="true">
-    <span class="cat-tail"></span>
-    <span class="cat-body"></span>
-    <span class="cat-head"></span>
-    <span class="cat-ear-left"></span>
-    <span class="cat-ear-right"></span>
-    <span class="cat-eye"></span>
-    <span class="cat-eye eye-2"></span>
-    <span class="cat-leg leg-1"></span>
-    <span class="cat-leg leg-2"></span>
-</div>
 
 <script>
     // Scroll-triggered animations
@@ -1836,29 +1875,27 @@
         });
     });
 
-    // Cat runner on scroll
-    const runnerCat = document.getElementById('scrollRunnerCat');
-    let lastRunAt = 0;
-    let lastScrollY = window.scrollY;
-    window.addEventListener('scroll', () => {
-        const now = Date.now();
-        const currentScrollY = window.scrollY;
-        const scrollingDown = currentScrollY > lastScrollY;
-        lastScrollY = currentScrollY;
+    // Run tiny cat across the pink stats bar when it scrolls into view
+    const statsRunnerCat = document.getElementById('statsRunnerCat');
+    const metricsBar = document.querySelector('.metrics-bar');
+    let statsCatHasRun = false;
 
-        if (!scrollingDown || currentScrollY < 280) return;
-        if (runnerCat.classList.contains('is-running')) return;
-        if (now - lastRunAt < 9000) return;
+    if (statsRunnerCat && metricsBar) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting || statsCatHasRun) return;
+                statsCatHasRun = true;
+                statsRunnerCat.classList.remove('run');
+                void statsRunnerCat.offsetWidth;
+                statsRunnerCat.classList.add('run');
+            });
+        }, { threshold: 0.45 });
 
-        lastRunAt = now;
-        runnerCat.classList.remove('is-running');
-        void runnerCat.offsetWidth;
-        runnerCat.classList.add('is-running');
-    });
-
-    runnerCat.addEventListener('animationend', () => {
-        runnerCat.classList.remove('is-running');
-    });
+        statsObserver.observe(metricsBar);
+        statsRunnerCat.addEventListener('animationend', () => {
+            statsRunnerCat.classList.remove('run');
+        });
+    }
 </script>
 </body>
 </html>
