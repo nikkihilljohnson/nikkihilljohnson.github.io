@@ -135,7 +135,7 @@
             display: flex;
             align-items: center;
             padding: 120px 2rem 80px;
-            background: linear-gradient(135deg, var(--white) 0%, var(--purple-light) 50%, var(--white) 100%);
+            background: linear-gradient(135deg, var(--white) 0%, rgba(var(--pink-rgb), 0.05) 55%, rgba(var(--lime-rgb), 0.10) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -147,8 +147,19 @@
             width: 600px;
             height: 600px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(var(--pink-rgb), 0.06) 0%, transparent 70%);
-}
+            background: radial-gradient(circle, rgba(var(--pink-rgb), 0.10) 0%, transparent 70%);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -240px;
+            left: -180px;
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(var(--lime-rgb), 0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
         .hero-inner {
             max-width: 1200px;
             margin: 0 auto;
@@ -316,10 +327,12 @@
         }
 
         /* ---- ABOUT ---- */
-        .about { background: var(--white); }
+        .about {
+            background: linear-gradient(180deg, var(--white) 0%, rgba(var(--purple-rgb), 0.04) 100%);
+        }
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.05fr 0.95fr;
             gap: 4rem;
             align-items: start;
         }
@@ -345,7 +358,7 @@
         }
         .skill-tag {
             padding: 0.5rem 1rem;
-            background: var(--purple-light);
+            background: linear-gradient(135deg, rgba(var(--pink-rgb), 0.09), rgba(var(--lime-rgb), 0.16));
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 500;
@@ -356,6 +369,11 @@
             background: var(--purple);
             color: var(--white);
         }
+        .about-right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
         .about-highlights {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -365,8 +383,19 @@
             background: var(--gray-100);
             border-radius: 16px;
             padding: 1.25rem 1.5rem;
-            border-left: 4px solid var(--pink);
+            border: 1px solid rgba(var(--pink-rgb), 0.12);
+            position: relative;
+            overflow: hidden;
             transition: transform 0.2s;
+        }
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--pink), var(--lime));
         }
         .highlight-card:hover { transform: translateX(4px); }
         .highlight-card h4 {
@@ -379,6 +408,88 @@
             font-size: 0.82rem;
             color: var(--gray-600);
             line-height: 1.6;
+        }
+        .about-photo-panel {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 240px;
+            border: 2px solid rgba(var(--pink-rgb), 0.25);
+            box-shadow: 0 10px 30px rgba(var(--purple-rgb), 0.10);
+        }
+        .about-photo-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
+        }
+        .about-photo-note {
+            position: absolute;
+            left: 1rem;
+            right: 1rem;
+            bottom: 1rem;
+            background: rgba(13,13,26,0.75);
+            color: var(--white);
+            border: 1px solid rgba(var(--lime-rgb), 0.4);
+            border-radius: 14px;
+            padding: 0.7rem 0.9rem;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ---- CAT ELEMENTS ---- */
+        .cat-scout {
+            position: absolute;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.38rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.92);
+            border: 1px solid rgba(var(--pink-rgb), 0.32);
+            box-shadow: 0 8px 18px rgba(var(--purple-rgb), 0.12);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--purple);
+            z-index: 5;
+            animation: cat-hop 4.8s ease-in-out infinite;
+            white-space: nowrap;
+        }
+        .cat-scout .cat-icon {
+            font-size: 0.95rem;
+            line-height: 1;
+            animation: cat-nod 2.1s ease-in-out infinite;
+        }
+        .hero .cat-scout {
+            top: -14px;
+            right: 8px;
+        }
+        .about-photo-panel .cat-scout {
+            top: 0.75rem;
+            left: 0.75rem;
+        }
+        .contact {
+            position: relative;
+            overflow: hidden;
+        }
+        .contact .cat-scout {
+            right: 2rem;
+            bottom: 1.75rem;
+            color: var(--white);
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(var(--lime-rgb), 0.45);
+            backdrop-filter: blur(4px);
+        }
+        @keyframes cat-hop {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        @keyframes cat-nod {
+            0%, 100% { transform: rotate(0deg); }
+            40% { transform: rotate(-8deg); }
+            70% { transform: rotate(6deg); }
         }
 
         /* ---- EXPERIENCE ---- */
@@ -605,7 +716,7 @@
 
         /* ---- TESTIMONIAL ---- */
         .testimonial {
-            background: linear-gradient(135deg, var(--purple-light) 0%, var(--white) 100%);
+            background: linear-gradient(135deg, rgba(var(--pink-rgb), 0.08) 0%, rgba(var(--lime-rgb), 0.12) 50%, var(--white) 100%);
             padding: 100px 2rem;
         }
         .testimonial-slider {
@@ -734,12 +845,26 @@
             .float-card-2 { right: 0; top: 20px; }
             .metrics-inner { grid-template-columns: repeat(2, 1fr); }
             .about-grid { grid-template-columns: 1fr; }
+            .about-right-column { gap: 1rem; }
             .about-highlights { grid-template-columns: 1fr; }
+            .about-photo-panel { min-height: 280px; }
             .section-title { font-size: 2rem; }
             .nav-links { display: none; }
             .cases-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
             .timeline-item { padding-left: 50px; }
+            .hero .cat-scout { top: 8px; right: 10px; }
+            .contact .cat-scout {
+                position: static;
+                margin: 1.5rem auto 0;
+                display: inline-flex;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .cat-scout,
+            .cat-scout .cat-icon {
+                animation: none;
+            }
         }
 
         /* ---- EARLIER CAREER ---- */
@@ -925,6 +1050,7 @@
                 <span class="big-num">15+</span>
                 Years of impact
             </div>
+            <div class="cat-scout fade-up"><span class="cat-icon">🐱</span> analytics cat</div>
         </div>
     </div>
 </section>
@@ -980,30 +1106,37 @@
                     <span class="skill-tag">Chronically Online So You Don't Have To Be</span>
                 </div>
             </div>
-            <div class="about-highlights">
-                <div class="highlight-card fade-up">
-                    <h4>Storyteller at Heart</h4>
-                    <p>I translate brand positioning into stories people actually care about. Because facts tell, but stories sell. And yes, sometimes the story includes a meme.</p>
+            <div class="about-right-column">
+                <div class="about-highlights">
+                    <div class="highlight-card fade-up">
+                        <h4>Storyteller at Heart</h4>
+                        <p>I translate brand positioning into stories people actually care about. Because facts tell, but stories sell. And yes, sometimes the story includes a meme.</p>
+                    </div>
+                    <div class="highlight-card fade-up">
+                        <h4>Creative With Receipts</h4>
+                        <p>Big ideas are great. Proving they worked is better. I love a strong hook, a clean dashboard, and campaigns that deliver both vibes and ROI.</p>
+                    </div>
+                    <div class="highlight-card fade-up">
+                        <h4>Algorithm Survivor</h4>
+                        <p>I've worked through every platform shift, reach panic, and "this changes everything" moment. Xennial status confirmed. I survived the Oregon Trail. I can survive an algorithm update.</p>
+                    </div>
+                    <div class="highlight-card fade-up">
+                        <h4>Full-Funnel Adult</h4>
+                        <p>Awareness is nice. Revenue is nicer. I design social and paid strategies that support the entire customer journey, not just top-of-funnel applause.</p>
+                    </div>
+                    <div class="highlight-card fade-up">
+                        <h4>Multitasking Gold Medalist</h4>
+                        <p>Campaigns, deadlines, kids' schedules, group chats, and whatever the school just emailed about. Marketing logistics? Honestly relaxing.</p>
+                    </div>
+                    <div class="highlight-card fade-up">
+                        <h4>Internet Culture Translator</h4>
+                        <p>I help brands sound human online without trying too hard, being cringe (as the youths say), or jumping on trends after their expiration date.</p>
+                    </div>
                 </div>
-                <div class="highlight-card fade-up">
-                    <h4>Creative With Receipts</h4>
-                    <p>Big ideas are great. Proving they worked is better. I love a strong hook, a clean dashboard, and campaigns that deliver both vibes and ROI.</p>
-                </div>
-                <div class="highlight-card fade-up">
-                    <h4>Algorithm Survivor</h4>
-                    <p>I've worked through every platform shift, reach panic, and "this changes everything" moment. Xennial status confirmed. I survived the Oregon Trail. I can survive an algorithm update.</p>
-                </div>
-                <div class="highlight-card fade-up">
-                    <h4>Full-Funnel Adult</h4>
-                    <p>Awareness is nice. Revenue is nicer. I design social and paid strategies that support the entire customer journey, not just top-of-funnel applause.</p>
-                </div>
-                <div class="highlight-card fade-up">
-                    <h4>Multitasking Gold Medalist</h4>
-                    <p>Campaigns, deadlines, kids' schedules, group chats, and whatever the school just emailed about. Marketing logistics? Honestly relaxing.</p>
-                </div>
-                <div class="highlight-card fade-up">
-                    <h4>Internet Culture Translator</h4>
-                    <p>I help brands sound human online without trying too hard, being cringe (as the youths say), or jumping on trends after their expiration date.</p>
+                <div class="about-photo-panel fade-up">
+                    <img src="https://nikkihilljohnson.my.canva.site/_assets/media/098e93cac96858c266f477382f40e0ea.jpg" alt="Nikki Johnson smiling">
+                    <div class="cat-scout"><span class="cat-icon">😼</span> creative director cat</div>
+                    <p class="about-photo-note">Built from Mount Pleasant, SC with strategy, storytelling, and just enough chaos to keep the internet interested.</p>
                 </div>
             </div>
         </div>
@@ -1386,6 +1519,7 @@
             </a>
         </div>
         <a href="mailto:nikki.hill.johnson@gmail.com" class="btn btn-white">Start a Conversation</a>
+        <div class="cat-scout"><span class="cat-icon">🐾</span> inbox greeter</div>
     </div>
 </section>
 
