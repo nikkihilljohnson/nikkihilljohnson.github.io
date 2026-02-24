@@ -231,6 +231,20 @@
             display: flex;
             justify-content: center;
         }
+        .snapshot-badge {
+            position: absolute;
+            border-radius: 14px;
+            border: 2px solid rgba(var(--lime-rgb), 0.9);
+            box-shadow: 0 10px 24px rgba(var(--purple-rgb), 0.18);
+            object-fit: cover;
+            z-index: 4;
+        }
+        .hero-photo .snapshot-badge {
+            width: 98px;
+            height: 74px;
+            left: -50px;
+            top: 36px;
+        }
         .photo-frame {
             width: 380px;
             height: 460px;
@@ -411,85 +425,221 @@
         }
         .about-photo-panel {
             position: relative;
-            border-radius: 20px;
+            border-radius: 18px;
             overflow: hidden;
-            min-height: 240px;
-            border: 2px solid rgba(var(--pink-rgb), 0.25);
-            box-shadow: 0 10px 30px rgba(var(--purple-rgb), 0.10);
+            border: 1px solid rgba(var(--pink-rgb), 0.25);
+            background: var(--white);
+            box-shadow: 0 10px 26px rgba(var(--purple-rgb), 0.08);
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.85rem;
+            min-height: 170px;
         }
         .about-photo-panel img {
             width: 100%;
-            height: 100%;
+            height: 140px;
             object-fit: cover;
-            object-position: center 20%;
+            object-position: center;
             display: block;
+            border-radius: 12px;
+            border: 1px solid rgba(var(--purple-rgb), 0.1);
         }
         .about-photo-note {
-            position: absolute;
-            left: 1rem;
-            right: 1rem;
-            bottom: 1rem;
-            background: rgba(13,13,26,0.75);
-            color: var(--white);
-            border: 1px solid rgba(var(--lime-rgb), 0.4);
-            border-radius: 14px;
-            padding: 0.7rem 0.9rem;
-            font-size: 0.82rem;
-            line-height: 1.5;
-            backdrop-filter: blur(4px);
+            color: var(--gray-900);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            padding-right: 1rem;
         }
 
         /* ---- CAT ELEMENTS ---- */
-        .cat-scout {
+        .mini-cat {
+            --fur: #222222;
+            --fur-2: #333333;
+            --fur-3: #151515;
             position: absolute;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.38rem 0.75rem;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.92);
-            border: 1px solid rgba(var(--pink-rgb), 0.32);
-            box-shadow: 0 8px 18px rgba(var(--purple-rgb), 0.12);
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--purple);
-            z-index: 5;
-            animation: cat-hop 4.8s ease-in-out infinite;
-            white-space: nowrap;
+            width: 58px;
+            height: 36px;
+            z-index: 6;
+            pointer-events: none;
+            filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.18));
+            transform-origin: 70% 75%;
         }
-        .cat-scout .cat-icon {
-            font-size: 0.95rem;
-            line-height: 1;
-            animation: cat-nod 2.1s ease-in-out infinite;
+        .mini-cat .cat-body {
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            width: 34px;
+            height: 16px;
+            border-radius: 12px 13px 10px 10px;
+            background: linear-gradient(145deg, var(--fur), var(--fur-2));
         }
-        .hero .cat-scout {
-            top: -14px;
-            right: 8px;
+        .mini-cat .cat-head {
+            position: absolute;
+            right: 10px;
+            top: 6px;
+            width: 17px;
+            height: 14px;
+            border-radius: 9px;
+            background: linear-gradient(145deg, var(--fur), var(--fur-3));
         }
-        .about-photo-panel .cat-scout {
-            top: 0.75rem;
-            left: 0.75rem;
+        .mini-cat .cat-ear-left,
+        .mini-cat .cat-ear-right {
+            position: absolute;
+            top: 1px;
+            width: 7px;
+            height: 7px;
+            background: var(--fur-3);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        .mini-cat .cat-ear-left { right: 20px; }
+        .mini-cat .cat-ear-right { right: 11px; }
+        .mini-cat .cat-tail {
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 14px;
+            height: 20px;
+            border: 3px solid var(--fur-3);
+            border-right: 0;
+            border-bottom: 0;
+            border-radius: 14px 0 0 0;
+            transform: rotate(-5deg);
+        }
+        .mini-cat .cat-eye {
+            position: absolute;
+            right: 13px;
+            top: 11px;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            background: #b4ff62;
+        }
+        .mini-cat .cat-eye.eye-2 { right: 18px; top: 11px; }
+        .mini-cat .cat-leg {
+            position: absolute;
+            top: 27px;
+            width: 4px;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--fur-3);
+        }
+        .mini-cat .cat-leg.leg-1 { left: 14px; }
+        .mini-cat .cat-leg.leg-2 { left: 30px; }
+        .mini-cat.cat-black {
+            --fur: #2b2b2b;
+            --fur-2: #1d1d1d;
+            --fur-3: #0f0f0f;
+        }
+        .mini-cat.cat-ginger {
+            --fur: #f28b30;
+            --fur-2: #df6f16;
+            --fur-3: #b85410;
+        }
+        .mini-cat.cat-ginger .cat-body {
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(140, 62, 10, 0.18) 0 3px,
+                    rgba(242, 139, 48, 0.0) 3px 8px
+                ),
+                linear-gradient(145deg, var(--fur), var(--fur-2));
+        }
+        .mini-cat.cat-siamese {
+            --fur: #f0ddc2;
+            --fur-2: #e8d1b4;
+            --fur-3: #7b5949;
+        }
+        .mini-cat.cat-siamese .cat-head,
+        .mini-cat.cat-siamese .cat-ear-left,
+        .mini-cat.cat-siamese .cat-ear-right,
+        .mini-cat.cat-siamese .cat-tail,
+        .mini-cat.cat-siamese .cat-leg {
+            background: #6b4c3f;
+            border-color: #6b4c3f;
+        }
+        .mini-cat.cat-calico {
+            --fur: #f8f3ea;
+            --fur-2: #ebe2d3;
+            --fur-3: #2e2e2e;
+        }
+        .mini-cat.cat-calico .cat-body {
+            background:
+                radial-gradient(circle at 25% 45%, #ef8c3f 0 22%, transparent 23%),
+                radial-gradient(circle at 60% 65%, #222 0 20%, transparent 21%),
+                radial-gradient(circle at 75% 30%, #f3b44d 0 18%, transparent 19%),
+                linear-gradient(145deg, var(--fur), var(--fur-2));
+        }
+        .mini-cat.cat-calico .cat-head {
+            background:
+                radial-gradient(circle at 75% 30%, #ef8c3f 0 30%, transparent 31%),
+                radial-gradient(circle at 28% 68%, #2a2a2a 0 24%, transparent 25%),
+                linear-gradient(145deg, var(--fur), var(--fur-2));
+        }
+        .cat-idle {
+            animation: cat-bob 3.6s ease-in-out infinite;
+        }
+        .cat-peek {
+            bottom: -20px;
+            left: 14px;
+            animation: cat-peek 5.2s ease-in-out infinite;
+        }
+        .cat-runner {
+            position: fixed;
+            left: -90px;
+            bottom: 20px;
+            z-index: 120;
+            opacity: 0;
+        }
+        .cat-runner.is-running {
+            opacity: 1;
+            animation: run-across 6.5s linear forwards;
+        }
+        .hero .mini-cat.hero-cat {
+            top: -12px;
+            right: 4px;
+        }
+        .testimonial .mini-cat {
+            top: -18px;
+            left: 36px;
+        }
+        .testimonial .container { position: relative; }
+        .testimonial .snapshot-badge {
+            width: 110px;
+            height: 84px;
+            right: 48px;
+            bottom: 38px;
+            border-color: rgba(var(--pink-rgb), 0.8);
+        }
+        @keyframes cat-bob {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(-2deg); }
+        }
+        @keyframes cat-peek {
+            0%, 25%, 100% { transform: translateY(18px); }
+            42%, 75% { transform: translateY(0); }
+        }
+        @keyframes run-across {
+            0% { transform: translateX(0) scaleX(1); }
+            100% { transform: translateX(calc(100vw + 120px)) scaleX(1); }
         }
         .contact {
             position: relative;
             overflow: hidden;
         }
-        .contact .cat-scout {
+        .contact .container { position: relative; }
+        .contact .mini-cat {
             right: 2rem;
-            bottom: 1.75rem;
-            color: var(--white);
-            background: rgba(255,255,255,0.12);
-            border-color: rgba(var(--lime-rgb), 0.45);
-            backdrop-filter: blur(4px);
+            bottom: 1.2rem;
         }
-        @keyframes cat-hop {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-        @keyframes cat-nod {
-            0%, 100% { transform: rotate(0deg); }
-            40% { transform: rotate(-8deg); }
-            70% { transform: rotate(6deg); }
+        .contact .snapshot-badge {
+            width: 88px;
+            height: 88px;
+            right: 7.5rem;
+            bottom: 1rem;
+            border-radius: 50%;
+            border-color: rgba(255, 255, 255, 0.85);
         }
 
         /* ---- EXPERIENCE ---- */
@@ -718,6 +868,8 @@
         .testimonial {
             background: linear-gradient(135deg, rgba(var(--pink-rgb), 0.08) 0%, rgba(var(--lime-rgb), 0.12) 50%, var(--white) 100%);
             padding: 100px 2rem;
+            position: relative;
+            overflow: hidden;
         }
         .testimonial-slider {
             max-width: 900px;
@@ -847,22 +999,53 @@
             .about-grid { grid-template-columns: 1fr; }
             .about-right-column { gap: 1rem; }
             .about-highlights { grid-template-columns: 1fr; }
-            .about-photo-panel { min-height: 280px; }
+            .about-photo-panel {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                padding: 0.8rem;
+            }
+            .about-photo-panel img { height: 180px; }
+            .about-photo-note {
+                font-size: 0.85rem;
+                padding-right: 0;
+            }
             .section-title { font-size: 2rem; }
             .nav-links { display: none; }
             .cases-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
             .timeline-item { padding-left: 50px; }
-            .hero .cat-scout { top: 8px; right: 10px; }
-            .contact .cat-scout {
-                position: static;
-                margin: 1.5rem auto 0;
-                display: inline-flex;
+            .hero .mini-cat.hero-cat { top: -6px; right: 6px; }
+            .hero-photo .snapshot-badge {
+                left: -8px;
+                top: 8px;
+                width: 78px;
+                height: 58px;
+            }
+            .testimonial .mini-cat { left: auto; right: 18px; top: -20px; }
+            .testimonial .snapshot-badge {
+                right: 16px;
+                bottom: 24px;
+                width: 84px;
+                height: 64px;
+            }
+            .contact .mini-cat {
+                right: 0.9rem;
+                bottom: 0.9rem;
+            }
+            .contact .snapshot-badge {
+                right: 4.8rem;
+                width: 70px;
+                height: 70px;
+            }
+            .cat-runner {
+                transform: scale(0.85);
+                transform-origin: left bottom;
             }
         }
         @media (prefers-reduced-motion: reduce) {
-            .cat-scout,
-            .cat-scout .cat-icon {
+            .cat-idle,
+            .cat-peek,
+            .cat-runner.is-running {
                 animation: none;
             }
         }
@@ -1042,6 +1225,7 @@
                     <img src="https://nikkihilljohnson.my.canva.site/_assets/media/098e93cac96858c266f477382f40e0ea.jpg" alt="Nikki Johnson">
                 </div>
             </div>
+            <img src="9.png" alt="Nikki Johnson portrait" class="snapshot-badge fade-up">
             <div class="hero-float-card float-card-1">
                 <span class="big-num">~50x</span>
                 ROI on social
@@ -1050,7 +1234,17 @@
                 <span class="big-num">15+</span>
                 Years of impact
             </div>
-            <div class="cat-scout fade-up"><span class="cat-icon">🐱</span> analytics cat</div>
+            <div class="mini-cat cat-black cat-idle hero-cat fade-up" aria-hidden="true">
+                <span class="cat-tail"></span>
+                <span class="cat-body"></span>
+                <span class="cat-head"></span>
+                <span class="cat-ear-left"></span>
+                <span class="cat-ear-right"></span>
+                <span class="cat-eye"></span>
+                <span class="cat-eye eye-2"></span>
+                <span class="cat-leg leg-1"></span>
+                <span class="cat-leg leg-2"></span>
+            </div>
         </div>
     </div>
 </section>
@@ -1134,9 +1328,19 @@
                     </div>
                 </div>
                 <div class="about-photo-panel fade-up">
-                    <img src="https://nikkihilljohnson.my.canva.site/_assets/media/098e93cac96858c266f477382f40e0ea.jpg" alt="Nikki Johnson smiling">
-                    <div class="cat-scout"><span class="cat-icon">😼</span> creative director cat</div>
+                    <img src="1.png" alt="Nikki Johnson working at a laptop">
                     <p class="about-photo-note">Built from Mount Pleasant, SC with strategy, storytelling, and just enough chaos to keep the internet interested.</p>
+                    <div class="mini-cat cat-calico cat-peek" aria-hidden="true">
+                        <span class="cat-tail"></span>
+                        <span class="cat-body"></span>
+                        <span class="cat-head"></span>
+                        <span class="cat-ear-left"></span>
+                        <span class="cat-ear-right"></span>
+                        <span class="cat-eye"></span>
+                        <span class="cat-eye eye-2"></span>
+                        <span class="cat-leg leg-1"></span>
+                        <span class="cat-leg leg-2"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1454,10 +1658,22 @@
 <!-- TESTIMONIALS -->
 <section class="testimonial">
     <div class="container">
+        <div class="mini-cat cat-siamese cat-idle fade-up" aria-hidden="true">
+            <span class="cat-tail"></span>
+            <span class="cat-body"></span>
+            <span class="cat-head"></span>
+            <span class="cat-ear-left"></span>
+            <span class="cat-ear-right"></span>
+            <span class="cat-eye"></span>
+            <span class="cat-eye eye-2"></span>
+            <span class="cat-leg leg-1"></span>
+            <span class="cat-leg leg-2"></span>
+        </div>
         <div class="section-header" style="text-align: center;">
             <p class="section-label">What People Say</p>
             <h2 class="section-title">Client Testimonials</h2>
         </div>
+        <img src="8.png" alt="Nikki Johnson on podcast" class="snapshot-badge fade-up">
         <div class="testimonial-slider">
             <div class="testimonial-track">
                 <div class="testimonial-slides" id="testimonial-slides">
@@ -1519,7 +1735,18 @@
             </a>
         </div>
         <a href="mailto:nikki.hill.johnson@gmail.com" class="btn btn-white">Start a Conversation</a>
-        <div class="cat-scout"><span class="cat-icon">🐾</span> inbox greeter</div>
+        <img src="7.png" alt="Nikki Johnson at work" class="snapshot-badge fade-up">
+        <div class="mini-cat cat-ginger cat-idle" aria-hidden="true">
+            <span class="cat-tail"></span>
+            <span class="cat-body"></span>
+            <span class="cat-head"></span>
+            <span class="cat-ear-left"></span>
+            <span class="cat-ear-right"></span>
+            <span class="cat-eye"></span>
+            <span class="cat-eye eye-2"></span>
+            <span class="cat-leg leg-1"></span>
+            <span class="cat-leg leg-2"></span>
+        </div>
     </div>
 </section>
 
@@ -1535,6 +1762,18 @@
     </div>
     <p>&copy; 2026 Nikki Johnson</p>
 </footer>
+
+<div id="scrollRunnerCat" class="mini-cat cat-black cat-runner" aria-hidden="true">
+    <span class="cat-tail"></span>
+    <span class="cat-body"></span>
+    <span class="cat-head"></span>
+    <span class="cat-ear-left"></span>
+    <span class="cat-ear-right"></span>
+    <span class="cat-eye"></span>
+    <span class="cat-eye eye-2"></span>
+    <span class="cat-leg leg-1"></span>
+    <span class="cat-leg leg-2"></span>
+</div>
 
 <script>
     // Scroll-triggered animations
@@ -1595,6 +1834,30 @@
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
+    });
+
+    // Cat runner on scroll
+    const runnerCat = document.getElementById('scrollRunnerCat');
+    let lastRunAt = 0;
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        const now = Date.now();
+        const currentScrollY = window.scrollY;
+        const scrollingDown = currentScrollY > lastScrollY;
+        lastScrollY = currentScrollY;
+
+        if (!scrollingDown || currentScrollY < 280) return;
+        if (runnerCat.classList.contains('is-running')) return;
+        if (now - lastRunAt < 9000) return;
+
+        lastRunAt = now;
+        runnerCat.classList.remove('is-running');
+        void runnerCat.offsetWidth;
+        runnerCat.classList.add('is-running');
+    });
+
+    runnerCat.addEventListener('animationend', () => {
+        runnerCat.classList.remove('is-running');
     });
 </script>
 </body>
