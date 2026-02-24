@@ -578,21 +578,43 @@
         }
         .float-card-2 { overflow: visible; }
         .cat-top-impact {
-            top: -38px;
+            top: -44px;
             left: 50%;
-            transform: translateX(-50%) scale(0.78);
+            transform: translateX(-50%) scale(0.8);
         }
-        .cat-top-impact .leg { display: none; }
-        .cat-top-impact .paw {
+        .cat-top-impact.cat-sit .body {
+            left: 21px;
+            top: 20px;
+            width: 40px;
+            height: 23px;
+            border-radius: 16px;
+        }
+        .cat-top-impact.cat-sit .head {
+            right: 12px;
+            top: 6px;
+        }
+        .cat-top-impact.cat-sit .tail {
+            left: 6px;
+            top: 15px;
+            width: 18px;
+            height: 22px;
+        }
+        .cat-top-impact.cat-sit .leg.fl,
+        .cat-top-impact.cat-sit .leg.fr,
+        .cat-top-impact.cat-sit .leg.bl,
+        .cat-top-impact.cat-sit .leg.br {
+            display: none;
+        }
+        .cat-top-impact.cat-sit .paw {
             position: absolute;
             width: 8px;
             height: 6px;
             background: var(--fur-dark);
             border-radius: 10px;
-            top: 39px;
+            top: 41px;
         }
-        .cat-top-impact .paw.left { left: 31px; }
-        .cat-top-impact .paw.right { left: 41px; }
+        .cat-top-impact.cat-sit .paw.left { left: 37px; }
+        .cat-top-impact.cat-sit .paw.right { left: 48px; }
         .metrics-bar { position: relative; }
         .cat-stats-runner {
             left: -110px;
@@ -608,9 +630,11 @@
             overflow: visible;
         }
         .cat-impact-peek {
-            top: -18px;
+            top: -20px;
             right: 26px;
             transform: scale(0.58);
+            opacity: 0;
+            transform-origin: 50% 100%;
         }
         .cat-impact-peek .body,
         .cat-impact-peek .tail,
@@ -619,17 +643,28 @@
         .cat-impact-peek .leg.fl,
         .cat-impact-peek .leg.fr {
             display: block;
-            top: 31px;
+            top: 32px;
             height: 10px;
             width: 8px;
-            animation: paw-peek 1.9s ease-in-out infinite;
+            animation: paw-peek 1.4s ease-in-out infinite;
+        }
+        .cat-impact-peek .leg.fl { left: 31px; }
+        .cat-impact-peek .leg.fr { left: 41px; }
+        .cat-impact-peek.show {
+            opacity: 1;
+            animation: pop-peek 0.45s cubic-bezier(.2,.8,.24,1) forwards;
+        }
+        .cat-impact-peek.show .head,
+        .cat-impact-peek.show .ear,
+        .cat-impact-peek.show .eye,
+        .cat-impact-peek.show .nose {
+            animation: tiny-head-bob 1.6s ease-in-out infinite;
         }
         .services { position: relative; overflow: visible; }
-        .services .container { position: relative; }
         .cat-service-play {
-            top: -52px;
+            top: -18px;
             left: 50%;
-            transform: translateX(-50%) rotate(162deg) scale(0.78);
+            transform: translateX(-50%) rotate(180deg) scale(0.72);
         }
         .cat-service-play .ball {
             position: absolute;
@@ -648,7 +683,7 @@
             top: -28px;
             left: 50%;
             transform: translateX(120px) scale(0.62);
-            animation: cat-rub 3.8s ease-in-out infinite;
+            animation: cat-rub-fig8 4.2s linear infinite;
         }
         .contact { position: relative; overflow: hidden; }
         @keyframes leg-step-a {
@@ -671,14 +706,29 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(2px); }
         }
+        @keyframes pop-peek {
+            0% { transform: scale(0.54) translateY(18px); }
+            70% { transform: scale(0.62) translateY(-2px); }
+            100% { transform: scale(0.58) translateY(0); }
+        }
+        @keyframes tiny-head-bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-1.5px); }
+        }
         @keyframes ball-bop {
             0%, 100% { transform: translateY(0) translateX(0); }
             50% { transform: translateY(-7px) translateX(6px); }
         }
-        @keyframes cat-rub {
-            0%, 100% { transform: translateX(120px) scale(0.62) rotate(0deg); }
-            30% { transform: translateX(102px) scale(0.62) rotate(-6deg); }
-            58% { transform: translateX(116px) scale(0.62) rotate(3deg); }
+        @keyframes cat-rub-fig8 {
+            0% { transform: translateX(120px) translateY(0) scale(0.62) rotate(0deg); }
+            12% { transform: translateX(108px) translateY(-6px) scale(0.62) rotate(-5deg); }
+            25% { transform: translateX(96px) translateY(0) scale(0.62) rotate(-2deg); }
+            37% { transform: translateX(108px) translateY(6px) scale(0.62) rotate(4deg); }
+            50% { transform: translateX(120px) translateY(0) scale(0.62) rotate(0deg); }
+            62% { transform: translateX(132px) translateY(-6px) scale(0.62) rotate(-4deg); }
+            75% { transform: translateX(144px) translateY(0) scale(0.62) rotate(2deg); }
+            87% { transform: translateX(132px) translateY(6px) scale(0.62) rotate(5deg); }
+            100% { transform: translateX(120px) translateY(0) scale(0.62) rotate(0deg); }
         }
 
         /* ---- EXPERIENCE ---- */
@@ -1060,8 +1110,8 @@
                 transform: scale(0.5);
             }
             .cat-service-play {
-                top: -38px;
-                transform: translateX(-50%) rotate(162deg) scale(0.66);
+                top: -12px;
+                transform: translateX(-50%) rotate(180deg) scale(0.66);
             }
             .cat-testimonial-rub {
                 transform: translateX(78px) scale(0.55);
@@ -1261,7 +1311,7 @@
             <div class="hero-float-card float-card-2">
                 <span class="big-num">15+</span>
                 Years of impact
-                <div class="rcat coat-black cat-top-impact" aria-hidden="true">
+                <div class="rcat coat-siamese cat-top-impact cat-sit" aria-hidden="true">
                     <span class="tail"></span>
                     <span class="body"></span>
                     <span class="head"></span>
@@ -1395,7 +1445,7 @@
                         <span class="timeline-company">Nikki Hill Johnson Consulting</span>
                         <span class="timeline-date">Nov 2025 – Present</span>
                     </div>
-                    <div class="rcat coat-calico cat-impact-peek" aria-hidden="true">
+                    <div id="impactPeekCat" class="rcat coat-black cat-impact-peek" aria-hidden="true">
                         <span class="head"></span>
                         <span class="ear left"></span>
                         <span class="ear right"></span>
@@ -1661,22 +1711,22 @@
 
 <!-- SERVICES -->
 <section class="services" id="services">
+    <div class="rcat coat-siamese walk cat-service-play" aria-hidden="true">
+        <span class="tail"></span>
+        <span class="body"></span>
+        <span class="head"></span>
+        <span class="ear left"></span>
+        <span class="ear right"></span>
+        <span class="eye left"></span>
+        <span class="eye right"></span>
+        <span class="nose"></span>
+        <span class="leg fl"></span>
+        <span class="leg fr"></span>
+        <span class="leg bl"></span>
+        <span class="leg br"></span>
+        <span class="ball"></span>
+    </div>
     <div class="container">
-        <div class="rcat coat-siamese walk cat-service-play" aria-hidden="true">
-            <span class="tail"></span>
-            <span class="body"></span>
-            <span class="head"></span>
-            <span class="ear left"></span>
-            <span class="ear right"></span>
-            <span class="eye left"></span>
-            <span class="eye right"></span>
-            <span class="nose"></span>
-            <span class="leg fl"></span>
-            <span class="leg fr"></span>
-            <span class="leg bl"></span>
-            <span class="leg br"></span>
-            <span class="ball"></span>
-        </div>
         <div class="section-header">
             <p class="section-label">What I Do</p>
             <h2 class="section-title">How I Help Brands Grow</h2>
@@ -1895,6 +1945,21 @@
         statsRunnerCat.addEventListener('animationend', () => {
             statsRunnerCat.classList.remove('run');
         });
+    }
+
+    // Pop-up peek cat on first impact card
+    const impactPeekCat = document.getElementById('impactPeekCat');
+    const firstImpactCard = document.querySelector('.timeline .timeline-item:first-child .timeline-card');
+    if (impactPeekCat && firstImpactCard) {
+        const peekObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                impactPeekCat.classList.add('show');
+                peekObserver.disconnect();
+            });
+        }, { threshold: 0.6 });
+
+        peekObserver.observe(firstImpactCard);
     }
 </script>
 </body>
