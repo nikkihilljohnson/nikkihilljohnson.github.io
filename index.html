@@ -452,6 +452,7 @@
             pointer-events: none;
             z-index: 7;
             filter: drop-shadow(0 7px 10px rgba(0,0,0,0.22));
+            transform-origin: 50% 75%;
         }
         .rcat .body {
             position: absolute;
@@ -459,7 +460,7 @@
             top: 18px;
             width: 50px;
             height: 24px;
-            border-radius: 14px 16px 14px 12px;
+            border-radius: 16px 18px 14px 14px;
             background: linear-gradient(165deg, var(--fur-light), var(--fur));
         }
         .rcat .head {
@@ -468,8 +469,29 @@
             top: 8px;
             width: 24px;
             height: 20px;
-            border-radius: 11px;
+            border-radius: 12px 12px 11px 11px;
             background: linear-gradient(160deg, var(--fur-light), var(--fur-dark));
+        }
+        .rcat .head::before {
+            content: '';
+            position: absolute;
+            width: 11px;
+            height: 8px;
+            right: 6px;
+            top: 9px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.15);
+        }
+        .rcat .head::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 1px;
+            right: 2px;
+            top: 13px;
+            background: rgba(255,255,255,0.55);
+            box-shadow: 0 -3px 0 rgba(255,255,255,0.45), 0 3px 0 rgba(255,255,255,0.45);
+            opacity: 0.55;
         }
         .rcat .ear {
             position: absolute;
@@ -488,6 +510,7 @@
             border-radius: 50%;
             background: var(--eye);
             top: 15px;
+            animation: cat-blink 5.6s steps(1) infinite;
         }
         .rcat .eye.left { right: 24px; }
         .rcat .eye.right { right: 18px; }
@@ -530,6 +553,7 @@
         .rcat.walk .leg.br { animation: leg-step-a 0.45s linear infinite; }
         .rcat.walk .leg.fr,
         .rcat.walk .leg.bl { animation: leg-step-b 0.45s linear infinite; }
+        .rcat.walk .body { animation: cat-body-bob 0.45s ease-in-out infinite; }
         .rcat.coat-black {
             --fur: #1f1f1f;
             --fur-dark: #101010;
@@ -615,6 +639,7 @@
         }
         .cat-top-impact.cat-sit .paw.left { left: 37px; }
         .cat-top-impact.cat-sit .paw.right { left: 48px; }
+        .cat-top-impact.cat-sit { animation: cat-sit-breathe 2.6s ease-in-out infinite; }
         .metrics-bar { position: relative; }
         .cat-stats-runner {
             left: -110px;
@@ -694,9 +719,21 @@
             0%, 100% { transform: rotate(16deg); }
             50% { transform: rotate(-14deg); }
         }
+        @keyframes cat-body-bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-1px); }
+        }
         @keyframes tail-swish {
             0%, 100% { transform: rotate(-6deg); }
             50% { transform: rotate(14deg); }
+        }
+        @keyframes cat-blink {
+            0%, 46%, 50%, 96%, 100% { transform: scaleY(1); }
+            48%, 98% { transform: scaleY(0.08); }
+        }
+        @keyframes cat-sit-breathe {
+            0%, 100% { transform: translateX(-50%) scale(0.8); }
+            50% { transform: translateX(-50%) scale(0.815); }
         }
         @keyframes run-stats {
             0% { transform: translateX(0) scale(0.75); }
