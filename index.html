@@ -439,350 +439,228 @@
             padding-right: 1rem;
         }
 
-        /* ---- CAT ELEMENTS ---- */
-        .rcat {
-            --fur: #202020;
-            --fur-dark: #131313;
-            --fur-light: #2d2d2d;
-            --nose: #f1b6b6;
-            --eye: #b8ff59;
+        /* ---- CAT ELEMENTS (SVG cartoon system) ---- */
+        .ccat {
             position: absolute;
-            width: 88px;
-            height: 56px;
             pointer-events: none;
             z-index: 7;
-            filter: drop-shadow(0 7px 10px rgba(0,0,0,0.22));
-            transform-origin: 50% 75%;
+            filter: drop-shadow(0 6px 10px rgba(0,0,0,0.20));
         }
-        .rcat .body {
-            position: absolute;
-            left: 14px;
-            top: 18px;
-            width: 50px;
-            height: 24px;
-            border-radius: 16px 18px 14px 14px;
-            background: linear-gradient(165deg, var(--fur-light), var(--fur));
+        .ccat svg { overflow: visible; }
+        /* Shared animation helper classes */
+        .cat-tail-g {
+            transform-box: fill-box;
+            transform-origin: 15% 92%;
+            animation: tail-swish 2.2s ease-in-out infinite;
         }
-        .rcat .head {
-            position: absolute;
-            right: 10px;
-            top: 8px;
-            width: 24px;
-            height: 20px;
-            border-radius: 12px 12px 11px 11px;
-            background: linear-gradient(160deg, var(--fur-light), var(--fur-dark));
+        .cat-leg-fl, .cat-leg-fr, .cat-leg-bl, .cat-leg-br {
+            transform-box: fill-box;
+            transform-origin: 50% 0%;
         }
-        .rcat .head::before {
-            content: '';
-            position: absolute;
-            width: 11px;
-            height: 8px;
-            right: 6px;
-            top: 9px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.15);
-        }
-        .rcat .head::after {
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 1px;
-            right: 2px;
-            top: 13px;
-            background: rgba(255,255,255,0.55);
-            box-shadow: 0 -3px 0 rgba(255,255,255,0.45), 0 3px 0 rgba(255,255,255,0.45);
-            opacity: 0.55;
-        }
-        .rcat .ear {
-            position: absolute;
-            top: 2px;
-            width: 10px;
-            height: 10px;
-            background: var(--fur-dark);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        }
-        .rcat .ear.left { right: 26px; }
-        .rcat .ear.right { right: 14px; }
-        .rcat .eye {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            border-radius: 50%;
-            background: var(--eye);
-            top: 15px;
+        .cat-eye-l, .cat-eye-r {
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
             animation: cat-blink 5.6s steps(1) infinite;
         }
-        .rcat .eye.left { right: 24px; }
-        .rcat .eye.right { right: 18px; }
-        .rcat .nose {
-            position: absolute;
-            width: 4px;
-            height: 3px;
-            border-radius: 40% 40% 55% 55%;
-            background: var(--nose);
-            right: 20px;
-            top: 18px;
-        }
-        .rcat .tail {
-            position: absolute;
-            left: 2px;
-            top: 11px;
-            width: 22px;
-            height: 24px;
-            border: 4px solid var(--fur-dark);
-            border-right: 0;
-            border-bottom: 0;
-            border-radius: 22px 0 0 0;
-            transform-origin: 80% 100%;
-            animation: tail-swish 1.8s ease-in-out infinite;
-        }
-        .rcat .leg {
-            position: absolute;
-            width: 7px;
-            height: 16px;
-            border-radius: 7px;
-            background: var(--fur-dark);
-            top: 34px;
-            transform-origin: 50% 2px;
-        }
-        .rcat .leg.fl { left: 28px; }
-        .rcat .leg.fr { left: 39px; }
-        .rcat .leg.bl { left: 17px; }
-        .rcat .leg.br { left: 49px; }
-        .rcat.walk .leg.fl,
-        .rcat.walk .leg.br { animation: leg-step-a 0.45s linear infinite; }
-        .rcat.walk .leg.fr,
-        .rcat.walk .leg.bl { animation: leg-step-b 0.45s linear infinite; }
-        .rcat.walk .body { animation: cat-body-bob 0.45s ease-in-out infinite; }
-        .rcat.coat-black {
-            --fur: #1f1f1f;
-            --fur-dark: #101010;
-            --fur-light: #323232;
-        }
-        .rcat.coat-ginger {
-            --fur: #d06c2a;
-            --fur-dark: #a94d14;
-            --fur-light: #e68c47;
-        }
-        .rcat.coat-ginger .body {
-            background:
-                repeating-linear-gradient(90deg, rgba(125,58,19,.22) 0 4px, transparent 4px 9px),
-                linear-gradient(165deg, var(--fur-light), var(--fur));
-        }
-        .rcat.coat-siamese {
-            --fur: #e6d1b4;
-            --fur-dark: #6e4d40;
-            --fur-light: #f1dfc5;
-            --eye: #8cff5f;
-        }
-        .rcat.coat-siamese .head,
-        .rcat.coat-siamese .ear,
-        .rcat.coat-siamese .tail,
-        .rcat.coat-siamese .leg {
-            background: #6e4d40;
-            border-color: #6e4d40;
-        }
-        .rcat.coat-calico {
-            --fur: #f0e5d0;
-            --fur-dark: #242424;
-            --fur-light: #f8efe0;
-            filter: drop-shadow(0 0 2px rgba(80,50,10,0.30)) drop-shadow(0 6px 10px rgba(0,0,0,0.22));
-        }
-        .rcat.coat-calico .body {
-            background:
-                radial-gradient(circle at 30% 52%, #ef8c3f 0 22%, transparent 23%),
-                radial-gradient(circle at 68% 68%, #2b2b2b 0 19%, transparent 20%),
-                radial-gradient(circle at 75% 26%, #f3b44d 0 17%, transparent 18%),
-                linear-gradient(165deg, var(--fur-light), var(--fur));
-        }
-        .rcat.coat-calico .head {
-            background:
-                radial-gradient(circle at 72% 33%, #ef8c3f 0 28%, transparent 29%),
-                radial-gradient(circle at 26% 72%, #2b2b2b 0 24%, transparent 25%),
-                linear-gradient(165deg, var(--fur-light), var(--fur));
-        }
+        .cat-eye-r { animation-delay: -2.1s; }
+        .cat-body  { transform-box: fill-box; transform-origin: 50% 50%; }
+        /* 1. Siamese sitter — hero float card */
         .float-card-2 { overflow: visible; }
         .cat-top-impact {
-            top: -44px;
+            top: -62px;
             left: 50%;
-            transform: translateX(-50%) scale(0.8);
+            transform: translateX(-50%);
+            animation: cat-sit-breathe 2.8s ease-in-out infinite;
         }
-        .cat-top-impact.cat-sit .body {
-            left: 24px;
-            top: 18px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50% 50% 38% 38%;
-        }
-        .cat-top-impact.cat-sit .head {
-            right: 10px;
-            top: 4px;
-        }
-        .cat-top-impact.cat-sit .tail {
-            left: 10px;
-            top: 28px;
-            width: 14px;
-            height: 18px;
-            border-radius: 18px 0 0 0;
-        }
-        .cat-top-impact.cat-sit .leg.fl,
-        .cat-top-impact.cat-sit .leg.fr,
-        .cat-top-impact.cat-sit .leg.bl,
-        .cat-top-impact.cat-sit .leg.br {
-            display: none;
-        }
-        .cat-top-impact.cat-sit .paw {
-            position: absolute;
-            width: 9px;
-            height: 7px;
-            background: var(--fur-dark);
-            border-radius: 10px;
-            top: 43px;
-        }
-        .cat-top-impact.cat-sit .paw.left { left: 34px; }
-        .cat-top-impact.cat-sit .paw.right { left: 46px; }
-        .cat-top-impact.cat-sit { animation: cat-sit-breathe 2.6s ease-in-out infinite; }
+        /* 2. Ginger pouncer — metrics bar */
         .metrics-bar { position: relative; }
         .cat-stats-runner {
             left: -110px;
-            bottom: 8px;
-            transform: scale(0.75);
+            bottom: 2px;
             opacity: 0;
         }
         .cat-stats-runner.run {
             opacity: 1;
-            animation: run-stats 5.4s linear forwards;
+            animation: run-stats-pounce 5.6s linear forwards;
         }
-        .timeline .timeline-item:first-child .timeline-card {
-            overflow: visible;
+        .cat-stats-runner.run .cat-leg-fl,
+        .cat-stats-runner.run .cat-leg-br {
+            animation: gallop-fl 0.26s linear infinite;
         }
+        .cat-stats-runner.run .cat-leg-fr,
+        .cat-stats-runner.run .cat-leg-bl {
+            animation: gallop-fr 0.26s linear infinite;
+        }
+        .cat-stats-runner.run .cat-tail-g {
+            animation: tail-run 0.52s ease-in-out infinite;
+        }
+        .cat-stats-runner.run .cat-body {
+            animation: body-gallop 0.26s ease-in-out infinite;
+        }
+        /* 3. Black peeker — timeline card */
+        .timeline .timeline-item:first-child .timeline-card { overflow: visible; }
         .cat-impact-peek {
-            top: -20px;
-            right: 26px;
-            transform: scale(0.58);
-            opacity: 0;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
             transform-origin: 50% 100%;
+            opacity: 0;
         }
-        .cat-impact-peek .body,
-        .cat-impact-peek .tail,
-        .cat-impact-peek .leg.bl,
-        .cat-impact-peek .leg.br { display: none; }
-        .cat-impact-peek .leg.fl,
-        .cat-impact-peek .leg.fr {
-            display: block;
-            top: 18px;
-            height: 14px;
-            width: 10px;
-            border-radius: 8px;
-            animation: paw-peek 1.8s ease-in-out infinite;
-        }
-        .cat-impact-peek .leg.fl { left: 28px; }
-        .cat-impact-peek .leg.fr { left: 42px; }
         .cat-impact-peek.show {
-            animation: pop-peek 0.65s cubic-bezier(.15,.85,.2,1.1) both;
+            animation: pop-peek 0.7s cubic-bezier(.15,.85,.2,1.1) forwards;
         }
-        .cat-impact-peek.show .head,
-        .cat-impact-peek.show .ear,
-        .cat-impact-peek.show .eye,
-        .cat-impact-peek.show .nose {
-            animation: tiny-head-bob 2s ease-in-out infinite 0.65s;
+        .cat-impact-peek .cat-paw-l,
+        .cat-impact-peek .cat-paw-r {
+            transform-box: fill-box;
+            transform-origin: 50% 0%;
+            animation: paw-grip 2s ease-in-out infinite;
         }
+        .cat-impact-peek .cat-paw-r { animation-delay: -1s; }
+        /* 4. Calico walker — services section border */
         .services { position: relative; overflow: visible; }
         .cat-service-play {
-            top: -26px;
+            top: -34px;
             left: 50%;
-            transform: translateX(-50%) scale(0.72);
+            transform: translateX(-50%);
         }
-        .cat-service-play .ball {
-            position: absolute;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #fff, var(--lime));
-            right: -4px;
-            top: 20px;
-            box-shadow: 0 0 0 2px rgba(var(--pink-rgb),0.35);
+        .cat-service-play .cat-leg-fr {
+            animation: cat-bat-paw 1.8s ease-in-out infinite;
+        }
+        .cat-service-play .cat-leg-fl {
+            animation: cat-bat-paw 1.8s ease-in-out infinite 0.9s;
+        }
+        .cat-service-play .cat-ball {
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
             animation: ball-bop 1.4s ease-in-out infinite;
         }
+        /* 5. Black rubber cat — testimonial figure-8 */
         .testimonial .container { position: relative; }
         .testimonial .section-header { position: relative; }
         .cat-testimonial-rub {
-            top: -28px;
+            top: -32px;
             left: 50%;
-            transform: translateX(120px) scale(0.62);
-            animation: cat-rub-fig8 5.8s linear infinite;
+            transform: translateX(80px) scale(-0.65, 0.65);
+            animation: cat-sway-rub 6s ease-in-out infinite;
+        }
+        .cat-testimonial-rub .cat-tail-g {
+            animation: tail-swish 1.4s ease-in-out infinite;
         }
         .contact { position: relative; overflow: hidden; }
+        /* === KEYFRAMES === */
+        @keyframes cat-sit-breathe {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(-2px); }
+        }
+        /* Ginger pounce: 5 leap arcs across screen */
+        @keyframes run-stats-pounce {
+            0%   { transform: translateX(0vw)   translateY(0px); }
+            3%   { transform: translateX(3vw)   translateY(5px); }
+            8%   { transform: translateX(8vw)   translateY(-26px); }
+            13%  { transform: translateX(13vw)  translateY(0px); }
+            15%  { transform: translateX(15vw)  translateY(7px); }
+            18%  { transform: translateX(18vw)  translateY(0px); }
+            21%  { transform: translateX(21vw)  translateY(5px); }
+            26%  { transform: translateX(26vw)  translateY(-26px); }
+            31%  { transform: translateX(31vw)  translateY(0px); }
+            33%  { transform: translateX(33vw)  translateY(7px); }
+            36%  { transform: translateX(36vw)  translateY(0px); }
+            39%  { transform: translateX(39vw)  translateY(5px); }
+            44%  { transform: translateX(44vw)  translateY(-26px); }
+            49%  { transform: translateX(49vw)  translateY(0px); }
+            51%  { transform: translateX(51vw)  translateY(7px); }
+            54%  { transform: translateX(54vw)  translateY(0px); }
+            57%  { transform: translateX(57vw)  translateY(5px); }
+            62%  { transform: translateX(62vw)  translateY(-26px); }
+            67%  { transform: translateX(67vw)  translateY(0px); }
+            69%  { transform: translateX(69vw)  translateY(7px); }
+            72%  { transform: translateX(72vw)  translateY(0px); }
+            75%  { transform: translateX(75vw)  translateY(5px); }
+            80%  { transform: translateX(80vw)  translateY(-26px); }
+            85%  { transform: translateX(85vw)  translateY(0px); }
+            87%  { transform: translateX(87vw)  translateY(7px); }
+            90%  { transform: translateX(90vw)  translateY(0px); }
+            100% { transform: translateX(115vw) translateY(0px); }
+        }
+        @keyframes gallop-fl {
+            0%, 100% { transform: rotate(-34deg); }
+            50%       { transform: rotate(28deg); }
+        }
+        @keyframes gallop-fr {
+            0%, 100% { transform: rotate(26deg); }
+            50%       { transform: rotate(-30deg); }
+        }
+        @keyframes gallop-bl {
+            0%, 100% { transform: rotate(26deg); }
+            50%       { transform: rotate(-30deg); }
+        }
+        @keyframes gallop-br {
+            0%, 100% { transform: rotate(-34deg); }
+            50%       { transform: rotate(28deg); }
+        }
+        @keyframes body-gallop {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25%       { transform: translateY(-3px) rotate(-2deg); }
+            75%       { transform: translateY(-2px) rotate(1.5deg); }
+        }
         @keyframes leg-step-a {
-            0%, 100% { transform: rotate(-11deg); }
-            50% { transform: rotate(18deg); }
+            0%, 100% { transform: rotate(-14deg); }
+            50%       { transform: rotate(18deg); }
         }
         @keyframes leg-step-b {
             0%, 100% { transform: rotate(16deg); }
-            50% { transform: rotate(-14deg); }
+            50%       { transform: rotate(-12deg); }
         }
-        @keyframes cat-body-bob {
+        @keyframes body-walk {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-1px); }
+            50%       { transform: translateY(-2px); }
         }
         @keyframes tail-swish {
-            0%, 100% { transform: rotate(-6deg); }
-            50% { transform: rotate(14deg); }
+            0%, 100% { transform: rotate(-8deg); }
+            50%       { transform: rotate(16deg); }
+        }
+        @keyframes tail-run {
+            0%, 100% { transform: rotate(-28deg); }
+            50%       { transform: rotate(-8deg); }
         }
         @keyframes cat-blink {
             0%, 46%, 50%, 96%, 100% { transform: scaleY(1); }
-            48%, 98% { transform: scaleY(0.08); }
+            48%, 98%                 { transform: scaleY(0.08); }
         }
-        @keyframes cat-sit-breathe {
-            0%, 100% { transform: translateX(-50%) scale(0.8); }
-            50% { transform: translateX(-50%) scale(0.815); }
-        }
-        @keyframes run-stats {
-            0% { transform: translateX(0) scale(0.75); }
-            100% { transform: translateX(calc(100vw + 150px)) scale(0.75); }
-        }
-        @keyframes paw-peek {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(2px); }
+        @keyframes paw-grip {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50%       { transform: translateY(2px) rotate(4deg); }
         }
         @keyframes pop-peek {
-            0%   { transform: scale(0.52) translateY(36px); opacity: 0; }
-            30%  { opacity: 1; }
-            65%  { transform: scale(0.64) translateY(-7px); opacity: 1; }
-            82%  { transform: scale(0.56) translateY(4px); opacity: 1; }
-            100% { transform: scale(0.58) translateY(0); opacity: 1; }
-        }
-        @keyframes tiny-head-bob {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            35%      { transform: translateY(-2.5px) rotate(-3deg); }
-            65%      { transform: translateY(-1px) rotate(2deg); }
+            0%   { transform: translateX(-50%) translateY(0);     opacity: 0; }
+            25%  { opacity: 1; }
+            60%  { transform: translateX(-50%) translateY(-63px); opacity: 1; }
+            80%  { transform: translateX(-50%) translateY(-50px); opacity: 1; }
+            100% { transform: translateX(-50%) translateY(-55px); opacity: 1; }
         }
         @keyframes ball-bop {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-7px) translateX(6px); }
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            50%       { transform: translateY(-10px) translateX(-4px) rotate(-45deg); }
         }
-        @keyframes cat-rub-fig8 {
-            /* Lissajous figure-8: x=24*sin(t), y=11*sin(2t), center at translateX(120px) */
-            0%   { transform: translateX(120px) translateY(0px)   scale(0.62) rotate(0deg); }
-            6%   { transform: translateX(129px) translateY(-7px)  scale(0.62) rotate(-7deg); }
-            12%  { transform: translateX(137px) translateY(-11px) scale(0.62) rotate(-5deg); }
-            19%  { transform: translateX(142px) translateY(-7px)  scale(0.62) rotate(2deg); }
-            25%  { transform: translateX(144px) translateY(0px)   scale(0.62) rotate(5deg); }
-            31%  { transform: translateX(142px) translateY(7px)   scale(0.62) rotate(7deg); }
-            37%  { transform: translateX(137px) translateY(11px)  scale(0.62) rotate(4deg); }
-            44%  { transform: translateX(129px) translateY(7px)   scale(0.62) rotate(-2deg); }
-            50%  { transform: translateX(120px) translateY(0px)   scale(0.62) rotate(-6deg); }
-            56%  { transform: translateX(111px) translateY(-7px)  scale(0.62) rotate(-7deg); }
-            62%  { transform: translateX(103px) translateY(-11px) scale(0.62) rotate(-4deg); }
-            69%  { transform: translateX(98px)  translateY(-7px)  scale(0.62) rotate(2deg); }
-            75%  { transform: translateX(96px)  translateY(0px)   scale(0.62) rotate(6deg); }
-            81%  { transform: translateX(98px)  translateY(7px)   scale(0.62) rotate(7deg); }
-            87%  { transform: translateX(103px) translateY(11px)  scale(0.62) rotate(4deg); }
-            94%  { transform: translateX(111px) translateY(7px)   scale(0.62) rotate(-2deg); }
-            100% { transform: translateX(120px) translateY(0px)   scale(0.62) rotate(0deg); }
+        @keyframes cat-bat-paw {
+            0%, 50%, 100% { transform: rotate(-8deg); }
+            28%           { transform: rotate(58deg); }
+        }
+        @keyframes cat-sway-rub {
+            /* Cat facing left walks toward heading, turns right, rubs flank/head, turns left, walks out */
+            0%   { transform: translateX(80px)  scale(-0.65, 0.65); }  /* at right, facing left */
+            18%  { transform: translateX(28px)  scale(-0.65, 0.65); }  /* arrived at heading */
+            23%  { transform: translateX(28px)  scale(0.65); }         /* TURN: now facing right (back to heading) */
+            33%  { transform: translateX(20px)  scale(0.65); }         /* lean/press into heading */
+            43%  { transform: translateX(30px)  scale(0.65); }         /* bounce away */
+            51%  { transform: translateX(20px)  scale(0.65); }         /* press in again */
+            59%  { transform: translateX(28px)  scale(0.65); }         /* straighten */
+            64%  { transform: translateX(28px)  scale(-0.65, 0.65); }  /* TURN: facing left again */
+            82%  { transform: translateX(80px)  scale(-0.65, 0.65); }  /* walked back out */
+            100% { transform: translateX(80px)  scale(-0.65, 0.65); }  /* pause */
         }
 
-        /* ---- EXPERIENCE ---- */
+                /* ---- EXPERIENCE ---- */
         .experience { background: var(--gray-100); }
         .timeline { position: relative; }
         .timeline::before {
@@ -1154,49 +1032,52 @@
             .cases-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
             .timeline-item { padding-left: 50px; }
-            .cat-top-impact { top: -32px; }
+            .cat-top-impact {
+                top: -50px;
+                transform: translateX(-50%) scale(0.82);
+                animation: cat-sit-breathe-sm 2.8s ease-in-out infinite;
+            }
+            @keyframes cat-sit-breathe-sm {
+                0%, 100% { transform: translateX(-50%) scale(0.82) translateY(0); }
+                50%       { transform: translateX(-50%) scale(0.82) translateY(-1px); }
+            }
             .cat-impact-peek {
-                top: -13px;
-                right: 12px;
-                transform: scale(0.5);
+                top: 0;
+                left: 50%;
             }
             .cat-service-play {
-                top: -20px;
-                transform: translateX(-50%) scale(0.66);
+                top: -26px;
+                transform: translateX(-50%) scale(0.72);
             }
             .cat-testimonial-rub {
-                top: -22px;
-                animation: cat-rub-fig8-sm 5.8s linear infinite;
+                top: -26px;
+                animation: cat-sway-rub-sm 5.5s ease-in-out infinite;
             }
-            @keyframes cat-rub-fig8-sm {
-                0%   { transform: translateX(80px)  translateY(0px)   scale(0.52) rotate(0deg); }
-                6%   { transform: translateX(87px)  translateY(-6px)  scale(0.52) rotate(-7deg); }
-                12%  { transform: translateX(93px)  translateY(-9px)  scale(0.52) rotate(-5deg); }
-                19%  { transform: translateX(97px)  translateY(-6px)  scale(0.52) rotate(2deg); }
-                25%  { transform: translateX(98px)  translateY(0px)   scale(0.52) rotate(5deg); }
-                31%  { transform: translateX(97px)  translateY(6px)   scale(0.52) rotate(7deg); }
-                37%  { transform: translateX(93px)  translateY(9px)   scale(0.52) rotate(4deg); }
-                44%  { transform: translateX(87px)  translateY(6px)   scale(0.52) rotate(-2deg); }
-                50%  { transform: translateX(80px)  translateY(0px)   scale(0.52) rotate(-6deg); }
-                56%  { transform: translateX(73px)  translateY(-6px)  scale(0.52) rotate(-7deg); }
-                62%  { transform: translateX(67px)  translateY(-9px)  scale(0.52) rotate(-4deg); }
-                69%  { transform: translateX(63px)  translateY(-6px)  scale(0.52) rotate(2deg); }
-                75%  { transform: translateX(62px)  translateY(0px)   scale(0.52) rotate(6deg); }
-                81%  { transform: translateX(63px)  translateY(6px)   scale(0.52) rotate(7deg); }
-                87%  { transform: translateX(67px)  translateY(9px)   scale(0.52) rotate(4deg); }
-                94%  { transform: translateX(73px)  translateY(6px)   scale(0.52) rotate(-2deg); }
-                100% { transform: translateX(80px)  translateY(0px)   scale(0.52) rotate(0deg); }
+            @keyframes cat-sway-rub-sm {
+                0%   { transform: translateX(65px)  scale(-0.52, 0.52); }
+                18%  { transform: translateX(20px)  scale(-0.52, 0.52); }
+                23%  { transform: translateX(20px)  scale(0.52); }
+                33%  { transform: translateX(14px)  scale(0.52); }
+                43%  { transform: translateX(22px)  scale(0.52); }
+                51%  { transform: translateX(14px)  scale(0.52); }
+                59%  { transform: translateX(20px)  scale(0.52); }
+                64%  { transform: translateX(20px)  scale(-0.52, 0.52); }
+                82%  { transform: translateX(65px)  scale(-0.52, 0.52); }
+                100% { transform: translateX(65px)  scale(-0.52, 0.52); }
             }
         }
         @media (prefers-reduced-motion: reduce) {
-            .rcat .tail,
-            .rcat.walk .leg,
+            .cat-tail-g,
+            .cat-leg-fl, .cat-leg-fr, .cat-leg-bl, .cat-leg-br,
+            .cat-eye-l, .cat-eye-r,
+            .cat-body,
             .cat-stats-runner.run,
-            .cat-impact-peek .leg.fl,
-            .cat-impact-peek .leg.fr,
-            .cat-service-play .ball,
-            .cat-testimonial-rub {
-                animation: none;
+            .cat-paw-l, .cat-paw-r,
+            .cat-ball,
+            .cat-testimonial-rub,
+            .cat-top-impact,
+            .cat-impact-peek.show {
+                animation: none !important;
             }
         }
 
@@ -1382,17 +1263,58 @@
             <div class="hero-float-card float-card-2">
                 <span class="big-num">15+</span>
                 Years of impact
-                <div class="rcat coat-siamese cat-top-impact cat-sit" aria-hidden="true">
-                    <span class="tail"></span>
-                    <span class="body"></span>
-                    <span class="head"></span>
-                    <span class="ear left"></span>
-                    <span class="ear right"></span>
-                    <span class="eye left"></span>
-                    <span class="eye right"></span>
-                    <span class="nose"></span>
-                    <span class="paw left"></span>
-                    <span class="paw right"></span>
+                <div class="ccat cat-top-impact" aria-hidden="true">
+                    <svg width="72" height="82" viewBox="0 0 72 82" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Tail curled to right -->
+                      <g class="cat-tail-g">
+                        <path d="M47 70 Q62 62 62 50 Q62 40 52 37" stroke="#7a5038" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+                        <circle cx="52" cy="37" r="4" fill="#9b6a4c"/>
+                      </g>
+                      <!-- Body oval -->
+                      <ellipse cx="36" cy="57" rx="19" ry="22" fill="#eddbbb"/>
+                      <!-- Belly lighter -->
+                      <ellipse cx="36" cy="60" rx="12" ry="16" fill="#f6edd8"/>
+                      <!-- Front paws (Siamese brown) -->
+                      <ellipse cx="27" cy="77" rx="7" ry="5" fill="#9b6a4c"/>
+                      <ellipse cx="45" cy="77" rx="7" ry="5" fill="#9b6a4c"/>
+                      <!-- Toe lines -->
+                      <path d="M23 76 Q27 73 31 76" stroke="#7a5038" stroke-width="1" fill="none" opacity="0.5"/>
+                      <path d="M41 76 Q45 73 49 76" stroke="#7a5038" stroke-width="1" fill="none" opacity="0.5"/>
+                      <!-- Head -->
+                      <ellipse cx="36" cy="26" rx="17" ry="15.5" fill="#eddbbb"/>
+                      <!-- Siamese face mask -->
+                      <ellipse cx="36" cy="30" rx="10" ry="9" fill="#8a5038" opacity="0.28"/>
+                      <!-- Left ear -->
+                      <polygon points="21,17 17,3 29,13" fill="#8a5038"/>
+                      <polygon points="22,16 19,7 28,13" fill="#f0b8b0" opacity="0.65"/>
+                      <!-- Right ear -->
+                      <polygon points="51,17 55,3 43,13" fill="#8a5038"/>
+                      <polygon points="50,16 53,7 44,13" fill="#f0b8b0" opacity="0.65"/>
+                      <!-- Left eye (blue) -->
+                      <g class="cat-eye-l">
+                        <ellipse cx="28" cy="24" rx="5.5" ry="5.5" fill="#70c8f0"/>
+                        <ellipse cx="28" cy="24.5" rx="3" ry="4.2" fill="#0c0c18"/>
+                        <circle cx="29.5" cy="22.5" r="1.4" fill="white"/>
+                      </g>
+                      <!-- Right eye (blue) -->
+                      <g class="cat-eye-r">
+                        <ellipse cx="44" cy="24" rx="5.5" ry="5.5" fill="#70c8f0"/>
+                        <ellipse cx="44" cy="24.5" rx="3" ry="4.2" fill="#0c0c18"/>
+                        <circle cx="45.5" cy="22.5" r="1.4" fill="white"/>
+                      </g>
+                      <!-- Nose -->
+                      <path d="M34.5 30.5 L37.5 30.5 L36 33 Z" fill="#e08090"/>
+                      <!-- Mouth -->
+                      <path d="M33.2 33.5 Q36 36 38.8 33.5" stroke="#a05060" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+                      <!-- Whiskers left -->
+                      <line x1="18" y1="29.5" x2="30" y2="31" stroke="#d0c4a8" stroke-width="0.85"/>
+                      <line x1="16" y1="32" x2="30" y2="32" stroke="#d0c4a8" stroke-width="0.85"/>
+                      <line x1="18" y1="34.5" x2="30" y2="33" stroke="#d0c4a8" stroke-width="0.85"/>
+                      <!-- Whiskers right -->
+                      <line x1="54" y1="29.5" x2="42" y2="31" stroke="#d0c4a8" stroke-width="0.85"/>
+                      <line x1="56" y1="32" x2="42" y2="32" stroke="#d0c4a8" stroke-width="0.85"/>
+                      <line x1="54" y1="34.5" x2="42" y2="33" stroke="#d0c4a8" stroke-width="0.85"/>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -1419,19 +1341,69 @@
             <div class="metric-label">Campaigns Launched</div>
         </div>
     </div>
-    <div id="statsRunnerCat" class="rcat coat-ginger walk cat-stats-runner" aria-hidden="true">
-        <span class="tail"></span>
-        <span class="body"></span>
-        <span class="head"></span>
-        <span class="ear left"></span>
-        <span class="ear right"></span>
-        <span class="eye left"></span>
-        <span class="eye right"></span>
-        <span class="nose"></span>
-        <span class="leg fl"></span>
-        <span class="leg fr"></span>
-        <span class="leg bl"></span>
-        <span class="leg br"></span>
+    <div id="statsRunnerCat" class="ccat cat-stats-runner" aria-hidden="true">
+        <svg width="100" height="60" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tail streaming back-left -->
+          <g class="cat-tail-g">
+            <path d="M20 32 Q6 22 8 10 Q10 3 16 7" stroke="#b05818" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+            <circle cx="16" cy="7" r="3.5" fill="#c87030"/>
+          </g>
+          <!-- Body (slightly arched for gallop) -->
+          <g class="cat-body">
+            <ellipse cx="48" cy="36" rx="26" ry="13" fill="#d87830"/>
+            <!-- Tabby stripes -->
+            <path d="M36 25 Q39 32 36 40" stroke="#a84e10" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.45"/>
+            <path d="M46 24 Q49 31 46 39" stroke="#a84e10" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.45"/>
+            <path d="M56 25 Q58 32 55 39" stroke="#a84e10" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.45"/>
+            <!-- Belly lighter -->
+            <ellipse cx="48" cy="41" rx="18" ry="7" fill="#f0a060" opacity="0.5"/>
+          </g>
+          <!-- Neck -->
+          <path d="M70 30 Q74 22 78 22" stroke="#d87830" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <!-- Head -->
+          <ellipse cx="80" cy="19" rx="13" ry="12" fill="#d87830"/>
+          <!-- Cheek/muzzle puff -->
+          <ellipse cx="87" cy="23" rx="6" ry="5" fill="#e89848" opacity="0.8"/>
+          <!-- Back ear (far side) -->
+          <polygon points="70,11 69,3 77,10" fill="#b85c18"/>
+          <polygon points="71,11 70,6 76,10" fill="#f0c0a0" opacity="0.6"/>
+          <!-- Front ear -->
+          <polygon points="82,9 86,2 91,10" fill="#b85c18"/>
+          <polygon points="83,9 86,5 90,10" fill="#f0c0a0" opacity="0.6"/>
+          <!-- Eye (green) -->
+          <g class="cat-eye-r">
+            <ellipse cx="85" cy="18" rx="5.5" ry="5.5" fill="#58c040"/>
+            <ellipse cx="85" cy="18.5" rx="2.8" ry="4" fill="#181818"/>
+            <circle cx="86.5" cy="16.5" r="1.3" fill="white"/>
+          </g>
+          <!-- Nose -->
+          <path d="M89 23.5 L92 23.5 L90.5 25.5 Z" fill="#e08898"/>
+          <!-- Mouth -->
+          <path d="M88 26 Q91 27.5 94 25.5" stroke="#b05868" stroke-width="0.85" fill="none" stroke-linecap="round"/>
+          <!-- Whiskers -->
+          <line x1="93" y1="22" x2="100" y2="20" stroke="#f5e8d5" stroke-width="0.9"/>
+          <line x1="93" y1="24" x2="100" y2="24.5" stroke="#f5e8d5" stroke-width="0.9"/>
+          <!-- Front-left leg -->
+          <g class="cat-leg-fl">
+            <rect x="57" y="45" width="7" height="15" rx="3.5" fill="#c06820"/>
+            <ellipse cx="60.5" cy="60" rx="4" ry="2.5" fill="#a85818"/>
+          </g>
+          <!-- Front-right leg -->
+          <g class="cat-leg-fr">
+            <rect x="65" y="45" width="7" height="15" rx="3.5" fill="#c06820"/>
+            <ellipse cx="68.5" cy="60" rx="4" ry="2.5" fill="#a85818"/>
+          </g>
+          <!-- Back-left leg -->
+          <g class="cat-leg-bl">
+            <rect x="30" y="43" width="7" height="15" rx="3.5" fill="#c06820"/>
+            <ellipse cx="33.5" cy="58" rx="4" ry="2.5" fill="#a85818"/>
+          </g>
+          <!-- Back-right leg -->
+          <g class="cat-leg-br">
+            <rect x="38" y="43" width="7" height="15" rx="3.5" fill="#c06820"/>
+            <ellipse cx="41.5" cy="58" rx="4" ry="2.5" fill="#a85818"/>
+          </g>
+        </svg>
     </div>
 </div>
 
@@ -1516,19 +1488,48 @@
                         <span class="timeline-company">Nikki Hill Johnson Consulting</span>
                         <span class="timeline-date">Nov 2025 – Present</span>
                     </div>
-                    <div id="impactPeekCat" class="rcat coat-black cat-impact-peek" aria-hidden="true">
-                        <span class="head"></span>
-                        <span class="ear left"></span>
-                        <span class="ear right"></span>
-                        <span class="eye left"></span>
-                        <span class="eye right"></span>
-                        <span class="nose"></span>
-                        <span class="body"></span>
-                        <span class="tail"></span>
-                        <span class="leg fl"></span>
-                        <span class="leg fr"></span>
-                        <span class="leg bl"></span>
-                        <span class="leg br"></span>
+                    <div id="impactPeekCat" class="ccat cat-impact-peek" aria-hidden="true">
+                        <svg width="96" height="58" viewBox="0 0 72 44" xmlns="http://www.w3.org/2000/svg">
+                          <!-- Head (very dark) -->
+                          <ellipse cx="36" cy="21" rx="18" ry="17" fill="#1e1e1e"/>
+                          <ellipse cx="36" cy="23" rx="10" ry="8" fill="#2a2a2a" opacity="0.5"/>
+                          <!-- Left ear -->
+                          <polygon points="20,14 15,1 29,11" fill="#161616"/>
+                          <polygon points="21,13 18,5 27,11" fill="#5a3040" opacity="0.55"/>
+                          <!-- Right ear -->
+                          <polygon points="52,14 57,1 43,11" fill="#161616"/>
+                          <polygon points="51,13 54,5 45,11" fill="#5a3040" opacity="0.55"/>
+                          <!-- Left eye (bright green) -->
+                          <g class="cat-eye-l">
+                            <ellipse cx="27" cy="20" rx="5.5" ry="5.5" fill="#80e840"/>
+                            <ellipse cx="27" cy="20.5" rx="3" ry="4.2" fill="#0a0a0a"/>
+                            <circle cx="28.5" cy="18.5" r="1.4" fill="white"/>
+                          </g>
+                          <!-- Right eye (bright green) -->
+                          <g class="cat-eye-r">
+                            <ellipse cx="45" cy="20" rx="5.5" ry="5.5" fill="#80e840"/>
+                            <ellipse cx="45" cy="20.5" rx="3" ry="4.2" fill="#0a0a0a"/>
+                            <circle cx="46.5" cy="18.5" r="1.4" fill="white"/>
+                          </g>
+                          <!-- Nose -->
+                          <path d="M34.5 26 L37.5 26 L36 28.5 Z" fill="#e07888"/>
+                          <!-- Whiskers left -->
+                          <line x1="16" y1="25" x2="29" y2="26.5" stroke="#484848" stroke-width="0.9"/>
+                          <line x1="15" y1="27.5" x2="29" y2="27.5" stroke="#484848" stroke-width="0.9"/>
+                          <!-- Whiskers right -->
+                          <line x1="56" y1="25" x2="43" y2="26.5" stroke="#484848" stroke-width="0.9"/>
+                          <line x1="57" y1="27.5" x2="43" y2="27.5" stroke="#484848" stroke-width="0.9"/>
+                          <!-- Left paw gripping edge -->
+                          <g class="cat-paw-l">
+                            <rect x="22" y="36" width="11" height="8" rx="5.5" fill="#1e1e1e"/>
+                            <path d="M22 38 Q27.5 35 33 38" stroke="#141414" stroke-width="1" fill="none" opacity="0.5"/>
+                          </g>
+                          <!-- Right paw gripping edge -->
+                          <g class="cat-paw-r">
+                            <rect x="39" y="36" width="11" height="8" rx="5.5" fill="#1e1e1e"/>
+                            <path d="M39 38 Q44.5 35 50 38" stroke="#141414" stroke-width="1" fill="none" opacity="0.5"/>
+                          </g>
+                        </svg>
                     </div>
                     <div class="timeline-role">Fractional Marketing Strategist — Social &amp; Paid Media</div>
                     <p class="timeline-desc">Lead social and paid media strategy for B2C and B2B brands, with a focus on service-based and growth-stage companies. I partner with founders and internal teams to provide senior-level strategic direction without adding full-time headcount, including work with community-focused and advocacy-driven initiatives alongside commercial brands.</p>
@@ -1782,20 +1783,74 @@
 
 <!-- SERVICES -->
 <section class="services" id="services">
-    <div class="rcat coat-calico walk cat-service-play" aria-hidden="true">
-        <span class="tail"></span>
-        <span class="body"></span>
-        <span class="head"></span>
-        <span class="ear left"></span>
-        <span class="ear right"></span>
-        <span class="eye left"></span>
-        <span class="eye right"></span>
-        <span class="nose"></span>
-        <span class="leg fl"></span>
-        <span class="leg fr"></span>
-        <span class="leg bl"></span>
-        <span class="leg br"></span>
-        <span class="ball"></span>
+    <div class="ccat cat-service-play" aria-hidden="true">
+        <svg width="98" height="64" viewBox="0 0 98 64" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tail (up, curled) -->
+          <g class="cat-tail-g">
+            <path d="M22 34 Q14 22 18 12 Q21 5 26 9" stroke="#242424" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <circle cx="26" cy="9" r="4" fill="#383838"/>
+          </g>
+          <!-- Body with calico patches -->
+          <g class="cat-body">
+            <ellipse cx="52" cy="39" rx="24" ry="13" fill="#f2ead8"/>
+            <ellipse cx="40" cy="35" rx="10" ry="9" fill="#e8803c" opacity="0.85"/>
+            <ellipse cx="62" cy="41" rx="9" ry="8" fill="#282828" opacity="0.75"/>
+            <ellipse cx="55" cy="30" rx="7" ry="5" fill="#e8803c" opacity="0.5"/>
+            <!-- Belly -->
+            <ellipse cx="52" cy="45" rx="16" ry="7" fill="#faf4ec" opacity="0.75"/>
+          </g>
+          <!-- Neck -->
+          <path d="M70 31 Q74 23 78 22" stroke="#f2ead8" stroke-width="9" stroke-linecap="round" fill="none"/>
+          <!-- Head -->
+          <ellipse cx="80" cy="20" rx="12" ry="11" fill="#f2ead8"/>
+          <!-- Head calico patches -->
+          <ellipse cx="75" cy="17" rx="7" ry="6" fill="#e8803c" opacity="0.7"/>
+          <ellipse cx="85" cy="23" rx="5" ry="4" fill="#282828" opacity="0.5"/>
+          <!-- Back ear -->
+          <polygon points="70,12 69,3 76,11" fill="#282828"/>
+          <polygon points="71,12 70,6 75,11" fill="#f0c0b0" opacity="0.6"/>
+          <!-- Front ear -->
+          <polygon points="82,10 86,2 91,10" fill="#282828"/>
+          <polygon points="83,10 86,5 90,10" fill="#f0c0b0" opacity="0.6"/>
+          <!-- Eye (amber/green) -->
+          <g class="cat-eye-r">
+            <ellipse cx="85" cy="18" rx="5" ry="5" fill="#d0b040"/>
+            <ellipse cx="85" cy="18.5" rx="2.8" ry="3.8" fill="#141414"/>
+            <circle cx="86.5" cy="16.5" r="1.2" fill="white"/>
+          </g>
+          <!-- Nose -->
+          <path d="M88.5 23 L91 23 L89.8 25 Z" fill="#e07888"/>
+          <!-- Whiskers right -->
+          <line x1="91.5" y1="21.5" x2="97" y2="20" stroke="#d0c8b0" stroke-width="0.9"/>
+          <line x1="91.5" y1="23.5" x2="97" y2="24" stroke="#d0c8b0" stroke-width="0.9"/>
+          <!-- Front-left leg -->
+          <g class="cat-leg-fl">
+            <rect x="61" y="48" width="7" height="14" rx="3.5" fill="#d8a888"/>
+            <ellipse cx="64.5" cy="62" rx="4" ry="2.5" fill="#c49878"/>
+          </g>
+          <!-- Front-right leg -->
+          <g class="cat-leg-fr">
+            <rect x="69" y="48" width="7" height="14" rx="3.5" fill="#d8a888"/>
+            <ellipse cx="72.5" cy="62" rx="4" ry="2.5" fill="#c49878"/>
+          </g>
+          <!-- Back-left leg -->
+          <g class="cat-leg-bl">
+            <rect x="36" y="46" width="7" height="14" rx="3.5" fill="#d8a888"/>
+            <ellipse cx="39.5" cy="60" rx="4" ry="2.5" fill="#c49878"/>
+          </g>
+          <!-- Back-right leg -->
+          <g class="cat-leg-br">
+            <rect x="44" y="46" width="7" height="14" rx="3.5" fill="#d8a888"/>
+            <ellipse cx="47.5" cy="60" rx="4" ry="2.5" fill="#c49878"/>
+          </g>
+          <!-- Yarn ball drawn LAST so it appears in front of cat -->
+          <g class="cat-ball">
+            <circle cx="90" cy="50" r="8" fill="#ff6b8a"/>
+            <path d="M84 46 Q90 52 96 46" stroke="#ff2255" stroke-width="1.2" fill="none" opacity="0.6"/>
+            <path d="M84 50 Q90 44 96 50" stroke="#ff2255" stroke-width="1.2" fill="none" opacity="0.6"/>
+            <path d="M86 44 Q90 54 94 44" stroke="#ff2255" stroke-width="1" fill="none" opacity="0.4"/>
+          </g>
+        </svg>
     </div>
     <div class="container">
         <div class="section-header">
@@ -1843,19 +1898,88 @@
         <div class="section-header" style="text-align: center;">
             <p class="section-label">What People Say</p>
             <h2 class="section-title">Client Testimonials</h2>
-            <div class="rcat coat-black cat-testimonial-rub" aria-hidden="true">
-                <span class="tail"></span>
-                <span class="body"></span>
-                <span class="head"></span>
-                <span class="ear left"></span>
-                <span class="ear right"></span>
-                <span class="eye left"></span>
-                <span class="eye right"></span>
-                <span class="nose"></span>
-                <span class="leg fl"></span>
-                <span class="leg fr"></span>
-                <span class="leg bl"></span>
-                <span class="leg br"></span>
+            <div class="ccat cat-testimonial-rub" aria-hidden="true">
+                <svg width="92" height="60" viewBox="0 0 92 60" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Maine Coon: gray, large, bushy tail, tufted ears -->
+                  <!-- Bushy tail (layered strokes for fluff) -->
+                  <g class="cat-tail-g">
+                    <path d="M19 31 Q7 17 12 7 Q15 1 21 5" stroke="#505060" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.45"/>
+                    <path d="M18 30 Q8 18 12 8 Q15 2 20 6" stroke="#7a8092" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+                    <path d="M19 29 Q10 20 14 11 Q17 5 22 8" stroke="#a8aec2" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.6"/>
+                    <circle cx="21" cy="5" r="5.5" fill="#9098aa"/>
+                    <circle cx="21" cy="5" r="3" fill="#b8c0d0"/>
+                  </g>
+                  <!-- Body (large, Maine Coon is a big cat) -->
+                  <g class="cat-body">
+                    <ellipse cx="47" cy="37" rx="25" ry="14" fill="#7a8092"/>
+                    <!-- Tabby markings on body -->
+                    <path d="M34 25 Q37 33 34 42" stroke="#505060" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+                    <path d="M44 24 Q47 32 44 41" stroke="#505060" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+                    <path d="M54 25 Q56 33 53 41" stroke="#505060" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+                    <!-- Back highlight (long fur shimmer) -->
+                    <ellipse cx="47" cy="30" rx="19" ry="6" fill="#9aa2b8" opacity="0.55"/>
+                    <!-- Fluffy chest ruff (Maine Coon trait) -->
+                    <ellipse cx="67" cy="33" rx="9" ry="6.5" fill="#a8b0c4" opacity="0.7"/>
+                    <!-- Lighter belly -->
+                    <ellipse cx="47" cy="44" rx="17" ry="7" fill="#9aa2b8" opacity="0.55"/>
+                  </g>
+                  <!-- Neck with fur ruff -->
+                  <path d="M65 28 Q69 19 73 18" stroke="#7a8092" stroke-width="12" stroke-linecap="round" fill="none"/>
+                  <path d="M65 28 Q70 19 74 17" stroke="#a8b0c4" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.65"/>
+                  <!-- Head (squarish Maine Coon face) -->
+                  <ellipse cx="76" cy="16" rx="13" ry="12" fill="#7a8092"/>
+                  <!-- Forehead highlights -->
+                  <ellipse cx="73" cy="12" rx="8" ry="5" fill="#8e98ac" opacity="0.6"/>
+                  <!-- Face tabby marks -->
+                  <path d="M72 10 Q75 14 72 19" stroke="#505060" stroke-width="1" fill="none" opacity="0.5"/>
+                  <path d="M77 10 Q80 14 77 19" stroke="#505060" stroke-width="1" fill="none" opacity="0.5"/>
+                  <!-- Back ear with tuft -->
+                  <polygon points="65,9 64,1 71,8" fill="#585870"/>
+                  <polygon points="66,9 65,4 70,8" fill="#dbb8c0" opacity="0.5"/>
+                  <!-- Ear tuft lines (Maine Coon signature) -->
+                  <line x1="64" y1="1" x2="62" y2="-3" stroke="#7a8092" stroke-width="1.3" stroke-linecap="round"/>
+                  <line x1="66" y1="2" x2="64" y2="-2" stroke="#7a8092" stroke-width="1.3" stroke-linecap="round"/>
+                  <!-- Front ear with tuft -->
+                  <polygon points="77,8 81,1 86,9" fill="#585870"/>
+                  <polygon points="78,8 81,4 85,9" fill="#dbb8c0" opacity="0.5"/>
+                  <!-- Ear tuft -->
+                  <line x1="81" y1="1" x2="80" y2="-3" stroke="#7a8092" stroke-width="1.3" stroke-linecap="round"/>
+                  <line x1="83" y1="2" x2="82" y2="-2" stroke="#7a8092" stroke-width="1.3" stroke-linecap="round"/>
+                  <!-- Eye (amber-gold, typical Maine Coon) -->
+                  <g class="cat-eye-r">
+                    <ellipse cx="81" cy="15" rx="5.5" ry="5.5" fill="#d4a820"/>
+                    <ellipse cx="81" cy="15.5" rx="3" ry="4.2" fill="#0a0808"/>
+                    <circle cx="82.5" cy="13.5" r="1.4" fill="white"/>
+                  </g>
+                  <!-- Nose -->
+                  <path d="M84 21 L87 21 L85.5 23 Z" fill="#d87888"/>
+                  <!-- Mouth -->
+                  <path d="M83 23.5 Q85.5 25 88 23.5" stroke="#b05060" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+                  <!-- Whiskers right (Maine Coons have prominent whiskers) -->
+                  <line x1="87.5" y1="19.5" x2="92" y2="17.5" stroke="#c0c8d8" stroke-width="1"/>
+                  <line x1="87.5" y1="21.5" x2="92" y2="21.5" stroke="#c0c8d8" stroke-width="1"/>
+                  <line x1="87.5" y1="23" x2="92" y2="24" stroke="#c0c8d8" stroke-width="1"/>
+                  <!-- Front-left leg -->
+                  <g class="cat-leg-fl">
+                    <rect x="56" y="47" width="8" height="12" rx="4" fill="#686880"/>
+                    <ellipse cx="60" cy="59" rx="4.5" ry="2.5" fill="#585870"/>
+                  </g>
+                  <!-- Front-right leg -->
+                  <g class="cat-leg-fr">
+                    <rect x="65" y="47" width="8" height="12" rx="4" fill="#686880"/>
+                    <ellipse cx="69" cy="59" rx="4.5" ry="2.5" fill="#585870"/>
+                  </g>
+                  <!-- Back-left leg -->
+                  <g class="cat-leg-bl">
+                    <rect x="32" y="45" width="8" height="12" rx="4" fill="#686880"/>
+                    <ellipse cx="36" cy="57" rx="4.5" ry="2.5" fill="#585870"/>
+                  </g>
+                  <!-- Back-right leg -->
+                  <g class="cat-leg-br">
+                    <rect x="41" y="45" width="8" height="12" rx="4" fill="#686880"/>
+                    <ellipse cx="45" cy="57" rx="4.5" ry="2.5" fill="#585870"/>
+                  </g>
+                </svg>
             </div>
         </div>
         <div class="testimonial-slider">
