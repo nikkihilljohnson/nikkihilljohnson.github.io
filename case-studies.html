@@ -111,6 +111,9 @@
         .tag-years { background: #fff0fb; color: var(--pink); }
         .tag-role { background: var(--gray-100); color: var(--gray-600); border: 1px solid var(--gray-300); }
         .cs-meta h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 2rem); color: var(--dark); line-height: 1.2; }
+        .cs-company { font-family: var(--font-display); font-size: clamp(1.6rem, 2.8vw, 2.15rem); color: var(--dark); line-height: 1.15; margin-bottom: 0.45rem; }
+        .cs-industry-line { font-size: 0.83rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--purple); }
+        .section-divider { height: 1px; background: var(--gray-300); opacity: 0.7; margin: 2.2rem 0; }
 
         /* Metrics */
         .cs-metrics {
@@ -129,7 +132,7 @@
         .metric-label { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.09em; margin-top: 0.4rem; }
 
         /* Content grid */
-        .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem; }
+        .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.8rem; }
         @media (max-width: 720px) { .cs-grid { grid-template-columns: 1fr; } }
         .cs-block h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.75rem; }
         .cs-block p { color: var(--gray-600); line-height: 1.75; }
@@ -157,6 +160,20 @@
         .cs-expanded ul { list-style: none; margin-bottom: 1rem; }
         .cs-expanded ul li { padding: 0.3rem 0 0.3rem 1.25rem; color: var(--gray-600); position: relative; font-size: 0.95rem; }
         .cs-expanded ul li::before { content: '•'; position: absolute; left: 0; color: var(--purple); }
+        .insight-callout {
+            border-left: 4px solid var(--pink);
+            background: linear-gradient(90deg, rgba(254, 0, 174, 0.08), rgba(254, 0, 174, 0));
+            border-radius: 0 12px 12px 0;
+            padding: 1rem 1.15rem;
+            margin-bottom: 1rem;
+        }
+        .insight-callout p {
+            margin: 0;
+            color: var(--gray-900);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .results-list li strong { color: var(--dark); font-weight: 700; }
 
         /* Carousel */
         .media-section { margin-bottom: 2.5rem; }
@@ -180,9 +197,10 @@
         .c-dot.active { background: var(--pink); width: 22px; border-radius: 4px; }
 
         /* Analytics grid */
-        .analytics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
-        .analytics-grid img { width: 100%; border-radius: 12px; border: 1px solid var(--gray-300); cursor: zoom-in; transition: transform 0.22s, box-shadow 0.22s; object-fit: cover; }
-        .analytics-grid img:hover { transform: scale(1.02); box-shadow: 0 8px 28px rgba(0,0,0,0.12); }
+        .analytics-caption { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-600); margin: 0 0 0.7rem; }
+        .analytics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+        .analytics-grid img { width: 100%; border-radius: 14px; border: 1px solid var(--gray-300); cursor: zoom-in; transition: transform 0.22s, box-shadow 0.22s; object-fit: cover; box-shadow: 0 8px 22px rgba(0,0,0,0.08); }
+        .analytics-grid img:hover { transform: scale(1.02); box-shadow: 0 12px 30px rgba(0,0,0,0.14); }
 
         /* Before / After */
         .ba-label-row { display: flex; justify-content: space-between; margin-top: 0.6rem; }
@@ -276,12 +294,8 @@
         <div class="cs-header fade-up">
             <img src="Assets/Logos/HVAC%20logo.png" alt="HVAC.com logo" class="cs-logo">
             <div class="cs-meta">
-                <div class="cs-tags">
-                    <span class="cs-tag tag-industry">Home Services / SaaS</span>
-                    <span class="cs-tag tag-years">2023 – 2025</span>
-                    <span class="cs-tag tag-role">Sr. Social Media & Content Strategist</span>
-                </div>
-                <h2>Full-Funnel Social Strategy &amp; Meta Ads Optimization</h2>
+                <h2 class="cs-company">HVAC.com / Trane Technologies</h2>
+                <p class="cs-industry-line">Industry: Home Services / SaaS</p>
             </div>
         </div>
 
@@ -332,44 +346,59 @@
             </div>
         </div>
 
+        <div class="section-divider"></div>
+
         <!-- Expandable full strategy -->
         <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
             <h4>The Insight That Drove Everything</h4>
-            <p>Homeowners are deeply emotionally invested in their homes—but completely disengaged from HVAC equipment. The unlock was making the content about the feeling of comfort, safety, and a healthy home environment, not the hardware.</p>
+            <div class="insight-callout">
+                <p>Homeowners care deeply about their homes. They do not care about HVAC equipment.</p>
+                <p>The strategy pivoted from selling hardware to selling what HVAC actually represents: comfort, safety, and a healthy home.</p>
+                <p>That shift changed everything.</p>
+            </div>
 
             <h4>Content Strategy</h4>
             <ul>
-                <li>Editorial calendar built around seasonal pain points (winter prep, summer heat, allergy season)</li>
-                <li>Short-form video Reels showing relatable homeowner moments + expert tips</li>
-                <li>Meme-driven content to humanize the brand and drive organic shares</li>
-                <li>Educational carousel posts on air quality, filter maintenance, and energy savings</li>
-                <li>Reddit-style testimonials and social proof to build credibility</li>
+                <li>Built an editorial system rooted in homeowner psychology and seasonal urgency.</li>
+                <li>Seasonal content mapped to real homeowner pain points (winter prep, summer heat, allergy season)</li>
+                <li>Short-form video built around relatable "this just happened" homeowner moments</li>
+                <li>Educational carousels simplifying air quality, filter maintenance, and energy efficiency</li>
+                <li>Strategic meme usage to humanize the brand and increase organic share velocity</li>
+                <li>Social proof content styled like native Reddit conversations to build trust</li>
             </ul>
 
             <h4>Paid Media Strategy</h4>
             <ul>
-                <li>Meta campaigns structured across awareness, consideration, and conversion objectives</li>
-                <li>Ongoing A/B testing of creative formats, hooks, and audience segments</li>
-                <li>Retargeting audiences built from website visitors, video viewers, and engaged followers</li>
-                <li>CPL and ROAS tracked weekly, optimized monthly based on cohort data</li>
+                <li>Structured a full-funnel Meta ecosystem across awareness, consideration, and conversion.</li>
+                <li>Creative testing frameworks built to continuously refine hooks and audience segments</li>
+                <li>Retargeting built from behavioral signals: site visitors, video viewers, engaged followers</li>
+                <li>Weekly CPL and ROAS tracking with monthly cohort-based optimization cycles</li>
+                <li>Paid and organic aligned intentionally to reduce acquisition friction</li>
             </ul>
 
-            <h4>Results Breakdown</h4>
-            <ul>
-                <li>~$58K budget → 1.35M+ impressions at 2.97% CTR</li>
-                <li>423 qualified leads at $71 Cost Per Lead</li>
-                <li>Meta campaigns directly attributed to ~6% of total company sales</li>
-                <li>Social audience grew 4,000% through organic content strategy</li>
-                <li>83% increase in video views across platforms</li>
-                <li>231K+ total engagements driven across organic and paid</li>
+            <h4>Performance Impact</h4>
+            <ul class="results-list">
+                <li><strong>$58K</strong> budget generated <strong>1.35M+</strong> impressions at <strong>2.97%</strong> CTR</li>
+                <li><strong>423</strong> qualified leads at <strong>$71 CPL</strong></li>
+                <li>Meta campaigns attributed to <strong>~6%</strong> of total company sales</li>
+            </ul>
+
+            <h4>Growth Metrics</h4>
+            <ul class="results-list">
+                <li><strong>4,000%</strong> social audience growth</li>
+                <li><strong>83%</strong> increase in video views</li>
+                <li><strong>231K+</strong> total engagements across organic and paid</li>
             </ul>
         </div>
 
+        <div class="section-divider"></div>
 
         <!-- Analytics -->
         <div class="media-section fade-up">
             <h3>Analytics &amp; Performance Data</h3>
+            <p>Platform performance reflected consistent engagement lift, efficient paid acquisition, and sustained audience growth across channels.</p>
+            <p class="analytics-caption">Platform performance snapshots</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.42.59%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
                 <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.43.14%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
@@ -394,12 +423,8 @@
         <div class="cs-header fade-up">
             <img src="Assets/Logos/Wedmore%20Logo.webp" alt="James Wedmore" class="cs-logo">
             <div class="cs-meta">
-                <div class="cs-tags">
-                    <span class="cs-tag tag-industry">Personal Brand / Digital Products</span>
-                    <span class="cs-tag tag-years">2022 – 2023</span>
-                    <span class="cs-tag tag-role">Creative Content Director</span>
-                </div>
-                <h2>Social Growth, Content Optimization &amp; $6.4M Launch Campaign</h2>
+                <h2 class="cs-company">James Wedmore / Level Five Publishing</h2>
+                <p class="cs-industry-line">Industry: Personal Brand / Digital Products</p>
             </div>
         </div>
 
@@ -447,6 +472,8 @@
             </div>
         </div>
 
+        <div class="section-divider"></div>
+
         <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
             <h4>Growth Strategy</h4>
@@ -469,9 +496,12 @@
             </ul>
         </div>
 
+        <div class="section-divider"></div>
 
         <div class="media-section fade-up">
             <h3>Analytics &amp; Performance Data</h3>
+            <p>Platform performance showed consistent follower growth, strong engagement retention, and high-performing short-form distribution across channels.</p>
+            <p class="analytics-caption">Platform performance snapshots</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/Wedmore/Wedmore%20IG%20Followers.png" alt="Wedmore followers" onclick="openLB(this.src)">
                 <img src="Assets/Analytics%20Screenshots/Wedmore/Wedmore%20IG%20Grid.png" alt="Wedmore IG grid" onclick="openLB(this.src)">
@@ -492,12 +522,8 @@
         <div class="cs-header fade-up">
             <img src="Assets/Logos/StoneSmith%20Logo.png" alt="StoneSmith Countertops" class="cs-logo">
             <div class="cs-meta">
-                <div class="cs-tags">
-                    <span class="cs-tag tag-industry">Home Improvement / Local Business</span>
-                    <span class="cs-tag tag-years">2025</span>
-                    <span class="cs-tag tag-role">Social Media Strategist</span>
-                </div>
-                <h2>Brand Launch, Social Identity &amp; Content Strategy</h2>
+                <h2 class="cs-company">StoneSmith Countertops</h2>
+                <p class="cs-industry-line">Industry: Home Improvement / Local Business</p>
             </div>
         </div>
 
@@ -537,6 +563,8 @@
             </div>
         </div>
 
+        <div class="section-divider"></div>
+
         <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
             <h4>Brand Positioning</h4>
@@ -561,9 +589,12 @@
             </ul>
         </div>
 
+        <div class="section-divider"></div>
 
         <div class="media-section fade-up">
             <h3>Analytics &amp; Performance Data</h3>
+            <p>Platform performance reflected rapid early traction, strong engagement quality, and a solid baseline for future paid acceleration.</p>
+            <p class="analytics-caption">Platform performance snapshots</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/StoneSmith/StoneSmith%20IG%20Stats.png" alt="StoneSmith IG stats" onclick="openLB(this.src)">
                 <img src="Assets/Analytics%20Screenshots/StoneSmith/StoneSmith%20IG%20Stats%202.png" alt="StoneSmith IG stats 2" onclick="openLB(this.src)">
@@ -582,11 +613,8 @@
         <div class="cs-header fade-up">
             <img src="Assets/Logos/NYAG%20Logo%20-%201.png" alt="NYAG" class="cs-logo">
             <div class="cs-meta">
-                <div class="cs-tags">
-                    <span class="cs-tag tag-industry">Personal Brand / Online Education</span>
-                    <span class="cs-tag tag-role">Content Strategist</span>
-                </div>
-                <h2>Visual Rebrand, Audience Growth &amp; Short-Form Video Strategy</h2>
+                <h2 class="cs-company">Not Your Average Grandma (NYAG)</h2>
+                <p class="cs-industry-line">Industry: Personal Brand / Online Education</p>
             </div>
         </div>
 
@@ -621,6 +649,8 @@
                 </ul>
             </div>
         </div>
+
+        <div class="section-divider"></div>
 
         <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
@@ -667,6 +697,8 @@
 
         <div class="media-section fade-up">
             <h3>Analytics &amp; Performance Data</h3>
+            <p>Platform performance showed clear post-rebrand momentum with stronger discoverability, engagement quality, and audience consistency.</p>
+            <p class="analytics-caption">Platform performance snapshots</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/NYAG/NYAG%20IG%20Overview.png" alt="NYAG overview" onclick="openLB(this.src)">
                 <img src="Assets/Analytics%20Screenshots/NYAG/NYAG%20IG%20Follows.png" alt="NYAG follows" onclick="openLB(this.src)">
@@ -685,12 +717,8 @@
         <div class="cs-header fade-up">
             <img src="Assets/Logos/Carolina-Farm-Trust-logo.png" alt="Carolina Farm Trust" class="cs-logo">
             <div class="cs-meta">
-                <div class="cs-tags">
-                    <span class="cs-tag tag-industry">Nonprofit / Sustainability</span>
-                    <span class="cs-tag tag-years">2021 – 2022</span>
-                    <span class="cs-tag tag-role">Sr. Marketing & Communications Manager</span>
-                </div>
-                <h2>Full-Scale Marketing Overhaul &amp; Digital Transformation</h2>
+                <h2 class="cs-company">Carolina Farm Trust</h2>
+                <p class="cs-industry-line">Industry: Nonprofit / Sustainability</p>
             </div>
         </div>
 
@@ -734,6 +762,8 @@
             </div>
         </div>
 
+        <div class="section-divider"></div>
+
         <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
             <h4>The Strategic Foundation</h4>
@@ -757,8 +787,12 @@
             </ul>
         </div>
 
+        <div class="section-divider"></div>
+
         <div class="media-section fade-up">
             <h3>Campaign Assets</h3>
+            <p>Campaign outputs reflected stronger narrative consistency across fundraising, community storytelling, and conversion-focused communication.</p>
+            <p class="analytics-caption">Campaign performance snapshots</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/CFT/CFT%20Flyer.png" alt="CFT fundraiser flyer" onclick="openLB(this.src)">
                 <img src="Assets/Analytics%20Screenshots/CFT/CFT%20Grant.png" alt="CFT grant" onclick="openLB(this.src)">
@@ -778,12 +812,8 @@
         <div class="cs-header fade-up">
             <img src="Assets/Logos/Maple%20Air%20Logo.svg" alt="Maple Air" class="cs-logo">
             <div class="cs-meta">
-                <div class="cs-tags">
-                    <span class="cs-tag tag-industry">Whole House Air Purification</span>
-                    <span class="cs-tag tag-years">2025 – Present</span>
-                    <span class="cs-tag tag-role">Fractional Marketing Strategist</span>
-                </div>
-                <h2>Brand Launch, Social Strategy &amp; Content Creation for a Health-Forward Product</h2>
+                <h2 class="cs-company">Maple Air</h2>
+                <p class="cs-industry-line">Industry: Whole House Air Purification</p>
             </div>
         </div>
 
@@ -811,6 +841,8 @@
             </div>
         </div>
 
+        <div class="section-divider"></div>
+
         <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
             <h4>The Opportunity</h4>
@@ -828,8 +860,12 @@
             <p>Analytics in progress — campaign is actively running. Full performance data will be added as results are gathered.</p>
         </div>
 
+        <div class="section-divider"></div>
+
         <div class="media-section fade-up">
             <h3>Campaign Assets</h3>
+            <p>Early campaign assets established a clear launch foundation, with performance reporting to follow as data accumulates.</p>
+            <p class="analytics-caption">Campaign performance snapshots</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/Maple%20Air/Maple%20Air%20Analytics.png" alt="Maple Air analytics" onclick="openLB(this.src)" onerror="this.style.display='none'">
             </div>
