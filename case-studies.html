@@ -38,11 +38,35 @@
         }
         nav.scrolled { border-color: var(--gray-300); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+        .nav-inner { position: relative; }
         .nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--dark); text-decoration: none; }
         .nav-logo span { color: var(--pink); }
         .nav-links { display: flex; list-style: none; gap: 2.5rem; }
         .nav-links a { text-decoration: none; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
         .nav-links a:hover, .nav-links a.active { color: var(--pink); }
+        .nav-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--gray-300);
+            border-radius: 10px;
+            background: var(--white);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+        .nav-toggle span {
+            width: 18px;
+            height: 2px;
+            background: var(--gray-900);
+            border-radius: 2px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
         /* DROPDOWN */
         .nav-dropdown { position: relative; }
@@ -89,9 +113,16 @@
         }
         @media (max-width: 820px) {
             .hero { padding: 8rem 2rem 0; }
-            .hero-inner { grid-template-columns: 1fr; }
-            .hero-text { padding-bottom: 2rem; text-align: center; }
+            .hero-inner {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                max-width: 640px;
+                margin: 0 auto;
+            }
+            .hero-text { padding-bottom: 2rem; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
+            .hero h1 { text-align: center; }
             .hero p { margin: 0 auto 2.5rem; }
+            .section-label { margin-left: auto; margin-right: auto; }
             .jump-pills { justify-content: center; }
             .hero-photo { justify-content: center; }
             .hero-photo img { height: 300px; }
@@ -178,6 +209,7 @@
         /* Carousel */
         .media-section { margin-bottom: 2.5rem; }
         .media-section h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-600); margin-bottom: 1rem; }
+        .media-kicker { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-900); margin: 0 0 0.85rem; }
         .carousel-wrap { position: relative; border-radius: 16px; overflow: hidden; background: #000; }
         .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .carousel-slide { min-width: 100%; max-height: 520px; object-fit: contain; display: block; background: #111; }
@@ -197,7 +229,8 @@
         .c-dot.active { background: var(--pink); width: 22px; border-radius: 4px; }
 
         /* Analytics grid */
-        .analytics-caption { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-600); margin: 0 0 0.7rem; }
+        .analytics-caption { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--purple); margin: 0.85rem 0 0.95rem; }
+        .media-intro { margin-bottom: 0.9rem; }
         .analytics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
         .analytics-grid img { width: 100%; border-radius: 14px; border: 1px solid var(--gray-300); cursor: zoom-in; transition: transform 0.22s, box-shadow 0.22s; object-fit: cover; box-shadow: 0 8px 22px rgba(0,0,0,0.08); }
         .analytics-grid img:hover { transform: scale(1.02); box-shadow: 0 12px 30px rgba(0,0,0,0.14); }
@@ -241,11 +274,46 @@
         @media (max-width: 768px) {
             .cs-header { flex-direction: column; gap: 1rem; }
             .cs-metrics { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { gap: 1.5rem; font-size: 0.82rem; }
-        }
-        @media (max-width: 480px) {
-            .nav-links { gap: 1rem; }
-            .nav-links li:last-child { display: none; }
+            .nav-toggle { display: inline-flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: calc(100% + 0.55rem);
+                right: 2rem;
+                width: min(280px, calc(100vw - 4rem));
+                padding: 0.75rem;
+                border: 1px solid var(--gray-300);
+                border-radius: 14px;
+                background: var(--white);
+                box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+                gap: 0;
+                flex-direction: column;
+                z-index: 250;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a,
+            .nav-dropdown-toggle {
+                display: block;
+                width: 100%;
+                padding: 0.7rem 0.85rem;
+                border-radius: 8px;
+                font-size: 0.92rem;
+            }
+            .nav-dropdown { width: 100%; }
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                margin-top: 0;
+                padding: 0 0 0 0.75rem;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                border: none;
+                min-width: 0;
+                background: transparent;
+            }
+            .nav-dropdown-menu a { padding: 0.55rem 0.85rem; }
         }
     </style>
 </head>
@@ -255,7 +323,10 @@
 <nav id="navbar">
     <div class="nav-inner">
         <a href="index.html" class="nav-logo">Nikki<span>.</span></a>
-        <ul class="nav-links">
+        <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="primary-nav">
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#experience">Experience</a></li>
             <li class="nav-dropdown">
@@ -331,18 +402,20 @@
         <div class="cs-grid fade-up">
             <div class="cs-block">
                 <h3>Objective</h3>
-                <p>Build brand awareness and drive qualified leads through organic social and Meta ad campaigns in a low-interest category. The challenge: homeowners don't think about HVAC until it breaks — making it essential to reach them long before they need to make a purchase.</p>
+                <p>Build awareness and generate qualified leads in a category most homeowners actively ignore until something breaks.</p>
+                <p>The challenge wasn't visibility. It was relevance. HVAC isn't aspirational, but comfort, safety, and a healthy home absolutely are. The goal was to reach homeowners long before urgency forced the conversation.</p>
             </div>
             <div class="cs-block">
                 <h3>The Approach</h3>
                 <ul>
-                    <li>Built full-funnel paid & organic social strategy from scratch</li>
-                    <li>Defined HVAC.com's brand voice and paid media foundation from the ground up</li>
-                    <li>Led with empathy and education — reaching homeowners before their system breaks</li>
-                    <li>Awareness campaigns building trust through relatable, problem-solving content</li>
-                    <li>Retargeting to nurture ready-to-buy audiences into qualified leads</li>
-                    <li>Aligned organic storytelling with performance-driven Meta campaigns</li>
+                    <li>Built a full-funnel organic and paid social ecosystem designed to earn trust first and capture demand when it surfaced</li>
+                    <li>Established HVAC.com's social voice and paid media foundation from the ground up</li>
+                    <li>Led with education, empathy, and homeowner-first storytelling instead of product features</li>
+                    <li>Built awareness campaigns focused on real-life problems, not equipment specs</li>
+                    <li>Developed retargeting pipelines to nurture high-intent audiences into qualified leads</li>
+                    <li>Aligned organic storytelling with Meta performance campaigns to reduce acquisition friction</li>
                 </ul>
+                <p>This wasn't about selling HVAC systems. It was about owning the conversation around home comfort.</p>
             </div>
         </div>
 
@@ -353,51 +426,53 @@
         <div class="cs-expanded">
             <h4>The Insight That Drove Everything</h4>
             <div class="insight-callout">
-                <p>Homeowners care deeply about their homes. They do not care about HVAC equipment.</p>
-                <p>The strategy pivoted from selling hardware to selling what HVAC actually represents: comfort, safety, and a healthy home.</p>
-                <p>That shift changed everything.</p>
+                <p>Homeowners care deeply about their homes.</p>
+                <p>They rarely care about HVAC equipment.</p>
+                <p>The strategy pivoted from selling hardware to selling what HVAC actually represents: comfort, safety, air quality, and peace of mind.</p>
+                <p>That shift changed how people engaged with the brand and how they converted.</p>
             </div>
 
             <h4>Content Strategy</h4>
             <ul>
-                <li>Built an editorial system rooted in homeowner psychology and seasonal urgency.</li>
-                <li>Seasonal content mapped to real homeowner pain points (winter prep, summer heat, allergy season)</li>
-                <li>Short-form video built around relatable "this just happened" homeowner moments</li>
-                <li>Educational carousels simplifying air quality, filter maintenance, and energy efficiency</li>
+                <li>Built an editorial system grounded in homeowner psychology, seasonal urgency, and everyday relatability</li>
+                <li>Seasonal content mapped to real homeowner stress points (summer heat, winter prep, allergy season)</li>
+                <li>Short-form video centered on relatable "this just happened" homeowner moments</li>
+                <li>Educational carousels simplifying air quality, maintenance, and energy efficiency</li>
                 <li>Strategic meme usage to humanize the brand and increase organic share velocity</li>
-                <li>Social proof content styled like native Reddit conversations to build trust</li>
+                <li>Social proof styled like native community conversations to build credibility</li>
             </ul>
+            <p>The goal wasn't more content. It was more connection.</p>
 
             <h4>Paid Media Strategy</h4>
             <ul>
-                <li>Structured a full-funnel Meta ecosystem across awareness, consideration, and conversion.</li>
-                <li>Creative testing frameworks built to continuously refine hooks and audience segments</li>
-                <li>Retargeting built from behavioral signals: site visitors, video viewers, engaged followers</li>
-                <li>Weekly CPL and ROAS tracking with monthly cohort-based optimization cycles</li>
-                <li>Paid and organic aligned intentionally to reduce acquisition friction</li>
+                <li>Structured a Meta ecosystem designed to balance education, awareness, and conversion readiness</li>
+                <li>Continuous creative testing across hooks, formats, and audience segments</li>
+                <li>Retargeting built from behavioral signals: site visitors, video viewers, engaged audiences</li>
+                <li>Weekly CPL and ROAS monitoring with monthly cohort optimization cycles</li>
+                <li>Intentional alignment between organic storytelling and paid amplification</li>
             </ul>
+            <p>Paid media didn't replace organic trust. It scaled it.</p>
 
             <h4>Performance Impact</h4>
             <ul class="results-list">
-                <li><strong>$58K</strong> budget generated <strong>1.35M+</strong> impressions at <strong>2.97%</strong> CTR</li>
-                <li><strong>423</strong> qualified leads at <strong>$71 CPL</strong></li>
-                <li>Meta campaigns attributed to <strong>~6%</strong> of total company sales</li>
+                <li>$58K budget generated 1.35M+ impressions at 2.97% CTR</li>
+                <li>423 qualified leads at $71 cost per lead</li>
+                <li>Meta campaigns attributed to ~6% of total company sales</li>
             </ul>
 
             <h4>Growth Metrics</h4>
             <ul class="results-list">
-                <li><strong>4,000%</strong> social audience growth</li>
-                <li><strong>83%</strong> increase in video views</li>
-                <li><strong>231K+</strong> total engagements across organic and paid</li>
+                <li>4,000% social audience growth</li>
+                <li>83% increase in video views</li>
+                <li>231K+ engagements across organic and paid</li>
             </ul>
+            <p>Not just reach. Real engagement. Real pipeline contribution.</p>
         </div>
 
         <div class="section-divider"></div>
 
         <!-- Analytics -->
         <div class="media-section fade-up">
-            <h3>Analytics &amp; Performance Data</h3>
-            <p>Platform performance reflected consistent engagement lift, efficient paid acquisition, and sustained audience growth across channels.</p>
             <p class="analytics-caption">Platform performance snapshots</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.42.59%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
@@ -458,16 +533,18 @@
         <div class="cs-grid fade-up">
             <div class="cs-block">
                 <h3>Objective</h3>
-                <p>Increase following and engagement on Instagram and YouTube Shorts through improved short-form storytelling and strategic posting cadence. Reinvigorate a plateauing content strategy and execute a high-stakes $6.4M product launch.</p>
+                <p>Reignite growth on Instagram and YouTube Shorts by turning passive viewers into active fans while supporting a high-stakes $6.4M digital product launch.</p>
+                <p>The account wasn't failing. It was coasting. The goal was to make it scroll-stopping again.</p>
             </div>
             <div class="cs-block">
                 <h3>The Approach</h3>
                 <ul>
-                    <li>Implemented a data-led content calendar focused on storytelling, trends, and engagement triggers</li>
-                    <li>Optimized video hooks for first-3-second retention</li>
-                    <li>Cross-platform repurposing (IG → YouTube Shorts) to maximize reach</li>
-                    <li>Real-time social coverage of live launches and mastermind events</li>
-                    <li>50+ assets produced weekly across formats</li>
+                    <li>Built a content system designed for retention, shareability, and launch-phase momentum, not just posting more</li>
+                    <li>Structured a storytelling-led editorial calendar around personality, tension, and cultural relevance</li>
+                    <li>Engineered first-3-second hooks that earned retention instead of begging for it</li>
+                    <li>Repurposed high-performing Instagram content to YouTube Shorts to expand discovery reach</li>
+                    <li>Delivered real-time coverage during launches and mastermind events because live energy converts</li>
+                    <li>Sustained a 50+ weekly asset cadence without diluting brand voice</li>
                 </ul>
             </div>
         </div>
@@ -477,30 +554,38 @@
         <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
             <h4>Growth Strategy</h4>
-            <p>The audience was already engaged, but the content wasn't giving them enough reason to share or return. The strategy shifted from broad educational content to personality-led storytelling that felt more like a conversation and less like a course.</p>
+            <p>The audience was there. The attention wasn't.</p>
+            <p>We shifted from broad educational content to personality-driven storytelling that felt conversational, timely, and native to the platform. Less lecture. More let me tell you something.</p>
             <ul>
-                <li>Introduced trend-responsive content (pop culture tie-ins, meme formats, viral hooks)</li>
-                <li>Built a consistent posting cadence with intentional variety across formats</li>
-                <li>Invested in high-production-value Reels to compete for algorithmic reach</li>
-                <li>YouTube Shorts treated as repurposed discovery content, not a primary channel</li>
+                <li>Introduced trend-responsive storytelling using meme formats and cultural hooks</li>
+                <li>Built consistent cadence with intentional format variety to prevent audience fatigue</li>
+                <li>Increased production quality on Reels to compete in a crowded feed</li>
+                <li>Treated YouTube Shorts as a discovery engine, not a side experiment</li>
             </ul>
+            <p>The result wasn't just more views. It was renewed momentum.</p>
 
             <h4>Launch Campaign Execution</h4>
-            <p>The $6.4M launch required a content calendar that built anticipation, captured live moments, and drove conversions—all while maintaining the brand's signature tone.</p>
+            <p>A $6.4M launch doesn't allow for quiet social media.</p>
+            <p>The strategy required anticipation, real-time amplification, and conversion-focused storytelling without losing the brand's voice.</p>
             <ul>
-                <li>Pre-launch: countdown content, behind-the-scenes, testimonial-forward storytelling</li>
-                <li>Launch week: real-time coverage of live events, mastermind sessions, results reveals</li>
-                <li>Post-launch: community celebration content, milestone sharing, social proof amplification</li>
-                <li>17 IG Reels exceeded 10K views in the first 30 days</li>
-                <li>6 Reels exceeded 20K views; 1 hit 49K views organically</li>
+                <li>Pre-launch: countdown content, behind-the-scenes access, testimonial-led momentum</li>
+                <li>Launch week: live coverage, mastermind highlights, real-time results reveals</li>
+                <li>Post-launch: celebration, community recognition, and social proof amplification</li>
             </ul>
+            <p>Social became the connective tissue between hype and revenue.</p>
+
+            <h4>Performance Highlights</h4>
+            <ul>
+                <li>17 Instagram Reels exceeded 10K views within 30 days</li>
+                <li>6 Reels exceeded 20K views organically</li>
+                <li>Top-performing Reel reached 49K organic views</li>
+            </ul>
+            <p>Momentum translated into measurable engagement lift and supported a $6.4M launch outcome.</p>
         </div>
 
         <div class="section-divider"></div>
 
         <div class="media-section fade-up">
-            <h3>Analytics &amp; Performance Data</h3>
-            <p>Platform performance showed consistent follower growth, strong engagement retention, and high-performing short-form distribution across channels.</p>
             <p class="analytics-caption">Platform performance snapshots</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/Wedmore/Wedmore%20IG%20Followers.png" alt="Wedmore followers" onclick="openLB(this.src)">
@@ -549,17 +634,19 @@
         <div class="cs-grid fade-up">
             <div class="cs-block">
                 <h3>Objective</h3>
-                <p>Build local brand awareness and drive qualified leads by developing a cohesive social strategy that blends visual storytelling, lifestyle appeal, and consistent content showcasing StoneSmith's craftsmanship and credibility.</p>
+                <p>StoneSmith didn't just need better social. They needed social. The goal was to launch from zero, build local brand recognition, and create a visual presence that showcased craftsmanship while still feeling approachable to homeowners.</p>
             </div>
             <div class="cs-block">
                 <h3>The Approach</h3>
                 <ul>
-                    <li>Established foundational social presence and visual identity from scratch</li>
-                    <li>Built a content system blending education, project storytelling, and lifestyle inspiration</li>
-                    <li>Guided audiences from aspiration to inquiry through consistent brand voice</li>
-                    <li>Implemented design templates and on-brand visuals that showcase expertise while humanizing the brand</li>
-                    <li>Built scalable foundation for future paid campaign testing</li>
+                    <li>Built the brand's social foundation from the ground up strategically, visually, and structurally</li>
+                    <li>Established a cohesive visual identity that reflected craftsmanship and warmth</li>
+                    <li>Developed a content system blending education, project storytelling, and lifestyle inspiration</li>
+                    <li>Created a consistent voice that guided homeowners from inspiration to inquiry</li>
+                    <li>Implemented branded templates and visual standards to elevate perceived expertise</li>
+                    <li>Built a scalable content engine designed to support future paid acquisition</li>
                 </ul>
+                <p>This wasn't a content refresh. It was brand positioning through social.</p>
             </div>
         </div>
 
@@ -568,32 +655,33 @@
         <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
             <h4>Brand Positioning</h4>
-            <p>The core challenge was making stone countertops feel aspirational but not intimidating. Competitors leaned either luxury (cold, exclusive) or trade (technical, uninspiring). StoneSmith needed to own the space in between: expert craftsmanship with warmth and approachability.</p>
+            <p>Countertop brands tend to go one of two directions: luxury showroom vibes that feel a little out of reach, or contractor content that's technical but not inspiring.</p>
+            <p>StoneSmith needed a middle ground, beautiful work presented in a way that felt welcoming, not exclusive.</p>
+            <p>That balance became the north star for the content strategy.</p>
 
             <h4>Content Pillars</h4>
+            <p>Built a structured system designed to balance authority, inspiration, and proof.</p>
             <ul>
-                <li><strong>Project showcases:</strong> before/after transformations, installation process, finished kitchens and bathrooms</li>
-                <li><strong>Education:</strong> material comparisons, care guides, design trend breakdowns</li>
-                <li><strong>Lifestyle:</strong> home inspiration content that places StoneSmith in aspirational settings</li>
-                <li><strong>Social proof:</strong> client testimonials, reviews, project spotlights</li>
+                <li><strong>Project Showcases:</strong> Before-and-after transformations, installation process highlights, finished kitchens and bathrooms</li>
+                <li><strong>Education:</strong> Material comparisons, care guides, and design trend breakdowns that simplified decision-making</li>
+                <li><strong>Lifestyle:</strong> Aspirational home content placing StoneSmith within real, livable spaces</li>
+                <li><strong>Social Proof:</strong> Client testimonials, reviews, and local project spotlights reinforcing credibility</li>
             </ul>
 
-            <h4>Results (First 30 Days of Launch)</h4>
+            <h4>Results (First 30 Days Post-Launch)</h4>
             <ul>
-                <li>Consistent posting cadence established from day one</li>
-                <li>Cohesive visual identity across all platforms</li>
-                <li>Instagram reach grew 7.4K% through organic content alone</li>
-                <li>4.2% average engagement rate (industry avg: ~1–2%)</li>
-                <li>Strong audience response to local project features and storytelling content</li>
-                <li>Scalable foundation built for paid campaign testing</li>
+                <li>Consistent posting cadence established immediately</li>
+                <li>Cohesive visual identity implemented across platforms</li>
+                <li>Instagram reach increased 7.4K% organically</li>
+                <li>Achieved 4.2% average engagement rate (industry average: ~1-2%)</li>
+                <li>Strong audience response to local project storytelling</li>
             </ul>
+            <p>Most importantly: a scalable foundation built for future paid campaign testing and lead generation.</p>
         </div>
 
         <div class="section-divider"></div>
 
         <div class="media-section fade-up">
-            <h3>Analytics &amp; Performance Data</h3>
-            <p>Platform performance reflected rapid early traction, strong engagement quality, and a solid baseline for future paid acceleration.</p>
             <p class="analytics-caption">Platform performance snapshots</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/StoneSmith/StoneSmith%20IG%20Stats.png" alt="StoneSmith IG stats" onclick="openLB(this.src)">
@@ -636,17 +724,20 @@
         <div class="cs-grid fade-up">
             <div class="cs-block">
                 <h3>Objective</h3>
-                <p>Improve visual branding, increase followers and engagement, and create a cohesive, recognizable presence across platforms — connecting authentically with a midlife female audience that values both honesty and aspiration.</p>
+                <p>Transform a strong personal voice into a cohesive, visually recognizable brand, increasing followers, engagement, and short-form discoverability across platforms.</p>
+                <p>The goal wasn't to change her message. It was to package it in a way that honored both honesty and aspiration for a midlife female audience.</p>
             </div>
             <div class="cs-block">
                 <h3>The Approach</h3>
                 <ul>
-                    <li>Refocused brand around authenticity, storytelling, and visual consistency</li>
-                    <li>Identified inconsistent visuals and lack of direction as key barriers to engagement</li>
-                    <li>Developed a unified look and voice that feels both polished and personal</li>
-                    <li>Repurposed podcast clips and long-form content into short-form videos that expand reach</li>
-                    <li>Built a content system that drives consistency and reinforces brand voice across platforms</li>
+                    <li>Rebuilt the brand around clarity, consistency, and strategic repurposing</li>
+                    <li>Centered the brand on authenticity, storytelling, and visual cohesion</li>
+                    <li>Identified inconsistent visuals and unclear positioning as barriers to growth</li>
+                    <li>Developed a unified look and voice that felt polished but still deeply personal</li>
+                    <li>Repurposed podcast episodes and long-form content into high-impact short-form video</li>
+                    <li>Built a repeatable content system to maintain consistency without creative burnout</li>
                 </ul>
+                <p>This wasn't just a rebrand. It was a visibility upgrade.</p>
             </div>
         </div>
 
@@ -655,23 +746,30 @@
         <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
             <h4>The Problem with the Existing Brand</h4>
-            <p>The brand had a strong point of view and a loyal core audience, but the visual presentation wasn't doing the content justice. Inconsistent colors, mixed typography, and an unclear posting strategy were creating a disjointed experience that hurt discoverability and growth.</p>
+            <p>The voice was strong. The visuals were not.</p>
+            <p>Inconsistent colors, mixed typography, and an undefined posting rhythm created friction for new followers. The message resonated, but the presentation diluted discoverability and authority.</p>
+            <p>The brand needed alignment between substance and aesthetic.</p>
 
             <h4>The Rebrand Strategy</h4>
+            <p>Approached the transformation methodically.</p>
             <ul>
-                <li>Conducted a full content audit to identify what was resonating vs. creating noise</li>
-                <li>Defined 3–4 core content pillars aligned with audience pain points and aspirations</li>
-                <li>Designed a cohesive visual system: typography, color palette, graphic templates</li>
-                <li>Established a consistent posting rhythm with variation across pillars</li>
+                <li>Conducted a full content audit to separate signal from noise</li>
+                <li>Defined 3-4 core content pillars aligned with audience pain points and aspirations</li>
+                <li>Designed a cohesive visual system (typography, color palette, graphic templates)</li>
+                <li>Established a consistent posting rhythm with intentional variety across pillars</li>
             </ul>
+            <p>The goal was clarity, not overproduction.</p>
 
             <h4>Short-Form Video Strategy</h4>
+            <p>Her podcast was a goldmine of insight. It just wasn't being leveraged for discovery.</p>
+            <p>We transformed long-form episodes into structured short-form content designed for retention and reach.</p>
             <ul>
-                <li>Identified highest-value podcast and long-form content for repurposing</li>
-                <li>Created Reels framework: hook → insight → CTA, tailored to algorithm and audience</li>
-                <li>Batch-produced weekly Reels to maintain consistent cadence</li>
-                <li>Tested multiple hook formats to identify highest-performing styles</li>
+                <li>Identified high-impact podcast moments with standalone value</li>
+                <li>Built a repeatable Reels framework: hook → insight → takeaway → subtle CTA</li>
+                <li>Batch-produced weekly video content to maintain consistency</li>
+                <li>Tested multiple hook styles to determine what stopped the scroll</li>
             </ul>
+            <p>Instead of creating more content, we amplified what already worked.</p>
         </div>
 
         <!-- Before / After Slider -->
@@ -696,8 +794,6 @@
 
 
         <div class="media-section fade-up">
-            <h3>Analytics &amp; Performance Data</h3>
-            <p>Platform performance showed clear post-rebrand momentum with stronger discoverability, engagement quality, and audience consistency.</p>
             <p class="analytics-caption">Platform performance snapshots</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/NYAG/NYAG%20IG%20Overview.png" alt="NYAG overview" onclick="openLB(this.src)">
@@ -748,17 +844,20 @@
         <div class="cs-grid fade-up">
             <div class="cs-block">
                 <h3>Objective</h3>
-                <p>Complete marketing overhaul to strengthen fundraising efforts, grow audience engagement, manage donor communications, and modernize the organization's digital presence under a single, mission-driven narrative.</p>
+                <p>Lead a full marketing overhaul to unify messaging, strengthen fundraising, and modernize Carolina Farm Trust's digital presence under a clear, mission-driven narrative.</p>
+                <p>The organization had heart. It needed alignment.</p>
             </div>
             <div class="cs-block">
                 <h3>The Approach</h3>
                 <ul>
-                    <li>Unified Carolina Farm Trust's fragmented marketing under a single mission-driven narrative</li>
-                    <li>Aligned messaging across web, email, and social to amplify awareness</li>
-                    <li>Launched new ticket-sales platform with targeted Meta ad campaigns</li>
-                    <li>Connected fundraising, storytelling, and community impact under one consistent voice</li>
+                    <li>Consolidated fragmented marketing efforts into a cohesive strategy that connected storytelling, fundraising, and community impact</li>
+                    <li>Unified web, email, and social under a consistent mission-forward voice</li>
+                    <li>Clarified messaging hierarchy to strengthen donation and event conversion pathways</li>
+                    <li>Launched a new ticket-sales platform supported by targeted Meta ad campaigns</li>
+                    <li>Integrated fundraising, storytelling, and community milestones into one narrative ecosystem</li>
                     <li>Wrote and designed grant proposals securing $15K+ in funding</li>
                 </ul>
+                <p>This wasn't about posting more. It was about building trust at scale.</p>
             </div>
         </div>
 
@@ -767,32 +866,36 @@
         <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
             <h4>The Strategic Foundation</h4>
-            <p>Nonprofit marketing lives or dies on emotional resonance. The strategy was to connect every piece of content—from Instagram posts to grant proposals—to a single story: Carolina Farm Trust isn't just growing food, it's building a more sustainable, connected community.</p>
+            <p>Nonprofit marketing depends on emotional clarity.</p>
+            <p>Every channel from Instagram captions to grant proposals centered around a single story:</p>
+            <p>Carolina Farm Trust isn't just growing food. It's strengthening local farms, expanding food access, and building a more connected, sustainable community.</p>
+            <p>When the narrative aligned, the channels followed.</p>
 
             <h4>Channel Strategy</h4>
             <ul>
-                <li>Social media: mission storytelling, farmer spotlights, event promotion, community milestones</li>
-                <li>Email: donor communications, event announcements, impact reports redesigned for readability</li>
-                <li>Web: updated messaging hierarchy to prioritize donation CTA and event sign-ups</li>
-                <li>TikTok: new channel established to reach Gen Z and younger Millennial donors</li>
+                <li><strong>Social Media:</strong> Mission storytelling, farmer spotlights, event promotion, and community milestones</li>
+                <li><strong>Email Marketing:</strong> Redesigned donor communications, impact reports, and event announcements for clarity and engagement</li>
+                <li><strong>Website:</strong> Restructured messaging hierarchy to prioritize donation calls-to-action and event sign-ups</li>
+                <li><strong>TikTok:</strong> Established a new channel to reach Gen Z and younger Millennial supporters</li>
             </ul>
+            <p>The goal wasn't omnipresence. It was alignment.</p>
 
             <h4>Revenue & Fundraising Impact</h4>
             <ul>
-                <li>New ticket-sales platform launched with an integrated Meta ad campaign</li>
-                <li>Paid campaign drove 5% increase in annual fundraiser profits year-over-year</li>
+                <li>New ticket-sales platform launched with integrated Meta ad campaign support</li>
+                <li>Paid campaign contributed to a 5% increase in annual fundraiser profits year-over-year</li>
                 <li>Grant writing and design secured $15K+ in new funding</li>
-                <li>30% increase in website traffic from improved content and social integration</li>
-                <li>20% increase in volunteer sign-ups through improved community communications</li>
+                <li>Website traffic increased 30% through improved content and channel integration</li>
+                <li>Volunteer sign-ups increased 20% through clearer community communication</li>
             </ul>
+            <p>Impact wasn't just measured in impressions, it showed up in funding and participation.</p>
         </div>
 
         <div class="section-divider"></div>
 
         <div class="media-section fade-up">
-            <h3>Campaign Assets</h3>
-            <p>Campaign outputs reflected stronger narrative consistency across fundraising, community storytelling, and conversion-focused communication.</p>
-            <p class="analytics-caption">Campaign performance snapshots</p>
+            <p class="media-kicker">Campaign Assets</p>
+            <p class="media-intro">Campaign outputs reflected stronger narrative consistency across fundraising, community storytelling, and conversion-focused communication.</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/CFT/CFT%20Flyer.png" alt="CFT fundraiser flyer" onclick="openLB(this.src)">
                 <img src="Assets/Analytics%20Screenshots/CFT/CFT%20Grant.png" alt="CFT grant" onclick="openLB(this.src)">
@@ -827,17 +930,21 @@
         <div class="cs-grid fade-up">
             <div class="cs-block">
                 <h3>Objective</h3>
-                <p>Build Maple Air's brand presence from the ground up — establishing a social identity, content strategy, and paid media foundation for a whole-house air purification system in a health-conscious market.</p>
+                <p>Support Maple Air's marketing evolution by bringing the brand to life on social, strengthening positioning, preparing for ecommerce, and building demand in the indoor air quality category.</p>
+                <p>The brand already existed. The challenge was making it visible, relatable, and strategically positioned for health-conscious homeowners.</p>
             </div>
             <div class="cs-block">
                 <h3>The Approach</h3>
                 <ul>
-                    <li>Developed brand voice, visual identity, and content pillars from scratch</li>
-                    <li>Created educational and lifestyle content connecting air quality to everyday health</li>
-                    <li>Produced short-form video content including installs, unboxings, and awareness reels</li>
-                    <li>Built organic social strategy aligned with product education and trust-building</li>
-                    <li>Leveraged cultural moments and relatable storytelling to grow audience engagement</li>
+                    <li>Acting as fractional marketing leadership, I'm focused on aligning brand, content, and growth strategy while supporting a broader marketing evolution</li>
+                    <li>Established Maple Air's social voice and platform presence from an inconsistent starting point</li>
+                    <li>Developed content pillars connecting indoor air quality to everyday health and home comfort</li>
+                    <li>Produced short-form video content including installs, unboxings, and awareness storytelling</li>
+                    <li>Aligned organic social with future paid media and ecommerce goals</li>
+                    <li>Supporting brand refresh initiatives, website direction, and product storytelling</li>
+                    <li>Collaborating with animation partners and leading influencer outreach strategy</li>
                 </ul>
+                <p>This work spans brand building, category education, and demand generation.</p>
             </div>
         </div>
 
@@ -846,26 +953,30 @@
         <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
             <h4>The Opportunity</h4>
-            <p>Maple Air sits at the intersection of home improvement and health-conscious living — a powerful but underutilized position. The strategy focused on making air quality feel personal and urgent without being fear-driven, positioning Maple Air as the smart choice for families who care about what's in their home.</p>
+            <p>Nobody wakes up excited to shop for air purification. Usually it starts with allergies, kids getting sick, or a why does the house smell weird moment.</p>
+            <p>The strategy wasn't to scare people. It was to make clean air feel practical, relevant, and worth thinking about before there's a problem.</p>
 
             <h4>Content Strategy</h4>
             <ul>
-                <li>Educational content on indoor air quality, allergens, and whole-home health</li>
-                <li>Behind-the-scenes install and unboxing content to build credibility and relatability</li>
-                <li>Timely awareness carousels tied to seasonal health conversations (flu season, mold, contamination)</li>
-                <li>Lifestyle-forward content connecting clean air to better sleep, fewer sick days, and family wellbeing</li>
+                <li>Educational posts on indoor air quality, allergens, and whole-home health</li>
+                <li>Install and behind-the-scenes content that humanizes the technology</li>
+                <li>Seasonal awareness tied to health conversations like flu season, mold concerns, and air quality events</li>
+                <li>Lifestyle storytelling connecting clean air to sleep, wellness, and family comfort</li>
+                <li>Influencer collaborations designed to normalize the conversation around air quality</li>
             </ul>
+            <p>The goal isn't just engagement. It's familiarity and trust.</p>
 
-            <h4>Results</h4>
-            <p>Analytics in progress — campaign is actively running. Full performance data will be added as results are gathered.</p>
+            <h4>Current Status</h4>
+            <p>This is an active engagement. I'm supporting Maple Air as a fractional marketing lead across brand positioning, ecommerce preparation, influencer campaigns, animation storytelling, and social growth.</p>
+            <p>Full performance metrics will be added as initiatives mature.</p>
         </div>
 
         <div class="section-divider"></div>
 
         <div class="media-section fade-up">
-            <h3>Campaign Assets</h3>
-            <p>Early campaign assets established a clear launch foundation, with performance reporting to follow as data accumulates.</p>
-            <p class="analytics-caption">Campaign performance snapshots</p>
+            <p class="media-kicker">Campaign Assets</p>
+            <p class="media-intro">Early campaign assets established a clear launch foundation, with performance reporting to follow as data accumulates.</p>
+            <p class="analytics-caption">Platform performance snapshots</p>
             <div class="analytics-grid">
                 <img src="Assets/Analytics%20Screenshots/Maple%20Air/Maple%20Air%20Analytics.png" alt="Maple Air analytics" onclick="openLB(this.src)" onerror="this.style.display='none'">
             </div>
@@ -914,6 +1025,24 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ---- MOBILE NAV ----
+const navToggle = document.getElementById('navToggle');
+const primaryNav = document.getElementById('primary-nav');
+if (navToggle && primaryNav) {
+    navToggle.addEventListener('click', () => {
+        const open = primaryNav.classList.toggle('open');
+        navToggle.classList.toggle('open', open);
+        navToggle.setAttribute('aria-expanded', String(open));
+    });
+    primaryNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            primaryNav.classList.remove('open');
+            navToggle.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
 
 // ---- ANIMATED COUNTERS ----
 function animateCounter(el) {

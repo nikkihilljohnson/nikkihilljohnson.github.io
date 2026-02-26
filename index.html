@@ -58,6 +58,7 @@
             align-items: center;
             justify-content: space-between;
             height: 64px;
+            position: relative;
         }
         .nav-logo {
             font-family: var(--font-display);
@@ -81,6 +82,29 @@
             transition: color 0.2s;
         }
         .nav-links a:hover { color: var(--pink); }
+        .nav-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--gray-300);
+            border-radius: 10px;
+            background: var(--white);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+        .nav-toggle span {
+            width: 18px;
+            height: 2px;
+            background: var(--gray-900);
+            border-radius: 2px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
         /* DROPDOWN NAV */
         .nav-dropdown {
@@ -1008,7 +1032,46 @@
                 min-height: 220px;
             }
             .section-title { font-size: 2rem; }
-            .nav-links { display: none; }
+            .nav-toggle { display: inline-flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: calc(100% + 0.55rem);
+                right: 2rem;
+                width: min(280px, calc(100vw - 4rem));
+                padding: 0.75rem;
+                border: 1px solid var(--gray-300);
+                border-radius: 14px;
+                background: var(--white);
+                box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+                gap: 0;
+                flex-direction: column;
+                z-index: 250;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a,
+            .nav-dropdown-toggle {
+                display: block;
+                width: 100%;
+                padding: 0.7rem 0.85rem;
+                border-radius: 8px;
+                font-size: 0.92rem;
+            }
+            .nav-dropdown { width: 100%; }
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                margin-top: 0;
+                padding: 0 0 0 0.75rem;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                border: none;
+                min-width: 0;
+                background: transparent;
+            }
+            .nav-dropdown-menu a { padding: 0.55rem 0.85rem; }
             .cases-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
             .timeline-item { padding-left: 50px; }
@@ -1202,7 +1265,10 @@
 <nav id="navbar">
     <div class="nav-inner">
         <a href="#" class="nav-logo">Nikki<span>.</span></a>
-        <ul class="nav-links">
+        <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="primary-nav">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li class="nav-dropdown">
@@ -1428,7 +1494,7 @@
                     </div>
                     <div class="highlight-card fade-up">
                         <h4>Creative With Receipts</h4>
-                        <p>Big ideas are great. Proving they worked is better. I love a strong hook, a clean dashboard, and campaigns that deliver both vibes and ROI.</p>
+                        <p>Big ideas are great. But proving they actually worked is my favorite! I love a strong hook, a clean dashboard, and campaigns that deliver both vibes and ROI.</p>
                     </div>
                     <div class="highlight-card fade-up">
                         <h4>Algorithm Survivor</h4>
@@ -2058,6 +2124,23 @@
     window.addEventListener('scroll', () => {
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
     });
+
+    const navToggle = document.getElementById('navToggle');
+    const primaryNav = document.getElementById('primary-nav');
+    if (navToggle && primaryNav) {
+        navToggle.addEventListener('click', () => {
+            const open = primaryNav.classList.toggle('open');
+            navToggle.classList.toggle('open', open);
+            navToggle.setAttribute('aria-expanded', String(open));
+        });
+        primaryNav.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                primaryNav.classList.remove('open');
+                navToggle.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
 
     // Toggle earlier career section
     function toggleEarlierCareer(btn) {
