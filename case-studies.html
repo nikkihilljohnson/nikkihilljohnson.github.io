@@ -121,11 +121,17 @@
             }
             .hero-text { padding-bottom: 2rem; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
             .hero h1 { text-align: center; }
-            .hero p { margin: 0 auto 2.5rem; }
+            .hero p { margin: 0 auto 2.5rem; max-width: 28ch; }
             .section-label { margin-left: auto; margin-right: auto; }
             .jump-pills { justify-content: center; }
-            .hero-photo { justify-content: center; }
-            .hero-photo img { height: 300px; }
+            .hero-photo { justify-content: center; width: 100%; padding: 0 0.5rem; }
+            .hero-photo img { width: min(100%, 420px); height: auto; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 7.5rem 1.25rem 0; }
+            .hero h1 { font-size: clamp(2rem, 12vw, 3rem); }
+            .hero p { font-size: 1rem; max-width: 24ch; }
+            .hero-photo img { width: min(100%, 360px); }
         }
 
         /* ---- CASE STUDY WRAPPER ---- */

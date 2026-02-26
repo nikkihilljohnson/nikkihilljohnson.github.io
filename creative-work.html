@@ -293,14 +293,14 @@
         /* ---- CAROUSEL LIGHTBOX ---- */
         .clb { position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 1000; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; }
         .clb.active { display: flex; }
-        .clb-wrap { position: relative; max-width: 600px; width: 100%; }
-        .clb-track { display: flex; transition: transform 0.38s cubic-bezier(0.25,0.46,0.45,0.94); border-radius: 12px; overflow: hidden; }
-        .clb-slide { min-width: 100%; }
+        .clb-wrap { position: relative; max-width: 600px; width: 100%; background: #fff; border-radius: 12px; }
+        .clb-track { display: flex; transition: transform 0.38s cubic-bezier(0.25,0.46,0.45,0.94); border-radius: 12px; overflow: hidden; background: #fff; }
+        .clb-slide { min-width: 100%; flex: 0 0 100%; background: #fff; }
         .clb-slide img { width: 100%; max-height: 76vh; object-fit: contain; display: block; }
         .clb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 48px; height: 48px; color: white; font-size: 1.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10; }
         .clb-nav:hover { background: rgba(255,255,255,0.3); }
-        .clb-prev { left: -3.5rem; }
-        .clb-next { right: -3.5rem; }
+        .clb-prev { left: 0.65rem; }
+        .clb-next { right: 0.65rem; }
         .clb-close { position: fixed; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 46px; height: 46px; color: white; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .clb-footer { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
         .clb-dots { display: flex; gap: 0.4rem; }
@@ -325,8 +325,8 @@
         @media (max-width: 768px) {
             .tab-btn { font-size: 0.72rem; padding: 0.9rem 0.5rem; gap: 0.3rem; }
             .tab-count { display: none; }
-            .clb-prev { left: -2rem; }
-            .clb-next { right: -2rem; }
+            .clb-prev { left: 0.5rem; }
+            .clb-next { right: 0.5rem; }
             .nav-toggle { display: inline-flex; }
             .nav-links {
                 display: none;
@@ -411,13 +411,13 @@
 <div class="tab-bar" id="tab-bar">
     <div class="tab-inner">
         <button class="tab-btn active" data-tab="videos">
-            🎬 Videos <span class="tab-count">15</span>
+            🎬 Videos <span class="tab-count">14</span>
         </button>
         <button class="tab-btn" data-tab="carousels">
             🖼 Carousels <span class="tab-count">5</span>
         </button>
         <button class="tab-btn" data-tab="memes">
-            😂 Memes <span class="tab-count">5</span>
+            😂 Memes <span class="tab-count">4</span>
         </button>
         <button class="tab-btn" data-tab="static">
             📸 Static Posts <span class="tab-count">10</span>
@@ -558,17 +558,6 @@
                     <div class="play-btn">▶</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/NYAGRetreatMontage.mp4','NYAG — Retreat Montage')">
-                    <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
-                        <source src="Assets/Videos/NYAGRetreatMontage.mp4" type="video/mp4">
-                    </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">NYAG</div>
-                        <div class="video-title">Retreat Montage</div>
-                    </div>
-                    <div class="play-btn">▶</div>
-                </div>
-
                 <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20Taylor%20meme.mp4','NYAG — Taylor Meme Reel')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/NYAG%20Taylor%20meme.mp4" type="video/mp4">
@@ -581,9 +570,9 @@
                 </div>
 
                 <div class="video-card" onclick="openVideo('Assets/Videos/Maple%20Air%20Install%20Day.mov','Maple Air — Install Day')">
-                    <div class="video-fallback">
-                        <img src="Assets/Logos/Maple%20Air%20Logo.svg" alt="Maple Air">
-                    </div>
+                    <video muted loop playsinline preload="auto" onloadeddata="if(!this.dataset.primed){this.dataset.primed='1'; try{this.currentTime=0.05;}catch(e){}}" onseeked="this.pause()" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0.05;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/Maple%20Air%20Install%20Day.mov" type="video/quicktime">
+                    </video>
                     <div class="video-overlay">
                         <div class="video-brand">Maple Air</div>
                         <div class="video-title">Install Day</div>
@@ -592,9 +581,9 @@
                 </div>
 
                 <div class="video-card" onclick="openVideo('Assets/Videos/Maple%20Air%20Unboxing.mov','Maple Air — Product Unboxing')">
-                    <div class="video-fallback">
-                        <img src="Assets/Logos/Maple%20Air%20Logo.svg" alt="Maple Air">
-                    </div>
+                    <video muted loop playsinline preload="auto" onloadeddata="if(!this.dataset.primed){this.dataset.primed='1'; try{this.currentTime=0.05;}catch(e){}}" onseeked="this.pause()" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0.05;" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="Assets/Videos/Maple%20Air%20Unboxing.mov" type="video/quicktime">
+                    </video>
                     <div class="video-overlay">
                         <div class="video-brand">Maple Air</div>
                         <div class="video-title">Product Unboxing</div>
@@ -658,9 +647,9 @@
                     </div>
                 </div>
 
-                <div class="carousel-card" onclick="openCarousel([&quot;Assets/Carousels/New Year\u2019s gym resolutions/1.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/2.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/3.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/4.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/5.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/6.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/7.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/8.png&quot;,&quot;Assets/Carousels/New Year\u2019s gym resolutions/9.png&quot;])">
+                <div class="carousel-card" onclick="openCarousel(['Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/1.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/2.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/3.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/4.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/5.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/6.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/7.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/8.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/9.png'])">
                     <div class="carousel-preview">
-                        <img src="Assets/Carousels/New Year&#x2019;s gym resolutions/1.png" alt="New Year gym carousel">
+                        <img src="Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/1.png" alt="New Year gym carousel">
                         <div class="slide-count-badge">9 slides</div>
                     </div>
                     <div class="carousel-info">
@@ -730,16 +719,6 @@
                     <div class="meme-overlay">
                         <div class="meme-brand">NYAG</div>
                         <div class="meme-title">Kardashian Meme</div>
-                    </div>
-                </div>
-
-                <div class="meme-card" onclick="openVideo('Assets/Videos/NYAG%20Bill%20Hader%20Meme.mp4','NYAG — Bill Hader Meme')">
-                    <div class="video-fallback" style="background:linear-gradient(135deg,#0d0d1a,#1a0035);display:flex;align-items:center;justify-content:center;height:100%;width:100%;">
-                        <span style="font-size:2.5rem;">😂</span>
-                    </div>
-                    <div class="meme-overlay" style="opacity:1;">
-                        <div class="meme-brand">NYAG</div>
-                        <div class="meme-title">Bill Hader Meme Reel</div>
                     </div>
                 </div>
 
@@ -958,14 +937,13 @@ function closeLB(e) {
 
 // ---- VIDEO MODAL ----
 function openVideo(src, label) {
-    const srcEl = document.getElementById('vm-src');
-    srcEl.src = src;
-    srcEl.type = src.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4';
-    document.getElementById('vm-video').load();
+    const videoEl = document.getElementById('vm-video');
+    videoEl.src = src;
+    videoEl.load();
     document.getElementById('vm-label').textContent = label;
     document.getElementById('vm').classList.add('active');
     document.body.style.overflow = 'hidden';
-    document.getElementById('vm-video').play().catch(() => {});
+    videoEl.play().catch(() => {});
 }
 function closeVM(e) {
     if (!e || e.target === document.getElementById('vm') || e.target.classList.contains('vm-close')) {
@@ -980,8 +958,19 @@ let clbSlides = [], clbIdx = 0;
 
 function openCarousel(slides) {
     clbSlides = slides; clbIdx = 0;
+    const normalizeSlidePath = (src) => {
+        try {
+            return encodeURI(decodeURI(String(src).trim()));
+        } catch (_) {
+            return String(src).trim();
+        }
+    };
+    const fallbackSrc = slides.length ? normalizeSlidePath(slides[0]) : '';
     document.getElementById('clb-track').innerHTML =
-        slides.map(s => `<div class="clb-slide"><img src="${s}" alt=""></div>`).join('');
+        slides.map((s) => {
+            const safeSrc = normalizeSlidePath(s);
+            return `<div class="clb-slide"><img src="${safeSrc}" alt="" loading="eager" onerror="this.onerror=null;this.src='${fallbackSrc}'"></div>`;
+        }).join('');
     document.getElementById('clb-dots').innerHTML =
         slides.map((_,i) => `<button class="clb-dot${i===0?' active':''}" onclick="goCLB(${i})"></button>`).join('');
     updateCLB();
