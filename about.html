@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Nikki Johnson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --pink:         #fe00ae;
+            --pink-rgb:     254, 0, 174;
+            --lime:         #c1fe1a;
+            --lime-rgb:     193, 254, 26;
+            --purple:       #7B00C7;
+            --purple-rgb:   123, 0, 199;
+            --purple-light: #fdf0ff;
+            --coral:        #0F766E;
+            --coral-rgb:    15, 118, 110;
+            --coral-dark:   #0a5c56;
+            --cream:        #F8F3EA;
+            --dark:         #0d0d1a;
+            --gray-900:     #2d2d3f;
+            --gray-600:     #6b6b80;
+            --gray-300:     #d1d1dd;
+            --gray-100:     #f5f5f8;
+            --white:        #ffffff;
+            --font-body:    'DM Sans', sans-serif;
+            --font-display: 'Playfair Display', serif;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--gray-900);
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- NAV ---- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-300);
+            transition: box-shadow 0.3s;
+        }
+        nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            position: relative;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--coral); }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active { color: var(--coral); }
+        .nav-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--gray-300);
+            border-radius: 10px;
+            background: var(--white);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+        .nav-toggle span {
+            width: 18px;
+            height: 2px;
+            background: var(--gray-900);
+            border-radius: 2px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle { cursor: pointer; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; display: flex; align-items: center; gap: 0.35rem; user-select: none; }
+        .nav-dropdown:hover .nav-dropdown-toggle { color: var(--coral); }
+        .nav-dropdown-menu { position: absolute; top: calc(100% + 0.75rem); left: 50%; transform: translateX(-50%) translateY(-6px); background: white; border: 1px solid var(--gray-300); border-radius: 14px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); min-width: 180px; padding: 0.5rem; opacity: 0; visibility: hidden; transition: opacity 0.22s, visibility 0.22s, transform 0.22s; z-index: 200; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .nav-dropdown-menu a { display: block; padding: 0.625rem 1rem; color: var(--gray-600); text-decoration: none; font-size: 0.875rem; font-weight: 500; border-radius: 8px; transition: all 0.15s; }
+        .nav-dropdown-menu a:hover { background: var(--purple-light); color: var(--purple); }
+
+        /* ---- SHARED ---- */
+        section { padding: 100px 2rem; }
+        .section-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: var(--coral);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .section-header { margin-bottom: 3.5rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* ---- PAGE HEADER ---- */
+        .page-header {
+            background: var(--cream);
+            padding: 140px 2rem 72px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .page-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            line-height: 1.06;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .page-header h1 .accent { color: var(--coral); }
+        .page-header p {
+            font-size: 1.1rem;
+            color: #4d4d5a;
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* ---- EXPERIENCE / TIMELINE ---- */
+        .experience { background: var(--gray-100); }
+        .timeline { position: relative; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--coral), rgba(var(--coral-rgb), 0.3));
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 64px;
+            margin-bottom: 2.5rem;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 16px;
+            top: 6px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--coral);
+            z-index: 1;
+        }
+        .timeline-item:nth-child(1) .timeline-dot { border-color: var(--coral); box-shadow: 0 0 0 4px rgba(var(--coral-rgb), 0.12); }
+        .timeline-item:nth-child(2) .timeline-dot { border-color: var(--coral); opacity: 0.85; }
+        .timeline-item:nth-child(3) .timeline-dot { border-color: var(--coral); opacity: 0.7; }
+        .timeline-item:nth-child(4) .timeline-dot { border-color: var(--coral); opacity: 0.6; }
+        .timeline-item:nth-child(5) .timeline-dot { border-color: var(--coral); opacity: 0.5; }
+        .timeline-item:nth-child(6) .timeline-dot { border-color: var(--coral); opacity: 0.4; }
+        .timeline-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .timeline-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .timeline-company {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            background: var(--gray-100);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+        .timeline-role {
+            font-size: 0.9rem;
+            color: var(--coral);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        .timeline-wins {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .win-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.75rem;
+            background: rgba(var(--coral-rgb), 0.07);
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .win-badge .arrow { color: var(--coral); }
+
+        /* ---- EARLIER CAREER ---- */
+        .earlier-career-toggle {
+            text-align: center;
+            margin-top: 2rem;
+            padding-left: 64px;
+        }
+        .toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            background: transparent;
+            border: 2px dashed var(--gray-300);
+            border-radius: 50px;
+            color: var(--gray-600);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .toggle-btn:hover {
+            border-color: var(--coral);
+            color: var(--coral);
+            background: rgba(var(--coral-rgb), 0.04);
+        }
+        .toggle-btn .chevron { transition: transform 0.3s; font-size: 0.75rem; }
+        .toggle-btn.open .chevron { transform: rotate(180deg); }
+        .earlier-career-cards {
+            display: none;
+            padding-left: 64px;
+            margin-top: 1.5rem;
+            gap: 1rem;
+        }
+        .earlier-career-cards.show { display: grid; }
+        .early-card {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: start;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            border-left: 3px solid var(--gray-300);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .early-card:hover {
+            border-left-color: var(--coral);
+            transform: translateX(3px);
+        }
+        .early-card-logo {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(var(--coral-rgb), 0.08);
+            color: var(--coral);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .early-card-content h4 {
+            font-size: 0.95rem;
+            color: var(--dark);
+            margin-bottom: 0.15rem;
+        }
+        .early-card-content .early-role {
+            font-size: 0.82rem;
+            color: var(--coral);
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+        }
+        .early-card-content p {
+            font-size: 0.82rem;
+            color: var(--gray-600);
+            line-height: 1.55;
+        }
+        .earlier-career-narrative {
+            padding: 1.5rem 1.75rem 1.25rem;
+            background: rgba(var(--coral-rgb), 0.05);
+            border-radius: 14px;
+            border-left: 4px solid var(--coral);
+        }
+        .earlier-career-narrative .foundation-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--coral);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .earlier-career-narrative p {
+            font-size: 0.92rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 0.6rem;
+        }
+        .earlier-career-narrative p:last-child { margin-bottom: 0; }
+
+        /* ---- ANIMATIONS ---- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            background: var(--dark);
+            text-align: center;
+            padding: 2rem;
+        }
+        footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
+        .footer-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .footer-social a:hover { background: var(--coral); color: white; }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .page-header { padding: 120px 2rem 56px; }
+            .page-header h1 { font-size: 2.2rem; }
+            .section-title { font-size: 2rem; }
+            .nav-toggle { display: inline-flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: calc(100% + 0.55rem);
+                right: 2rem;
+                width: min(280px, calc(100vw - 4rem));
+                padding: 0.75rem;
+                border: 1px solid var(--gray-300);
+                border-radius: 14px;
+                background: var(--white);
+                box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+                gap: 0;
+                flex-direction: column;
+                z-index: 250;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a, .nav-dropdown-toggle {
+                display: block;
+                width: 100%;
+                padding: 0.7rem 0.85rem;
+                border-radius: 8px;
+                font-size: 0.92rem;
+            }
+            .nav-dropdown { width: 100%; }
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                margin-top: 0;
+                padding: 0 0 0 0.75rem;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                border: none;
+                min-width: 0;
+                background: transparent;
+            }
+            .nav-dropdown-menu a { padding: 0.55rem 0.85rem; }
+            .timeline-item { padding-left: 50px; }
+            .earlier-career-toggle, .earlier-career-cards { padding-left: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Nikki<span>.</span></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="primary-nav">
+            <li><a href="about.html" class="active">About</a></li>
+            <li class="nav-dropdown">
+                <span class="nav-dropdown-toggle">Work <span style="font-size:0.7rem;">▼</span></span>
+                <div class="nav-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="creative-work.html">Creative Work</a>
+                </div>
+            </li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+    <div class="page-header-inner">
+        <p class="section-label">About Nikki</p>
+        <h1>15+ years of turning<br><span class="accent">content into results.</span></h1>
+        <p>A career built on understanding people first, platforms second — and the track record to prove it.</p>
+    </div>
+</div>
+
+<!-- CAREER TIMELINE -->
+<section class="experience" id="experience">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">Career</p>
+            <h2 class="section-title">Where I've Made an Impact</h2>
+            <p class="section-subtitle">A track record of growing brands, leading teams, and delivering campaigns that move the needle.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-company">Nikki Hill Johnson Consulting</span>
+                        <span class="timeline-date">Nov 2025 – Present</span>
+                    </div>
+                    <div class="timeline-role">Fractional Marketing Strategist — Social &amp; Paid Media</div>
+                    <p class="timeline-desc">Lead social and paid media strategy for B2C and B2B brands, with a focus on service-based and growth-stage companies. I partner with founders and internal teams to provide senior-level strategic direction without adding full-time headcount, including work with community-focused and advocacy-driven initiatives alongside commercial brands.</p>
+                    <div class="timeline-wins">
+                        <span class="win-badge"><span class="arrow">&#8599;</span> Full-funnel social strategy</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> Meta paid social end-to-end</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> Messaging &amp; content pillars</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-company">Trane Technologies / HVAC.com</span>
+                        <span class="timeline-date">2023 – 2025</span>
+                    </div>
+                    <div class="timeline-role">Senior Social Media &amp; Content Strategist</div>
+                    <p class="timeline-desc">Led social strategy and multi-platform content for a SaaS-driven home-services brand, managing content creation, video production, and editorial planning.</p>
+                    <div class="timeline-wins">
+                        <span class="win-badge"><span class="arrow">&#8599;</span> ~50x ROI</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> $0.57 CPC</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 135% impression growth</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 83% video view increase</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-company">Level Five Publishing / James Wedmore</span>
+                        <span class="timeline-date">2022 – 2023</span>
+                    </div>
+                    <div class="timeline-role">Creative Content Director</div>
+                    <p class="timeline-desc">Directed social and content strategy for major launches, including editorial planning, short-form video, and real-time event coverage.</p>
+                    <div class="timeline-wins">
+                        <span class="win-badge"><span class="arrow">&#8599;</span> $6.4M launch</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 4 viral videos in 30 days</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 3%+ engagement rate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-company">Carolina Farm Trust</span>
+                        <span class="timeline-date">2021 – 2022</span>
+                    </div>
+                    <div class="timeline-role">Senior Marketing &amp; Communications Manager</div>
+                    <p class="timeline-desc">Led social media and mission-driven storytelling for a nonprofit focused on sustainable agriculture, managing multi-channel communication and engagement.</p>
+                    <div class="timeline-wins">
+                        <span class="win-badge"><span class="arrow">&#8599;</span> $15K+ grants secured</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 30% traffic increase</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 20% volunteer growth</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-company">Self Employed</span>
+                        <span class="timeline-date">2019 – 2022</span>
+                    </div>
+                    <div class="timeline-role">Digital Marketing Strategist</div>
+                    <p class="timeline-desc">Developed social, content, and launch strategies for D2C brands, leading multi-platform storytelling and performance optimization.</p>
+                    <div class="timeline-wins">
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 28.5% revenue increase</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-company">BODi</span>
+                        <span class="timeline-date">2013 – 2021</span>
+                    </div>
+                    <div class="timeline-role">Digital Marketing &amp; Community Growth Strategist</div>
+                    <p class="timeline-desc">Built a large, community-driven digital business through social content, storytelling, and engagement strategies over 8 years.</p>
+                    <div class="timeline-wins">
+                        <span class="win-badge"><span class="arrow">&#8599;</span> $1M+ revenue</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> 1,000+ member community</span>
+                        <span class="win-badge"><span class="arrow">&#8599;</span> Keynote speaker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="earlier-career-toggle fade-up">
+            <button class="toggle-btn" onclick="toggleEarlierCareer(this)">
+                Earlier in My Career <span class="chevron">&#9660;</span>
+            </button>
+        </div>
+        <div class="earlier-career-cards" id="earlierCareer">
+            <div class="earlier-career-narrative fade-up">
+                <p class="foundation-label">Where It Started</p>
+                <p>Before launches, viral videos, and dashboards, I was building digital communities when "content strategy" wasn't even a job title. I managed editorial and community work at AOL during the early days of digital media, ran my own consulting practice, and helped brands grow audiences from scratch.</p>
+                <p>That foundation in storytelling, community, and audience insight still drives how I approach marketing today.</p>
+            </div>
+            <div class="early-card fade-up">
+                <div class="early-card-logo">PM</div>
+                <div class="early-card-content">
+                    <h4>Pure Matters</h4>
+                    <div class="early-role">Online Community Manager</div>
+                    <p>Managed daily community engagement across Facebook, Twitter, and Pinterest. Monitored analytics and audience insights to improve performance and strengthen brand presence.</p>
+                </div>
+            </div>
+            <div class="early-card fade-up">
+                <div class="early-card-logo">AOL</div>
+                <div class="early-card-content">
+                    <h4>AOL</h4>
+                    <div class="early-role">Content Manager &amp; Music Programming</div>
+                    <p>Managed content, UX updates, and platform improvements for AOL Lifestyle channels. Supported major site launches and rebrands including StyleList and KitchenDaily. Earlier roles in music content, radio production, and SEO programming.</p>
+                </div>
+            </div>
+            <div class="early-card fade-up">
+                <div class="early-card-logo">URS</div>
+                <div class="early-card-content">
+                    <h4>URS Corporation</h4>
+                    <div class="early-role">Marketing &amp; Outreach Coordinator</div>
+                    <p>Supported community outreach, partnership development, and incentive-driven marketing initiatives for transportation programs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-social">
+        <a href="https://instagram.com/nikkihilljohnson" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/nikkihilljohnson/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+    </div>
+    <p>&copy; 2026 Nikki Johnson</p>
+</footer>
+
+<script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Nav shadow on scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const primaryNav = document.getElementById('primary-nav');
+    if (navToggle && primaryNav) {
+        navToggle.addEventListener('click', () => {
+            const open = primaryNav.classList.toggle('open');
+            navToggle.classList.toggle('open', open);
+            navToggle.setAttribute('aria-expanded', String(open));
+        });
+        primaryNav.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                primaryNav.classList.remove('open');
+                navToggle.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    // Earlier career toggle
+    function toggleEarlierCareer(btn) {
+        const cards = document.getElementById('earlierCareer');
+        btn.classList.toggle('open');
+        cards.classList.toggle('show');
+        if (cards.classList.contains('show')) {
+            cards.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        }
+    }
+</script>
+</body>
+</html>
