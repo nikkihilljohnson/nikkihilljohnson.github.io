@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Option 2: Rich Cobalt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --accent:       #2563EB;
+            --accent-dark:  #1d4ed8;
+            --accent-rgb:   37, 99, 235;
+            --cream:        #FAF7F2;
+            --dark:         #1a1a1a;
+            --charcoal:     #2d2d2d;
+            --gray-600:     #6b6b6b;
+            --gray-300:     #d1d1d1;
+            --white:        #ffffff;
+            --font-body:    'DM Sans', sans-serif;
+            --font-display: 'Playfair Display', serif;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- OPTION SWITCHER ---- */
+        .switcher {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            flex-wrap: wrap;
+        }
+        .switcher span {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.78rem;
+            font-family: var(--font-body);
+            margin-right: 0.25rem;
+        }
+        .switcher a {
+            display: inline-block;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .switcher a.active {
+            background: var(--accent);
+            color: var(--white);
+        }
+        .switcher a:not(.active) {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+        }
+        .switcher a:not(.active):hover {
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 2rem 80px;
+            background: var(--cream);
+            position: relative;
+        }
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Text */
+        .hero-text h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+        .hero-text h1 .accent { color: var(--accent); }
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 520px;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        .hero-wit {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 2rem;
+        }
+
+        /* Buttons */
+        .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(var(--accent-rgb), 0.28);
+        }
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.35);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--gray-600);
+            border: 1.5px solid var(--gray-300);
+        }
+        .btn-secondary:hover {
+            border-color: var(--dark);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        /* Photo */
+        .hero-photo {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .photo-frame {
+            width: 380px;
+            height: 460px;
+            border-radius: 24px;
+            background: transparent;
+            padding: 0;
+            position: relative;
+            box-shadow: 0 24px 52px rgba(0,0,0,0.13);
+        }
+        .photo-frame::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            right: -12px;
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            border: 2px solid var(--accent);
+            z-index: -1;
+            opacity: 0.45;
+        }
+        .photo-frame-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        .photo-frame-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        /* Option label */
+        .option-label {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 4px 16px rgba(var(--accent-rgb), 0.35);
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.4rem; }
+            .hero-tagline { margin: 0 auto 1rem; }
+            .hero-ctas { justify-content: center; }
+            .hero-photo { order: -1; }
+            .photo-frame { width: 280px; height: 340px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="switcher">
+    <span>Compare:</span>
+    <a href="color-teal.html">① Deep Teal</a>
+    <a href="color-cobalt.html" class="active">② Rich Cobalt</a>
+    <a href="color-plum.html">③ Sophisticated Plum</a>
+    <a href="index.html" style="margin-left:0.5rem; border-left: 1px solid rgba(255,255,255,0.15); padding-left:0.75rem;">← Live Site</a>
+</div>
+
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h1>Creating content is easy.<br><span class="accent">Creating results</span> is harder.</h1>
+            <p class="hero-tagline">I help brands turn content into business results through social strategy, paid media, analytics, and creative that people actually want to engage with.</p>
+            <p class="hero-wit">Fluent in memes. Fluent in metrics.</p>
+            <div class="hero-ctas">
+                <a href="#" class="btn btn-primary">Let's Talk</a>
+                <a href="#" class="btn btn-secondary">View My Work</a>
+            </div>
+        </div>
+        <div class="hero-photo">
+            <div class="photo-frame">
+                <div class="photo-frame-inner">
+                    <img src="https://nikkihilljohnson.my.canva.site/_assets/media/098e93cac96858c266f477382f40e0ea.jpg" alt="Nikki Johnson">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="option-label">Option 2 — Rich Cobalt #2563EB</div>
+
+</body>
+</html>
