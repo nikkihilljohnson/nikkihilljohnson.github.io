@@ -6,18 +6,18 @@
     <title>Case Studies | Nikki Johnson</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --pink: #fe00ae;
-            --lime: #c1fe1a;
-            --purple: #7B00C7;
-            --purple-light: #fdf0ff;
-            --dark: #0d0d1a;
-            --gray-900: #2d2d3f;
+            --teal: #247F79;
+            --teal-dark: #1a6460;
+            --teal-rgb: 36, 127, 121;
+            --cream: #F8F3EA;
+            --dark: #1a1a24;
+            --charcoal: #2d2d3f;
             --gray-600: #6b6b80;
             --gray-300: #d1d1dd;
             --gray-100: #f5f5f8;
@@ -27,299 +27,271 @@
         }
 
         html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); color: var(--gray-900); line-height: 1.6; background: var(--white); -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--font-body); color: var(--charcoal); line-height: 1.6; background: var(--white); -webkit-font-smoothing: antialiased; }
 
         /* ---- NAV ---- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 100;
-            background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-300);
+            transition: box-shadow 0.3s;
         }
-        nav.scrolled { border-color: var(--gray-300); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
-        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; }
-        .nav-inner { position: relative; }
-        .nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--dark); text-decoration: none; }
-        .nav-logo span { color: var(--pink); }
-        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
+        nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px; position: relative;
+        }
+        .nav-logo { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--dark); text-decoration: none; }
+        .nav-logo span { color: var(--teal); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--pink); }
+        .nav-links a:hover, .nav-links a.active { color: var(--teal); }
         .nav-toggle {
-            display: none;
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--gray-300);
-            border-radius: 10px;
-            background: var(--white);
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
+            display: none; width: 42px; height: 42px; border: 1px solid var(--gray-300);
+            border-radius: 10px; background: var(--white); align-items: center;
+            justify-content: center; flex-direction: column; gap: 4px; cursor: pointer;
         }
-        .nav-toggle span {
-            width: 18px;
-            height: 2px;
-            background: var(--gray-900);
-            border-radius: 2px;
-            transition: transform 0.2s, opacity 0.2s;
-        }
+        .nav-toggle span { width: 18px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
         .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
         .nav-toggle.open span:nth-child(2) { opacity: 0; }
         .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-        /* DROPDOWN */
         .nav-dropdown { position: relative; }
         .nav-dropdown-toggle { cursor: pointer; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; display: flex; align-items: center; gap: 0.35rem; user-select: none; }
-        .nav-dropdown:hover .nav-dropdown-toggle { color: var(--pink); }
-        .nav-dropdown-menu { position: absolute; top: calc(100% + 0.75rem); left: 50%; transform: translateX(-50%) translateY(-6px); background: white; border: 1px solid var(--gray-300); border-radius: 14px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); min-width: 180px; padding: 0.5rem; opacity: 0; visibility: hidden; transition: opacity 0.22s, visibility 0.22s, transform 0.22s; z-index: 200; }
+        .nav-dropdown:hover .nav-dropdown-toggle { color: var(--teal); }
+        .nav-dropdown-menu {
+            position: absolute; top: calc(100% + 0.75rem); left: 50%;
+            transform: translateX(-50%) translateY(-6px); background: white;
+            border: 1px solid var(--gray-300); border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1); min-width: 180px; padding: 0.5rem;
+            opacity: 0; visibility: hidden; transition: opacity 0.22s, visibility 0.22s, transform 0.22s; z-index: 200;
+        }
         .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
         .nav-dropdown-menu a { display: block; padding: 0.625rem 1rem; color: var(--gray-600); text-decoration: none; font-size: 0.875rem; font-weight: 500; border-radius: 8px; transition: all 0.15s; }
-        .nav-dropdown-menu a:hover, .nav-dropdown-menu a.active { background: var(--purple-light); color: var(--purple); }
+        .nav-dropdown-menu a:hover, .nav-dropdown-menu a.active { background: rgba(var(--teal-rgb), 0.07); color: var(--teal); }
 
         /* ---- HERO ---- */
         .hero {
-            padding: 9rem 2rem 0;
-            background: linear-gradient(150deg, #fafafa 0%, var(--purple-light) 100%);
-            overflow: hidden;
+            padding: 7rem 2rem 4.5rem;
+            background: var(--cream);
+            border-bottom: 1px solid rgba(0,0,0,0.07);
         }
-        .hero-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: flex-end;
-            gap: 2rem;
+        .hero-inner { max-width: 1000px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; display: block;
         }
-        .hero-text {
-            padding-bottom: 4rem;
+        .hero h1 {
+            font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.75rem);
+            color: var(--dark); margin-bottom: 1rem; line-height: 1.1;
         }
-        .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); margin-bottom: 1rem; display: block; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); color: var(--dark); margin-bottom: 1rem; }
-        .hero p { font-size: 1.1rem; color: var(--gray-600); max-width: 480px; margin: 0 0 2.5rem; }
-        .jump-pills { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: flex-start; }
-        .jump-pill { text-decoration: none; padding: 0.5rem 1.25rem; border-radius: 100px; border: 1.5px solid var(--gray-300); color: var(--gray-600); font-size: 0.875rem; font-weight: 500; transition: all 0.22s; }
-        .jump-pill:hover { border-color: var(--pink); color: var(--pink); background: #fff0fb; }
-        .hero-photo {
-            display: flex;
-            align-items: flex-end;
-            flex-shrink: 0;
-        }
-        .hero-photo img {
-            height: 420px;
-            width: auto;
-            display: block;
-            filter: drop-shadow(0 8px 32px rgba(123,0,199,0.12));
-        }
-        @media (max-width: 820px) {
-            .hero { padding: 8rem 2rem 0; }
-            .hero-inner {
-                grid-template-columns: 1fr;
-                justify-items: center;
-                max-width: 640px;
-                margin: 0 auto;
-            }
-            .hero-text { padding-bottom: 2rem; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
-            .hero h1 { text-align: center; }
-            .hero p { margin: 0 auto 2.5rem; max-width: 28ch; }
-            .section-label { margin-left: auto; margin-right: auto; }
-            .jump-pills { justify-content: center; }
-            .hero-photo { justify-content: center; width: 100%; padding: 0 0.5rem; }
-            .hero-photo img { width: min(100%, 420px); height: auto; }
-        }
-        @media (max-width: 480px) {
-            .hero { padding: 7.5rem 1.25rem 0; }
-            .hero h1 { font-size: clamp(2rem, 12vw, 3rem); }
-            .hero p { font-size: 1rem; max-width: 24ch; }
-            .hero-photo img { width: min(100%, 360px); }
-        }
+        .hero p { font-size: 1rem; color: var(--gray-600); max-width: 520px; margin: 0 0 2.25rem; line-height: 1.8; }
 
-        /* ---- CASE STUDY WRAPPER ---- */
-        .cs-section { padding: 6rem 2rem; }
-        .cs-section.tinted { background: var(--gray-100); }
-        .cs-inner { max-width: 1100px; margin: 0 auto; }
+        .jump-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .jump-pill {
+            text-decoration: none; padding: 0.4rem 1rem; border-radius: 100px;
+            border: 1px solid var(--gray-300); color: var(--gray-600); font-size: 0.8rem;
+            font-weight: 400; transition: all 0.2s; background: white;
+        }
+        .jump-pill:hover { border-color: var(--teal); color: var(--teal); }
+
+        /* ---- CASE STUDY SECTIONS ---- */
+        .cs-section { padding: 4rem 2rem; border-bottom: 1px solid var(--gray-300); }
+        .cs-section.tinted { background: var(--cream); }
+        .cs-inner { max-width: 1000px; margin: 0 auto; }
 
         /* Header */
-        .cs-header { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; }
-        .cs-logo { width: 80px; height: 56px; object-fit: contain; border-radius: 12px; background: white; padding: 8px; border: 1px solid var(--gray-300); flex-shrink: 0; }
-        .cs-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
-        .cs-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.22rem 0.75rem; border-radius: 100px; }
-        .tag-industry { background: var(--purple-light); color: var(--purple); }
-        .tag-years { background: #fff0fb; color: var(--pink); }
-        .tag-role { background: var(--gray-100); color: var(--gray-600); border: 1px solid var(--gray-300); }
-        .cs-meta h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 2rem); color: var(--dark); line-height: 1.2; }
-        .cs-company { font-family: var(--font-display); font-size: clamp(1.6rem, 2.8vw, 2.15rem); color: var(--dark); line-height: 1.15; margin-bottom: 0.45rem; }
-        .cs-industry-line { font-size: 0.83rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--purple); }
-        .section-divider { height: 1px; background: var(--gray-300); opacity: 0.7; margin: 2.2rem 0; }
-
-        /* Metrics */
-        .cs-metrics {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 1px; background: rgba(255,255,255,0.08);
-            border-radius: 20px; overflow: hidden;
-            background-color: var(--dark);
-            margin-bottom: 3rem;
-            padding: 0.5rem;
+        .cs-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+        .cs-logo {
+            width: 52px; height: 38px; object-fit: contain; border-radius: 6px;
+            background: white; padding: 5px; border: 1px solid var(--gray-300); flex-shrink: 0;
         }
-        .metric-card { text-align: center; padding: 1.5rem 1rem; }
-        .metric-value { display: flex; align-items: baseline; justify-content: center; gap: 2px; }
-        .metric-num { font-family: var(--font-display); font-size: 2.1rem; font-weight: 900; color: var(--white); line-height: 1; }
-        .metric-suf { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--pink); }
-        .metric-pre { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--pink); }
-        .metric-label { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.09em; margin-top: 0.4rem; }
+        .cs-meta-top { display: flex; flex-direction: column; gap: 0.1rem; }
+        .cs-company-name {
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.07em;
+            text-transform: uppercase; color: var(--charcoal);
+        }
+        .cs-industry { font-size: 0.75rem; color: var(--gray-600); font-weight: 400; }
 
-        /* Content grid */
-        .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.8rem; }
-        @media (max-width: 720px) { .cs-grid { grid-template-columns: 1fr; } }
-        .cs-block h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.75rem; }
-        .cs-block p { color: var(--gray-600); line-height: 1.75; }
-        .cs-block ul { list-style: none; padding: 0; }
-        .cs-block ul li { padding: 0.35rem 0 0.35rem 1.4rem; color: var(--gray-600); position: relative; }
-        .cs-block ul li::before { content: '↗'; position: absolute; left: 0; color: var(--pink); font-size: 0.8rem; top: 0.4rem; }
+        /* Outcome headline — display serif, no italic, size carries it */
+        .cs-headline {
+            font-family: var(--font-display); font-size: clamp(1.5rem, 2.6vw, 2rem);
+            color: var(--dark); line-height: 1.25; margin-bottom: 1.1rem;
+            max-width: 720px; font-weight: 700;
+        }
 
-        /* Expandable */
+        /* Strategic insight — typographic, not decorative */
+        .cs-insight {
+            border-left: 1px solid rgba(var(--teal-rgb), 0.35);
+            padding: 0.1rem 1.25rem;
+            margin-bottom: 1.75rem;
+            max-width: 660px;
+        }
+        .cs-insight p {
+            font-size: 1rem; font-weight: 400;
+            color: var(--charcoal); line-height: 1.75; margin: 0;
+        }
+        .cs-insight p + p { margin-top: 0.25rem; }
+
+        /* Key metrics — editorial data, not hero cards */
+        .cs-metrics {
+            display: flex; flex-wrap: wrap; margin-bottom: 1.75rem;
+            border-top: 1px solid var(--gray-300);
+            border-bottom: 1px solid var(--gray-300);
+        }
+        .metric-item {
+            flex: 1; min-width: 120px; padding: 1.5rem 1.25rem;
+            border-right: 1px solid var(--gray-300);
+        }
+        .metric-item:last-child { border-right: none; }
+        .metric-num {
+            font-family: var(--font-display); font-size: 1.6rem; font-weight: 700;
+            color: var(--teal); line-height: 1; margin-bottom: 0.35rem;
+        }
+        .metric-label { font-size: 0.67rem; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 400; }
+
+        /* Expand button */
         .expand-btn {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            background: none; border: 1.5px solid var(--gray-300); border-radius: 100px;
-            padding: 0.6rem 1.5rem; font-family: var(--font-body); font-size: 0.875rem;
-            font-weight: 600; color: var(--gray-600); cursor: pointer; transition: all 0.22s;
-            margin-bottom: 1.25rem;
+            background: none; border: 1px solid var(--gray-300); border-radius: 100px;
+            padding: 0.5rem 1.25rem; font-family: var(--font-body); font-size: 0.84rem;
+            font-weight: 500; color: var(--gray-600); cursor: pointer; transition: all 0.2s;
         }
-        .expand-btn:hover { border-color: var(--purple); color: var(--purple); }
-        .expand-btn .chev { transition: transform 0.3s; display: inline-block; }
+        .expand-btn:hover { border-color: var(--teal); color: var(--teal); }
+        .expand-btn .chev { transition: transform 0.3s; display: inline-block; font-size: 0.68rem; }
         .expand-btn.open .chev { transform: rotate(180deg); }
-        .cs-expanded { display: none; padding: 2rem; background: var(--purple-light); border-radius: 16px; margin-bottom: 2.5rem; animation: slideDown 0.3s ease; }
+
+        /* ---- EXPANDED CONTENT ---- */
+        .cs-expanded { display: none; margin-top: 2rem; animation: slideDown 0.3s ease; }
         .cs-expanded.show { display: block; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-        .cs-expanded h4 { font-family: var(--font-display); font-size: 1.05rem; color: var(--dark); margin-bottom: 0.6rem; margin-top: 1rem; }
-        .cs-expanded h4:first-child { margin-top: 0; }
-        .cs-expanded p { color: var(--gray-600); line-height: 1.75; margin-bottom: 0.75rem; }
-        .cs-expanded ul { list-style: none; margin-bottom: 1rem; }
-        .cs-expanded ul li { padding: 0.3rem 0 0.3rem 1.25rem; color: var(--gray-600); position: relative; font-size: 0.95rem; }
-        .cs-expanded ul li::before { content: '•'; position: absolute; left: 0; color: var(--purple); }
-        .insight-callout {
-            border-left: 4px solid var(--pink);
-            background: linear-gradient(90deg, rgba(254, 0, 174, 0.08), rgba(254, 0, 174, 0));
-            border-radius: 0 12px 12px 0;
-            padding: 1rem 1.15rem;
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+        .exp-divider { height: 1px; background: var(--gray-300); margin: 1.75rem 0; }
+
+        .exp-section { margin-bottom: 1.75rem; }
+        .exp-label {
+            font-size: 0.67rem; font-weight: 600; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 0.75rem;
+        }
+        .exp-section p { color: var(--gray-600); line-height: 1.8; margin-bottom: 0.7rem; font-size: 0.95rem; }
+        .exp-section p:last-child { margin-bottom: 0; }
+        .exp-section ul { list-style: none; padding: 0; }
+        .exp-section ul li {
+            padding: 0.25rem 0 0.25rem 1.25rem; color: var(--gray-600);
+            position: relative; font-size: 0.93rem; line-height: 1.7;
+        }
+        .exp-section ul li::before { content: '·'; position: absolute; left: 0.1rem; color: var(--teal); font-size: 1.2rem; top: 0.1rem; line-height: 1.3; }
+        .exp-section ul li strong { color: var(--charcoal); font-weight: 600; }
+
+        /* Sub-headings */
+        .exp-subhead {
+            font-size: 0.7rem; font-weight: 600; color: var(--charcoal);
+            text-transform: uppercase; letter-spacing: 0.1em;
+            margin: 1.25rem 0 0.5rem; display: block;
+        }
+
+        /* Insight in expanded view — same treatment as default, no box */
+        .exp-insight-callout {
+            border-left: 1px solid rgba(var(--teal-rgb), 0.35);
+            padding: 0.1rem 1.25rem;
             margin-bottom: 1rem;
         }
-        .insight-callout p {
-            margin: 0;
-            color: var(--gray-900);
-            font-size: 1rem;
-            line-height: 1.7;
+        .exp-insight-callout p {
+            font-size: 0.97rem; font-weight: 400;
+            color: var(--charcoal); line-height: 1.78;
+            margin-bottom: 0.3rem !important;
         }
-        .results-list li strong { color: var(--dark); font-weight: 700; }
+        .exp-insight-callout p:last-child { margin-bottom: 0 !important; }
 
-        /* Carousel */
-        .media-section { margin-bottom: 2.5rem; }
-        .media-section h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-600); margin-bottom: 1rem; }
-        .media-kicker { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-900); margin: 0 0 0.85rem; }
-        .carousel-wrap { position: relative; border-radius: 16px; overflow: hidden; background: #000; }
-        .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .carousel-slide { min-width: 100%; max-height: 520px; object-fit: contain; display: block; background: #111; }
-        .carousel-slide.video-slide { min-width: 100%; max-height: 520px; width: 100%; object-fit: contain; }
-        .c-btn {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            background: rgba(255,255,255,0.9); border: none; border-radius: 50%;
-            width: 44px; height: 44px; font-size: 1.4rem; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: all 0.2s; z-index: 5;
+        /* Results — no boxes, just clean data */
+        .results-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1.5rem 2rem; margin-top: 1rem;
+            padding-top: 1rem; border-top: 1px solid var(--gray-300);
         }
-        .c-btn:hover { background: var(--pink); color: white; transform: translateY(-50%) scale(1.05); }
-        .c-btn.prev { left: 0.75rem; }
-        .c-btn.next { right: 0.75rem; }
-        .carousel-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
-        .c-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gray-300); cursor: pointer; transition: all 0.22s; border: none; padding: 0; }
-        .c-dot.active { background: var(--pink); width: 22px; border-radius: 4px; }
+        .result-item { padding: 0; }
+        .result-item .r-num { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--teal); line-height: 1; margin-bottom: 0.3rem; }
+        .result-item .r-label { font-size: 0.67rem; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 400; }
 
-        /* Analytics grid */
-        .analytics-caption { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--purple); margin: 0.85rem 0 0.95rem; }
-        .media-intro { margin-bottom: 0.9rem; }
-        .analytics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
-        .analytics-grid img { width: 100%; border-radius: 14px; border: 1px solid var(--gray-300); cursor: zoom-in; transition: transform 0.22s, box-shadow 0.22s; object-fit: cover; box-shadow: 0 8px 22px rgba(0,0,0,0.08); }
-        .analytics-grid img:hover { transform: scale(1.02); box-shadow: 0 12px 30px rgba(0,0,0,0.14); }
+        /* Analytics / media */
+        .media-section { margin-top: 2rem; }
+        .media-intro { font-size: 0.88rem; color: var(--gray-600); margin-bottom: 0.875rem; line-height: 1.7; }
+        .analytics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.75rem; }
+        .analytics-grid img {
+            width: 100%; border-radius: 6px; border: 1px solid var(--gray-300);
+            cursor: zoom-in; transition: transform 0.2s, box-shadow 0.2s;
+            object-fit: cover;
+        }
+        .analytics-grid img:hover { transform: scale(1.02); box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
 
-        /* Before / After */
-        .ba-label-row { display: flex; justify-content: space-between; margin-top: 0.6rem; }
-        .ba-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-600); }
-        .ba-wrap { position: relative; border-radius: 16px; overflow: hidden; cursor: ew-resize; user-select: none; touch-action: none; max-width: 480px; margin: 0 auto; }
-        .ba-wrap img.ba-bg { display: block; width: 100%; border-radius: 16px; }
+        /* Before / After slider */
+        .ba-wrap {
+            position: relative; border-radius: 8px; overflow: hidden;
+            cursor: ew-resize; user-select: none; touch-action: none; max-width: 480px;
+        }
+        .ba-wrap img.ba-bg { display: block; width: 100%; border-radius: 8px; }
         .ba-overlay { position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden; }
         .ba-overlay img { display: block; width: 480px; max-width: none; position: absolute; top: 0; left: 0; }
-        .ba-divider { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 3px; height: 100%; background: white; z-index: 5; }
-        .ba-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 46px; height: 46px; background: white; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--gray-600); z-index: 6; }
-        .ba-note { font-size: 0.8rem; color: var(--gray-600); text-align: center; margin-top: 0.5rem; font-style: italic; }
+        .ba-divider { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 2px; height: 100%; background: white; z-index: 5; }
+        .ba-handle {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+            width: 36px; height: 36px; background: white; border-radius: 50%;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.18); display: flex; align-items: center;
+            justify-content: center; font-size: 0.8rem; color: var(--teal); z-index: 6;
+        }
+        .ba-label-row { display: flex; justify-content: space-between; margin-top: 0.5rem; }
+        .ba-label { font-size: 0.68rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-600); }
+        .ba-note { font-size: 0.74rem; color: var(--gray-600); text-align: center; margin-top: 0.35rem; }
 
         /* Lightbox */
         .lb-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 999; display: none; align-items: center; justify-content: center; padding: 2rem; }
         .lb-overlay.active { display: flex; }
-        .lb-img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: 10px; }
-        .lb-close { position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 46px; height: 46px; color: white; font-size: 1.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-        .lb-close:hover { background: rgba(255,255,255,0.3); }
+        .lb-img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: 6px; }
+        .lb-close { position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.1); border: none; border-radius: 50%; width: 44px; height: 44px; color: white; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .lb-close:hover { background: rgba(255,255,255,0.22); }
 
-        /* CTA */
-        .cta-section { background: var(--dark); padding: 6rem 2rem; text-align: center; }
-        .cta-section h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: white; margin-bottom: 1rem; }
-        .cta-section p { color: rgba(255,255,255,0.6); font-size: 1.1rem; max-width: 480px; margin: 0 auto 2rem; }
-        .btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-pink { display: inline-block; padding: 0.875rem 2rem; background: var(--pink); color: white; text-decoration: none; border-radius: 100px; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; }
-        .btn-pink:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(254,0,174,0.4); }
-        .btn-outline { display: inline-block; padding: 0.875rem 2rem; border: 1.5px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); text-decoration: none; border-radius: 100px; font-weight: 600; transition: all 0.2s; }
-        .btn-outline:hover { border-color: white; color: white; }
+        /* ---- CTA ---- */
+        .cta-section { background: var(--dark); padding: 5rem 2rem; text-align: center; }
+        .cta-section h2 { font-family: var(--font-display); font-size: clamp(1.75rem, 3.5vw, 2.5rem); color: white; margin-bottom: 0.875rem; }
+        .cta-section p { color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 480px; margin: 0 auto 2rem; line-height: 1.75; }
+        .btn-row { display: flex; gap: 0.875rem; justify-content: center; flex-wrap: wrap; }
+        .btn-teal { display: inline-block; padding: 0.8rem 1.875rem; background: var(--teal); color: white; text-decoration: none; border-radius: 100px; font-weight: 500; font-size: 0.9rem; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; }
+        .btn-teal:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(var(--teal-rgb), 0.35); }
+        .btn-outline { display: inline-block; padding: 0.8rem 1.875rem; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); text-decoration: none; border-radius: 100px; font-weight: 500; font-size: 0.9rem; transition: all 0.2s; }
+        .btn-outline:hover { border-color: rgba(255,255,255,0.55); color: white; }
 
-        /* Footer */
-        footer { padding: 2rem; text-align: center; color: var(--gray-600); font-size: 0.875rem; border-top: 1px solid var(--gray-100); }
+        /* ---- FOOTER ---- */
+        footer { background: var(--dark); padding: 2rem; text-align: center; }
+        footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 
         /* Animations */
-        .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-        /* Responsive */
+        /* ---- RESPONSIVE ---- */
         @media (max-width: 768px) {
-            .cs-header { flex-direction: column; gap: 1rem; }
-            .cs-metrics { grid-template-columns: repeat(2, 1fr); }
             .nav-toggle { display: inline-flex; }
             .nav-links {
-                display: none;
-                position: absolute;
-                top: calc(100% + 0.55rem);
-                right: 2rem;
-                width: min(280px, calc(100vw - 4rem));
-                padding: 0.75rem;
-                border: 1px solid var(--gray-300);
-                border-radius: 14px;
-                background: var(--white);
-                box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-                gap: 0;
-                flex-direction: column;
-                z-index: 250;
+                display: none; position: absolute; top: calc(100% + 0.55rem); right: 2rem;
+                width: min(280px, calc(100vw - 4rem)); padding: 0.75rem;
+                border: 1px solid var(--gray-300); border-radius: 14px;
+                background: var(--white); box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+                gap: 0; flex-direction: column; z-index: 250;
             }
             .nav-links.open { display: flex; }
             .nav-links li { width: 100%; }
-            .nav-links a,
-            .nav-dropdown-toggle {
-                display: block;
-                width: 100%;
-                padding: 0.7rem 0.85rem;
-                border-radius: 8px;
-                font-size: 0.92rem;
-            }
+            .nav-links a, .nav-dropdown-toggle { display: block; width: 100%; padding: 0.7rem 0.85rem; border-radius: 8px; font-size: 0.92rem; }
             .nav-dropdown { width: 100%; }
-            .nav-dropdown-menu {
-                position: static;
-                transform: none;
-                margin-top: 0;
-                padding: 0 0 0 0.75rem;
-                opacity: 1;
-                visibility: visible;
-                box-shadow: none;
-                border: none;
-                min-width: 0;
-                background: transparent;
-            }
+            .nav-dropdown-menu { position: static; transform: none; margin-top: 0; padding: 0 0 0 0.75rem; opacity: 1; visibility: visible; box-shadow: none; border: none; min-width: 0; background: transparent; }
             .nav-dropdown-menu a { padding: 0.55rem 0.85rem; }
+            .cs-metrics { flex-direction: column; }
+            .metric-item { border-right: none; border-bottom: 1px solid var(--gray-300); }
+            .metric-item:last-child { border-bottom: none; }
+            .results-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 5.5rem 1.25rem 3rem; }
+            .cs-section { padding: 3rem 1.25rem; }
         }
     </style>
 </head>
@@ -333,8 +305,7 @@
             <span></span><span></span><span></span>
         </button>
         <ul class="nav-links" id="primary-nav">
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="about.html">About</a></li>
             <li class="nav-dropdown">
                 <span class="nav-dropdown-toggle">Work <span style="font-size:0.7rem;">▼</span></span>
                 <div class="nav-dropdown-menu">
@@ -351,16 +322,20 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-inner">
-        <div class="hero-text">
-            <span class="section-label">Portfolio</span>
-            <h1>Case Studies</h1>
-            <p>Real campaigns, real strategy, real results. Occasionally a meme.</p>
-        </div>
-        <div class="hero-photo">
-            <img src="Assets/Images/nikki-excited-nobg.png" alt="Nikki Johnson">
+        <span class="section-label">Work</span>
+        <h1>Case Studies</h1>
+        <p>Real challenges, actual strategy, results worth documenting. Each of these started with a problem worth solving.</p>
+        <div class="jump-pills">
+            <a href="#hvac" class="jump-pill">Lead Generation</a>
+            <a href="#wedmore" class="jump-pill">Launch Strategy</a>
+            <a href="#stonesmith" class="jump-pill">Brand Building</a>
+            <a href="#nyag" class="jump-pill">Audience Growth</a>
+            <a href="#cft" class="jump-pill">Nonprofit Marketing</a>
+            <a href="#mapleair" class="jump-pill">Category Education</a>
         </div>
     </div>
 </section>
+
 
 <!-- ============================================================
      CASE STUDY 1 — HVAC.com / Trane Technologies
@@ -370,130 +345,129 @@
 
         <div class="cs-header fade-up">
             <img src="Assets/Logos/HVAC%20logo.png" alt="HVAC.com logo" class="cs-logo">
-            <div class="cs-meta">
-                <h2 class="cs-company">HVAC.com / Trane Technologies</h2>
-                <p class="cs-industry-line">Industry: Home Services / SaaS</p>
+            <div class="cs-meta-top">
+                <span class="cs-company-name">HVAC.com / Trane Technologies</span>
+                <span class="cs-industry">Home Services &amp; SaaS</span>
             </div>
         </div>
 
-        <!-- Metrics -->
+        <h2 class="cs-headline fade-up">Turning social into a revenue-driving channel.</h2>
+
+        <div class="cs-insight fade-up">
+            <p>Homeowners care deeply about their homes.</p>
+            <p>They rarely care about HVAC equipment.</p>
+        </div>
+
         <div class="cs-metrics fade-up">
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="50">0</span><span class="metric-suf">x</span></div>
-                <span class="metric-label">ROI on Social</span>
+            <div class="metric-item">
+                <div class="metric-num">~50x</div>
+                <div class="metric-label">ROI on Social</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="1.35" data-dec="true">0</span><span class="metric-suf">M+</span></div>
-                <span class="metric-label">Impressions</span>
+            <div class="metric-item">
+                <div class="metric-num">423</div>
+                <div class="metric-label">Qualified Leads</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-pre">$</span><span class="metric-num" data-target="0.57" data-dec="true">0</span></div>
-                <span class="metric-label">Cost Per Click</span>
+            <div class="metric-item">
+                <div class="metric-num">135%</div>
+                <div class="metric-label">Impression Growth</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="135">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Impression Growth</span>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="4000">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Audience Growth</span>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="6">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Of Total Company Sales</span>
+            <div class="metric-item">
+                <div class="metric-num">~6%</div>
+                <div class="metric-label">Company Sales Influenced</div>
             </div>
         </div>
 
-        <!-- Objective + Strategy -->
-        <div class="cs-grid fade-up">
-            <div class="cs-block">
-                <h3>Objective</h3>
-                <p>Build awareness and generate qualified leads in a category most homeowners actively ignore until something breaks.</p>
-                <p>The challenge wasn't visibility. It was relevance. HVAC isn't aspirational, but comfort, safety, and a healthy home absolutely are. The goal was to reach homeowners long before urgency forced the conversation.</p>
-            </div>
-            <div class="cs-block">
-                <h3>The Approach</h3>
-                <ul>
-                    <li>Built a full-funnel organic and paid social ecosystem designed to earn trust first and capture demand when it surfaced</li>
-                    <li>Established HVAC.com's social voice and paid media foundation from the ground up</li>
-                    <li>Led with education, empathy, and homeowner-first storytelling instead of product features</li>
-                    <li>Built awareness campaigns focused on real-life problems, not equipment specs</li>
-                    <li>Developed retargeting pipelines to nurture high-intent audiences into qualified leads</li>
-                    <li>Aligned organic storytelling with Meta performance campaigns to reduce acquisition friction</li>
-                </ul>
-                <p>This wasn't about selling HVAC systems. It was about owning the conversation around home comfort.</p>
-            </div>
-        </div>
+        <button class="expand-btn" onclick="toggleExpand(this)">View Full Case Study <span class="chev">▾</span></button>
 
-        <div class="section-divider"></div>
-
-        <!-- Expandable full strategy -->
-        <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
         <div class="cs-expanded">
-            <h4>The Insight That Drove Everything</h4>
-            <div class="insight-callout">
-                <p>Homeowners care deeply about their homes.</p>
-                <p>They rarely care about HVAC equipment.</p>
-                <p>The strategy pivoted from selling hardware to selling what HVAC actually represents: comfort, safety, air quality, and peace of mind.</p>
-                <p>That shift changed how people engaged with the brand and how they converted.</p>
+
+            <div class="exp-divider"></div>
+
+            <div class="exp-section">
+                <span class="exp-label">The Challenge</span>
+                <p>Build awareness and generate qualified leads in a category most homeowners actively ignore until something breaks. The challenge wasn't visibility — it was relevance. HVAC isn't aspirational, but comfort, safety, and a healthy home absolutely are.</p>
+                <p>The goal was to reach homeowners long before urgency forced the conversation.</p>
             </div>
 
-            <h4>Content Strategy</h4>
-            <ul>
-                <li>Built an editorial system grounded in homeowner psychology, seasonal urgency, and everyday relatability</li>
-                <li>Seasonal content mapped to real homeowner stress points (summer heat, winter prep, allergy season)</li>
-                <li>Short-form video centered on relatable "this just happened" homeowner moments</li>
-                <li>Educational carousels simplifying air quality, maintenance, and energy efficiency</li>
-                <li>Strategic meme usage to humanize the brand and increase organic share velocity</li>
-                <li>Social proof styled like native community conversations to build credibility</li>
-            </ul>
-            <p>The goal wasn't more content. It was more connection.</p>
-
-            <h4>Paid Media Strategy</h4>
-            <ul>
-                <li>Structured a Meta ecosystem designed to balance education, awareness, and conversion readiness</li>
-                <li>Continuous creative testing across hooks, formats, and audience segments</li>
-                <li>Retargeting built from behavioral signals: site visitors, video viewers, engaged audiences</li>
-                <li>Weekly CPL and ROAS monitoring with monthly cohort optimization cycles</li>
-                <li>Intentional alignment between organic storytelling and paid amplification</li>
-            </ul>
-            <p>Paid media didn't replace organic trust. It scaled it.</p>
-
-            <h4>Performance Impact</h4>
-            <ul class="results-list">
-                <li>$58K budget generated 1.35M+ impressions at 2.97% CTR</li>
-                <li>423 qualified leads at $71 cost per lead</li>
-                <li>Meta campaigns attributed to ~6% of total company sales</li>
-            </ul>
-
-            <h4>Growth Metrics</h4>
-            <ul class="results-list">
-                <li>4,000% social audience growth</li>
-                <li>83% increase in video views</li>
-                <li>231K+ engagements across organic and paid</li>
-            </ul>
-            <p>Not just reach. Real engagement. Real pipeline contribution.</p>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <!-- Analytics -->
-        <div class="media-section fade-up">
-            <p class="analytics-caption">Platform performance snapshots</p>
-            <div class="analytics-grid">
-                <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.42.59%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.43.14%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.43.34%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.43.49%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.44.02%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.44.16%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.45.05%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-07-12%20at%2011.33.37%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
+            <div class="exp-section">
+                <span class="exp-label">The Insight</span>
+                <div class="exp-insight-callout">
+                    <p>Homeowners care deeply about their homes. They rarely care about HVAC equipment.</p>
+                    <p>The strategy pivoted from selling hardware to selling what HVAC actually represents: comfort, safety, air quality, and peace of mind. That shift changed how people engaged with the brand — and how they converted.</p>
+                </div>
             </div>
-        </div>
 
+            <div class="exp-section">
+                <span class="exp-label">The Strategy</span>
+                <p>Built a full-funnel organic and paid social ecosystem designed to earn trust first and capture demand when it surfaced. Established HVAC.com's social voice and paid media foundation from the ground up — led with education, empathy, and homeowner-first storytelling instead of product features.</p>
+
+                <p class="exp-subhead">Content</p>
+                <ul>
+                    <li>Seasonal content mapped to real homeowner stress points — summer heat, winter prep, allergy season</li>
+                    <li>Short-form video centered on relatable "this just happened" homeowner moments</li>
+                    <li>Educational carousels simplifying air quality, maintenance, and energy efficiency</li>
+                    <li>Strategic meme usage to humanize the brand and increase organic share velocity</li>
+                    <li>Social proof styled like native community conversations to build credibility</li>
+                </ul>
+
+                <p class="exp-subhead">Paid Media</p>
+                <ul>
+                    <li>Structured a Meta ecosystem to balance education, awareness, and conversion readiness</li>
+                    <li>Continuous creative testing across hooks, formats, and audience segments</li>
+                    <li>Retargeting built from behavioral signals: site visitors, video viewers, engaged audiences</li>
+                    <li>Weekly CPL and ROAS monitoring with monthly cohort optimization cycles</li>
+                    <li>Intentional alignment between organic storytelling and paid amplification</li>
+                </ul>
+            </div>
+
+            <div class="exp-section">
+                <span class="exp-label">Results</span>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="r-num">$58K</div>
+                        <div class="r-label">Budget Managed</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">1.35M+</div>
+                        <div class="r-label">Impressions</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">2.97%</div>
+                        <div class="r-label">CTR</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">$71</div>
+                        <div class="r-label">Cost Per Lead</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">4,000%</div>
+                        <div class="r-label">Audience Growth</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">231K+</div>
+                        <div class="r-label">Total Engagements</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="media-section">
+                <span class="exp-label">Performance Snapshot</span>
+                <div class="analytics-grid">
+                    <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.42.59%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.43.14%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.43.34%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.43.49%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.44.02%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.44.16%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-11-04%20at%209.45.05%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/HVAC/HVAC%20Analytics-07-12%20at%2011.33.37%E2%80%AFAM.png" alt="HVAC analytics" onclick="openLB(this.src)">
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
+
 
 <!-- ============================================================
      CASE STUDY 2 — James Wedmore / Level Five Publishing
@@ -502,107 +476,116 @@
     <div class="cs-inner">
 
         <div class="cs-header fade-up">
-            <img src="Assets/Logos/Wedmore%20Logo.webp" alt="James Wedmore" class="cs-logo">
-            <div class="cs-meta">
-                <h2 class="cs-company">James Wedmore / Level Five Publishing</h2>
-                <p class="cs-industry-line">Industry: Personal Brand / Digital Products</p>
+            <img src="Assets/Logos/Wedmore%20Logo.webp" alt="James Wedmore logo" class="cs-logo">
+            <div class="cs-meta-top">
+                <span class="cs-company-name">James Wedmore / Level Five Publishing</span>
+                <span class="cs-industry">Personal Brand &amp; Digital Products</span>
             </div>
+        </div>
+
+        <h2 class="cs-headline fade-up">Building momentum before launch day.</h2>
+
+        <div class="cs-insight fade-up">
+            <p>The audience was there. The attention wasn't.</p>
         </div>
 
         <div class="cs-metrics fade-up">
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-pre">$</span><span class="metric-num" data-target="6.4" data-dec="true">0</span><span class="metric-suf">M</span></div>
-                <span class="metric-label">Launch Campaign</span>
+            <div class="metric-item">
+                <div class="metric-num">$6.4M</div>
+                <div class="metric-label">Launch Revenue</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="111">0</span><span class="metric-suf">K→</span><span class="metric-num" data-target="125">0</span><span class="metric-suf">K</span></div>
-                <span class="metric-label">IG Followers</span>
+            <div class="metric-item">
+                <div class="metric-num">4</div>
+                <div class="metric-label">Viral Videos in 30 Days</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="3">0</span><span class="metric-suf">%+</span></div>
-                <span class="metric-label">Weekly Engagement</span>
+            <div class="metric-item">
+                <div class="metric-num">49K</div>
+                <div class="metric-label">Peak Reel Views</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="49">0</span><span class="metric-suf">K</span></div>
-                <span class="metric-label">Peak Reel Views</span>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="4">0</span></div>
-                <span class="metric-label">Viral Videos in 30 Days</span>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="50">0</span><span class="metric-suf">+</span></div>
-                <span class="metric-label">Weekly Assets Produced</span>
+            <div class="metric-item">
+                <div class="metric-num">3%+</div>
+                <div class="metric-label">Weekly Engagement Rate</div>
             </div>
         </div>
 
-        <div class="cs-grid fade-up">
-            <div class="cs-block">
-                <h3>Objective</h3>
-                <p>Reignite growth on Instagram and YouTube Shorts by turning passive viewers into active fans while supporting a high-stakes $6.4M digital product launch.</p>
-                <p>The account wasn't failing. It was coasting. The goal was to make it scroll-stopping again.</p>
+        <button class="expand-btn" onclick="toggleExpand(this)">View Full Case Study <span class="chev">▾</span></button>
+
+        <div class="cs-expanded">
+
+            <div class="exp-divider"></div>
+
+            <div class="exp-section">
+                <span class="exp-label">The Challenge</span>
+                <p>Reignite growth on Instagram and YouTube Shorts by turning passive viewers into active fans — while supporting a high-stakes $6.4M digital product launch.</p>
+                <p>The account wasn't failing. It was coasting. The goal was to make it scroll-stopping again, and time the momentum to peak at launch.</p>
             </div>
-            <div class="cs-block">
-                <h3>The Approach</h3>
+
+            <div class="exp-section">
+                <span class="exp-label">The Insight</span>
+                <div class="exp-insight-callout">
+                    <p>The audience was there. The attention wasn't.</p>
+                    <p>We shifted from broad educational content to personality-driven storytelling that felt conversational, timely, and native to the platform. Less lecture. More "let me tell you something."</p>
+                </div>
+            </div>
+
+            <div class="exp-section">
+                <span class="exp-label">The Strategy</span>
+                <p>Built a content system designed for retention, shareability, and launch-phase momentum — not just posting more. Structured a storytelling-led editorial calendar around personality, tension, and cultural relevance.</p>
+
+                <p class="exp-subhead">Content &amp; Growth</p>
                 <ul>
-                    <li>Built a content system designed for retention, shareability, and launch-phase momentum, not just posting more</li>
-                    <li>Structured a storytelling-led editorial calendar around personality, tension, and cultural relevance</li>
                     <li>Engineered first-3-second hooks that earned retention instead of begging for it</li>
+                    <li>Introduced trend-responsive storytelling using meme formats and cultural hooks</li>
+                    <li>Increased production quality on Reels to compete in a crowded feed</li>
                     <li>Repurposed high-performing Instagram content to YouTube Shorts to expand discovery reach</li>
-                    <li>Delivered real-time coverage during launches and mastermind events because live energy converts</li>
                     <li>Sustained a 50+ weekly asset cadence without diluting brand voice</li>
                 </ul>
+
+                <p class="exp-subhead">Launch Execution</p>
+                <ul>
+                    <li>Pre-launch: countdown content, behind-the-scenes access, testimonial-led momentum</li>
+                    <li>Launch week: live coverage, mastermind highlights, real-time results reveals</li>
+                    <li>Post-launch: celebration, community recognition, and social proof amplification</li>
+                    <li>Delivered real-time event coverage because live energy converts</li>
+                </ul>
             </div>
-        </div>
 
-        <div class="section-divider"></div>
-
-        <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
-        <div class="cs-expanded">
-            <h4>Growth Strategy</h4>
-            <p>The audience was there. The attention wasn't.</p>
-            <p>We shifted from broad educational content to personality-driven storytelling that felt conversational, timely, and native to the platform. Less lecture. More let me tell you something.</p>
-            <ul>
-                <li>Introduced trend-responsive storytelling using meme formats and cultural hooks</li>
-                <li>Built consistent cadence with intentional format variety to prevent audience fatigue</li>
-                <li>Increased production quality on Reels to compete in a crowded feed</li>
-                <li>Treated YouTube Shorts as a discovery engine, not a side experiment</li>
-            </ul>
-            <p>The result wasn't just more views. It was renewed momentum.</p>
-
-            <h4>Launch Campaign Execution</h4>
-            <p>A $6.4M launch doesn't allow for quiet social media.</p>
-            <p>The strategy required anticipation, real-time amplification, and conversion-focused storytelling without losing the brand's voice.</p>
-            <ul>
-                <li>Pre-launch: countdown content, behind-the-scenes access, testimonial-led momentum</li>
-                <li>Launch week: live coverage, mastermind highlights, real-time results reveals</li>
-                <li>Post-launch: celebration, community recognition, and social proof amplification</li>
-            </ul>
-            <p>Social became the connective tissue between hype and revenue.</p>
-
-            <h4>Performance Highlights</h4>
-            <ul>
-                <li>17 Instagram Reels exceeded 10K views within 30 days</li>
-                <li>6 Reels exceeded 20K views organically</li>
-                <li>Top-performing Reel reached 49K organic views</li>
-            </ul>
-            <p>Momentum translated into measurable engagement lift and supported a $6.4M launch outcome.</p>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <div class="media-section fade-up">
-            <p class="analytics-caption">Platform performance snapshots</p>
-            <div class="analytics-grid">
-                <img src="Assets/Analytics%20Screenshots/Wedmore/Wedmore%20IG%20Followers.png" alt="Wedmore followers" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/Wedmore/Wedmore%20IG%20Grid.png" alt="Wedmore IG grid" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/Wedmore/Wedmore%20IG%20Overview.png" alt="Wedmore overview" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/Wedmore/Wemore%20IG%20Reach%20Stats.png" alt="Wedmore reach stats" onclick="openLB(this.src)">
+            <div class="exp-section">
+                <span class="exp-label">Results</span>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="r-num">17</div>
+                        <div class="r-label">Reels Over 10K Views</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">6</div>
+                        <div class="r-label">Reels Over 20K Views</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">111K→125K</div>
+                        <div class="r-label">IG Follower Growth</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">50+</div>
+                        <div class="r-label">Weekly Assets Produced</div>
+                    </div>
+                </div>
             </div>
-        </div>
 
+            <div class="media-section">
+                <span class="exp-label">Performance Snapshot</span>
+                <div class="analytics-grid">
+                    <img src="Assets/Analytics%20Screenshots/Wedmore/Wedmore%20IG%20Followers.png" alt="Wedmore followers" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/Wedmore/Wedmore%20IG%20Grid.png" alt="Wedmore IG grid" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/Wedmore/Wedmore%20IG%20Overview.png" alt="Wedmore overview" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/Wedmore/Wemore%20IG%20Reach%20Stats.png" alt="Wedmore reach stats" onclick="openLB(this.src)">
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
+
 
 <!-- ============================================================
      CASE STUDY 3 — StoneSmith Countertops
@@ -611,92 +594,113 @@
     <div class="cs-inner">
 
         <div class="cs-header fade-up">
-            <img src="Assets/Logos/StoneSmith%20Logo.png" alt="StoneSmith Countertops" class="cs-logo">
-            <div class="cs-meta">
-                <h2 class="cs-company">StoneSmith Countertops</h2>
-                <p class="cs-industry-line">Industry: Home Improvement / Local Business</p>
+            <img src="Assets/Logos/StoneSmith%20Logo.png" alt="StoneSmith Countertops logo" class="cs-logo">
+            <div class="cs-meta-top">
+                <span class="cs-company-name">StoneSmith Countertops</span>
+                <span class="cs-industry">Home Improvement &amp; Local Business</span>
             </div>
+        </div>
+
+        <h2 class="cs-headline fade-up">Building a brand — and a platform — from the ground up.</h2>
+
+        <div class="cs-insight fade-up">
+            <p>Beautiful work presented in a way that felt welcoming, not exclusive.</p>
         </div>
 
         <div class="cs-metrics fade-up">
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="7.4">0</span><span class="metric-suf">K%</span></div>
-                <span class="metric-label">Instagram Reach Growth</span>
+            <div class="metric-item">
+                <div class="metric-num">7.4K%</div>
+                <div class="metric-label">Instagram Reach Growth</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="4.2" data-dec="true">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Avg. Engagement Rate</span>
+            <div class="metric-item">
+                <div class="metric-num">4.2%</div>
+                <div class="metric-label">Avg. Engagement Rate</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="103">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Reach Increase</span>
+            <div class="metric-item">
+                <div class="metric-num">103%</div>
+                <div class="metric-label">Reach Increase</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="67">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Engagement Increase</span>
+            <div class="metric-item">
+                <div class="metric-num">67%</div>
+                <div class="metric-label">Engagement Increase</div>
             </div>
         </div>
 
-        <div class="cs-grid fade-up">
-            <div class="cs-block">
-                <h3>Objective</h3>
+        <button class="expand-btn" onclick="toggleExpand(this)">View Full Case Study <span class="chev">▾</span></button>
+
+        <div class="cs-expanded">
+
+            <div class="exp-divider"></div>
+
+            <div class="exp-section">
+                <span class="exp-label">The Challenge</span>
                 <p>StoneSmith didn't just need better social. They needed social. The goal was to launch from zero, build local brand recognition, and create a visual presence that showcased craftsmanship while still feeling approachable to homeowners.</p>
             </div>
-            <div class="cs-block">
-                <h3>The Approach</h3>
+
+            <div class="exp-section">
+                <span class="exp-label">The Insight</span>
+                <div class="exp-insight-callout">
+                    <p>Countertop brands tend to go one of two directions: luxury showroom vibes that feel a little out of reach, or contractor content that's technical but not inspiring.</p>
+                    <p>StoneSmith needed a middle ground — beautiful work presented in a way that felt welcoming, not exclusive. That balance became the north star.</p>
+                </div>
+            </div>
+
+            <div class="exp-section">
+                <span class="exp-label">The Strategy</span>
+                <p>Built the brand's social foundation from the ground up — strategically, visually, and structurally. Established a cohesive visual identity that reflected craftsmanship and warmth, then built a content system designed to guide homeowners from inspiration to inquiry.</p>
+
+                <p class="exp-subhead">Content Pillars</p>
                 <ul>
-                    <li>Built the brand's social foundation from the ground up strategically, visually, and structurally</li>
-                    <li>Established a cohesive visual identity that reflected craftsmanship and warmth</li>
-                    <li>Developed a content system blending education, project storytelling, and lifestyle inspiration</li>
-                    <li>Created a consistent voice that guided homeowners from inspiration to inquiry</li>
+                    <li><strong>Project Showcases:</strong> Before-and-after transformations, installation highlights, finished kitchens and bathrooms</li>
+                    <li><strong>Education:</strong> Material comparisons, care guides, and design trend breakdowns that simplified decision-making</li>
+                    <li><strong>Lifestyle:</strong> Aspirational home content placing StoneSmith within real, livable spaces</li>
+                    <li><strong>Social Proof:</strong> Client testimonials, reviews, and local project spotlights reinforcing credibility</li>
+                </ul>
+
+                <p class="exp-subhead">Foundation Work</p>
+                <ul>
                     <li>Implemented branded templates and visual standards to elevate perceived expertise</li>
+                    <li>Developed a consistent voice that guided homeowners from inspiration to inquiry</li>
                     <li>Built a scalable content engine designed to support future paid acquisition</li>
                 </ul>
-                <p>This wasn't a content refresh. It was brand positioning through social.</p>
             </div>
-        </div>
 
-        <div class="section-divider"></div>
-
-        <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
-        <div class="cs-expanded">
-            <h4>Brand Positioning</h4>
-            <p>Countertop brands tend to go one of two directions: luxury showroom vibes that feel a little out of reach, or contractor content that's technical but not inspiring.</p>
-            <p>StoneSmith needed a middle ground, beautiful work presented in a way that felt welcoming, not exclusive.</p>
-            <p>That balance became the north star for the content strategy.</p>
-
-            <h4>Content Pillars</h4>
-            <p>Built a structured system designed to balance authority, inspiration, and proof.</p>
-            <ul>
-                <li><strong>Project Showcases:</strong> Before-and-after transformations, installation process highlights, finished kitchens and bathrooms</li>
-                <li><strong>Education:</strong> Material comparisons, care guides, and design trend breakdowns that simplified decision-making</li>
-                <li><strong>Lifestyle:</strong> Aspirational home content placing StoneSmith within real, livable spaces</li>
-                <li><strong>Social Proof:</strong> Client testimonials, reviews, and local project spotlights reinforcing credibility</li>
-            </ul>
-
-            <h4>Results (First 30 Days Post-Launch)</h4>
-            <ul>
-                <li>Consistent posting cadence established immediately</li>
-                <li>Cohesive visual identity implemented across platforms</li>
-                <li>Instagram reach increased 7.4K% organically</li>
-                <li>Achieved 4.2% average engagement rate (industry average: ~1-2%)</li>
-                <li>Strong audience response to local project storytelling</li>
-            </ul>
-            <p>Most importantly: a scalable foundation built for future paid campaign testing and lead generation.</p>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <div class="media-section fade-up">
-            <p class="analytics-caption">Platform performance snapshots</p>
-            <div class="analytics-grid">
-                <img src="Assets/Analytics%20Screenshots/StoneSmith/StoneSmith%20IG%20Stats.png" alt="StoneSmith IG stats" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/StoneSmith/StoneSmith%20IG%20Stats%202.png" alt="StoneSmith IG stats 2" onclick="openLB(this.src)">
+            <div class="exp-section">
+                <span class="exp-label">Results</span>
+                <p style="margin-bottom:0.875rem">First 30 days post-launch:</p>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="r-num">7.4K%</div>
+                        <div class="r-label">Instagram Reach Growth</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">4.2%</div>
+                        <div class="r-label">Avg. Engagement Rate</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">103%</div>
+                        <div class="r-label">Reach Increase</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">67%</div>
+                        <div class="r-label">Engagement Increase</div>
+                    </div>
+                </div>
+                <p style="margin-top:1rem">Industry average engagement: 1–2%. Most importantly: a scalable foundation built for future paid campaign testing and lead generation.</p>
             </div>
-        </div>
 
+            <div class="media-section">
+                <span class="exp-label">Performance Snapshot</span>
+                <div class="analytics-grid">
+                    <img src="Assets/Analytics%20Screenshots/StoneSmith/StoneSmith%20IG%20Stats.png" alt="StoneSmith IG stats" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/StoneSmith/StoneSmith%20IG%20Stats%202.png" alt="StoneSmith IG stats 2" onclick="openLB(this.src)">
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
+
 
 <!-- ============================================================
      CASE STUDY 4 — NYAG (Personal Brand / Online Education)
@@ -705,110 +709,123 @@
     <div class="cs-inner">
 
         <div class="cs-header fade-up">
-            <img src="Assets/Logos/NYAG%20Logo%20-%201.png" alt="NYAG" class="cs-logo">
-            <div class="cs-meta">
-                <h2 class="cs-company">Not Your Average Grandma (NYAG)</h2>
-                <p class="cs-industry-line">Industry: Personal Brand / Online Education</p>
+            <img src="Assets/Logos/NYAG%20Logo%20-%201.png" alt="NYAG logo" class="cs-logo">
+            <div class="cs-meta-top">
+                <span class="cs-company-name">Not Your Average Grandma (NYAG)</span>
+                <span class="cs-industry">Personal Brand &amp; Online Education</span>
             </div>
+        </div>
+
+        <h2 class="cs-headline fade-up">Turning a strong voice into a visible brand.</h2>
+
+        <div class="cs-insight fade-up">
+            <p>The voice was strong. The visuals were not.</p>
         </div>
 
         <div class="cs-metrics fade-up">
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="103">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Reach Increase</span>
+            <div class="metric-item">
+                <div class="metric-num">103%</div>
+                <div class="metric-label">Reach Increase</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="67">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Engagement Increase</span>
+            <div class="metric-item">
+                <div class="metric-num">67%</div>
+                <div class="metric-label">Engagement Increase</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="1.7" data-dec="true">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Follower Growth</span>
+            <div class="metric-item">
+                <div class="metric-num">1.7%</div>
+                <div class="metric-label">Follower Growth Rate</div>
             </div>
         </div>
 
-        <div class="cs-grid fade-up">
-            <div class="cs-block">
-                <h3>Objective</h3>
-                <p>Transform a strong personal voice into a cohesive, visually recognizable brand, increasing followers, engagement, and short-form discoverability across platforms.</p>
+        <button class="expand-btn" onclick="toggleExpand(this)">View Full Case Study <span class="chev">▾</span></button>
+
+        <div class="cs-expanded">
+
+            <div class="exp-divider"></div>
+
+            <div class="exp-section">
+                <span class="exp-label">The Challenge</span>
+                <p>Transform a strong personal voice into a cohesive, visually recognizable brand — increasing followers, engagement, and short-form discoverability across platforms.</p>
                 <p>The goal wasn't to change her message. It was to package it in a way that honored both honesty and aspiration for a midlife female audience.</p>
             </div>
-            <div class="cs-block">
-                <h3>The Approach</h3>
+
+            <div class="exp-section">
+                <span class="exp-label">The Insight</span>
+                <div class="exp-insight-callout">
+                    <p>The voice was strong. The visuals were not.</p>
+                    <p>Inconsistent colors, mixed typography, and an undefined posting rhythm created friction for new followers. The message resonated, but the presentation diluted discoverability and authority. The brand needed alignment between substance and aesthetic.</p>
+                </div>
+            </div>
+
+            <div class="exp-section">
+                <span class="exp-label">The Strategy</span>
+                <p>Rebuilt the brand around clarity, consistency, and strategic repurposing — centered on authenticity, storytelling, and visual cohesion.</p>
+
+                <p class="exp-subhead">Brand Rebuild</p>
                 <ul>
-                    <li>Rebuilt the brand around clarity, consistency, and strategic repurposing</li>
-                    <li>Centered the brand on authenticity, storytelling, and visual cohesion</li>
-                    <li>Identified inconsistent visuals and unclear positioning as barriers to growth</li>
-                    <li>Developed a unified look and voice that felt polished but still deeply personal</li>
-                    <li>Repurposed podcast episodes and long-form content into high-impact short-form video</li>
-                    <li>Built a repeatable content system to maintain consistency without creative burnout</li>
+                    <li>Conducted a full content audit to separate signal from noise</li>
+                    <li>Defined 3–4 core content pillars aligned with audience pain points and aspirations</li>
+                    <li>Designed a cohesive visual system: typography, color palette, graphic templates</li>
+                    <li>Established a consistent posting rhythm with intentional variety across pillars</li>
                 </ul>
-                <p>This wasn't just a rebrand. It was a visibility upgrade.</p>
+
+                <p class="exp-subhead">Short-Form Video</p>
+                <ul>
+                    <li>Identified high-impact podcast moments with standalone value for Reels</li>
+                    <li>Built a repeatable Reels framework: hook → insight → takeaway → subtle CTA</li>
+                    <li>Batch-produced weekly video content to maintain consistency</li>
+                    <li>Tested multiple hook styles to determine what stopped the scroll</li>
+                </ul>
+                <p>Instead of creating more content, we amplified what already worked.</p>
             </div>
-        </div>
 
-        <div class="section-divider"></div>
-
-        <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
-        <div class="cs-expanded">
-            <h4>The Problem with the Existing Brand</h4>
-            <p>The voice was strong. The visuals were not.</p>
-            <p>Inconsistent colors, mixed typography, and an undefined posting rhythm created friction for new followers. The message resonated, but the presentation diluted discoverability and authority.</p>
-            <p>The brand needed alignment between substance and aesthetic.</p>
-
-            <h4>The Rebrand Strategy</h4>
-            <p>Approached the transformation methodically.</p>
-            <ul>
-                <li>Conducted a full content audit to separate signal from noise</li>
-                <li>Defined 3-4 core content pillars aligned with audience pain points and aspirations</li>
-                <li>Designed a cohesive visual system (typography, color palette, graphic templates)</li>
-                <li>Established a consistent posting rhythm with intentional variety across pillars</li>
-            </ul>
-            <p>The goal was clarity, not overproduction.</p>
-
-            <h4>Short-Form Video Strategy</h4>
-            <p>Her podcast was a goldmine of insight. It just wasn't being leveraged for discovery.</p>
-            <p>We transformed long-form episodes into structured short-form content designed for retention and reach.</p>
-            <ul>
-                <li>Identified high-impact podcast moments with standalone value</li>
-                <li>Built a repeatable Reels framework: hook → insight → takeaway → subtle CTA</li>
-                <li>Batch-produced weekly video content to maintain consistency</li>
-                <li>Tested multiple hook styles to determine what stopped the scroll</li>
-            </ul>
-            <p>Instead of creating more content, we amplified what already worked.</p>
-        </div>
-
-        <!-- Before / After Slider -->
-        <div class="media-section fade-up">
-            <h3>Before &amp; After: IG Grid Transformation</h3>
-            <p style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem;">Drag the slider to compare the grid before and after the visual rebrand.</p>
-            <div class="ba-wrap" id="ba-nyag">
-                <img class="ba-bg" src="Assets/Analytics%20Screenshots/NYAG/NYAG%20IG%20Grid%20Before.png" alt="Before rebrand">
-                <div class="ba-overlay" id="ba-nyag-overlay">
-                    <img src="Assets/Analytics%20Screenshots/NYAG/NYAG%20IG%20Grid%20After.png" alt="After rebrand">
-                </div>
-                <div class="ba-divider" id="ba-nyag-div">
-                    <div class="ba-handle">⇔</div>
+            <div class="exp-section">
+                <span class="exp-label">Results</span>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="r-num">103%</div>
+                        <div class="r-label">Reach Increase</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">67%</div>
+                        <div class="r-label">Engagement Increase</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">1.7%</div>
+                        <div class="r-label">Follower Growth</div>
+                    </div>
                 </div>
             </div>
-            <div class="ba-label-row">
-                <span class="ba-label">✦ Before</span>
-                <span class="ba-label">After ✦</span>
+
+            <div class="media-section">
+                <span class="exp-label">Performance Snapshot</span>
+
+                <p class="media-intro" style="margin-bottom:1.25rem">Before &amp; after: drag the slider to compare the Instagram grid before and after the visual rebrand.</p>
+                <div class="ba-wrap" id="ba-nyag">
+                    <img class="ba-bg" src="Assets/Analytics%20Screenshots/NYAG/NYAG%20IG%20Grid%20Before.png" alt="Before rebrand">
+                    <div class="ba-overlay" id="ba-nyag-overlay">
+                        <img src="Assets/Analytics%20Screenshots/NYAG/NYAG%20IG%20Grid%20After.png" alt="After rebrand">
+                    </div>
+                    <div class="ba-divider" id="ba-nyag-div">
+                        <div class="ba-handle">⇔</div>
+                    </div>
+                </div>
+                <div class="ba-label-row">
+                    <span class="ba-label">Before</span>
+                    <span class="ba-label">After</span>
+                </div>
+                <p class="ba-note">Drag to compare · Touch-enabled</p>
+
+                <div class="analytics-grid" style="margin-top:1.5rem">
+                    <img src="Assets/Analytics%20Screenshots/NYAG/NYAG%20IG%20Overview.png" alt="NYAG overview" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/NYAG/NYAG%20IG%20Follows.png" alt="NYAG follows" onclick="openLB(this.src)">
+                </div>
             </div>
-            <p class="ba-note">Drag to compare • Touch-enabled</p>
+
         </div>
-
-
-        <div class="media-section fade-up">
-            <p class="analytics-caption">Platform performance snapshots</p>
-            <div class="analytics-grid">
-                <img src="Assets/Analytics%20Screenshots/NYAG/NYAG%20IG%20Overview.png" alt="NYAG overview" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/NYAG/NYAG%20IG%20Follows.png" alt="NYAG follows" onclick="openLB(this.src)">
-            </div>
-        </div>
-
     </div>
 </section>
+
 
 <!-- ============================================================
      CASE STUDY 5 — Carolina Farm Trust
@@ -817,100 +834,121 @@
     <div class="cs-inner">
 
         <div class="cs-header fade-up">
-            <img src="Assets/Logos/Carolina-Farm-Trust-logo.png" alt="Carolina Farm Trust" class="cs-logo">
-            <div class="cs-meta">
-                <h2 class="cs-company">Carolina Farm Trust</h2>
-                <p class="cs-industry-line">Industry: Nonprofit / Sustainability</p>
+            <img src="Assets/Logos/Carolina-Farm-Trust-logo.png" alt="Carolina Farm Trust logo" class="cs-logo">
+            <div class="cs-meta-top">
+                <span class="cs-company-name">Carolina Farm Trust</span>
+                <span class="cs-industry">Nonprofit &amp; Sustainability</span>
             </div>
+        </div>
+
+        <h2 class="cs-headline fade-up">Growing support for a mission that mattered.</h2>
+
+        <div class="cs-insight fade-up">
+            <p>Nonprofit marketing depends on emotional clarity. When the narrative aligned, the channels followed.</p>
         </div>
 
         <div class="cs-metrics fade-up">
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="8.65" data-dec="true">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Audience Growth (3 mo.)</span>
+            <div class="metric-item">
+                <div class="metric-num">$15K+</div>
+                <div class="metric-label">Grants Secured</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-pre">$</span><span class="metric-num" data-target="15">0</span><span class="metric-suf">K+</span></div>
-                <span class="metric-label">Grants Secured</span>
+            <div class="metric-item">
+                <div class="metric-num">30%</div>
+                <div class="metric-label">Website Traffic Increase</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="5">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Ticket Profit Increase YOY</span>
+            <div class="metric-item">
+                <div class="metric-num">5%</div>
+                <div class="metric-label">Ticket Profit Increase YOY</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="30">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Website Traffic Increase</span>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="20">0</span><span class="metric-suf">%</span></div>
-                <span class="metric-label">Volunteer Sign-Up Growth</span>
+            <div class="metric-item">
+                <div class="metric-num">20%</div>
+                <div class="metric-label">Volunteer Sign-Up Growth</div>
             </div>
         </div>
 
-        <div class="cs-grid fade-up">
-            <div class="cs-block">
-                <h3>Objective</h3>
+        <button class="expand-btn" onclick="toggleExpand(this)">View Full Case Study <span class="chev">▾</span></button>
+
+        <div class="cs-expanded">
+
+            <div class="exp-divider"></div>
+
+            <div class="exp-section">
+                <span class="exp-label">The Challenge</span>
                 <p>Lead a full marketing overhaul to unify messaging, strengthen fundraising, and modernize Carolina Farm Trust's digital presence under a clear, mission-driven narrative.</p>
                 <p>The organization had heart. It needed alignment.</p>
             </div>
-            <div class="cs-block">
-                <h3>The Approach</h3>
+
+            <div class="exp-section">
+                <span class="exp-label">The Insight</span>
+                <div class="exp-insight-callout">
+                    <p>Nonprofit marketing depends on emotional clarity.</p>
+                    <p>Every channel — from Instagram captions to grant proposals — centered around a single story: Carolina Farm Trust isn't just growing food. It's strengthening local farms, expanding food access, and building a more connected, sustainable community.</p>
+                    <p>When the narrative aligned, the channels followed.</p>
+                </div>
+            </div>
+
+            <div class="exp-section">
+                <span class="exp-label">The Strategy</span>
+                <p>Consolidated fragmented marketing efforts into a cohesive strategy that connected storytelling, fundraising, and community impact across every channel.</p>
+
+                <p class="exp-subhead">Channel Strategy</p>
                 <ul>
-                    <li>Consolidated fragmented marketing efforts into a cohesive strategy that connected storytelling, fundraising, and community impact</li>
-                    <li>Unified web, email, and social under a consistent mission-forward voice</li>
-                    <li>Clarified messaging hierarchy to strengthen donation and event conversion pathways</li>
+                    <li><strong>Social Media:</strong> Mission storytelling, farmer spotlights, event promotion, and community milestones</li>
+                    <li><strong>Email Marketing:</strong> Redesigned donor communications, impact reports, and event announcements for clarity and engagement</li>
+                    <li><strong>Website:</strong> Restructured messaging hierarchy to prioritize donation calls-to-action and event sign-ups</li>
+                    <li><strong>TikTok:</strong> Established a new channel to reach Gen Z and younger Millennial supporters</li>
+                </ul>
+
+                <p class="exp-subhead">Revenue &amp; Fundraising</p>
+                <ul>
                     <li>Launched a new ticket-sales platform supported by targeted Meta ad campaigns</li>
                     <li>Integrated fundraising, storytelling, and community milestones into one narrative ecosystem</li>
-                    <li>Wrote and designed grant proposals securing $15K+ in funding</li>
+                    <li>Wrote and designed grant proposals securing $15K+ in new funding</li>
+                    <li>Clarified messaging hierarchy to strengthen donation and event conversion pathways</li>
                 </ul>
-                <p>This wasn't about posting more. It was about building trust at scale.</p>
             </div>
-        </div>
 
-        <div class="section-divider"></div>
-
-        <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
-        <div class="cs-expanded">
-            <h4>The Strategic Foundation</h4>
-            <p>Nonprofit marketing depends on emotional clarity.</p>
-            <p>Every channel from Instagram captions to grant proposals centered around a single story:</p>
-            <p>Carolina Farm Trust isn't just growing food. It's strengthening local farms, expanding food access, and building a more connected, sustainable community.</p>
-            <p>When the narrative aligned, the channels followed.</p>
-
-            <h4>Channel Strategy</h4>
-            <ul>
-                <li><strong>Social Media:</strong> Mission storytelling, farmer spotlights, event promotion, and community milestones</li>
-                <li><strong>Email Marketing:</strong> Redesigned donor communications, impact reports, and event announcements for clarity and engagement</li>
-                <li><strong>Website:</strong> Restructured messaging hierarchy to prioritize donation calls-to-action and event sign-ups</li>
-                <li><strong>TikTok:</strong> Established a new channel to reach Gen Z and younger Millennial supporters</li>
-            </ul>
-            <p>The goal wasn't omnipresence. It was alignment.</p>
-
-            <h4>Revenue & Fundraising Impact</h4>
-            <ul>
-                <li>New ticket-sales platform launched with integrated Meta ad campaign support</li>
-                <li>Paid campaign contributed to a 5% increase in annual fundraiser profits year-over-year</li>
-                <li>Grant writing and design secured $15K+ in new funding</li>
-                <li>Website traffic increased 30% through improved content and channel integration</li>
-                <li>Volunteer sign-ups increased 20% through clearer community communication</li>
-            </ul>
-            <p>Impact wasn't just measured in impressions, it showed up in funding and participation.</p>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <div class="media-section fade-up">
-            <p class="media-kicker">Campaign Assets</p>
-            <p class="media-intro">Campaign outputs reflected stronger narrative consistency across fundraising, community storytelling, and conversion-focused communication.</p>
-            <div class="analytics-grid">
-                <img src="Assets/Analytics%20Screenshots/CFT/CFT%20Flyer.png" alt="CFT fundraiser flyer" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/CFT/CFT%20Grant.png" alt="CFT grant" onclick="openLB(this.src)">
-                <img src="Assets/Analytics%20Screenshots/CFT/CFT%20IG%20Grid.png" alt="CFT IG grid" onclick="openLB(this.src)">
+            <div class="exp-section">
+                <span class="exp-label">Results</span>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="r-num">$15K+</div>
+                        <div class="r-label">Grants Secured</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">+5%</div>
+                        <div class="r-label">Fundraiser Profit YOY</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">+30%</div>
+                        <div class="r-label">Website Traffic</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">+20%</div>
+                        <div class="r-label">Volunteer Sign-Ups</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="r-num">8.65%</div>
+                        <div class="r-label">Audience Growth (3 mo.)</div>
+                    </div>
+                </div>
+                <p style="margin-top:1rem">Impact showed up in funding and participation — not just impressions.</p>
             </div>
-        </div>
 
+            <div class="media-section">
+                <span class="exp-label">Performance Snapshot</span>
+                <p class="media-intro">Campaign outputs reflected stronger narrative consistency across fundraising, community storytelling, and conversion-focused communication.</p>
+                <div class="analytics-grid">
+                    <img src="Assets/Analytics%20Screenshots/CFT/CFT%20Flyer.png" alt="CFT fundraiser flyer" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/CFT/CFT%20Grant.png" alt="CFT grant" onclick="openLB(this.src)">
+                    <img src="Assets/Analytics%20Screenshots/CFT/CFT%20IG%20Grid.png" alt="CFT IG grid" onclick="openLB(this.src)">
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
+
 
 <!-- ============================================================
      CASE STUDY 6 — Maple Air
@@ -919,95 +957,111 @@
     <div class="cs-inner">
 
         <div class="cs-header fade-up">
-            <img src="Assets/Logos/Maple%20Air%20Logo.svg" alt="Maple Air" class="cs-logo">
-            <div class="cs-meta">
-                <h2 class="cs-company">Maple Air</h2>
-                <p class="cs-industry-line">Industry: Whole House Air Purification</p>
+            <img src="Assets/Logos/Maple%20Air%20Logo.svg" alt="Maple Air logo" class="cs-logo">
+            <div class="cs-meta-top">
+                <span class="cs-company-name">Maple Air</span>
+                <span class="cs-industry">Whole House Air Purification</span>
             </div>
+        </div>
+
+        <h2 class="cs-headline fade-up">Building demand in a category nobody thinks about — until they need to.</h2>
+
+        <div class="cs-insight fade-up">
+            <p>Nobody wakes up excited to shop for air purification. The strategy wasn't to scare people. It was to make clean air feel practical and relevant before there's a problem.</p>
         </div>
 
         <div class="cs-metrics fade-up">
-            <div class="metric-card">
-                <div class="metric-value"><span class="metric-num" data-target="0">—</span></div>
-                <span class="metric-label">Analytics Coming Soon</span>
+            <div class="metric-item">
+                <div class="metric-num" style="font-size:1.1rem;padding-top:0.2rem">Active</div>
+                <div class="metric-label">Fractional Marketing Lead</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-num" style="font-size:1.1rem;padding-top:0.2rem">In Progress</div>
+                <div class="metric-label">Ecommerce Buildout</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-num" style="font-size:1.1rem;padding-top:0.2rem">Launching</div>
+                <div class="metric-label">Influencer Program</div>
             </div>
         </div>
 
-        <div class="cs-grid fade-up">
-            <div class="cs-block">
-                <h3>Objective</h3>
+        <button class="expand-btn" onclick="toggleExpand(this)">View Full Case Study <span class="chev">▾</span></button>
+
+        <div class="cs-expanded">
+
+            <div class="exp-divider"></div>
+
+            <div class="exp-section">
+                <span class="exp-label">The Challenge</span>
                 <p>Support Maple Air's marketing evolution by bringing the brand to life on social, strengthening positioning, preparing for ecommerce, and building demand in the indoor air quality category.</p>
                 <p>The brand already existed. The challenge was making it visible, relatable, and strategically positioned for health-conscious homeowners.</p>
             </div>
-            <div class="cs-block">
-                <h3>The Approach</h3>
+
+            <div class="exp-section">
+                <span class="exp-label">The Insight</span>
+                <div class="exp-insight-callout">
+                    <p>Nobody wakes up excited to shop for air purification. Usually it starts with allergies, kids getting sick, or a "why does the house smell weird" moment.</p>
+                    <p>The strategy wasn't to scare people. It was to make clean air feel practical, relevant, and worth thinking about before there's a problem.</p>
+                </div>
+            </div>
+
+            <div class="exp-section">
+                <span class="exp-label">The Strategy</span>
+                <p>Acting as fractional marketing lead, I'm focused on aligning brand, content, and growth strategy while supporting a broader marketing evolution.</p>
+
+                <p class="exp-subhead">Content</p>
                 <ul>
-                    <li>Acting as fractional marketing leadership, I'm focused on aligning brand, content, and growth strategy while supporting a broader marketing evolution</li>
                     <li>Established Maple Air's social voice and platform presence from an inconsistent starting point</li>
-                    <li>Developed content pillars connecting indoor air quality to everyday health and home comfort</li>
-                    <li>Produced short-form video content including installs, unboxings, and awareness storytelling</li>
-                    <li>Aligned organic social with future paid media and ecommerce goals</li>
-                    <li>Supporting brand refresh initiatives, website direction, and product storytelling</li>
-                    <li>Collaborating with animation partners and leading influencer outreach strategy</li>
+                    <li>Educational posts on indoor air quality, allergens, and whole-home health</li>
+                    <li>Install and behind-the-scenes content that humanizes the technology</li>
+                    <li>Seasonal awareness tied to health conversations: flu season, mold concerns, air quality events</li>
+                    <li>Lifestyle storytelling connecting clean air to sleep, wellness, and family comfort</li>
                 </ul>
-                <p>This work spans brand building, category education, and demand generation.</p>
+
+                <p class="exp-subhead">Growth &amp; Brand</p>
+                <ul>
+                    <li>Supporting brand refresh initiatives, website direction, and product storytelling</li>
+                    <li>Collaborating with animation partners to simplify complex technology for consumers</li>
+                    <li>Leading influencer outreach strategy to normalize conversations around air quality</li>
+                    <li>Aligning organic social with future paid media and ecommerce goals</li>
+                </ul>
             </div>
-        </div>
 
-        <div class="section-divider"></div>
-
-        <button class="expand-btn" onclick="toggleExpand(this)">View Full Strategy <span class="chev">▾</span></button>
-        <div class="cs-expanded">
-            <h4>The Opportunity</h4>
-            <p>Nobody wakes up excited to shop for air purification. Usually it starts with allergies, kids getting sick, or a why does the house smell weird moment.</p>
-            <p>The strategy wasn't to scare people. It was to make clean air feel practical, relevant, and worth thinking about before there's a problem.</p>
-
-            <h4>Content Strategy</h4>
-            <ul>
-                <li>Educational posts on indoor air quality, allergens, and whole-home health</li>
-                <li>Install and behind-the-scenes content that humanizes the technology</li>
-                <li>Seasonal awareness tied to health conversations like flu season, mold concerns, and air quality events</li>
-                <li>Lifestyle storytelling connecting clean air to sleep, wellness, and family comfort</li>
-                <li>Influencer collaborations designed to normalize the conversation around air quality</li>
-            </ul>
-            <p>The goal isn't just engagement. It's familiarity and trust.</p>
-
-            <h4>Current Status</h4>
-            <p>This is an active engagement. I'm supporting Maple Air as a fractional marketing lead across brand positioning, ecommerce preparation, influencer campaigns, animation storytelling, and social growth.</p>
-            <p>Full performance metrics will be added as initiatives mature.</p>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <div class="media-section fade-up">
-            <p class="media-kicker">Campaign Assets</p>
-            <p class="media-intro">Early campaign assets established a clear launch foundation, with performance reporting to follow as data accumulates.</p>
-            <p class="analytics-caption">Platform performance snapshots</p>
-            <div class="analytics-grid">
-                <img src="Assets/Analytics%20Screenshots/Maple%20Air/Maple%20Air%20Analytics.png" alt="Maple Air analytics" onclick="openLB(this.src)" onerror="this.style.display='none'">
+            <div class="exp-section">
+                <span class="exp-label">Current Status</span>
+                <p>This is an active engagement. Full performance metrics will be added as initiatives mature and campaigns accumulate data. The goal isn't just engagement — it's familiarity and trust built before the sale.</p>
             </div>
-            <p style="color:var(--gray-600);font-size:0.875rem;margin-top:1rem;font-style:italic;">Analytics screenshots will be added as campaign data becomes available.</p>
-        </div>
 
+            <div class="media-section">
+                <span class="exp-label">Performance Snapshot</span>
+                <p class="media-intro">Early campaign assets established a clear launch foundation. Performance reporting will follow as data accumulates.</p>
+                <div class="analytics-grid">
+                    <img src="Assets/Analytics%20Screenshots/Maple%20Air/Maple%20Air%20Analytics.png" alt="Maple Air analytics" onclick="openLB(this.src)" onerror="this.style.display='none'">
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
+
 
 <!-- CTA -->
 <section class="cta-section">
     <h2>Ready to write your own case study?</h2>
     <p>Let's build a strategy that gives you results worth documenting.</p>
     <div class="btn-row">
-        <a href="index.html#contact" class="btn-pink">Let's Talk</a>
+        <a href="index.html#contact" class="btn-teal">Let's Talk</a>
         <a href="creative-work.html" class="btn-outline">View Creative Work →</a>
     </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
     <div style="display:flex;align-items:center;justify-content:center;gap:1.25rem;margin-bottom:0.75rem;">
-        <a href="https://instagram.com/nikkihilljohnson" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gray-100);color:var(--gray-600);text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--pink)';this.style.color='white'" onmouseout="this.style.background='var(--gray-100)';this.style.color='var(--gray-600)'">
+        <a href="https://instagram.com/nikkihilljohnson" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--teal)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='rgba(255,255,255,0.5)'">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
         </a>
-        <a href="https://www.linkedin.com/in/nikkihilljohnson/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gray-100);color:var(--gray-600);text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='#0077B5';this.style.color='white'" onmouseout="this.style.background='var(--gray-100)';this.style.color='var(--gray-600)'">
+        <a href="https://www.linkedin.com/in/nikkihilljohnson/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='#0077B5';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='rgba(255,255,255,0.5)'">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
         </a>
     </div>
@@ -1050,77 +1104,16 @@ if (navToggle && primaryNav) {
     });
 }
 
-// ---- ANIMATED COUNTERS ----
-function animateCounter(el) {
-    const target = parseFloat(el.dataset.target);
-    const isDec = el.dataset.dec === 'true';
-    const duration = 1800;
-    const steps = 60;
-    const increment = target / steps;
-    let current = 0;
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) { current = target; clearInterval(timer); }
-        el.textContent = isDec ? current.toFixed(2) : Math.floor(current).toLocaleString();
-    }, duration / steps);
-}
-
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-        if (e.isIntersecting) {
-            e.target.querySelectorAll('.metric-num[data-target]').forEach(animateCounter);
-            counterObserver.unobserve(e.target);
-        }
-    });
-}, { threshold: 0.3 });
-document.querySelectorAll('.cs-metrics').forEach(m => counterObserver.observe(m));
-
-// ---- CAROUSELS ----
-const carouselState = {};
-
-function initCarousels() {
-    document.querySelectorAll('.carousel-wrap').forEach(wrap => {
-        const id = wrap.id;
-        const slides = wrap.querySelectorAll('.carousel-slide');
-        const dotsEl = document.getElementById(id + '-dots');
-        carouselState[id] = { current: 0, total: slides.length };
-
-        if (dotsEl) {
-            dotsEl.innerHTML = '';
-            slides.forEach((_, i) => {
-                const dot = document.createElement('button');
-                dot.className = 'c-dot' + (i === 0 ? ' active' : '');
-                dot.onclick = () => goToSlide(id, i);
-                dotsEl.appendChild(dot);
-            });
-        }
-    });
-}
-
-function moveCarousel(id, dir) {
-    const state = carouselState[id];
-    goToSlide(id, (state.current + dir + state.total) % state.total);
-}
-
-function goToSlide(id, idx) {
-    const state = carouselState[id];
-    state.current = idx;
-    const wrap = document.getElementById(id);
-    wrap.querySelector('.carousel-track').style.transform = `translateX(-${idx * 100}%)`;
-    const dots = document.getElementById(id + '-dots');
-    if (dots) {
-        dots.querySelectorAll('.c-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
-    }
-}
-
-initCarousels();
-
 // ---- EXPANDABLE SECTIONS ----
 function toggleExpand(btn) {
     btn.classList.toggle('open');
     const expanded = btn.nextElementSibling;
     expanded.classList.toggle('show');
-    btn.querySelector('.chev').textContent = expanded.classList.contains('show') ? '▴' : '▾';
+    const chev = btn.querySelector('.chev');
+    chev.textContent = expanded.classList.contains('show') ? '▴' : '▾';
+
+    // Observe any new fade-up elements revealed in the expanded section
+    expanded.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 }
 
 // ---- LIGHTBOX ----
@@ -1135,7 +1128,9 @@ function closeLB(e) {
         document.body.style.overflow = '';
     }
 }
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLB({ target: document.getElementById('lb-overlay') }); });
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLB({ target: document.getElementById('lb-overlay') });
+});
 
 // ---- BEFORE / AFTER SLIDER ----
 function initBA(containerId, overlayId, dividerId) {
@@ -1156,7 +1151,6 @@ function initBA(containerId, overlayId, dividerId) {
     wrap.addEventListener('mousedown', (e) => { dragging = true; setPos(e.clientX); });
     document.addEventListener('mousemove', (e) => { if (dragging) setPos(e.clientX); });
     document.addEventListener('mouseup', () => { dragging = false; });
-
     wrap.addEventListener('touchstart', (e) => { dragging = true; setPos(e.touches[0].clientX); }, { passive: true });
     document.addEventListener('touchmove', (e) => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
     document.addEventListener('touchend', () => { dragging = false; });
