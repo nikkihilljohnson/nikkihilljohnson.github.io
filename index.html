@@ -700,70 +700,164 @@
         .win-badge .arrow { color: var(--pink); }
 
         /* ---- CASE STUDIES ---- */
-        .case-studies { background: var(--white); }
+        .case-studies { background: var(--cream); }
+        .case-studies .section-label { color: var(--coral); }
         .cases-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
         .case-card {
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
             background: var(--white);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 3px solid var(--coral);
         }
         .case-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+            transform: translateX(4px);
+            box-shadow: 0 6px 28px rgba(0,0,0,0.08);
         }
-        .case-banner {
-            height: 8px;
-        }
-        .case-banner-pink { background: var(--pink); }
-        .case-banner-purple { background: var(--purple); }
-        .case-banner-orange { background: var(--lime); }
         .case-content {
-            padding: 2rem;
+            padding: 2rem 2rem 1.75rem;
+        }
+        .case-card-header {
+            margin-bottom: 1rem;
         }
         .case-type {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--pink);
+            color: var(--coral);
             font-weight: 700;
+            margin-bottom: 0.35rem;
+        }
+        .case-company {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
             margin-bottom: 0.5rem;
         }
         .case-title {
             font-family: var(--font-display);
-            font-size: 1.35rem;
-            color: var(--dark);
-            margin-bottom: 0.75rem;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 1.05rem;
+            color: var(--gray-900);
+            line-height: 1.4;
+            margin-bottom: 0;
         }
         .case-desc {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--gray-600);
-            line-height: 1.7;
-            margin-bottom: 1.25rem;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
         }
-        .case-stats {
+        /* Card 1 — HVAC.com: KPI grid */
+        .case-kpi-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            padding-top: 1.25rem;
+            gap: 0.625rem;
+            margin-top: 1.5rem;
             border-top: 1px solid var(--gray-300);
+            padding-top: 1.25rem;
         }
-        .case-stat-value {
-            font-size: 1.4rem;
+        .case-kpi-block {
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            padding: 0.875rem 1rem;
+        }
+        .case-kpi-number {
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--dark);
+            color: var(--coral);
+            line-height: 1;
+            margin-bottom: 0.3rem;
         }
-        .case-stat-value.stat-highlight {
-            font-size: 1.75rem;
-            color: var(--pink);
+        .case-kpi-label {
+            font-size: 0.68rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
-        .case-stat-label {
-            font-size: 0.75rem;
+
+        /* Card 2 — James Wedmore: numbered editorial list */
+        .case-launch-results {
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--gray-300);
+            padding-top: 1.25rem;
+        }
+        .case-launch-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--gray-600);
+            margin-bottom: 0.75rem;
+        }
+        .case-launch-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            counter-reset: launch;
+        }
+        .case-launch-list li {
+            counter-increment: launch;
+            display: flex;
+            align-items: baseline;
+            gap: 0.875rem;
+            padding: 0.55rem 0;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--gray-900);
+            border-bottom: 1px solid var(--gray-300);
+        }
+        .case-launch-list li:last-child { border-bottom: none; }
+        .case-launch-list li::before {
+            content: counter(launch, decimal-leading-zero);
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--coral);
+            min-width: 1.5rem;
+            flex-shrink: 0;
+            letter-spacing: 0.05em;
+        }
+
+        /* Card 3 — Carolina Farm Trust: impact table */
+        .case-card-warm { background: var(--white); }
+        .case-impact {
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--gray-300);
+            padding-top: 1.25rem;
+        }
+        .case-impact-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--gray-600);
+            margin-bottom: 0.875rem;
+        }
+        .case-impact-rows { display: flex; flex-direction: column; }
+        .case-impact-row {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.55rem 0;
+            border-bottom: 1px solid var(--gray-300);
+        }
+        .case-impact-row:last-child { border-bottom: none; }
+        .case-impact-metric {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--coral);
+            white-space: nowrap;
+            min-width: 3.25rem;
+        }
+        .case-impact-desc {
+            font-size: 0.88rem;
             color: var(--gray-600);
         }
 
@@ -997,6 +1091,8 @@
             }
             .nav-dropdown-menu a { padding: 0.55rem 0.85rem; }
             .cases-grid { grid-template-columns: 1fr; }
+            .case-content { padding: 1.5rem 1.75rem; }
+            .case-impact-grid { gap: 0.5rem 1rem; }
             .services-grid { grid-template-columns: 1fr; }
             .timeline-item { padding-left: 50px; }
             .cat-top-impact {
@@ -1269,117 +1365,98 @@
     <div class="container">
         <div class="section-header">
             <p class="section-label">From Idea to Impact</p>
-            <h2 class="section-title">Campaigns I've Led</h2>
-            <p class="section-subtitle">Where strategy, creative, and performance actually work together.</p>
+            <h2 class="section-title">The Receipts</h2>
+            <p class="section-subtitle">Here are a few examples of strategy, content, and campaigns that delivered measurable results.</p>
         </div>
         <div class="cases-grid">
+
+            <!-- Card 1: HVAC.com — data-driven, KPI blocks -->
             <div class="case-card fade-up">
-                <div class="case-banner case-banner-pink"></div>
                 <div class="case-content">
-                    <p class="case-type">SaaS / Home Services</p>
-                    <h3 class="case-title">Full-Funnel Social for HVAC.com</h3>
-                    <p class="case-desc">Built and optimized social campaigns across paid and organic channels for a tech-enabled home services brand, from strategy through execution.</p>
-                    <div class="case-stats">
-                        <div>
-                            <div class="case-stat-value">~50x</div>
-                            <div class="case-stat-label">Return on Investment</div>
+                    <div class="case-card-header">
+                        <p class="case-type">SaaS / Home Services</p>
+                        <h3 class="case-company">HVAC.com</h3>
+                        <p class="case-title">Turning social into a revenue-driving channel.</p>
+                    </div>
+                    <p class="case-desc">As the brand scaled nationally, social evolved from a content program into a measurable growth channel supporting awareness, lead generation, and sales.</p>
+                    <div class="case-kpi-grid">
+                        <div class="case-kpi-block">
+                            <div class="case-kpi-number">~50x</div>
+                            <div class="case-kpi-label">Return on Investment</div>
                         </div>
-                        <div>
-                            <div class="case-stat-value">$71</div>
-                            <div class="case-stat-label">Cost Per Lead</div>
+                        <div class="case-kpi-block">
+                            <div class="case-kpi-number">$71</div>
+                            <div class="case-kpi-label">Cost Per Lead</div>
                         </div>
-                        <div>
-                            <div class="case-stat-value">231K+</div>
-                            <div class="case-stat-label">Total Engagements</div>
+                        <div class="case-kpi-block">
+                            <div class="case-kpi-number">231K+</div>
+                            <div class="case-kpi-label">Total Engagements</div>
                         </div>
-                        <div>
-                            <div class="case-stat-value stat-highlight">~6%</div>
-                            <div class="case-stat-label">Of Total Company Sales</div>
+                        <div class="case-kpi-block">
+                            <div class="case-kpi-number">~6%</div>
+                            <div class="case-kpi-label">Of Total Company Sales</div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Card 2: James Wedmore — editorial, numbered list -->
             <div class="case-card fade-up">
-                <div class="case-banner case-banner-purple"></div>
                 <div class="case-content">
-                    <p class="case-type">Personal Brand / Digital Products</p>
-                    <h3 class="case-title">$6.4M Launch Campaign</h3>
-                    <p class="case-desc">Led full-funnel social strategy and launch storytelling for a $6.4M digital product release, aligning content, community engagement, and performance across channels.</p>
-                    <div class="case-stats">
-                        <div>
-                            <div class="case-stat-value stat-highlight">$6.4M</div>
-                            <div class="case-stat-label">Campaign Size</div>
-                        </div>
-                        <div>
-                            <div class="case-stat-value">4</div>
-                            <div class="case-stat-label">Viral Videos in 30 Days</div>
-                        </div>
-                        <div>
-                            <div class="case-stat-value">50+</div>
-                            <div class="case-stat-label">Weekly Assets Produced</div>
-                        </div>
-                        <div>
-                            <div class="case-stat-value">3%+</div>
-                            <div class="case-stat-label">Weekly Engagement Rate</div>
+                    <div class="case-card-header">
+                        <p class="case-type">Personal Brand / Digital Products</p>
+                        <h3 class="case-company">James Wedmore, Business by Design</h3>
+                        <p class="case-title">Building momentum before launch day.</p>
+                    </div>
+                    <p class="case-desc">Content, community, and storytelling worked together to build anticipation, drive participation, and support a multimillion-dollar launch.</p>
+                    <div class="case-launch-results">
+                        <p class="case-launch-label">Launch Results</p>
+                        <ol class="case-launch-list">
+                            <li>$6.4M launch revenue</li>
+                            <li>4 viral videos in 30 days</li>
+                            <li>50+ creative assets produced</li>
+                            <li>3%+ engagement rate</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Carolina Farm Trust — warm, impact table -->
+            <div class="case-card case-card-warm fade-up">
+                <div class="case-content">
+                    <div class="case-card-header">
+                        <p class="case-type">Nonprofit / Agriculture</p>
+                        <h3 class="case-company">Carolina Farm Trust</h3>
+                        <p class="case-title">Growing support for a mission that mattered.</p>
+                    </div>
+                    <p class="case-desc">Strategic content, community engagement, and event promotion helped turn awareness into participation, volunteer support, and long-term momentum.</p>
+                    <div class="case-impact">
+                        <p class="case-impact-label">Community Impact</p>
+                        <div class="case-impact-rows">
+                            <div class="case-impact-row">
+                                <span class="case-impact-metric">$15K+</span>
+                                <span class="case-impact-desc">in grants secured</span>
+                            </div>
+                            <div class="case-impact-row">
+                                <span class="case-impact-metric">+30%</span>
+                                <span class="case-impact-desc">increase in website traffic</span>
+                            </div>
+                            <div class="case-impact-row">
+                                <span class="case-impact-metric">+20%</span>
+                                <span class="case-impact-desc">increase in volunteer sign-ups</span>
+                            </div>
+                            <div class="case-impact-row">
+                                <span class="case-impact-metric">8.6%</span>
+                                <span class="case-impact-desc">engagement lift</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="case-card fade-up">
-                <div class="case-banner case-banner-orange"></div>
-                <div class="case-content">
-                    <p class="case-type">Nonprofit / Agriculture</p>
-                    <h3 class="case-title">Mission-Driven Growth for Carolina Farm Trust</h3>
-                    <p class="case-desc">Developed and led storytelling and community-focused campaigns for a nonprofit, driving donor engagement, event sales, and volunteer growth.</p>
-                    <div class="case-stats">
-                        <div>
-                            <div class="case-stat-value">$15K+</div>
-                            <div class="case-stat-label">Grants Secured</div>
-                        </div>
-                        <div>
-                            <div class="case-stat-value">8.6%</div>
-                            <div class="case-stat-label">Engagement Lift (3 mo.)</div>
-                        </div>
-                        <div>
-                            <div class="case-stat-value">30%</div>
-                            <div class="case-stat-label">Website Traffic Increase</div>
-                        </div>
-                        <div>
-                            <div class="case-stat-value stat-highlight">20%</div>
-                            <div class="case-stat-label">Volunteer Sign-Up Growth</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="case-card fade-up">
-                <div class="case-banner" style="background: var(--lime);"></div>
-                <div class="case-content">
-                    <p class="case-type">Personal Brand / Online Education</p>
-                    <h3 class="case-title">Rebrand to Results: Social Growth Strategy</h3>
-                    <p class="case-desc">Revamped visual identity, content strategy, and short-form video approach for a midlife lifestyle brand — turning scattered content into a cohesive, high-performing social presence.</p>
-                    <div class="case-stats">
-                        <div>
-                            <div class="case-stat-value">103%</div>
-                            <div class="case-stat-label">Reach Increase</div>
-                        </div>
-                        <div>
-                            <div class="case-stat-value stat-highlight">67%</div>
-                            <div class="case-stat-label">Engagement Increase</div>
-                        </div>
-                        <div>
-                            <div class="case-stat-value">1.70%</div>
-                            <div class="case-stat-label">Follower Growth</div>
-                        </div>
-                        <div>
-                            <div class="case-stat-value">Podcast</div>
-                            <div class="case-stat-label">to Short-Form Video</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div style="text-align:center;margin-top:2.5rem;">
-            <a href="case-studies.html" style="display:inline-block;padding:0.875rem 2.25rem;background:var(--dark);color:white;text-decoration:none;border-radius:100px;font-weight:600;font-size:0.95rem;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(13,13,26,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">View All Case Studies →</a>
+            <a href="case-studies.html" style="display:inline-block;padding:0.875rem 2.25rem;background:var(--coral);color:white;text-decoration:none;border-radius:100px;font-weight:600;font-size:0.95rem;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(15,118,110,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">View All Case Studies →</a>
         </div>
     </div>
 </section>
