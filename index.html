@@ -328,131 +328,57 @@
         .section-header { margin-bottom: 3.5rem; }
         .container { max-width: 1200px; margin: 0 auto; }
 
-        /* ---- METRICS BAR ---- */
-        .metrics-bar {
-            background: var(--pink);
-            padding: 50px 2rem;
-            overflow: hidden;
+        /* ---- ABOUT ---- */
+        .about {
+            background: var(--cream);
+            padding: 100px 2rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
         }
-        .metrics-inner {
+        .about .section-label { color: var(--coral); }
+        .about-inner {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
-        }
-        .metric-item .metric-value {
-            font-family: var(--font-display);
-            font-size: 2.75rem;
-            font-weight: 700;
-            color: var(--lime);
-        }
-        .metric-item .metric-label {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.75);
-            margin-top: 0.25rem;
-            font-weight: 500;
-        }
-
-        /* ---- ABOUT ---- */
-        .about {
-            background: linear-gradient(180deg, var(--white) 0%, rgba(var(--purple-rgb), 0.04) 100%);
-        }
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 4rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
             align-items: start;
         }
-        .about-text p {
-            color: var(--gray-600);
+        .about-intro p {
+            color: #4d4d5a;
             margin-bottom: 1.25rem;
             line-height: 1.8;
             font-size: 1.05rem;
         }
-        .skills-section-header {
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gray-600);
-            margin-top: 2rem;
-            margin-bottom: 0.75rem;
-        }
-        .skills-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .skill-tag {
-            padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, rgba(var(--pink-rgb), 0.09), rgba(var(--lime-rgb), 0.16));
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--purple);
-            transition: all 0.2s;
-        }
-        .skill-tag:hover {
-            background: var(--purple);
-            color: var(--white);
-        }
-        .about-right-column {
+        .about-intro p:last-child { margin-bottom: 0; }
+        .about-cards {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
-        }
-        .about-highlights {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
         }
-        .highlight-card {
-            background: var(--gray-100);
-            border-radius: 16px;
-            padding: 1.25rem 1.5rem;
-            border: 1px solid rgba(var(--pink-rgb), 0.12);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.2s;
+        .about-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 1.5rem 1.75rem;
+            border-left: 3px solid var(--coral);
+            box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .highlight-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--pink), var(--lime));
+        .about-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 6px 22px rgba(0,0,0,0.08);
         }
-        .highlight-card:hover { transform: translateX(4px); }
-        .highlight-card h4 {
-            font-size: 0.9rem;
+        .about-card h4 {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.05rem;
             color: var(--dark);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
             font-weight: 700;
         }
-        .highlight-card p {
-            font-size: 0.82rem;
-            color: var(--gray-600);
-            line-height: 1.6;
-        }
-        .about-photo-panel {
-            position: relative;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid rgba(var(--pink-rgb), 0.25);
-            background: var(--white);
-            box-shadow: 0 10px 26px rgba(var(--purple-rgb), 0.08);
-            min-height: 240px;
-        }
-        .about-photo-panel img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            display: block;
+        .about-card p {
+            font-size: 0.88rem;
+            color: #4d4d5a;
+            line-height: 1.65;
         }
 
         /* ---- CAT ELEMENTS (SVG cartoon system) ---- */
@@ -1027,15 +953,7 @@
             .hero-ctas { justify-content: center; }
             .hero-photo { order: -1; }
             .photo-frame { width: 280px; height: 340px; }
-            .float-card-1 { left: 0; bottom: 20px; }
-            .float-card-2 { right: 0; top: 20px; }
-            .metrics-inner { grid-template-columns: repeat(2, 1fr); }
-            .about-grid { grid-template-columns: 1fr; }
-            .about-right-column { gap: 1rem; }
-            .about-highlights { grid-template-columns: 1fr; }
-            .about-photo-panel {
-                min-height: 220px;
-            }
+            .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
             .section-title { font-size: 2rem; }
             .nav-toggle { display: inline-flex; }
             .nav-links {
@@ -1311,155 +1229,34 @@
     </div>
 </section>
 
-<!-- METRICS BAR -->
-<div class="metrics-bar">
-    <div class="metrics-inner">
-        <div class="metric-item fade-up">
-            <div class="metric-value">4M+</div>
-            <div class="metric-label">Engagements Driven</div>
-        </div>
-        <div class="metric-item fade-up">
-            <div class="metric-value">135%</div>
-            <div class="metric-label">Audience Growth</div>
-        </div>
-        <div class="metric-item fade-up">
-            <div class="metric-value">$750k</div>
-            <div class="metric-label">Paid Media Managed</div>
-        </div>
-        <div class="metric-item fade-up">
-            <div class="metric-value">221</div>
-            <div class="metric-label">Campaigns Launched</div>
-        </div>
-    </div>
-    <div id="statsRunnerCat" class="ccat cat-stats-runner" aria-hidden="true">
-        <svg width="100" height="60" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-          <!-- Tail streaming back-left -->
-          <g class="cat-tail-g">
-            <path d="M20 32 Q6 22 8 10 Q10 3 16 7" stroke="#b05818" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-            <circle cx="16" cy="7" r="3.5" fill="#c87030"/>
-          </g>
-          <!-- Body (slightly arched for gallop) -->
-          <g class="cat-body">
-            <ellipse cx="48" cy="36" rx="26" ry="13" fill="#d87830"/>
-            <!-- Tabby stripes -->
-            <path d="M36 25 Q39 32 36 40" stroke="#a84e10" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.45"/>
-            <path d="M46 24 Q49 31 46 39" stroke="#a84e10" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.45"/>
-            <path d="M56 25 Q58 32 55 39" stroke="#a84e10" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.45"/>
-            <!-- Belly lighter -->
-            <ellipse cx="48" cy="41" rx="18" ry="7" fill="#f0a060" opacity="0.5"/>
-          </g>
-          <!-- Neck -->
-          <path d="M70 30 Q74 22 78 22" stroke="#d87830" stroke-width="10" stroke-linecap="round" fill="none"/>
-          <!-- Head -->
-          <ellipse cx="80" cy="19" rx="13" ry="12" fill="#d87830"/>
-          <!-- Cheek/muzzle puff -->
-          <ellipse cx="87" cy="23" rx="6" ry="5" fill="#e89848" opacity="0.8"/>
-          <!-- Back ear (far side) -->
-          <polygon points="70,11 69,3 77,10" fill="#b85c18"/>
-          <polygon points="71,11 70,6 76,10" fill="#f0c0a0" opacity="0.6"/>
-          <!-- Front ear -->
-          <polygon points="82,9 86,2 91,10" fill="#b85c18"/>
-          <polygon points="83,9 86,5 90,10" fill="#f0c0a0" opacity="0.6"/>
-          <!-- Eye (green) -->
-          <g class="cat-eye-r">
-            <ellipse cx="85" cy="18" rx="5.5" ry="5.5" fill="#58c040"/>
-            <ellipse cx="85" cy="18.5" rx="2.8" ry="4" fill="#181818"/>
-            <circle cx="86.5" cy="16.5" r="1.3" fill="white"/>
-          </g>
-          <!-- Nose -->
-          <path d="M89 23.5 L92 23.5 L90.5 25.5 Z" fill="#e08898"/>
-          <!-- Mouth -->
-          <path d="M88 26 Q91 27.5 94 25.5" stroke="#b05868" stroke-width="0.85" fill="none" stroke-linecap="round"/>
-          <!-- Whiskers -->
-          <line x1="93" y1="22" x2="100" y2="20" stroke="#f5e8d5" stroke-width="0.9"/>
-          <line x1="93" y1="24" x2="100" y2="24.5" stroke="#f5e8d5" stroke-width="0.9"/>
-          <!-- Front-left leg -->
-          <g class="cat-leg-fl">
-            <rect x="57" y="45" width="7" height="15" rx="3.5" fill="#c06820"/>
-            <ellipse cx="60.5" cy="60" rx="4" ry="2.5" fill="#a85818"/>
-          </g>
-          <!-- Front-right leg -->
-          <g class="cat-leg-fr">
-            <rect x="65" y="45" width="7" height="15" rx="3.5" fill="#c06820"/>
-            <ellipse cx="68.5" cy="60" rx="4" ry="2.5" fill="#a85818"/>
-          </g>
-          <!-- Back-left leg -->
-          <g class="cat-leg-bl">
-            <rect x="30" y="43" width="7" height="15" rx="3.5" fill="#c06820"/>
-            <ellipse cx="33.5" cy="58" rx="4" ry="2.5" fill="#a85818"/>
-          </g>
-          <!-- Back-right leg -->
-          <g class="cat-leg-br">
-            <rect x="38" y="43" width="7" height="15" rx="3.5" fill="#c06820"/>
-            <ellipse cx="41.5" cy="58" rx="4" ry="2.5" fill="#a85818"/>
-          </g>
-        </svg>
-    </div>
-</div>
-
 <!-- ABOUT -->
 <section class="about" id="about">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-text">
-                <div class="section-header">
-                    <p class="section-label">About Me</p>
-                    <h2 class="section-title">Empathy first. Algorithms second.</h2>
-                </div>
-                <p>I help brands grow by combining audience psychology with performance strategy. For 15+ years, I've built social, content, and paid campaigns that deliver measurable results and occasionally make someone say, "Okay fine, that was good."</p>
-                <p>I believe the best marketing starts with understanding people, not platforms. When you lead with empathy and back it with data, you build trust, create connection, and drive the kind of growth that actually lasts.</p>
-                <p>Based in Mount Pleasant, SC. Remote-first since before it was cool.</p>
-                <p class="skills-section-header">Where I Spend Most of My Time</p>
-                <div class="skills-cloud">
-                    <span class="skill-tag">Content Strategy</span>
-                    <span class="skill-tag">Social Media Strategy</span>
-                    <span class="skill-tag">Creative Direction</span>
-                    <span class="skill-tag">Brand Messaging</span>
-
-                    <span class="skill-tag">Audience Development</span>
-                    <span class="skill-tag">Data Analytics</span>
-                    <span class="skill-tag">Paid Social Performance</span>
-                    <span class="skill-tag">Marketing Operations</span>
-
-                    <span class="skill-tag">Cultural Intelligence</span>
-                    <span class="skill-tag">Influencer Strategy</span>
-                    <span class="skill-tag">Short-Form Video Strategy</span>
-
-                    <span class="skill-tag">Digital Native (Since Dial-up)</span>
-                    <span class="skill-tag">Chronically Online So You Don't Have To Be</span>
-                    <span class="skill-tag">Still Not Calling It X</span>
-                </div>
+    <div class="about-inner">
+        <div class="about-intro fade-up">
+            <div class="section-header">
+                <p class="section-label">Why Clients Hire Me</p>
+                <h2 class="section-title">Empathy first.<br>Algorithms second.</h2>
             </div>
-            <div class="about-right-column">
-                <div class="about-highlights">
-                    <div class="highlight-card fade-up">
-                        <h4>Storyteller at Heart</h4>
-                        <p>I turn brand positioning into stories people actually care about. Because facts inform, but stories move people. Occasionally the story involves a meme. I don't make the rules.</p>
-                    </div>
-                    <div class="highlight-card fade-up">
-                        <h4>Creative With Receipts</h4>
-                        <p>Big ideas are great. But proving they actually worked is my favorite! I love a strong hook, a clean dashboard, and campaigns that deliver both vibes and ROI.</p>
-                    </div>
-                    <div class="highlight-card fade-up">
-                        <h4>Algorithm Survivor</h4>
-                        <p>I've worked through every platform shift, algorithm update, and social media "the sky is falling" phase. I'm an elder millennial who survived the Oregon Trail. I can certainly survive another app death. RIP Vine.</p>
-                    </div>
-                    <div class="highlight-card fade-up">
-                        <h4>Strategy Beyond the Scroll</h4>
-                        <p>Likes are nice. Conversions are better. I design social and paid strategies that move people from awareness to action.</p>
-                    </div>
-                    <div class="highlight-card fade-up">
-                        <h4>Organized Chaos Manager</h4>
-                        <p>Marketing moves fast. I bring structure without killing creativity.</p>
-                    </div>
-                    <div class="highlight-card fade-up">
-                        <h4>Internet Culture Translator</h4>
-                        <p>I help brands sound human online without trying too hard, being cringe (as the youths say), or jumping on trends after their expiration date.</p>
-                    </div>
-                </div>
-                <div class="about-photo-panel fade-up">
-                    <img src="Assets/about-typing.png" alt="Nikki Johnson working at a laptop">
-                </div>
+            <p>I help brands grow by combining audience psychology with performance strategy. For 15+ years, I've built social, content, and paid campaigns that deliver measurable results — and occasionally make someone say, "Okay fine, that was good."</p>
+            <p>The best marketing starts with understanding people, not platforms. When you lead with empathy and back it with data, you build trust, create real connection, and drive the kind of growth that lasts.</p>
+            <p>Based in Mount Pleasant, SC. Remote-first since before it was cool.</p>
+        </div>
+        <div class="about-cards">
+            <div class="about-card fade-up">
+                <h4>Algorithm Survivor</h4>
+                <p>I've worked through every platform shift, algorithm update, and social media "the sky is falling" moment. Elder millennial. Oregon Trail survivor. I can handle another app death. RIP Vine.</p>
+            </div>
+            <div class="about-card fade-up">
+                <h4>Internet Culture Translator</h4>
+                <p>I help brands sound human online without trying too hard, being cringe (as the youths say), or jumping on trends after their expiration date.</p>
+            </div>
+            <div class="about-card fade-up">
+                <h4>Organized Chaos Manager</h4>
+                <p>Marketing moves fast. I bring structure without killing creativity — which is harder than it sounds and more valuable than most people realize.</p>
+            </div>
+            <div class="about-card fade-up">
+                <h4>Creative With Receipts</h4>
+                <p>Big ideas are great. Proving they worked is better. I love a strong hook, a clean dashboard, and campaigns that deliver both vibes and ROI.</p>
             </div>
         </div>
     </div>
@@ -2130,29 +1927,7 @@
         });
     });
 
-    // Run tiny cat across the pink stats bar when it scrolls into view
-    const statsRunnerCat = document.getElementById('statsRunnerCat');
-    const metricsBar = document.querySelector('.metrics-bar');
-    let statsCatHasRun = false;
-
-    if (statsRunnerCat && metricsBar) {
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting || statsCatHasRun) return;
-                statsCatHasRun = true;
-                statsRunnerCat.classList.remove('run');
-                void statsRunnerCat.offsetWidth;
-                statsRunnerCat.classList.add('run');
-            });
-        }, { threshold: 0.45 });
-
-        statsObserver.observe(metricsBar);
-        statsRunnerCat.addEventListener('animationend', () => {
-            statsRunnerCat.classList.remove('run');
-        });
-    }
-
-    // Pop-up peek cat on first impact card
+// Pop-up peek cat on first impact card
     const impactPeekCat = document.getElementById('impactPeekCat');
     const firstImpactCard = document.querySelector('.timeline .timeline-item:first-child .timeline-card');
     if (impactPeekCat && firstImpactCard) {
