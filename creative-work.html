@@ -12,12 +12,13 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --pink: #fe00ae;
-            --lime: #c1fe1a;
-            --purple: #7B00C7;
-            --purple-light: #fdf0ff;
-            --dark: #0d0d1a;
-            --gray-900: #2d2d3f;
+            --teal: #247F79;
+            --teal-dark: #1a6460;
+            --teal-rgb: 36, 127, 121;
+            --cream: #F8F3EA;
+            --cream-dark: #f0ebe0;
+            --dark: #1a1a24;
+            --charcoal: #2d2d3f;
             --gray-600: #6b6b80;
             --gray-300: #d1d1dd;
             --gray-100: #f5f5f8;
@@ -27,17 +28,17 @@
         }
 
         html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); color: var(--gray-900); line-height: 1.6; background: var(--white); -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--font-body); color: var(--charcoal); line-height: 1.6; background: var(--cream); -webkit-font-smoothing: antialiased; }
 
         /* ---- NAV ---- */
-        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, box-shadow 0.3s; }
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(248,243,234,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, box-shadow 0.3s; }
         nav.scrolled { border-color: var(--gray-300); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; position: relative; }
         .nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--dark); text-decoration: none; }
-        .nav-logo span { color: var(--pink); }
+        .nav-logo span { color: var(--teal); }
         .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--pink); }
+        .nav-links a:hover, .nav-links a.active { color: var(--teal); }
         .nav-toggle {
             display: none;
             width: 42px;
@@ -54,7 +55,7 @@
         .nav-toggle span {
             width: 18px;
             height: 2px;
-            background: var(--gray-900);
+            background: var(--charcoal);
             border-radius: 2px;
             transition: transform 0.2s, opacity 0.2s;
         }
@@ -65,52 +66,45 @@
         /* DROPDOWN */
         .nav-dropdown { position: relative; }
         .nav-dropdown-toggle { cursor: pointer; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; display: flex; align-items: center; gap: 0.35rem; user-select: none; }
-        .nav-dropdown:hover .nav-dropdown-toggle { color: var(--pink); }
+        .nav-dropdown:hover .nav-dropdown-toggle { color: var(--teal); }
         .nav-dropdown-menu { position: absolute; top: calc(100% + 0.75rem); left: 50%; transform: translateX(-50%) translateY(-6px); background: white; border: 1px solid var(--gray-300); border-radius: 14px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); min-width: 180px; padding: 0.5rem; opacity: 0; visibility: hidden; transition: opacity 0.22s, visibility 0.22s, transform 0.22s; z-index: 200; }
         .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
         .nav-dropdown-menu a { display: block; padding: 0.625rem 1rem; color: var(--gray-600); text-decoration: none; font-size: 0.875rem; font-weight: 500; border-radius: 8px; transition: all 0.15s; }
-        .nav-dropdown-menu a:hover, .nav-dropdown-menu a.active { background: var(--purple-light); color: var(--purple); }
+        .nav-dropdown-menu a:hover, .nav-dropdown-menu a.active { background: rgba(36,127,121,0.08); color: var(--teal); }
 
         /* ---- HERO ---- */
         .hero {
-            padding: 9rem 2rem 6rem;
+            padding: 9rem 2rem 5rem;
             text-align: center;
-            background: var(--dark);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 65% 30%, rgba(254,0,174,0.22) 0%, transparent 60%),
-                        radial-gradient(ellipse at 25% 80%, rgba(193,254,26,0.1) 0%, transparent 50%);
+            background: var(--cream);
+            border-bottom: 1px solid var(--gray-300);
         }
         .hero-inner { position: relative; z-index: 1; }
-        .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); margin-bottom: 1rem; display: block; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); color: white; margin-bottom: 1rem; }
-        .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto; }
+        .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; display: block; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 3.5rem); color: var(--dark); margin-bottom: 1rem; font-weight: 700; line-height: 1.2; }
+        .hero p { font-size: 1.05rem; color: var(--gray-600); max-width: 520px; margin: 0 auto; }
 
         /* ---- TAB BAR ---- */
         .tab-bar {
             position: sticky;
             top: 68px;
             z-index: 50;
-            background: var(--dark);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-300);
         }
         .tab-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; gap: 0; }
         .tab-btn {
             flex: 1;
             background: none;
             border: none;
-            border-bottom: 3px solid transparent;
-            padding: 1.1rem 1rem;
+            border-bottom: 2px solid transparent;
+            padding: 1rem 1rem;
             font-family: var(--font-body);
             font-size: 0.82rem;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: rgba(255,255,255,0.4);
+            letter-spacing: 0.08em;
+            color: var(--gray-600);
             cursor: pointer;
             transition: color 0.22s, border-color 0.22s;
             display: flex;
@@ -118,11 +112,12 @@
             justify-content: center;
             gap: 0.5rem;
             white-space: nowrap;
+            margin-bottom: -1px;
         }
-        .tab-btn:hover { color: rgba(255,255,255,0.75); }
-        .tab-btn.active { color: white; border-bottom-color: var(--pink); }
-        .tab-count { background: rgba(255,255,255,0.12); border-radius: 100px; padding: 0.1rem 0.5rem; font-size: 0.7rem; }
-        .tab-btn.active .tab-count { background: var(--pink); }
+        .tab-btn:hover { color: var(--charcoal); }
+        .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
+        .tab-count { background: var(--gray-100); border-radius: 100px; padding: 0.1rem 0.5rem; font-size: 0.7rem; color: var(--gray-600); }
+        .tab-btn.active .tab-count { background: rgba(36,127,121,0.12); color: var(--teal); }
 
         /* ---- TAB PANELS ---- */
         .tab-panel { display: none; }
@@ -130,149 +125,185 @@
 
         /* ---- VIDEOS PANEL ---- */
         .videos-panel {
-            background: #0d0d1a;
+            background: var(--cream);
             padding: 3rem 2rem 5rem;
         }
         .panel-inner { max-width: 1200px; margin: 0 auto; }
         .panel-header { margin-bottom: 2.5rem; }
-        .panel-header h2 { font-family: var(--font-display); font-size: 1.75rem; color: white; margin-bottom: 0.4rem; }
-        .panel-header p { color: rgba(255,255,255,0.45); font-size: 0.95rem; }
+        .panel-header h2 { font-family: var(--font-display); font-size: 1.6rem; color: var(--dark); margin-bottom: 0.4rem; font-weight: 700; }
+        .panel-header p { color: var(--gray-600); font-size: 0.95rem; }
 
-        .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        @media (max-width: 900px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 480px) { .video-grid { grid-template-columns: 1fr; } }
+        .video-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+        @media (max-width: 1100px) { .video-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 720px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 420px) { .video-grid { grid-template-columns: 1fr; } }
 
         .video-card {
             position: relative;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            background: #0d0d1a;
+            background: var(--dark);
             cursor: pointer;
             aspect-ratio: 9 / 16;
             transition: transform 0.25s, box-shadow 0.25s;
         }
-        .video-card:hover { transform: scale(1.02); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+        .video-card:hover { transform: scale(1.02); box-shadow: 0 12px 36px rgba(0,0,0,0.2); }
         .video-card video, .video-card .video-fallback {
             width: 100%; height: 100%;
             object-fit: cover; display: block;
         }
         .video-fallback {
-            background: linear-gradient(135deg, #0d0d1a, #2a0050);
+            background: linear-gradient(135deg, var(--dark), #1a3030);
             display: flex; align-items: center; justify-content: center;
         }
         .video-fallback img { max-width: 45%; max-height: 45%; object-fit: contain; filter: brightness(0) invert(1) opacity(0.5); }
         .video-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 45%);
             display: flex; flex-direction: column; justify-content: flex-end;
-            padding: 1.5rem;
+            padding: 1rem;
         }
-        .video-brand { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink); margin-bottom: 0.3rem; }
-        .video-title { font-size: 1rem; font-weight: 600; color: white; line-height: 1.3; }
+        .video-brand { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); }
         .play-btn {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 60px; height: 60px;
-            background: rgba(255,255,255,0.9); border-radius: 50%;
+            width: 48px; height: 48px;
+            background: rgba(255,255,255,0.88); border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; color: var(--pink);
+            font-size: 1.1rem; color: var(--teal);
             transition: transform 0.22s, background 0.22s;
             pointer-events: none;
         }
-        .video-card:hover .play-btn { transform: translate(-50%, -50%) scale(1.12); background: var(--pink); color: white; }
+        .video-card:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); background: var(--teal); color: white; }
 
         /* ---- CAROUSELS PANEL ---- */
-        .carousels-panel { background: var(--gray-100); padding: 3rem 2rem 5rem; }
-        .carousel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+        .carousels-panel { background: var(--cream); padding: 3rem 2rem 5rem; }
+        .carousel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
         @media (max-width: 720px) { .carousel-grid { grid-template-columns: 1fr; } }
 
         .carousel-card {
             background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            transition: transform 0.25s, box-shadow 0.25s;
-        }
-        .carousel-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
-        .carousel-preview {
-            position: relative;
-            aspect-ratio: 4 / 5;
-            overflow: hidden;
-            background: var(--gray-100);
-        }
-        .carousel-preview img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
-        .carousel-card:hover .carousel-preview img { transform: scale(1.04); }
-        .slide-count-badge {
-            position: absolute; bottom: 0.75rem; right: 0.75rem;
-            background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
-            color: white; font-size: 0.72rem; font-weight: 700;
-            padding: 0.25rem 0.7rem; border-radius: 100px;
-            letter-spacing: 0.06em;
-        }
-        .carousel-info { padding: 1.25rem 1.5rem; }
-        .carousel-info .info-brand { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink); margin-bottom: 0.3rem; }
-        .carousel-info h3 { font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: 0.25rem; }
-        .carousel-info p { font-size: 0.82rem; color: var(--gray-600); }
-        .view-carousel-btn { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.75rem; font-size: 0.82rem; font-weight: 600; color: var(--purple); background: var(--purple-light); border: none; border-radius: 100px; padding: 0.4rem 0.9rem; cursor: pointer; transition: all 0.2s; }
-        .view-carousel-btn:hover { background: var(--purple); color: white; }
-
-        /* ---- MEMES PANEL ---- */
-        .memes-panel {
-            background: var(--dark);
-            padding: 3rem 2rem 5rem;
-        }
-        .memes-panel .panel-header h2 { color: white; }
-        .memes-panel .panel-header p { color: rgba(255,255,255,0.45); }
-        .memes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
-
-        .meme-card {
-            position: relative;
             border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
-            aspect-ratio: 4 / 5;
-            transition: transform 0.25s;
+            border: 1px solid var(--gray-300);
+            transition: transform 0.25s, box-shadow 0.25s;
         }
-        .meme-card:hover { transform: scale(1.03); }
-        .meme-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .meme-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 55%);
-            opacity: 0; transition: opacity 0.25s;
-            display: flex; flex-direction: column; justify-content: flex-end;
-            padding: 1.1rem;
+        .carousel-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,0.1); }
+        .carousel-preview {
+            position: relative;
+            overflow: hidden;
+            background: var(--gray-100);
         }
-        .meme-card:hover .meme-overlay { opacity: 1; }
-        .meme-brand { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink); margin-bottom: 0.2rem; }
-        .meme-title { font-size: 0.88rem; font-weight: 600; color: white; }
+        .carousel-main-img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+        .carousel-card:hover .carousel-main-img { transform: scale(1.03); }
+        .slide-count-badge {
+            position: absolute; bottom: 0.6rem; right: 0.6rem;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+            color: white; font-size: 0.7rem; font-weight: 600;
+            padding: 0.2rem 0.6rem; border-radius: 100px;
+            letter-spacing: 0.04em;
+        }
+        .carousel-thumbs {
+            display: flex;
+            height: 80px;
+            gap: 2px;
+            background: var(--cream-dark);
+            padding: 2px;
+            overflow: hidden;
+        }
+        .carousel-thumbs img {
+            flex: 1 1 0;
+            min-width: 0;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.75;
+            transition: opacity 0.2s;
+        }
+        .carousel-card:hover .carousel-thumbs img { opacity: 0.9; }
+
+        .carousel-info { padding: 1.1rem 1.4rem 1.3rem; }
+        .carousel-info .info-brand { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--teal); margin-bottom: 0.3rem; }
+        .carousel-info h3 { font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 0.2rem; line-height: 1.35; }
+        .carousel-info p { font-size: 0.8rem; color: var(--gray-600); }
+        .view-carousel-btn { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.75rem; font-size: 0.8rem; font-weight: 600; color: var(--teal); background: rgba(36,127,121,0.08); border: none; border-radius: 100px; padding: 0.35rem 0.85rem; cursor: pointer; transition: all 0.2s; }
+        .view-carousel-btn:hover { background: var(--teal); color: white; }
+
+        /* ---- MEMES PANEL ---- */
+        .memes-panel {
+            background: var(--cream);
+            padding: 3rem 2rem 5rem;
+        }
+        .memes-panel .panel-header h2 { color: var(--dark); }
+        .memes-panel .panel-header p { color: var(--gray-600); }
+        .memes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+
+        .meme-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .meme-card:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .meme-img-wrap {
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 260px;
+        }
+        .meme-card img { width: 100%; max-height: 340px; object-fit: contain; display: block; }
+        .meme-label {
+            padding: 0.65rem 1rem;
+            border-top: 1px solid var(--gray-300);
+        }
+        .meme-brand { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--teal); }
 
         /* ---- STATIC PANEL ---- */
-        .static-panel { background: white; padding: 3rem 2rem 5rem; }
-        .static-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+        .static-panel { background: var(--cream); padding: 3rem 2rem 5rem; }
+        .static-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
 
         .static-card {
             position: relative;
-            border-radius: 14px;
+            border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
-            aspect-ratio: 4 / 5;
-            background: var(--gray-100);
+            background: var(--white);
+            border: 1px solid var(--gray-300);
             transition: transform 0.25s, box-shadow 0.25s;
         }
-        .static-card:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
-        .static-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
-        .static-card:hover img { transform: scale(1.05); }
+        .static-card:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .static-img-wrap {
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 260px;
+        }
+        .static-card img { width: 100%; max-height: 320px; object-fit: contain; display: block; transition: transform 0.4s; }
+        .static-card:hover img { transform: scale(1.03); }
+        .static-label {
+            padding: 0.65rem 1rem;
+            border-top: 1px solid var(--gray-300);
+        }
+        .static-brand { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--teal); }
         .static-overlay {
             position: absolute; inset: 0;
-            background: rgba(26,26,46,0.72);
+            background: rgba(26,26,36,0.65);
             opacity: 0; transition: opacity 0.25s;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 1.25rem; text-align: center;
+            display: flex; align-items: center; justify-content: center;
         }
         .static-card:hover .static-overlay { opacity: 1; }
-        .static-brand { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink); margin-bottom: 0.4rem; }
-        .static-title { font-size: 0.9rem; font-weight: 600; color: white; line-height: 1.3; }
-        .zoom-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+        .zoom-icon { font-size: 1.6rem; color: white; }
 
         /* ---- IMAGE LIGHTBOX ---- */
         .lb { position: fixed; inset: 0; background: rgba(0,0,0,0.94); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 1.5rem; }
@@ -284,7 +315,7 @@
         /* ---- VIDEO MODAL ---- */
         .vm { position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 1001; display: none; align-items: center; justify-content: center; padding: 1.5rem; }
         .vm.active { display: flex; }
-        .vm-wrap { position: relative; width: 100%; max-width: 420px; }
+        .vm-wrap { position: relative; width: 100%; max-width: 400px; }
         .vm video { width: 100%; border-radius: 12px; max-height: 85vh; background: #000; display: block; }
         .vm-close { position: absolute; top: -3rem; right: 0; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 46px; height: 46px; color: white; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
         .vm-close:hover { background: rgba(255,255,255,0.28); }
@@ -294,36 +325,37 @@
         .clb { position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 1000; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; }
         .clb.active { display: flex; }
         .clb-wrap { position: relative; max-width: 600px; width: 100%; background: #fff; border-radius: 12px; }
-        .clb-track { display: flex; transition: transform 0.38s cubic-bezier(0.25,0.46,0.45,0.94); border-radius: 12px; overflow: hidden; background: #fff; }
-        .clb-slide { min-width: 100%; flex: 0 0 100%; background: #fff; }
-        .clb-slide img { width: 100%; max-height: 76vh; object-fit: contain; display: block; }
-        .clb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 48px; height: 48px; color: white; font-size: 1.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10; }
-        .clb-nav:hover { background: rgba(255,255,255,0.3); }
-        .clb-prev { left: 0.65rem; }
-        .clb-next { right: 0.65rem; }
+        .clb-track { position: relative; }
+        .clb-slide { display: none; }
+        .clb-slide.active { display: flex; align-items: center; justify-content: center; background: white; border-radius: 12px; overflow: hidden; min-height: 200px; }
+        .clb-slide img { max-width: 100%; max-height: 78vh; width: auto; height: auto; display: block; }
+        .clb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.55); border: none; border-radius: 50%; width: 44px; height: 44px; color: white; font-size: 1.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10; }
+        .clb-nav:hover { background: rgba(0,0,0,0.8); }
+        .clb-prev { left: -1.5rem; }
+        .clb-next { right: -1.5rem; }
         .clb-close { position: fixed; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 46px; height: 46px; color: white; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .clb-footer { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
         .clb-dots { display: flex; gap: 0.4rem; }
         .clb-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; transition: all 0.2s; padding: 0; }
-        .clb-dot.active { background: var(--pink); width: 20px; border-radius: 4px; }
+        .clb-dot.active { background: var(--teal); width: 20px; border-radius: 4px; }
         .clb-counter { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
 
         /* ---- CTA ---- */
-        .cta-section { background: var(--dark); padding: 6rem 2rem; text-align: center; }
+        .cta-section { background: var(--dark); padding: 5rem 2rem; text-align: center; }
         .cta-section h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: white; margin-bottom: 1rem; }
         .cta-section p { color: rgba(255,255,255,0.55); font-size: 1.05rem; max-width: 460px; margin: 0 auto 2rem; }
         .btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-pink { display: inline-block; padding: 0.875rem 2rem; background: var(--pink); color: white; text-decoration: none; border-radius: 100px; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; }
-        .btn-pink:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(254,0,174,0.4); }
+        .btn-teal { display: inline-block; padding: 0.875rem 2rem; background: var(--teal); color: white; text-decoration: none; border-radius: 100px; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; }
+        .btn-teal:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(36,127,121,0.4); background: var(--teal-dark); }
         .btn-outline { display: inline-block; padding: 0.875rem 2rem; border: 1.5px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); text-decoration: none; border-radius: 100px; font-weight: 600; transition: all 0.2s; }
         .btn-outline:hover { border-color: white; color: white; }
 
         /* ---- FOOTER ---- */
-        footer { padding: 2rem; text-align: center; color: var(--gray-600); font-size: 0.875rem; border-top: 1px solid var(--gray-100); }
+        footer { padding: 2rem; text-align: center; color: var(--gray-600); font-size: 0.875rem; border-top: 1px solid var(--gray-300); background: var(--cream); }
 
         /* ---- RESPONSIVE ---- */
         @media (max-width: 768px) {
-            .tab-btn { font-size: 0.72rem; padding: 0.9rem 0.5rem; gap: 0.3rem; }
+            .tab-btn { font-size: 0.72rem; padding: 0.85rem 0.5rem; gap: 0.3rem; }
             .tab-count { display: none; }
             .clb-prev { left: 0.5rem; }
             .clb-next { right: 0.5rem; }
@@ -386,7 +418,7 @@
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#experience">Experience</a></li>
             <li class="nav-dropdown">
-                <span class="nav-dropdown-toggle">Work <span style="font-size:0.7rem;">▼</span></span>
+                <span class="nav-dropdown-toggle">Work <span style="font-size:0.7rem;">&#9660;</span></span>
                 <div class="nav-dropdown-menu">
                     <a href="case-studies.html">Case Studies</a>
                     <a href="creative-work.html" class="active">Creative Work</a>
@@ -402,8 +434,8 @@
 <section class="hero">
     <div class="hero-inner">
         <span class="section-label">Portfolio</span>
-        <h1>The Highlight Reel</h1>
-        <p>Scroll-stopping content built on strategy, cultural awareness, and creative instinct — across every format, for every audience.</p>
+        <h1>Videos, Memes &amp; Everything In Between</h1>
+        <p>Scroll-stopping content built on strategy, cultural awareness, and creative instinct &mdash; across every format, for every audience.</p>
     </div>
 </section>
 
@@ -425,251 +457,216 @@
     </div>
 </div>
 
-<!-- ======================================================
-     TAB: VIDEOS
-     ====================================================== -->
+<!-- TAB: VIDEOS -->
 <div class="tab-panel active" id="tab-videos">
     <div class="videos-panel">
         <div class="panel-inner">
             <div class="panel-header">
-                <h2>Short-Form Videos & Reels</h2>
-                <p>Story-led, culturally aware, and built to perform — short-form video content that earns attention and drives action.</p>
+                <h2>Short-Form Videos &amp; Reels</h2>
+                <p>Story-led, culturally aware, and built to perform &mdash; short-form video content that earns attention and drives action.</p>
             </div>
             <div class="video-grid">
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/HVAC%20Look%20at%20This%20One.mp4','HVAC.com — Look at This One')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/HVAC%20Look%20at%20This%20One.mp4','HVAC.com')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/HVAC%20Look%20at%20This%20One.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">HVAC.com</div>
-                        <div class="video-title">Look at This One</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">HVAC.com</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/HVAC%20Quotescore%20Kelsey.mp4','HVAC.com — Quotescore Kelsey')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/HVAC%20Quotescore%20Kelsey.mp4','HVAC.com')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/HVAC%20Quotescore%20Kelsey.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">HVAC.com</div>
-                        <div class="video-title">Quotescore — Kelsey</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">HVAC.com</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/HVAC%20Walking%20Dead%20Meme.mp4','HVAC.com — Walking Dead Meme Reel')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/HVAC%20Walking%20Dead%20Meme.mp4','HVAC.com')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/HVAC%20Walking%20Dead%20Meme.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">HVAC.com</div>
-                        <div class="video-title">Walking Dead Meme Reel</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">HVAC.com</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Harry%20Potter.mp4','James Wedmore — Harry Potter Reel')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Harry%20Potter.mp4','James Wedmore')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/Wedmore%20Harry%20Potter.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">James Wedmore</div>
-                        <div class="video-title">Harry Potter Reel</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">James Wedmore</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/James%20Hermione%20Reel.mp4','James Wedmore — Hermione Reel')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/James%20Hermione%20Reel.mp4','James Wedmore')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/James%20Hermione%20Reel.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">James Wedmore</div>
-                        <div class="video-title">Hermione Reel</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">James Wedmore</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Launch%20.mp4','James Wedmore — Launch Reel')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Launch%20.mp4','James Wedmore')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/Wedmore%20Launch%20.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">James Wedmore</div>
-                        <div class="video-title">$6.4M Launch Reel</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">James Wedmore</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Thought%20of%20the%20Day.mp4','James Wedmore — Thought of the Day')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Thought%20of%20the%20Day.mp4','James Wedmore')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/Wedmore%20Thought%20of%20the%20Day.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">James Wedmore</div>
-                        <div class="video-title">Thought of the Day</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">James Wedmore</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Text%20over%20Video.mp4','James Wedmore — Text Over Video')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/Wedmore%20Text%20over%20Video.mp4','James Wedmore')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/Wedmore%20Text%20over%20Video.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">James Wedmore</div>
-                        <div class="video-title">Text Over Video Style</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">James Wedmore</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20Dance%20Meme.mp4','NYAG — Dance Meme Reel')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20Dance%20Meme.mp4','NYAG')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/NYAG%20Dance%20Meme.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">NYAG</div>
-                        <div class="video-title">Dance Meme Reel</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">NYAG</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20David.mp4','NYAG — David Reel')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20David.mp4','NYAG')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/NYAG%20David.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">NYAG</div>
-                        <div class="video-title">David Reel</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">NYAG</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20Google%20Search%20Retreat.mp4','NYAG — Google Search Style Reel')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20Google%20Search%20Retreat.mp4','NYAG')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/NYAG%20Google%20Search%20Retreat.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">NYAG</div>
-                        <div class="video-title">Google Search Style Reel</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">NYAG</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20Taylor%20meme.mp4','NYAG — Taylor Meme Reel')">
+                <div class="video-card" onclick="openVideo('Assets/Videos/NYAG%20Taylor%20meme.mp4','NYAG')">
                     <video muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <source src="Assets/Videos/NYAG%20Taylor%20meme.mp4" type="video/mp4">
                     </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">NYAG</div>
-                        <div class="video-title">Taylor Meme Reel</div>
-                    </div>
-                    <div class="play-btn">▶</div>
+                    <div class="video-overlay"><div class="video-brand">NYAG</div></div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
 
-                <div class="video-card" onclick="openVideo('Assets/Videos/Maple%20Air%20Install%20Day.mov','Maple Air — Install Day')">
-                    <video muted loop playsinline preload="auto" onloadeddata="if(!this.dataset.primed){this.dataset.primed='1'; try{this.currentTime=0.05;}catch(e){}}" onseeked="this.pause()" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0.05;" style="width:100%;height:100%;object-fit:cover;display:block;">
-                        <source src="Assets/Videos/Maple%20Air%20Install%20Day.mov" type="video/quicktime">
-                    </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">Maple Air</div>
-                        <div class="video-title">Install Day</div>
-                    </div>
-                    <div class="play-btn">▶</div>
-                </div>
-
-                <div class="video-card" onclick="openVideo('Assets/Videos/Maple%20Air%20Unboxing.mov','Maple Air — Product Unboxing')">
-                    <video muted loop playsinline preload="auto" onloadeddata="if(!this.dataset.primed){this.dataset.primed='1'; try{this.currentTime=0.05;}catch(e){}}" onseeked="this.pause()" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0.05;" style="width:100%;height:100%;object-fit:cover;display:block;">
-                        <source src="Assets/Videos/Maple%20Air%20Unboxing.mov" type="video/quicktime">
-                    </video>
-                    <div class="video-overlay">
-                        <div class="video-brand">Maple Air</div>
-                        <div class="video-title">Product Unboxing</div>
-                    </div>
-                    <div class="play-btn">▶</div>
-                </div>
+                                                </div>
 
             </div>
         </div>
     </div>
 </div>
 
-<!-- ======================================================
-     TAB: CAROUSELS
-     ====================================================== -->
+<!-- TAB: CAROUSELS -->
 <div class="tab-panel" id="tab-carousels">
     <div class="carousels-panel">
         <div class="panel-inner">
             <div class="panel-header" style="margin-bottom:2.5rem;">
-                <h2 style="font-family:var(--font-display);font-size:1.75rem;color:var(--dark);margin-bottom:0.4rem;">Carousel Posts</h2>
+                <h2 style="font-family:var(--font-display);font-size:1.6rem;color:var(--dark);margin-bottom:0.4rem;font-weight:700;">Carousel Posts</h2>
                 <p style="color:var(--gray-600);font-size:0.95rem;">Multi-slide educational and engagement content designed to keep people swiping.</p>
             </div>
             <div class="carousel-grid">
 
                 <div class="carousel-card" onclick="openCarousel(['Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/1.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/2.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/3.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/4.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/5.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/6.png','Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/7.png'])">
                     <div class="carousel-preview">
-                        <img src="Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/1.png" alt="5 Reasons carousel">
+                        <img class="carousel-main-img" src="Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/1.png" alt="5 Reasons carousel">
                         <div class="slide-count-badge">7 slides</div>
+                    </div>
+                    <div class="carousel-thumbs">
+                        <img src="Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/2.png" alt="">
+                        <img src="Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/3.png" alt="">
+                        <img src="Assets/Carousels/5%20Reasons%20Your%20House%20Helps%20%20Illness%20Spread%20in%20Winter/4.png" alt="">
                     </div>
                     <div class="carousel-info">
                         <div class="info-brand">Maple Air</div>
                         <h3>5 Reasons Your House Helps Illness Spread in Winter</h3>
                         <p>Educational carousel on air quality and home health</p>
-                        <button class="view-carousel-btn">View All Slides →</button>
+                        <button class="view-carousel-btn">View All Slides &rarr;</button>
                     </div>
                 </div>
 
                 <div class="carousel-card" onclick="openCarousel(['Assets/Carousels/Mold%20in%20Military%20Housing/1.png','Assets/Carousels/Mold%20in%20Military%20Housing/2.png','Assets/Carousels/Mold%20in%20Military%20Housing/3.png','Assets/Carousels/Mold%20in%20Military%20Housing/4.png','Assets/Carousels/Mold%20in%20Military%20Housing/5.png','Assets/Carousels/Mold%20in%20Military%20Housing/6.png','Assets/Carousels/Mold%20in%20Military%20Housing/7.png'])">
                     <div class="carousel-preview">
-                        <img src="Assets/Carousels/Mold%20in%20Military%20Housing/1.png" alt="Mold carousel">
+                        <img class="carousel-main-img" src="Assets/Carousels/Mold%20in%20Military%20Housing/1.png" alt="Mold carousel">
                         <div class="slide-count-badge">7 slides</div>
+                    </div>
+                    <div class="carousel-thumbs">
+                        <img src="Assets/Carousels/Mold%20in%20Military%20Housing/2.png" alt="">
+                        <img src="Assets/Carousels/Mold%20in%20Military%20Housing/3.png" alt="">
+                        <img src="Assets/Carousels/Mold%20in%20Military%20Housing/4.png" alt="">
                     </div>
                     <div class="carousel-info">
                         <div class="info-brand">Maple Air</div>
                         <h3>Mold in Military Housing</h3>
                         <p>Timely awareness content connecting brand to a cultural conversation</p>
-                        <button class="view-carousel-btn">View All Slides →</button>
+                        <button class="view-carousel-btn">View All Slides &rarr;</button>
                     </div>
                 </div>
 
                 <div class="carousel-card" onclick="openCarousel(['Assets/Carousels/Goals/1.png','Assets/Carousels/Goals/2.png','Assets/Carousels/Goals/3.png','Assets/Carousels/Goals/4.png','Assets/Carousels/Goals/5.png'])">
                     <div class="carousel-preview">
-                        <img src="Assets/Carousels/Goals/1.png" alt="Goals carousel">
+                        <img class="carousel-main-img" src="Assets/Carousels/Goals/1.png" alt="Goals carousel">
                         <div class="slide-count-badge">5 slides</div>
+                    </div>
+                    <div class="carousel-thumbs">
+                        <img src="Assets/Carousels/Goals/2.png" alt="">
+                        <img src="Assets/Carousels/Goals/3.png" alt="">
+                        <img src="Assets/Carousels/Goals/4.png" alt="">
                     </div>
                     <div class="carousel-info">
                         <div class="info-brand">James Wedmore</div>
                         <h3>Goals</h3>
                         <p>Motivational carousel driving engagement and saves</p>
-                        <button class="view-carousel-btn">View All Slides →</button>
+                        <button class="view-carousel-btn">View All Slides &rarr;</button>
                     </div>
                 </div>
 
                 <div class="carousel-card" onclick="openCarousel(['Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/1.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/2.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/3.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/4.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/5.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/6.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/7.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/8.png','Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/9.png'])">
                     <div class="carousel-preview">
-                        <img src="Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/1.png" alt="New Year gym carousel">
+                        <img class="carousel-main-img" src="Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/1.png" alt="New Year gym carousel">
                         <div class="slide-count-badge">9 slides</div>
+                    </div>
+                    <div class="carousel-thumbs">
+                        <img src="Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/2.png" alt="">
+                        <img src="Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/3.png" alt="">
+                        <img src="Assets/Carousels/New%20Year%E2%80%99s%20gym%20resolutions/4.png" alt="">
                     </div>
                     <div class="carousel-info">
                         <div class="info-brand">Maple Air</div>
                         <h3>New Year's Gym Resolutions</h3>
                         <p>Health and wellness carousel connecting air quality to active lifestyles</p>
-                        <button class="view-carousel-btn">View All Slides →</button>
+                        <button class="view-carousel-btn">View All Slides &rarr;</button>
                     </div>
                 </div>
 
                 <div class="carousel-card" onclick="openCarousel(['Assets/Carousels/Timeless%20Kitchen/1.png','Assets/Carousels/Timeless%20Kitchen/2.png','Assets/Carousels/Timeless%20Kitchen/3.png','Assets/Carousels/Timeless%20Kitchen/4.png','Assets/Carousels/Timeless%20Kitchen/5.png','Assets/Carousels/Timeless%20Kitchen/6.png','Assets/Carousels/Timeless%20Kitchen/7.png','Assets/Carousels/Timeless%20Kitchen/8.png'])">
                     <div class="carousel-preview">
-                        <img src="Assets/Carousels/Timeless%20Kitchen/1.png" alt="Timeless Kitchen carousel">
+                        <img class="carousel-main-img" src="Assets/Carousels/Timeless%20Kitchen/1.png" alt="Timeless Kitchen carousel">
                         <div class="slide-count-badge">8 slides</div>
+                    </div>
+                    <div class="carousel-thumbs">
+                        <img src="Assets/Carousels/Timeless%20Kitchen/2.png" alt="">
+                        <img src="Assets/Carousels/Timeless%20Kitchen/3.png" alt="">
+                        <img src="Assets/Carousels/Timeless%20Kitchen/4.png" alt="">
                     </div>
                     <div class="carousel-info">
                         <div class="info-brand">StoneSmith</div>
                         <h3>Timeless Kitchen Design</h3>
                         <p>Aspirational lifestyle carousel blending education with visual storytelling</p>
-                        <button class="view-carousel-btn">View All Slides →</button>
+                        <button class="view-carousel-btn">View All Slides &rarr;</button>
                     </div>
                 </div>
 
@@ -678,48 +675,42 @@
     </div>
 </div>
 
-<!-- ======================================================
-     TAB: MEMES
-     ====================================================== -->
+<!-- TAB: MEMES -->
 <div class="tab-panel" id="tab-memes">
     <div class="memes-panel">
         <div class="panel-inner">
             <div class="panel-header">
                 <h2>Memes &amp; Culture-Forward Content</h2>
-                <p>Memes are culture. When brands speak the language of the internet, they stop feeling like brands — and start feeling like people. Here's how I've used that to drive reach, shares, and actual connection across industries.</p>
+                <p>Memes are culture. When brands speak the language of the internet, they stop feeling like brands &mdash; and start feeling like people. Here's how I've used that to drive reach, shares, and actual connection across industries.</p>
             </div>
             <div class="memes-grid">
 
                 <div class="meme-card" onclick="openLB('Assets/Memes/HVAC%20Kendrick%20Meme.png')">
-                    <img src="Assets/Memes/HVAC%20Kendrick%20Meme.png" alt="HVAC Kendrick meme">
-                    <div class="meme-overlay">
-                        <div class="meme-brand">HVAC.com</div>
-                        <div class="meme-title">Kendrick Meme</div>
+                    <div class="meme-img-wrap">
+                        <img src="Assets/Memes/HVAC%20Kendrick%20Meme.png" alt="HVAC Kendrick meme">
                     </div>
+                    <div class="meme-label"><div class="meme-brand">HVAC.com</div></div>
                 </div>
 
                 <div class="meme-card" onclick="openLB('Assets/Memes/HVAC%20Snoop%20Meme.jpg')">
-                    <img src="Assets/Memes/HVAC%20Snoop%20Meme.jpg" alt="HVAC Snoop meme">
-                    <div class="meme-overlay">
-                        <div class="meme-brand">HVAC.com</div>
-                        <div class="meme-title">Snoop Meme</div>
+                    <div class="meme-img-wrap">
+                        <img src="Assets/Memes/HVAC%20Snoop%20Meme.jpg" alt="HVAC Snoop meme">
                     </div>
+                    <div class="meme-label"><div class="meme-brand">HVAC.com</div></div>
                 </div>
 
                 <div class="meme-card" onclick="openLB('Assets/Memes/HVAC%20Taylor%20and%20Travis%20Meme.png')">
-                    <img src="Assets/Memes/HVAC%20Taylor%20and%20Travis%20Meme.png" alt="HVAC Taylor & Travis meme">
-                    <div class="meme-overlay">
-                        <div class="meme-brand">HVAC.com</div>
-                        <div class="meme-title">Taylor &amp; Travis Meme</div>
+                    <div class="meme-img-wrap">
+                        <img src="Assets/Memes/HVAC%20Taylor%20and%20Travis%20Meme.png" alt="HVAC Taylor and Travis meme">
                     </div>
+                    <div class="meme-label"><div class="meme-brand">HVAC.com</div></div>
                 </div>
 
                 <div class="meme-card" onclick="openLB('Assets/Memes/NYAG%20Kardashian%20Meme.png')">
-                    <img src="Assets/Memes/NYAG%20Kardashian%20Meme.png" alt="NYAG Kardashian meme">
-                    <div class="meme-overlay">
-                        <div class="meme-brand">NYAG</div>
-                        <div class="meme-title">Kardashian Meme</div>
+                    <div class="meme-img-wrap">
+                        <img src="Assets/Memes/NYAG%20Kardashian%20Meme.png" alt="NYAG Kardashian meme">
                     </div>
+                    <div class="meme-label"><div class="meme-brand">NYAG</div></div>
                 </div>
 
             </div>
@@ -727,106 +718,74 @@
     </div>
 </div>
 
-<!-- ======================================================
-     TAB: STATIC POSTS
-     ====================================================== -->
+<!-- TAB: STATIC POSTS -->
 <div class="tab-panel" id="tab-static">
     <div class="static-panel">
         <div class="panel-inner">
             <div class="panel-header" style="margin-bottom:2.5rem;">
-                <h2 style="font-family:var(--font-display);font-size:1.75rem;color:var(--dark);margin-bottom:0.4rem;">Static Posts &amp; Graphics</h2>
+                <h2 style="font-family:var(--font-display);font-size:1.6rem;color:var(--dark);margin-bottom:0.4rem;font-weight:700;">Static Posts &amp; Graphics</h2>
                 <p style="color:var(--gray-600);font-size:0.95rem;">Branded graphics, testimonials, and social posts designed to stop the scroll.</p>
             </div>
             <div class="static-grid">
 
                 <div class="static-card" onclick="openLB('Assets/Images/Your%20HVAC%20-%201.png')">
-                    <img src="Assets/Images/Your%20HVAC%20-%201.png" alt="HVAC post">
-                    <div class="static-overlay">
-                        <div class="zoom-icon">🔍</div>
-                        <div class="static-brand">HVAC.com</div>
-                        <div class="static-title">HVAC Awareness Post</div>
-                    </div>
+                    <div class="static-img-wrap"><img src="Assets/Images/Your%20HVAC%20-%201.png" alt="HVAC post"></div>
+                    <div class="static-overlay"><div class="zoom-icon">&#8853;</div></div>
+                    <div class="static-label"><div class="static-brand">HVAC.com</div></div>
                 </div>
 
                 <div class="static-card" onclick="openLB('Assets/Images/HVAC%20Reddit%20Testimonial.png')">
-                    <img src="Assets/Images/HVAC%20Reddit%20Testimonial.png" alt="HVAC Reddit testimonial">
-                    <div class="static-overlay">
-                        <div class="zoom-icon">🔍</div>
-                        <div class="static-brand">HVAC.com</div>
-                        <div class="static-title">Reddit Testimonial Graphic</div>
-                    </div>
+                    <div class="static-img-wrap"><img src="Assets/Images/HVAC%20Reddit%20Testimonial.png" alt="HVAC Reddit testimonial"></div>
+                    <div class="static-overlay"><div class="zoom-icon">&#8853;</div></div>
+                    <div class="static-label"><div class="static-brand">HVAC.com</div></div>
                 </div>
 
                 <div class="static-card" onclick="openLB('Assets/Images/Wedmore%20Graphic.png')">
-                    <img src="Assets/Images/Wedmore%20Graphic.png" alt="Wedmore graphic">
-                    <div class="static-overlay">
-                        <div class="zoom-icon">🔍</div>
-                        <div class="static-brand">James Wedmore</div>
-                        <div class="static-title">Brand Graphic</div>
-                    </div>
+                    <div class="static-img-wrap"><img src="Assets/Images/Wedmore%20Graphic.png" alt="Wedmore graphic"></div>
+                    <div class="static-overlay"><div class="zoom-icon">&#8853;</div></div>
+                    <div class="static-label"><div class="static-brand">James Wedmore</div></div>
                 </div>
 
                 <div class="static-card" onclick="openLB('Assets/Images/Wedmore%20All%20We%20Do%20Is%20Win%20Wednesday%2001%20-%203.png')">
-                    <img src="Assets/Images/Wedmore%20All%20We%20Do%20Is%20Win%20Wednesday%2001%20-%203.png" alt="Win Wednesday">
-                    <div class="static-overlay">
-                        <div class="zoom-icon">🔍</div>
-                        <div class="static-brand">James Wedmore</div>
-                        <div class="static-title">Win Wednesday</div>
-                    </div>
+                    <div class="static-img-wrap"><img src="Assets/Images/Wedmore%20All%20We%20Do%20Is%20Win%20Wednesday%2001%20-%203.png" alt="Win Wednesday"></div>
+                    <div class="static-overlay"><div class="zoom-icon">&#8853;</div></div>
+                    <div class="static-label"><div class="static-brand">James Wedmore</div></div>
                 </div>
 
                 <div class="static-card" onclick="openLB('Assets/Images/Wedmore%20Testimonial.png')">
-                    <img src="Assets/Images/Wedmore%20Testimonial.png" alt="Wedmore testimonial">
-                    <div class="static-overlay">
-                        <div class="zoom-icon">🔍</div>
-                        <div class="static-brand">James Wedmore</div>
-                        <div class="static-title">Testimonial Graphic</div>
-                    </div>
+                    <div class="static-img-wrap"><img src="Assets/Images/Wedmore%20Testimonial.png" alt="Wedmore testimonial"></div>
+                    <div class="static-overlay"><div class="zoom-icon">&#8853;</div></div>
+                    <div class="static-label"><div class="static-brand">James Wedmore</div></div>
                 </div>
 
                 <div class="static-card" onclick="openLB('Assets/Images/StoneSmith%20Kitchen%20choices.png')">
-                    <img src="Assets/Images/StoneSmith%20Kitchen%20choices.png" alt="StoneSmith kitchen">
-                    <div class="static-overlay">
-                        <div class="zoom-icon">🔍</div>
-                        <div class="static-brand">StoneSmith</div>
-                        <div class="static-title">Kitchen Choices Post</div>
-                    </div>
+                    <div class="static-img-wrap"><img src="Assets/Images/StoneSmith%20Kitchen%20choices.png" alt="StoneSmith kitchen"></div>
+                    <div class="static-overlay"><div class="zoom-icon">&#8853;</div></div>
+                    <div class="static-label"><div class="static-brand">StoneSmith</div></div>
                 </div>
 
                 <div class="static-card" onclick="openLB('Assets/Images/StoneSmith%20Testimonial%20-%201.png')">
-                    <img src="Assets/Images/StoneSmith%20Testimonial%20-%201.png" alt="StoneSmith testimonial">
-                    <div class="static-overlay">
-                        <div class="zoom-icon">🔍</div>
-                        <div class="static-brand">StoneSmith</div>
-                        <div class="static-title">Client Testimonial</div>
-                    </div>
+                    <div class="static-img-wrap"><img src="Assets/Images/StoneSmith%20Testimonial%20-%201.png" alt="StoneSmith testimonial"></div>
+                    <div class="static-overlay"><div class="zoom-icon">&#8853;</div></div>
+                    <div class="static-label"><div class="static-brand">StoneSmith</div></div>
                 </div>
 
                 <div class="static-card" onclick="openLB('Assets/Images/NYAG%20Alarm%20Clock%20Love%20Instagram%20Post%20-%201.png')">
-                    <img src="Assets/Images/NYAG%20Alarm%20Clock%20Love%20Instagram%20Post%20-%201.png" alt="NYAG alarm clock">
-                    <div class="static-overlay">
-                        <div class="zoom-icon">🔍</div>
-                        <div class="static-brand">NYAG</div>
-                        <div class="static-title">Alarm Clock Love Post</div>
-                    </div>
+                    <div class="static-img-wrap"><img src="Assets/Images/NYAG%20Alarm%20Clock%20Love%20Instagram%20Post%20-%201.png" alt="NYAG alarm clock"></div>
+                    <div class="static-overlay"><div class="zoom-icon">&#8853;</div></div>
+                    <div class="static-label"><div class="static-brand">NYAG</div></div>
                 </div>
 
                 <div class="static-card" onclick="openLB('Assets/Images/NYAG%20Anatomy%20of%20a%20Scared%20Settler%20-%201.png')">
-                    <img src="Assets/Images/NYAG%20Anatomy%20of%20a%20Scared%20Settler%20-%201.png" alt="NYAG anatomy">
-                    <div class="static-overlay">
-                        <div class="zoom-icon">🔍</div>
-                        <div class="static-brand">NYAG</div>
-                        <div class="static-title">Anatomy of a Scared Settler</div>
-                    </div>
+                    <div class="static-img-wrap"><img src="Assets/Images/NYAG%20Anatomy%20of%20a%20Scared%20Settler%20-%201.png" alt="NYAG anatomy"></div>
+                    <div class="static-overlay"><div class="zoom-icon">&#8853;</div></div>
+                    <div class="static-label"><div class="static-brand">NYAG</div></div>
                 </div>
 
                 <div class="static-card" onclick="openLB('Assets/Images/Pleople%20Pleaser.png')">
-                    <img src="Assets/Images/Pleople%20Pleaser.png" alt="People pleaser">
-                    <div class="static-overlay">
-                        <div class="zoom-icon">🔍</div>
-                        <div class="static-brand">NYAG</div>
-                        <div class="static-title">People Pleaser Post</div>
-                    </div>
+                    <div class="static-img-wrap"><img src="Assets/Images/Pleople%20Pleaser.png" alt="People pleaser"></div>
+                    <div class="static-overlay"><div class="zoom-icon">&#8853;</div></div>
+                    <div class="static-label"><div class="static-brand">NYAG</div></div>
                 </div>
 
             </div>
@@ -839,33 +798,33 @@
     <h2>Like what you see?</h2>
     <p>Let's create content that stops the scroll and drives results.</p>
     <div class="btn-row">
-        <a href="index.html#contact" class="btn-pink">Let's Talk</a>
-        <a href="case-studies.html" class="btn-outline">View Case Studies →</a>
+        <a href="index.html#contact" class="btn-teal">Let's Talk</a>
+        <a href="case-studies.html" class="btn-outline">View Case Studies &rarr;</a>
     </div>
 </section>
 
 <footer>
     <div style="display:flex;align-items:center;justify-content:center;gap:1.25rem;margin-bottom:0.75rem;">
-        <a href="https://instagram.com/nikkihilljohnson" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gray-100);color:var(--gray-600);text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--pink)';this.style.color='white'" onmouseout="this.style.background='var(--gray-100)';this.style.color='var(--gray-600)'">
+        <a href="https://instagram.com/nikkihilljohnson" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gray-100);color:var(--gray-600);text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--teal)';this.style.color='white'" onmouseout="this.style.background='var(--gray-100)';this.style.color='var(--gray-600)'">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
         </a>
         <a href="https://www.linkedin.com/in/nikkihilljohnson/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gray-100);color:var(--gray-600);text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='#0077B5';this.style.color='white'" onmouseout="this.style.background='var(--gray-100)';this.style.color='var(--gray-600)'">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
         </a>
     </div>
-    <p>© 2026 Nikki Johnson</p>
+    <p>&copy; 2026 Nikki Johnson</p>
 </footer>
 
 <!-- IMAGE LIGHTBOX -->
 <div class="lb" id="lb" onclick="closeLB(event)">
-    <button class="lb-close" onclick="closeLB()">✕</button>
+    <button class="lb-close" onclick="closeLB()">&#x2715;</button>
     <img class="lb-img" id="lb-img" src="" alt="">
 </div>
 
 <!-- VIDEO MODAL -->
 <div class="vm" id="vm" onclick="closeVM(event)">
     <div class="vm-wrap">
-        <button class="vm-close" onclick="closeVM()">✕</button>
+        <button class="vm-close" onclick="closeVM()">&#x2715;</button>
         <video id="vm-video" controls preload="none" playsinline>
             <source id="vm-src" src="" type="video/mp4">
         </video>
@@ -875,11 +834,11 @@
 
 <!-- CAROUSEL LIGHTBOX -->
 <div class="clb" id="clb">
-    <button class="clb-close" onclick="closeCLB()">✕</button>
+    <button class="clb-close" onclick="closeCLB()">&#x2715;</button>
     <div class="clb-wrap">
         <div class="clb-track" id="clb-track"></div>
-        <button class="clb-nav clb-prev" onclick="moveCLB(-1)">‹</button>
-        <button class="clb-nav clb-next" onclick="moveCLB(1)">›</button>
+        <button class="clb-nav clb-prev" onclick="moveCLB(-1)">&#8249;</button>
+        <button class="clb-nav clb-next" onclick="moveCLB(1)">&#8250;</button>
     </div>
     <div class="clb-footer">
         <div class="clb-dots" id="clb-dots"></div>
@@ -917,7 +876,6 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
         document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
         btn.classList.add('active');
         document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-        // Scroll tab bar into view
         document.getElementById('tab-bar').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
 });
@@ -957,22 +915,27 @@ function closeVM(e) {
 let clbSlides = [], clbIdx = 0;
 
 function openCarousel(slides) {
-    clbSlides = slides; clbIdx = 0;
-    const normalizeSlidePath = (src) => {
-        try {
-            return encodeURI(decodeURI(String(src).trim()));
-        } catch (_) {
-            return String(src).trim();
-        }
-    };
-    const fallbackSrc = slides.length ? normalizeSlidePath(slides[0]) : '';
-    document.getElementById('clb-track').innerHTML =
-        slides.map((s) => {
-            const safeSrc = normalizeSlidePath(s);
-            return `<div class="clb-slide"><img src="${safeSrc}" alt="" loading="eager" onerror="this.onerror=null;this.src='${fallbackSrc}'"></div>`;
-        }).join('');
-    document.getElementById('clb-dots').innerHTML =
-        slides.map((_,i) => `<button class="clb-dot${i===0?' active':''}" onclick="goCLB(${i})"></button>`).join('');
+    clbSlides = slides;
+    clbIdx = 0;
+    const track = document.getElementById('clb-track');
+    track.innerHTML = '';
+    slides.forEach(function(src) {
+        var div = document.createElement('div');
+        div.className = 'clb-slide';
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = '';
+        div.appendChild(img);
+        track.appendChild(div);
+    });
+    var dots = document.getElementById('clb-dots');
+    dots.innerHTML = '';
+    slides.forEach(function(_, i) {
+        var btn = document.createElement('button');
+        btn.className = 'clb-dot' + (i === 0 ? ' active' : '');
+        btn.onclick = function() { goCLB(i); };
+        dots.appendChild(btn);
+    });
     updateCLB();
     document.getElementById('clb').classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -983,9 +946,9 @@ function goCLB(i) {
     updateCLB();
 }
 function updateCLB() {
-    document.getElementById('clb-track').style.transform = `translateX(-${clbIdx * 100}%)`;
-    document.querySelectorAll('.clb-dot').forEach((d, i) => d.classList.toggle('active', i === clbIdx));
-    document.getElementById('clb-counter').textContent = `${clbIdx + 1} / ${clbSlides.length}`;
+    document.querySelectorAll('.clb-slide').forEach(function(s, i) { s.classList.toggle('active', i === clbIdx); });
+    document.querySelectorAll('.clb-dot').forEach(function(d, i) { d.classList.toggle('active', i === clbIdx); });
+    document.getElementById('clb-counter').textContent = (clbIdx + 1) + ' / ' + clbSlides.length;
 }
 function closeCLB() { document.getElementById('clb').classList.remove('active'); document.body.style.overflow = ''; }
 
