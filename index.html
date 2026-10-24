@@ -1,1407 +1,1031 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikki Johnson | Senior Social Media & Paid Media Strategist</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-    --pink: #fe00ae;
-    --pink-rgb: 254, 0, 174;
-    --lime: #c1fe1a;
-    --lime-rgb: 193, 254, 26;
-    --purple: #7B00C7;
-    --purple-rgb: 123, 0, 199;
-    --purple-light: #fdf0ff;
-    --coral: #0F766E;
-    --coral-rgb: 15, 118, 110;
-    --coral-dark: #0a5c56;
-    --cream: #F8F3EA;
-    --dark: #0d0d1a;
-    --gray-900: #2d2d3f;
-    --gray-600: #6b6b80;
-    --gray-300: #d1d1dd;
-    --gray-100: #f5f5f8;
-    --white: #ffffff;
-    --font-body: 'DM Sans', sans-serif;
-    --font-display: 'Playfair Display', serif;
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nikki Hill Johnson | Social, Paid Media &amp; Creative</title>
+<meta name="description" content="Social, paid media and creative for Democratic candidates, progressive causes, and brands. 15+ years. Charleston, SC.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="Nikki Hill Johnson">
+<meta property="og:description" content="Get real people to care. Then get them to act. Social, paid media and creative for campaigns, causes and brands.">
+<meta property="og:image" content="https://nikkihilljohnson.com/media/camera.jpg">
+<meta property="og:url" content="https://nikkihilljohnson.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Sacramento&display=swap">
+<style>
+/* Layout: a political magazine. Hot-pink cover, condensed cover lines, serif for the reading voice.
+   Single deliberate light look (print object). Pink = fills + big type only; small text stays black. */
+:root{
+  color-scheme:light;
+  --paper:#FFFFFF; --ink:#111111; --grey:#4F4F4F; --line:#E4E4E4;
+  --pink:#FF2D95; --blush:#FFE4F1; --teal:#0F8B8D; --gold:#E9B949;
+  --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --script:"Sacramento","Snell Roundhand",cursive;
+  --wrap:76rem;
 }
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding-left:max(36px,env(safe-area-inset-left,0px));padding-right:max(36px,env(safe-area-inset-right,0px))}}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance}
+a{color:inherit}
+img,video{max-width:100%}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.cond{font-family:var(--sans);font-stretch:62%;font-weight:900;text-transform:uppercase;line-height:.9;letter-spacing:0}
+.label{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.label::before{content:"";width:.6rem;height:.6rem;background:var(--pink)}
+.serif{font-family:var(--serif)}
+.rule{border-top:2px solid var(--ink)}
 
-        html { scroll-behavior: smooth; }
+.note{background:var(--ink);color:#fff;font-size:.78rem}
+.note .wrap{padding-block:.5rem}
+.note b{color:var(--gold)}
 
-        body {
-            font-family: var(--font-body);
-            color: var(--gray-900);
-            line-height: 1.6;
-            background: var(--white);
-            -webkit-font-smoothing: antialiased;
-        }
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:2px solid var(--ink)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:.5rem 1rem;padding-block:.5rem;flex-wrap:wrap}
+.logo{font-family:var(--script);font-size:2.3rem;line-height:1;color:var(--ink);background:none;border:0;padding:0 .2rem;cursor:pointer}
+nav{display:flex;flex-wrap:wrap;gap:.1rem;align-items:center}
+nav button,nav a{font:700 .78rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:none;border:0;padding:.5rem .6rem;cursor:pointer;text-decoration:none}
+nav button[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--pink)}
+nav .talk{background:var(--ink);color:#fff;border-radius:999px;padding:.55rem 1rem;margin-left:.3rem}
 
-        /* ---- NAV ---- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--gray-300);
-            transition: box-shadow 0.3s;
-        }
-        nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 64px;
-            position: relative;
-        }
-        .nav-logo {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--dark);
-            text-decoration: none;
-        }
-        .nav-logo span { color: var(--coral); }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--gray-600);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--coral); }
-        .nav-toggle {
-            display: none;
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--gray-300);
-            border-radius: 10px;
-            background: var(--white);
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-        }
-        .nav-toggle span {
-            width: 18px;
-            height: 2px;
-            background: var(--gray-900);
-            border-radius: 2px;
-            transition: transform 0.2s, opacity 0.2s;
-        }
-        .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-        .nav-toggle.open span:nth-child(2) { opacity: 0; }
-        .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+.btn{display:inline-flex;align-items:center;font:700 .82rem var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:.95rem 1.4rem;border-radius:999px;border:2px solid var(--ink);cursor:pointer;text-decoration:none}
+.btn.solid{background:var(--ink);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink)}
+.actions{display:flex;gap:.75rem;flex-wrap:wrap}
 
-        /* DROPDOWN NAV */
-        .nav-dropdown {
-            position: relative;
-        }
-        .nav-dropdown-toggle {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            color: var(--gray-600);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-dropdown-toggle:hover {
-            color: var(--coral);
-        }
-        .nav-dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-top: 1rem;
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            padding: 0.5rem 0;
-            min-width: 180px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s, visibility 0.2s;
-        }
-        .nav-dropdown:hover .nav-dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-        }
-        .nav-dropdown-menu a {
-            display: block;
-            padding: 0.75rem 1.5rem;
-            color: var(--gray-900);
-            transition: background 0.2s;
-        }
-        .nav-dropdown-menu a:hover {
-            background: rgba(var(--coral-rgb), 0.06);
-            color: var(--coral);
-        }
+section{padding-block:clamp(3.25rem,7vw,6rem)}
+.h2{font-size:clamp(2.4rem,6vw,4.4rem)}
 
-        /* ---- HERO ---- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 96px 2rem 40px;
-            background: var(--cream);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before { content: none; }
-        .hero::after { content: none; }
-        .hero-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            width: 100%;
-        }
-        .hero-text h1 {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            line-height: 1.06;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-        }
-        .hero-text h1 .accent { color: var(--coral); }
-        .hero-tagline {
-            font-size: 1.1rem;
-            color: #4d4d5a;
-            max-width: 520px;
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-        .hero-wit {
-            font-size: 0.95rem;
-            color: var(--coral);
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            margin-bottom: 2rem;
-        }
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--gray-600);
-            max-width: 520px;
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-        .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.85rem 2rem;
-            border-radius: 50px;
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.25s ease;
-            cursor: pointer;
-            border: none;
-        }
-        .btn-primary {
-            background: var(--coral);
-            color: var(--white);
-            box-shadow: 0 4px 14px rgba(var(--coral-rgb), 0.28);
-        }
-        .btn-primary:hover {
-            background: var(--coral-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(var(--coral-rgb), 0.35);
-        }
-        .btn-secondary {
-            background: transparent;
-            color: var(--gray-600);
-            border: 1.5px solid var(--gray-300);
-        }
-        .btn-secondary:hover {
-            border-color: var(--dark);
-            color: var(--dark);
-            transform: translateY(-2px);
-        }
+/* cover */
+.cover{background:var(--pink);padding-block:clamp(2.5rem,5vw,4.5rem) clamp(3rem,6vw,5.5rem)}
+.cover .wrap,.c-hero .wrap{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+@media (min-width:900px){.cover .wrap,.c-hero .wrap{grid-template-columns:1.35fr .9fr}}
+.copy{display:flex;flex-direction:column;gap:1.5rem;min-width:0}
+.cover h1{font-size:clamp(3.3rem,10vw,8rem)}
+.cover h1 span{display:block}
+.cover h1 .w{color:#fff}
+.dek{font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.35rem);line-height:1.45;max-width:35rem}
+.print{position:relative;margin:0;justify-self:center;width:min(100%,25rem);z-index:0}
+.print img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border:10px solid #fff;background:#fff}
+.sticker{position:absolute;left:-.9rem;bottom:-1.6rem;width:8.5rem;height:8.5rem;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;text-align:center;padding:1rem;transform:rotate(-10deg);font:900 1rem/1 var(--sans);font-stretch:62%;text-transform:uppercase}
+@media (min-width:900px){.sticker{left:-3rem;width:9.5rem;height:9.5rem;font-size:1.12rem}}
+.print.teal,.print.gold{width:min(100%,30rem)}
+.print.teal img{aspect-ratio:4/3;object-position:50% 40%}
+.print.gold img{aspect-ratio:4/5;object-fit:contain;background:#fff}
+.print.teal::before,.print.gold::before{content:"";position:absolute;inset:1.2rem -1.2rem -1.2rem 1.2rem;z-index:-1}
+.print.teal::before{background:var(--teal)}
+.print.gold::before{background:var(--gold)}
+.page-h1{font-size:clamp(3.2rem,9.5vw,7.2rem)}
+.hl{background:var(--pink);padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.filter{font-weight:800;font-size:1.1rem;border-left:6px solid var(--pink);padding-left:.9rem}
 
-        .hero-photo {
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-        .photo-frame {
-            width: 380px;
-            height: 460px;
-            border-radius: 24px;
-            background: transparent;
-            padding: 0;
-            position: relative;
-            box-shadow: 0 24px 52px rgba(0,0,0,0.13);
-        }
-        .photo-frame::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            right: -12px;
-            width: 100%;
-            height: 100%;
-            border-radius: 24px;
-            border: 2px solid var(--coral);
-            z-index: -1;
-            opacity: 0.45;
-        }
-        .photo-frame-inner {
-            width: 100%;
-            height: 100%;
-            border-radius: 24px;
-            overflow: hidden;
-        }
-        .photo-frame-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
-        .hero-float-card {
-            position: absolute;
-            background: var(--white);
-            border-radius: 16px;
-            padding: 1rem 1.25rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        .float-card-1 {
-            bottom: 40px;
-            left: -30px;
-            color: var(--pink);
-        }
-        .float-card-1 .big-num { font-size: 1.5rem; display: block; }
-        .float-card-2 {
-            top: 40px;
-            right: -20px;
-            color: var(--purple);
-        }
-        .float-card-2 .big-num { font-size: 1.5rem; display: block; }
+/* proof band */
+.band{background:var(--ink);color:#fff}
+.band-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:2.25rem}
+.band-head h2{font-size:clamp(2.2rem,5vw,3.6rem)}
+.asof{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.asof.dark{color:var(--ink);display:inline-flex;align-items:center;gap:.5rem}
+.asof.dark::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:var(--pink)}
+.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(13.5rem,1fr));gap:2.25rem 2.5rem;list-style:none;margin:0;padding:0}
+.proof li{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.big{font-family:var(--sans);font-stretch:70%;font-weight:900;font-size:clamp(3rem,6.5vw,4.8rem);line-height:.9;color:var(--pink);font-variant-numeric:tabular-nums}
+.proof p{font-size:.98rem;max-width:18rem}
+.proof .src{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 
-        /* ---- SECTION SHARED ---- */
-        section { padding: 100px 2rem; }
-        .section-label {
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            color: var(--coral);
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 1.25rem;
-        }
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--gray-600);
-            max-width: 600px;
-            line-height: 1.75;
-        }
-        .section-header { margin-bottom: 4rem; }
-        .container { max-width: 1200px; margin: 0 auto; }
+/* doors */
+.doors{display:grid;grid-template-columns:1fr;margin-top:2.5rem;border-top:2px solid var(--ink)}
+@media (min-width:800px){.doors{grid-template-columns:1fr 1fr}.door + .door{border-left:2px solid var(--ink)}}
+.door{display:flex;flex-direction:column;gap:1rem;padding:2rem 0;min-width:0}
+@media (min-width:800px){.door{padding:2.25rem 2.5rem 2.25rem 0}.door + .door{padding-left:2.5rem;padding-right:0}}
+@media (max-width:799px){.door + .door{border-top:1px solid var(--line)}}
+.door h3{font-size:1.65rem;line-height:1.15;font-weight:800}
+.door p{color:var(--grey)}
+.go{margin-top:auto;align-self:flex-start;font:700 .78rem var(--sans);letter-spacing:.1em;text-transform:uppercase;background:none;border:0;border-bottom:3px solid var(--pink);padding:0 0 .2rem;cursor:pointer;color:var(--ink)}
 
-        /* ---- ABOUT ---- */
-        .about {
-            background: var(--cream);
-            padding: 40px 2rem 64px;
-            border-top: 1px solid rgba(0,0,0,0.06);
-        }
-        .about .section-label { color: var(--coral); }
-        .about-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: start;
-        }
-        .about-intro p {
-            color: #4d4d5a;
-            margin-bottom: 1.25rem;
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-        .about-intro p:last-child { margin-bottom: 0; }
-        .about-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-        .about-card {
-            background: var(--white);
-            border-radius: 14px;
-            padding: 1.5rem 1.75rem;
-            border-left: 3px solid var(--coral);
-            box-shadow: 0 2px 14px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .about-card:hover {
-            transform: translateX(4px);
-            box-shadow: 0 6px 22px rgba(0,0,0,0.08);
-        }
-        .about-card h4 {
-            font-family: var(--font-body);
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--coral);
-            margin-bottom: 0.6rem;
-        }
-        .about-card p {
-            font-size: 0.88rem;
-            color: #4d4d5a;
-            line-height: 1.65;
-        }
+/* pov */
+.split{display:grid;gap:2rem}
+@media (min-width:900px){.split{grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}}
+.p{color:var(--pink)}
+.reading{display:flex;flex-direction:column;gap:1.1rem;font-family:var(--serif);font-size:1.22rem;line-height:1.55;max-width:36rem}
 
-        /* cat elements removed */
-        .contact { position: relative; overflow: hidden; }
+/* quotes */
+.quotes-sec{background:var(--blush)}
+.quotes{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-top:2rem}
+@media (min-width:900px){.quotes{grid-template-columns:repeat(3,1fr)}}
+blockquote{margin:0;display:flex;flex-direction:column;gap:1rem;min-width:0}
+blockquote::before{content:"\201C";font:900 4.5rem/.6 var(--serif);color:var(--pink)}
+blockquote p{font-family:var(--serif);font-size:1.28rem;line-height:1.4}
+blockquote footer{font-size:.82rem;color:var(--grey)}
+blockquote footer b{color:var(--ink)}
+.pull{background:var(--pink);padding:clamp(1.75rem,4vw,3rem);margin-top:2.5rem}
+.pull blockquote::before{color:#fff}
+.pull blockquote p{font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.2;max-width:50rem}
+.pull blockquote footer{color:var(--ink)}
 
-                /* ---- EXPERIENCE ---- */
-        .experience { background: var(--gray-100); }
-        .timeline { position: relative; }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 24px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--pink), var(--purple), var(--lime));
-        }
-        .timeline-item {
-            position: relative;
-            padding-left: 64px;
-            margin-bottom: 2.5rem;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: 16px;
-            top: 6px;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--white);
-            border: 3px solid var(--pink);
-            z-index: 1;
-        }
-        .timeline-item:nth-child(1) .timeline-dot { border-color: var(--lime); box-shadow: 0 0 0 4px rgba(193,254,26,0.15); }
-        .timeline-item:nth-child(2) .timeline-dot { border-color: var(--pink); }
-        .timeline-item:nth-child(3) .timeline-dot { border-color: var(--purple); }
-        .timeline-item:nth-child(4) .timeline-dot { border-color: var(--lime); }
-        .timeline-item:nth-child(5) .timeline-dot { border-color: var(--pink); }
-        .timeline-item:nth-child(6) .timeline-dot { border-color: var(--purple); }
-        .timeline-card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 1.75rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            transition: box-shadow 0.3s, transform 0.3s;
-        }
-        .timeline-card:hover {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 0.5rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .timeline-company {
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 1.05rem;
-        }
-        .timeline-date {
-            font-size: 0.8rem;
-            color: var(--gray-600);
-            background: var(--gray-100);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            white-space: nowrap;
-        }
-        .timeline-role {
-            font-size: 0.9rem;
-            color: var(--purple);
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-        }
-        .timeline-desc {
-            font-size: 0.9rem;
-            color: var(--gray-600);
-            line-height: 1.6;
-            margin-bottom: 0.75rem;
-        }
-        .timeline-wins {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .win-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            padding: 0.35rem 0.75rem;
-            background: linear-gradient(135deg, rgba(var(--pink-rgb), 0.08), rgba(var(--purple-rgb), 0.08));
-            border-radius: 50px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        .win-badge .arrow { color: var(--pink); }
+/* career list */
+.cv{list-style:none;margin:.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));border-top:2px solid var(--ink)}
+.cv li{padding:.7rem 1rem .7rem 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;font-size:.85rem}
+.cv b{font-weight:800}
+.cv span{color:var(--grey);font-variant-numeric:tabular-nums}
 
-        /* ---- CASE STUDIES ---- */
-        .case-studies { background: var(--cream); padding-top: 72px; }
-        .case-studies .section-label { color: var(--coral); }
-        .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-        .case-card {
-            border-radius: 16px;
-            overflow: hidden;
-            background: var(--white);
-            box-shadow: 0 2px 16px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border-left: 3px solid var(--coral);
-        }
-        .case-card:hover {
-            transform: translateX(4px);
-            box-shadow: 0 6px 28px rgba(0,0,0,0.08);
-        }
-        .case-content {
-            padding: 2rem 2rem 1.75rem;
-        }
-        .case-card-header {
-            margin-bottom: 1rem;
-        }
-        .case-type {
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--coral);
-            font-weight: 700;
-            margin-bottom: 0.35rem;
-        }
-        .case-company {
-            font-family: var(--font-body);
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-        .case-title {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 400;
-            font-size: 1.05rem;
-            color: var(--gray-900);
-            line-height: 1.4;
-            margin-bottom: 0;
-        }
-        .case-desc {
-            font-size: 0.92rem;
-            color: var(--gray-600);
-            line-height: 1.75;
-            margin-bottom: 1.5rem;
-        }
-        /* Card 1 — HVAC.com: KPI grid */
-        .case-kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.625rem;
-            margin-top: 1.5rem;
-            border-top: 1px solid var(--gray-300);
-            padding-top: 1.25rem;
-        }
-        .case-kpi-block {
-            border: 1px solid var(--gray-300);
-            border-radius: 8px;
-            padding: 0.875rem 1rem;
-        }
-        .case-kpi-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--coral);
-            line-height: 1;
-            margin-bottom: 0.3rem;
-        }
-        .case-kpi-label {
-            font-size: 0.68rem;
-            color: var(--gray-600);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
+/* contact */
+.contact{background:var(--ink);color:#fff}
+.contact .wrap{display:flex;flex-direction:column;gap:1.5rem}
+.contact h2{font-size:clamp(2.8rem,8vw,6.5rem)}
+.contact p{font-family:var(--serif);font-size:1.2rem;max-width:34rem;color:#E9E9E9}
+.mail{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.mail code{font:700 clamp(1.05rem,3.5vw,1.5rem) var(--sans);user-select:all;word-break:break-all}
+.copy-btn{font:700 .75rem var(--sans);letter-spacing:.08em;text-transform:uppercase;background:var(--pink);color:var(--ink);border:0;border-radius:999px;padding:.6rem 1.1rem;cursor:pointer}
+.links{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.links a{color:#fff;text-decoration-color:var(--pink);text-underline-offset:4px;text-decoration-thickness:2px}
+footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 
-        /* Card 2 — James Wedmore: numbered editorial list */
-        .case-launch-results {
-            margin-top: 1.5rem;
-            border-top: 1px solid var(--gray-300);
-            padding-top: 1.25rem;
-        }
-        .case-launch-label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            color: var(--gray-600);
-            margin-bottom: 0.75rem;
-        }
-        .case-launch-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            counter-reset: launch;
-        }
-        .case-launch-list li {
-            counter-increment: launch;
-            display: flex;
-            align-items: baseline;
-            gap: 0.875rem;
-            padding: 0.55rem 0;
-            font-size: 0.92rem;
-            font-weight: 500;
-            color: var(--gray-900);
-            border-bottom: 1px solid var(--gray-300);
-        }
-        .case-launch-list li:last-child { border-bottom: none; }
-        .case-launch-list li::before {
-            content: counter(launch, decimal-leading-zero);
-            font-size: 0.68rem;
-            font-weight: 700;
-            color: var(--coral);
-            min-width: 1.5rem;
-            flex-shrink: 0;
-            letter-spacing: 0.05em;
-        }
+/* services + method */
+.offers{display:grid;grid-template-columns:1fr;margin-top:2.25rem;border-top:2px solid var(--ink)}
+@media (min-width:760px){.offers{grid-template-columns:1fr 1fr}}
+.offer{padding:1.6rem 1.5rem 1.6rem 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.offer h3{font-size:1.35rem;font-weight:800}
+.offer p{color:var(--grey)}
+.offer.creator h3::after{content:"New";margin-left:.6rem;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;background:var(--gold);padding:.2rem .5rem;vertical-align:middle;border-radius:999px}
+.method{list-style:none;margin:2.25rem 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:2rem;counter-reset:m}
+@media (min-width:760px){.method{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.method{grid-template-columns:repeat(4,1fr)}}
+.method li{counter-increment:m;display:flex;flex-direction:column;gap:.45rem;min-width:0}
+.method li::before{content:counter(m);font:900 3.4rem/.9 var(--sans);font-stretch:62%;color:var(--teal)}
+.method b{font-weight:800;font-size:1.05rem}
+.method p{color:var(--grey);font-size:.95rem}
 
-        /* Card 3 — Carolina Farm Trust: impact table */
-        .case-card-warm { background: var(--white); }
-        .case-impact {
-            margin-top: 1.5rem;
-            border-top: 1px solid var(--gray-300);
-            padding-top: 1.25rem;
-        }
-        .case-impact-label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            color: var(--gray-600);
-            margin-bottom: 0.875rem;
-        }
-        .case-impact-rows { display: flex; flex-direction: column; }
-        .case-impact-row {
-            display: flex;
-            align-items: baseline;
-            gap: 1rem;
-            padding: 0.55rem 0;
-            border-bottom: 1px solid var(--gray-300);
-        }
-        .case-impact-row:last-child { border-bottom: none; }
-        .case-impact-metric {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--coral);
-            white-space: nowrap;
-            min-width: 3.25rem;
-        }
-        .case-impact-desc {
-            font-size: 0.88rem;
-            color: var(--gray-600);
-        }
+/* case studies */
+.cycle-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.case{display:grid;grid-template-columns:1fr;gap:2rem;padding-block:3rem;border-top:2px solid var(--ink)}
+.case.first{margin-top:2.25rem}
+@media (min-width:900px){.case{grid-template-columns:1.25fr 1fr;gap:4rem}}
+.case .main{display:flex;flex-direction:column;gap:1rem;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem .5rem;align-items:center;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.meta .who{font-size:.95rem;letter-spacing:.04em}
+.meta .tag{border:1.5px solid currentColor;border-radius:999px;padding:.12rem .55rem}
+.case h3{font-size:clamp(1.9rem,3.6vw,2.7rem);font-stretch:70%;font-weight:900;line-height:1;text-transform:uppercase}
+.role{font-weight:700;font-size:.95rem}
+.txt{font-family:var(--serif);font-size:1.15rem;line-height:1.55;max-width:38rem}
+.finding{background:var(--blush);padding:1rem 1.2rem;font-size:.98rem;max-width:38rem}
+.finding b{text-decoration:underline;text-decoration-color:var(--pink);text-decoration-thickness:3px;text-underline-offset:4px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem 1.25rem;margin:0;align-content:start}
+.stats div{display:flex;flex-direction:column;gap:.35rem;border-top:1px solid var(--ink);padding-top:.8rem;min-width:0}
+.stats dt{order:2;font-size:.84rem;color:var(--grey);line-height:1.4}
+.stats dd{order:1;margin:0;font-family:var(--sans);font-stretch:70%;font-weight:900;font-size:clamp(2.3rem,4.5vw,3.1rem);line-height:.95;color:var(--pink);font-variant-numeric:tabular-nums}
+.stats dd.word{font-size:clamp(1.6rem,3vw,2.1rem)}
+.case.dark{background:var(--ink);color:#fff;border-top:0;padding-inline:clamp(1.25rem,4vw,3rem);margin-top:1rem}
+.case.dark .finding{background:#2A2A2A;color:#fff}
+.case.dark .stats div{border-color:#fff}
+.case.dark .stats dt{color:#CFCFCF}
+.media{grid-column:1/-1;display:flex;gap:1rem;overflow-x:auto;padding-bottom:.6rem;scroll-snap-type:x proximity}
+.media > *{flex:0 0 auto;scroll-snap-align:start}
+.media figure{margin:0;display:flex;flex-direction:column;gap:.4rem;width:11.5rem}
+.media figure.sq{width:14rem}
+.media video,.media img{display:block;width:100%;background:#000;border:1px solid var(--line)}
+.media video{aspect-ratio:9/16;object-fit:cover}
+.media figcaption{font-size:.74rem;color:var(--grey)}
+.case.dark .media figcaption{color:#CFCFCF}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;max-width:30rem}
+.ba figure{margin:0;display:flex;flex-direction:column;gap:.35rem}
+.ba img{border:1px solid var(--line);width:100%}
+.ba figcaption{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.ground{font-family:var(--serif);font-size:1.15rem;padding-top:2.5rem}
+.logos{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem 1.5rem;align-items:center;justify-items:center;margin-top:2rem;padding-top:1.5rem;border-top:2px solid var(--ink)}
+.logos img{height:clamp(3.5rem,8vw,5.5rem);width:100%;max-width:12rem;object-fit:contain;filter:grayscale(1) contrast(1.1)}
+@media (min-width:900px){.logos{grid-template-columns:repeat(6,1fr)}}
+.caselogo{height:4.5rem;width:auto;align-self:flex-start}
+.logos span{font:900 1.35rem/1 var(--sans);font-stretch:70%;text-transform:uppercase;opacity:.85}
 
-        /* ---- SERVICES / WHAT I DO ---- */
-        .services { background: var(--dark); color: var(--white); }
-        .services .section-label { color: var(--coral); }
-        .services .section-title { color: var(--white); }
-        .services .section-subtitle { color: rgba(255,255,255,0.6); }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-        .service-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-top: 2px solid rgba(var(--coral-rgb), 0.45);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s;
-        }
-        .service-card:hover {
-            background: rgba(255,255,255,0.07);
-            border-color: rgba(var(--coral-rgb), 0.25);
-            border-top-color: var(--coral);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            transform: translateY(-3px);
-        }
-        .service-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: rgba(var(--coral-rgb), 0.15);
-            color: var(--coral);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.25rem;
-        }
-        .si-pink, .si-purple, .si-lime { background: rgba(var(--coral-rgb), 0.15); color: var(--coral); }
-        .service-card h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.625rem;
-            color: var(--white);
-            letter-spacing: -0.01em;
-        }
-        .service-card p {
-            font-size: 0.875rem;
-            color: rgba(255,255,255,0.65);
-            line-height: 1.7;
-        }
-        .services-footer {
-            text-align: center;
-            margin-top: 2.5rem;
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.5);
-        }
-        .services-footer a {
-            color: var(--coral);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .services-footer a:hover { text-decoration: underline; }
+/* work */
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.chips button{font:700 .75rem var(--sans);letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:999px;padding:.5rem .95rem;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.gallery{columns:2 11rem;column-gap:1rem;margin-top:2rem}
+@media (min-width:900px){.gallery{columns:4 13rem}}
+.tile{break-inside:avoid;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:.4rem}
+.tile img,.tile video{display:block;width:100%;border:1px solid var(--line);background:#000}
+.tile video{aspect-ratio:9/16;object-fit:cover}
+.tile figcaption{font-size:.76rem;color:var(--grey)}
+.tile figcaption b{color:var(--ink);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:.7rem;margin-right:.35rem}
+.receipts{background:var(--blush)}
+.rwall{columns:1;column-gap:1.25rem;margin-top:2rem}
+@media (min-width:700px){.rwall{columns:2}}
+@media (min-width:1100px){.rwall{columns:3}}
+.rwall figure{break-inside:avoid;margin:0 0 1.25rem;background:#fff;padding:.6rem;border:2px solid var(--ink);display:flex;flex-direction:column;gap:.5rem}
+.rwall figure:nth-child(3n+1){transform:rotate(-.6deg)}
+.rwall figure:nth-child(3n+2){transform:rotate(.5deg)}
+.rwall img{display:block;width:100%}
+.rwall figcaption{font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 
-        /* ---- TESTIMONIAL ---- */
-        .testimonial {
-            background: var(--dark);
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding: 100px 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .testimonial .section-label { color: var(--coral); }
-        .testimonial .section-title { color: var(--white); }
-        .testimonial .section-header::before {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 2px;
-            background: var(--coral);
-            margin: 0 auto 1.5rem;
-        }
-        .testimonial-slider {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-        .testimonial-track {
-            overflow: hidden;
-        }
-        .testimonial-slides {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .testimonial-slide {
-            min-width: 100%;
-            padding: 0 2rem;
-            text-align: center;
-        }
-        .quote-mark {
-            font-family: var(--font-display);
-            font-size: 4rem;
-            color: var(--coral);
-            line-height: 1;
-            opacity: 0.45;
-        }
-        .testimonial-slide blockquote {
-            font-size: 1.4rem;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.75;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-        .testimonial-author {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.45);
-            font-weight: 600;
-        }
-        .testimonial-nav {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
-        }
-        .testimonial-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .testimonial-dot.active {
-            background: var(--coral);
-            width: 30px;
-            border-radius: 5px;
-        }
+/* about */
+.timeline{list-style:none;margin:2rem 0 0;padding:0;border-top:2px solid var(--ink)}
+.timeline li{display:grid;grid-template-columns:1fr;gap:.35rem 2rem;padding:1.4rem 0;border-bottom:1px solid var(--line)}
+@media (min-width:760px){.timeline li{grid-template-columns:9rem 1fr}}
+.timeline .yrs{font:900 1.5rem/1 var(--sans);font-stretch:70%;color:var(--pink);font-variant-numeric:tabular-nums}
+.timeline h3{font-size:1.2rem;font-weight:800}
+.timeline .ttl{font-size:.9rem;color:var(--grey)}
+.timeline p{font-size:.98rem;max-width:44rem;margin-top:.3rem}
 
-        /* ---- CONTACT ---- */
-        .contact {
-            background: var(--cream);
-            border-top: 1px solid rgba(0,0,0,0.06);
-            padding: 100px 2rem;
-            text-align: center;
-        }
-        .contact .section-label { color: var(--coral); }
-        .contact-inner {
-            max-width: 580px;
-            margin: 0 auto;
-        }
-        .contact-inner h2 {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            line-height: 1.1;
-            color: var(--dark);
-            margin-bottom: 1.25rem;
-        }
-        .contact-inner p {
-            font-size: 1.05rem;
-            color: #4d4d5a;
-            line-height: 1.75;
-            margin-bottom: 1.75rem;
-        }
-        .contact-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: var(--coral);
-            color: var(--white);
-            text-decoration: none;
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 14px rgba(var(--coral-rgb), 0.28);
-        }
-        .contact-primary:hover {
-            background: var(--coral-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(var(--coral-rgb), 0.35);
-        }
 
-        /* ---- FOOTER ---- */
-        footer {
-            background: var(--dark);
-            text-align: center;
-            padding: 2rem;
-        }
-        footer p {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.8rem;
-        }
+[hidden]{display:none!important}
+.rot{display:grid;gap:2rem;align-items:center}
+@media (min-width:900px){.rot{grid-template-columns:.8fr 1.6fr;gap:4rem}}
+.rot-side{display:flex;flex-direction:column;gap:1.25rem;align-items:flex-start}
+.rot-ctl{display:flex;align-items:center;gap:.75rem}
+.rot-ctl button{width:3rem;height:3rem;border-radius:50%;border:2px solid var(--ink);background:transparent;font:700 1.1rem var(--sans);cursor:pointer;color:var(--ink)}
+.rot-ctl button:hover{background:var(--ink);color:#fff}
+.rot-n{font:700 .85rem var(--sans);letter-spacing:.08em;font-variant-numeric:tabular-nums;min-width:3.5rem;text-align:center}
+.rot-stage{display:grid;min-width:0}
+.rq{grid-area:1/1;display:flex;flex-direction:column;gap:1.4rem;justify-content:center}
+.rq::before{font-size:5.5rem;margin-bottom:-1.4rem}
+.rq p{font-size:clamp(1.5rem,2.8vw,2.3rem)!important;line-height:1.28!important}
+.rq footer{display:flex;flex-direction:column;gap:.15rem;font-size:.9rem}
+.rq footer b{font-size:1.05rem}
+@media (prefers-reduced-motion:no-preference){.rq:not([hidden]){animation:fadein .5s ease-out}@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
 
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 768px) {
-            .hero-inner { grid-template-columns: 1fr; text-align: center; }
-            .hero-text h1 { font-size: 2.2rem; text-align: left; }
-            .hero-text p { margin: 0 auto 2rem; }
-            .hero-ctas { justify-content: center; }
-            .hero-photo { order: -1; }
-            .photo-frame { width: 280px; height: 340px; }
-            .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-            .contact-inner h2 { font-size: 2rem; }
-            .section-title { font-size: 2rem; }
-            .nav-toggle { display: inline-flex; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: calc(100% + 0.55rem);
-                right: 2rem;
-                width: min(280px, calc(100vw - 4rem));
-                padding: 0.75rem;
-                border: 1px solid var(--gray-300);
-                border-radius: 14px;
-                background: var(--white);
-                box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-                gap: 0;
-                flex-direction: column;
-                z-index: 250;
-            }
-            .nav-links.open { display: flex; }
-            .nav-links li { width: 100%; }
-            .nav-links a,
-            .nav-dropdown-toggle {
-                display: block;
-                width: 100%;
-                padding: 0.7rem 0.85rem;
-                border-radius: 8px;
-                font-size: 0.92rem;
-            }
-            .nav-dropdown { width: 100%; }
-            .nav-dropdown-menu {
-                position: static;
-                transform: none;
-                margin-top: 0;
-                padding: 0 0 0 0.75rem;
-                opacity: 1;
-                visibility: visible;
-                box-shadow: none;
-                border: none;
-                min-width: 0;
-                background: transparent;
-            }
-            .nav-dropdown-menu a { padding: 0.55rem 0.85rem; }
-            .cases-grid { grid-template-columns: 1fr; }
-            .case-content { padding: 1.5rem 1.75rem; }
-            .case-impact-grid { gap: 0.5rem 1rem; }
-            .services-grid { grid-template-columns: 1fr; }
-            .timeline-item { padding-left: 50px; }
-        }
+.vwrap{position:relative;display:block}
+.vwrap .play{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(transparent 55%,rgba(0,0,0,.35));border:0;cursor:pointer;padding:0}
+.vwrap .play span{width:4.2rem;height:4.2rem;border-radius:50%;background:var(--pink);display:grid;place-items:center;box-shadow:0 4px 18px rgba(0,0,0,.35);transition:transform .15s}
+.vwrap .play:hover span{transform:scale(1.08)}
+.vwrap .play span::before{content:"";margin-left:.3rem;border-left:1.3rem solid var(--ink);border-top:.8rem solid transparent;border-bottom:.8rem solid transparent}
 
-        /* ---- EARLIER CAREER ---- */
-        .earlier-career-toggle {
-            text-align: center;
-            margin-top: 2rem;
-            padding-left: 64px;
-        }
-        .toggle-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.75rem;
-            background: transparent;
-            border: 2px dashed var(--gray-300);
-            border-radius: 50px;
-            color: var(--gray-600);
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .toggle-btn:hover {
-            border-color: var(--purple);
-            color: var(--purple);
-            background: rgba(var(--purple-rgb), 0.04);
-        }
-        .toggle-btn .chevron {
-            transition: transform 0.3s;
-            font-size: 0.75rem;
-        }
-        .toggle-btn.open .chevron {
-            transform: rotate(180deg);
-        }
-        .earlier-career-cards {
-            display: none;
-            padding-left: 64px;
-            margin-top: 1.5rem;
-            gap: 1rem;
-        }
-        .earlier-career-cards.show {
-            display: grid;
-        }
-        .early-card {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1rem;
-            align-items: start;
-            background: var(--white);
-            border-radius: 12px;
-            padding: 1.25rem 1.5rem;
-            border-left: 3px solid var(--gray-300);
-            transition: border-color 0.2s, transform 0.2s;
-        }
-        .early-card:hover {
-            border-left-color: var(--purple);
-            transform: translateX(3px);
-        }
-        .early-card-logo {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--purple-light);
-            color: var(--purple);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .early-card-content h4 {
-            font-size: 0.95rem;
-            color: var(--dark);
-            margin-bottom: 0.15rem;
-        }
-        .early-card-content .early-role {
-            font-size: 0.82rem;
-            color: var(--purple);
-            font-weight: 500;
-            margin-bottom: 0.4rem;
-        }
-        .early-card-content p {
-            font-size: 0.82rem;
-            color: var(--gray-600);
-            line-height: 1.55;
-        }
-        .earlier-career-narrative {
-            padding: 1.5rem 1.75rem 1.25rem;
-            background: linear-gradient(135deg, rgba(var(--purple-rgb), 0.06), rgba(var(--pink-rgb), 0.04));
-            border-radius: 14px;
-            border-left: 4px solid var(--purple);
-        }
-        .earlier-career-narrative .foundation-label {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: var(--purple);
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-        .earlier-career-narrative p {
-            font-size: 0.92rem;
-            color: var(--gray-600);
-            line-height: 1.7;
-            margin-bottom: 0.6rem;
-        }
-        .earlier-career-narrative p:last-child {
-            margin-bottom: 0;
-        }
-
-        @media (max-width: 768px) {
-            .earlier-career-toggle,
-            .earlier-career-cards { padding-left: 50px; }
-        }
-
-        /* ---- ANIMATIONS ---- */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .nav-dropdown { position: relative; }
-.nav-dropdown-toggle { cursor: pointer; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; display: flex; align-items: center; gap: 0.35rem; user-select: none; }
-.nav-dropdown:hover .nav-dropdown-toggle { color: var(--coral); }
-.nav-dropdown-menu { position: absolute; top: calc(100% + 0.75rem); left: 50%; transform: translateX(-50%) translateY(-6px); background: white; border: 1px solid var(--gray-300); border-radius: 14px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); min-width: 180px; padding: 0.5rem; opacity: 0; visibility: hidden; transition: opacity 0.22s, visibility 0.22s, transform 0.22s; z-index: 200; }
-.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-.nav-dropdown-menu a { display: block; padding: 0.625rem 1rem; color: var(--gray-600); text-decoration: none; font-size: 0.875rem; font-weight: 500; border-radius: 8px; transition: all 0.15s; }
-.nav-dropdown-menu a:hover, .nav-dropdown-menu a.active { background: rgba(var(--coral-rgb), 0.08); color: var(--coral); }
-    </style>
+.carbtn{all:unset;display:block;position:relative;cursor:pointer;width:100%}
+.carbtn img{display:block;width:100%}
+.carbtn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.slides{position:absolute;right:.4rem;top:.4rem;background:var(--ink);color:#fff;font:700 .65rem var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:.25rem .5rem;border-radius:999px}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(17,17,17,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:calc(1rem + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(1rem + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;width:min(100%,34rem);gap:0;scrollbar-width:none}
+.lb-track::-webkit-scrollbar{display:none}
+.lb-track img{flex:0 0 100%;width:100%;max-height:78vh;object-fit:contain;scroll-snap-align:center;background:#000}
+.lb-bar{display:flex;align-items:center;gap:1rem;color:#fff}
+.lb-bar button{font:700 .8rem var(--sans);letter-spacing:.08em;text-transform:uppercase;background:#fff;color:var(--ink);border:0;border-radius:999px;padding:.6rem 1rem;cursor:pointer}
+.lb-bar .x{background:var(--pink)}
+.lb-count{font:700 .85rem var(--sans);min-width:4.5rem;text-align:center;font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:no-preference){
+  .view:not([hidden]) h1{animation:rise .55s ease-out both}
+  .view:not([hidden]) .sticker{animation:spin .7s .15s ease-out both}
+  @keyframes rise{from{transform:translateY(12px);opacity:.35}to{transform:none;opacity:1}}
+  @keyframes spin{from{transform:rotate(-40deg) scale(.85)}to{transform:rotate(-10deg) scale(1)}}
+}
+</style>
+<style>html,body{margin:0}img{max-width:100%}</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="navbar">
-    <div class="nav-inner">
-        <a href="#" class="nav-logo">Nikki<span>.</span></a>
-        <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links" id="primary-nav">
-    <li><a href="about.html">About</a></li>
-    <li class="nav-dropdown">
-        <span class="nav-dropdown-toggle">Work <span style="font-size:0.7rem;">▼</span></span>
-        <div class="nav-dropdown-menu">
-            <a href="case-studies.html">Case Studies</a>
-            <a href="creative-work.html">Creative Work</a>
+
+
+<header class="site">
+  <div class="wrap">
+    <button class="logo" type="button" data-go="home" aria-label="Nikki Hill Johnson, home">nikki hill johnson</button>
+    <nav aria-label="Main">
+      <button type="button" data-go="home" id="nav-home">Home</button>
+      <button type="button" data-go="campaigns" id="nav-campaigns">Campaigns</button>
+      <button type="button" data-go="brands" id="nav-brands">Brands</button>
+      <button type="button" data-go="work" id="nav-work">Work</button>
+      <button type="button" data-go="about" id="nav-about">About</button>
+      <a class="talk" href="#contact" data-jump="contact">Let's talk</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ======================= HOME ======================= -->
+<div class="view" id="view-home">
+  <section class="cover">
+    <div class="wrap">
+      <div class="copy">
+        <span class="label">Social · Paid media · Creative · Charleston, SC</span>
+        <h1 class="cond"><span>Get real people to care.</span><span class="w">Then get them to act.</span></h1>
+        <p class="dek">I run social, paid media and creative for Democratic candidates, progressive causes, and brands that would rather earn trust than buy it. Fifteen years in, and I still read the comments.</p>
+        <div class="actions">
+          <button class="btn solid" type="button" data-go="campaigns">See the campaign work</button>
+          <button class="btn ghost" type="button" data-go="brands">See the brand work</button>
         </div>
-    </li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#contact">Contact</a></li>
-</ul>
+      </div>
+      <figure class="print">
+        <img src="media/camera.jpg" alt="Nikki Hill Johnson holding a camera with a shotgun mic">
+        <div class="sticker" aria-hidden="true">Fluent in memes. Fluent in metrics.</div>
+      </figure>
     </div>
-</nav>
+  </section>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-inner">
-        <div class="hero-text">
-            <h1>Creating content is easy.<br><span class="accent">Creating results</span> is harder.</h1>
-            <p class="hero-tagline">I help brands turn content into business results through social strategy, paid media, analytics, and creative that people actually want to engage with.</p>
-            <p class="hero-wit">Fluent in memes. Fluent in metrics.</p>
-            <div class="hero-ctas">
-                <a href="#contact" class="btn btn-primary">Let's Talk</a>
-                <a href="#work" class="btn btn-secondary">View My Work</a>
-            </div>
-        </div>
-        <div class="hero-photo">
-            <div class="photo-frame">
-                <div class="photo-frame-inner">
-                    <img src="https://nikkihilljohnson.my.canva.site/_assets/media/098e93cac96858c266f477382f40e0ea.jpg" alt="Nikki Johnson">
-                </div>
-            </div>
-        </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head">
+        <h2 class="cond">This fall, so far</h2>
+        <span class="asof">As of October 24, 2026</span>
+      </div>
+      <ul class="proof">
+        <li><span class="big">470K</span><p>views in 90 days on Nikki Next Door, my political channel</p><span class="src">Own channel</span></li>
+        <li><span class="big">99,000+</span><p>people reached for a school board race on a $3,000 budget</p><span class="src">CCSD District 1</span></li>
+        <li><span class="big">93,800+</span><p>people reached for a State House race this fall</p><span class="src">SC House 123</span></li>
+        <li><span class="big">16K</span><p>organic views on one countertop install video. Zero ad spend.</p><span class="src">StoneSmith</span></li>
+      </ul>
     </div>
-</section>
+  </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-    <div class="about-inner">
-        <div class="about-intro fade-up">
-            <div class="section-header">
-                <p class="section-label">Why Clients Hire Me</p>
-                <h2 class="section-title">Empathy first.<br>Algorithms second.</h2>
-            </div>
-            <p>I help brands grow by combining audience psychology with performance strategy. For 15+ years, I've built social, content, and paid campaigns that deliver measurable results and occasionally make someone say, "Okay fine, that was good."</p>
-            <p>Most marketers spend a lot of time thinking about platforms. I spend more time thinking about people.</p>
-            <p>That's because understanding what people care about, what motivates them, and what earns their attention leads to better strategy than chasing every platform update. When you lead with empathy and back it with data, you build trust, create real connection, and drive the kind of growth that lasts.</p>
+  <section>
+    <div class="wrap">
+      <span class="label">Who I work with</span>
+      <h2 class="cond h2" style="margin-top:1rem">Two kinds of clients. Same job.</h2>
+      <div class="doors">
+        <div class="door">
+          <span class="label">Campaigns, causes &amp; creators</span>
+          <h3>Democrats who need voters to know their name, from school board to the first presidential primary in the country.</h3>
+          <p>Paid social, video, graphics, message strategy, and paid partnerships on Nikki Next Door.</p>
+          <button class="go" type="button" data-go="campaigns">See the 2026 campaign work</button>
         </div>
-        <div class="about-cards">
-            <div class="about-card fade-up">
-                <h4>Algorithm Survivor</h4>
-                <p>I've worked through every platform shift, algorithm update, and social media "the sky is falling" moment. Elder millennial. Oregon Trail survivor. I can handle another app death. RIP Vine.</p>
-            </div>
-            <div class="about-card fade-up">
-                <h4>Internet Culture Translator</h4>
-                <p>I help brands sound human online without trying too hard, being cringe (as the youths say), or jumping on trends after their expiration date.</p>
-            </div>
-            <div class="about-card fade-up">
-                <h4>Organized Chaos Manager</h4>
-                <p>Marketing moves fast. I bring structure without killing creativity — which is harder than it sounds and more valuable than most people realize.</p>
-            </div>
-            <div class="about-card fade-up">
-                <h4>Creative With Receipts</h4>
-                <p>Big ideas are great. Proving they worked is better. I love a strong hook, a clean dashboard, and campaigns that deliver both vibes and ROI.</p>
-            </div>
+        <div class="door">
+          <span class="label">Brands</span>
+          <h3>Businesses selling things nobody thinks about until they need them.</h3>
+          <p>Air purification, HVAC, countertops, a $6.4M launch, and a nonprofit or two. Nobody follows these accounts for fun, so every post and every ad dollar has to earn its attention.</p>
+          <button class="go" type="button" data-go="brands">See the brand work</button>
         </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Experience section moved to about.html -->
-
-<!-- CASE STUDIES -->
-<section class="case-studies" id="work">
-    <div class="container">
-        <div class="section-header">
-            <p class="section-label">From Idea to Impact</p>
-            <h2 class="section-title">The Receipts</h2>
-            <p class="section-subtitle">Here are a few examples of strategy, content, and campaigns that delivered measurable results.</p>
-        </div>
-        <div class="cases-grid">
-
-            <!-- Card 1: HVAC.com — data-driven, KPI blocks -->
-            <div class="case-card fade-up">
-                <div class="case-content">
-                    <div class="case-card-header">
-                        <p class="case-type">SaaS / Home Services</p>
-                        <h3 class="case-company">HVAC.com</h3>
-                        <p class="case-title">Turning social into a revenue-driving channel.</p>
-                    </div>
-                    <p class="case-desc">As the brand scaled nationally, social evolved from a content program into a measurable growth channel supporting awareness, lead generation, and sales.</p>
-                    <div class="case-kpi-grid">
-                        <div class="case-kpi-block">
-                            <div class="case-kpi-number">~50x</div>
-                            <div class="case-kpi-label">Return on Investment</div>
-                        </div>
-                        <div class="case-kpi-block">
-                            <div class="case-kpi-number">$71</div>
-                            <div class="case-kpi-label">Cost Per Lead</div>
-                        </div>
-                        <div class="case-kpi-block">
-                            <div class="case-kpi-number">231K+</div>
-                            <div class="case-kpi-label">Total Engagements</div>
-                        </div>
-                        <div class="case-kpi-block">
-                            <div class="case-kpi-number">~6%</div>
-                            <div class="case-kpi-label">Of Total Company Sales</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2: James Wedmore — editorial, numbered list -->
-            <div class="case-card fade-up">
-                <div class="case-content">
-                    <div class="case-card-header">
-                        <p class="case-type">Personal Brand / Digital Products</p>
-                        <h3 class="case-company">James Wedmore, Business by Design</h3>
-                        <p class="case-title">Building momentum before launch day.</p>
-                    </div>
-                    <p class="case-desc">Content, community, and storytelling worked together to build anticipation, drive participation, and support a multimillion-dollar launch.</p>
-                    <div class="case-launch-results">
-                        <p class="case-launch-label">Launch Results</p>
-                        <ol class="case-launch-list">
-                            <li>$6.4M launch revenue</li>
-                            <li>4 viral videos in 30 days</li>
-                            <li>50+ creative assets produced</li>
-                            <li>3%+ engagement rate</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3: Carolina Farm Trust — warm, impact table -->
-            <div class="case-card case-card-warm fade-up">
-                <div class="case-content">
-                    <div class="case-card-header">
-                        <p class="case-type">Nonprofit / Agriculture</p>
-                        <h3 class="case-company">Carolina Farm Trust</h3>
-                        <p class="case-title">Growing support for a mission that mattered.</p>
-                    </div>
-                    <p class="case-desc">Strategic content, community engagement, and event promotion helped turn awareness into participation, volunteer support, and long-term momentum.</p>
-                    <div class="case-impact">
-                        <p class="case-impact-label">Community Impact</p>
-                        <div class="case-impact-rows">
-                            <div class="case-impact-row">
-                                <span class="case-impact-metric">$15K+</span>
-                                <span class="case-impact-desc">in grants secured</span>
-                            </div>
-                            <div class="case-impact-row">
-                                <span class="case-impact-metric">+30%</span>
-                                <span class="case-impact-desc">increase in website traffic</span>
-                            </div>
-                            <div class="case-impact-row">
-                                <span class="case-impact-metric">+20%</span>
-                                <span class="case-impact-desc">increase in volunteer sign-ups</span>
-                            </div>
-                            <div class="case-impact-row">
-                                <span class="case-impact-metric">8.6%</span>
-                                <span class="case-impact-desc">engagement lift</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div style="text-align:center;margin-top:2.5rem;">
-            <a href="case-studies.html" style="display:inline-block;padding:0.875rem 2.25rem;background:var(--coral);color:white;text-decoration:none;border-radius:100px;font-weight:600;font-size:0.95rem;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(15,118,110,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">View All Case Studies →</a>
-        </div>
+  <section class="rule">
+    <div class="wrap split">
+      <h2 class="cond h2">Humans first. <span class="p">Algorithms second.</span></h2>
+      <div class="reading">
+        <p>Nobody follows an air purification company for fun, and nobody shares a school board candidate's bio. People share what makes them feel something, and they act when they trust whoever's asking.</p>
+        <p>So I start with the person on the other side of the screen: what they're worried about, what they'd forward to a friend, what would make them stop scrolling. Then I let the numbers check my work.</p>
+        <p>Sometimes that means a 33K-view video about South Carolina politics. Sometimes it means finding out that behind-the-scenes install footage beats every "book a free consult" post by a mile.</p>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-    <div class="container">
-        <div class="section-header">
-            <p class="section-label">What I Do</p>
-            <h2 class="section-title">How I Help Brands Grow</h2>
-            <p class="section-subtitle">Whether you need strategy, creative, or someone who can translate "we should post more" into an actual plan.</p>
+  <section class="quotes-sec">
+    <div class="wrap rot">
+      <div class="rot-side">
+        <span class="label">What people say</span>
+        <h2 class="cond h2">Don't take my word for it.</h2>
+        <div class="rot-ctl">
+          <button type="button" id="rq-prev" aria-label="Previous testimonial">←</button>
+          <span class="rot-n" id="rq-n" aria-live="polite">1 / 8</span>
+          <button type="button" id="rq-next" aria-label="Next testimonial">→</button>
         </div>
-        <div class="services-grid">
-            <div class="service-card fade-up">
-                <div class="service-icon si-pink">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                </div>
-                <h3>Social Media Strategy</h3>
-                <p>Platform strategy built around business goals, not follower counts. Brand voice, content cadence, and the systems to actually execute them.</p>
-            </div>
-            <div class="service-card fade-up">
-                <div class="service-icon si-purple">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-                </div>
-                <h3>Content Creation & Video Strategy</h3>
-                <p>Short-form video, graphics, and editorial planning that stops the scroll and drives action. Platform-native content tied to real business outcomes.</p>
-            </div>
-            <div class="service-card fade-up">
-                <div class="service-icon si-lime">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
-                </div>
-                <h3>Paid Social & Meta Strategy</h3>
-                <p>End-to-end paid social — audience targeting, creative direction, testing, and optimization. Every decision backed by data. Every dollar earns its place.</p>
-            </div>
-            <div class="service-card fade-up">
-                <div class="service-icon si-pink">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                </div>
-                <h3>Fractional Strategy & Consulting</h3>
-                <p>Senior-level marketing leadership without the full-time hire. I help founders and teams sharpen positioning, align creative with performance, and grow revenue.</p>
-            </div>
-        </div>
-        <p class="services-footer">Not sure which bucket you fit into? Most clients need a blend. <a href="#contact">Let's talk.</a></p>
+      </div>
+      <div class="rot-stage" id="rq-stage">
+        <blockquote class="rq" id="rq-0">
+          <p>If I could rewind the clock, I would have hired you six months ago, but these last 30 days are certainly the most critical and I really feel good about this plan.</p>
+          <footer><b>Ann Shippy</b><span>Candidate, SC House District 123</span></footer>
+        </blockquote>
+        <blockquote class="rq" hidden id="rq-1">
+          <p>Nikki has a rare ability to make even complex products relatable while staying grounded in data. She built campaigns that didn't just look good. They performed. She consistently connected creative storytelling to real business outcomes.</p>
+          <footer><b>Kevin</b><span>Senior Product Manager, HVAC.com (Trane Technologies)</span></footer>
+        </blockquote>
+        <blockquote class="rq" hidden id="rq-2">
+          <p>Nikki blends creative intuition with analytical precision. She understands how social strategy connects to the full funnel and consistently turns ad budgets into measurable results.</p>
+          <footer><b>Jonathan</b><span>Head of Growth, Thel Strategy</span></footer>
+        </blockquote>
+        <blockquote class="rq" hidden id="rq-3">
+          <p>I've been recommending Nikki to other businesses because her content is sharp and instantly elevates how professional our social media looks.</p>
+          <footer><b>Garrett</b><span>CEO, StoneSmith Countertops</span></footer>
+        </blockquote>
+        <blockquote class="rq" hidden id="rq-4">
+          <p>Great marketing communication! Love it!</p>
+          <footer><b>Dr. Char Fitzwater</b><span>Candidate, Charleston County School Board</span></footer>
+        </blockquote>
+        <blockquote class="rq" hidden id="rq-5">
+          <p>Nikki consistently drove results across both paid and organic social while staying organized, creative, and proactive. Even with limited resources, she found fresh ways to connect with audiences and move the business forward.</p>
+          <footer><b>Shelby</b><span>Senior Marketing Manager, Oxbox</span></footer>
+        </blockquote>
+        <blockquote class="rq" hidden id="rq-6">
+          <p>Nikki can take an undefined space and turn it into something cohesive, engaging, and scalable. She combines strong creative instincts with real audience insight, and she brings an energy that makes collaboration genuinely enjoyable.</p>
+          <footer><b>Lee</b><span>Head Creative Strategist, SAUHS Studios</span></footer>
+        </blockquote>
+        <blockquote class="rq" hidden id="rq-7">
+          <p>Love the work you've been doing for us!</p>
+          <footer><b>Darlene</b><span>Maple Air</span></footer>
+        </blockquote>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonial">
-    <div class="container">
-        <div class="section-header" style="text-align: center;">
-            <p class="section-label">What People Say</p>
-            <h2 class="section-title">Client Testimonials</h2>
-        </div>
-        <div class="testimonial-slider">
-            <div class="testimonial-track">
-                <div class="testimonial-slides" id="testimonial-slides">
-                    <div class="testimonial-slide">
-                        <div class="quote-mark">"</div>
-                        <blockquote>I've been recommending Nikki to other businesses because her content is sharp and instantly elevates how professional our social media looks.</blockquote>
-                        <p class="testimonial-author">Garrett, CEO, StoneSmith Countertops</p>
-                    </div>
-                    <div class="testimonial-slide">
-                        <div class="quote-mark">"</div>
-                        <blockquote>Nikki has a rare ability to make even complex products relatable while staying grounded in data. She built campaigns that didn't just look good. They performed. She consistently connected creative storytelling to real business outcomes.</blockquote>
-                        <p class="testimonial-author">Kevin, Senior Product Manager, HVAC.com (Trane Technologies)</p>
-                    </div>
-                    <div class="testimonial-slide">
-                        <div class="quote-mark">"</div>
-                        <blockquote>Nikki can take an undefined space and turn it into something cohesive, engaging, and scalable. She combines strong creative instincts with real audience insight, and she brings an energy that makes collaboration genuinely enjoyable.</blockquote>
-                        <p class="testimonial-author">Lee, Head Creative Strategist, SAUHS STUDIOS</p>
-                    </div>
-                    <div class="testimonial-slide">
-                        <div class="quote-mark">"</div>
-                        <blockquote>Nikki consistently drove results across both paid and organic social while staying organized, creative, and proactive. Even with limited resources, she found fresh ways to connect with audiences and move the business forward.</blockquote>
-                        <p class="testimonial-author">Shelby, Senior Marketing Manager, Oxbox</p>
-                    </div>
-                    <div class="testimonial-slide">
-                        <div class="quote-mark">"</div>
-                        <blockquote>Nikki blends creative intuition with analytical precision. She understands how social strategy connects to the full funnel and consistently turns ad budgets into measurable results.</blockquote>
-                        <p class="testimonial-author">Jonathan, Head of Growth, Thel Strategy</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-nav">
-                <button class="testimonial-dot active" data-slide="0"></button>
-                <button class="testimonial-dot" data-slide="1"></button>
-                <button class="testimonial-dot" data-slide="2"></button>
-                <button class="testimonial-dot" data-slide="3"></button>
-                <button class="testimonial-dot" data-slide="4"></button>
-            </div>
-        </div>
+  <section>
+    <div class="wrap split">
+      <div>
+        <span class="label">About</span>
+        <h2 class="cond h2" style="margin-top:1rem">Doing this since before it was a job title.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <p class="serif" style="font-size:1.2rem;line-height:1.55">I started in digital at AOL in 2006. Since then I've built an online community over eight years, run content for a $6.4M launch, made social a revenue channel for a national HVAC brand, and built marketing from scratch for a startup that keeps adding to what it sells.</p>
+        <ul class="cv" aria-label="Career">
+          <li><b>AOL</b><span>2006–2011</span></li>
+          <li><b>BODi</b><span>2013–2021</span></li>
+          <li><b>Carolina Farm Trust</b><span>2021–2022</span></li>
+          <li><b>James Wedmore</b><span>2022–2023</span></li>
+          <li><b>HVAC.com</b><span>2023–2025</span></li>
+          <li><b>Consulting</b><span>2025–now</span></li>
+        </ul>
+        <button class="go" type="button" data-go="about" style="margin-top:.5rem">The longer version</button>
+      </div>
     </div>
-</section>
+  </section>
+</div>
 
-<!-- CONTACT -->
+<!-- ======================= CAMPAIGNS ======================= -->
+<div class="view" id="view-campaigns" hidden>
+  <section class="c-hero">
+    <div class="wrap">
+      <div class="copy">
+        <span class="label">Campaigns, causes &amp; creators</span>
+        <h1 class="cond page-h1">South Carolina is my <span class="hl">home turf.</span></h1>
+        <p class="dek">Paid social, content, message strategy and creator partnerships for Democratic candidates and progressive causes. I've run ads for school board and State House races here, and I make political content South Carolinians actually share. With the first presidential primary in the country headed our way, that local knowledge matters.</p>
+        <p class="filter">I don't work for Republicans. It saves us both a phone call.</p>
+      </div>
+      <figure class="print teal">
+        <img src="media/typing.jpg" alt="Nikki at her laptop in a Nevertheless She Persisted t-shirt">
+      </figure>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <span class="label">What I do for campaigns</span>
+      <h2 class="cond h2" style="margin-top:1rem">The message, the content and the money behind it.</h2>
+      <div class="offers">
+        <div class="offer"><h3>Message strategy</h3><p>I set the talking points and the plan: who we're reaching, what they care about, and what we say to get them to act.</p></div>
+        <div class="offer"><h3>Content</h3><p>Short-form video, graphics and copy. I'll edit your footage, and for the right project, I'll film it too.</p></div>
+        <div class="offer"><h3>Paid social</h3><p>Meta ad strategy, voter-file and geographic targeting, budget pacing, creative testing, and a weekly update on what's working.</p></div>
+        <div class="offer creator"><h3>Creator partnerships</h3><p>Paid content and sponsorships on Nikki Next Door, properly disclosed, plus collabs that put your candidate in front of an audience that took years to build.</p></div>
+      </div>
+      <div class="pull">
+        <blockquote>
+          <p>If I could rewind the clock, I would have hired you six months ago. These last 30 days are certainly the most critical and I really feel good about this plan.</p>
+          <footer><b>Ann Shippy</b>, candidate, SC House District 123</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <span class="label">How I build a paid campaign</span>
+      <ol class="method">
+        <li><b>Start with the voter file.</b><p>Known voters get the repetition. Everyone else in the area gets low-cost awareness.</p></li>
+        <li><b>Never pay twice.</b><p>Audiences stay separate, so the budget doesn't buy the same person in two places.</p></li>
+        <li><b>Test creative in rounds.</b><p>Several messages run side by side. Delivery shows which one voters respond to, and the next round builds on it.</p></li>
+        <li><b>Report every week.</b><p>What ran, what it cost, who saw it, and what changes next.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <div class="cycle-head">
+        <h2 class="cond h2">The 2026 cycle</h2>
+        <span class="asof dark">Campaigns in progress · as of October 24, 2026</span>
+      </div>
+
+      <article class="case first">
+        <div class="main">
+          <img class="caselogo" src="media/logo-char.png" alt="Dr. Char Fitzwater, School Board District 1">
+          <div class="meta"><span class="who">Char Fitzwater</span><span>· Charleston County School Board, District 1</span><span class="tag">Pro bono</span></div>
+          <h3>A school board race, run like a pro campaign.</h3>
+          <p class="role">Everything digital: strategy, graphics, video, copy and Meta ads.</p>
+          <p class="txt">Two audiences that never overlap. Known District 1 voters from the voter file saw the ads about nine times each. Everyone else in the target area got low-cost awareness, with the voter list excluded so no one got paid for twice. Creative ran in rounds, and every version was tested in both audiences.</p>
+          <p class="finding"><b>The voter file paid for itself.</b> Known voters were more than eight times as likely to watch 15 seconds or more as the general audience.</p>
+        </div>
+        <dl class="stats">
+          <div><dt>people reached</dt><dd>99,000+</dd></div>
+          <div><dt>of the matched voter list reached, about 9 times each</dt><dd>80%</dd></div>
+          <div><dt>more likely to watch 15+ seconds: known voters vs. everyone else</dt><dd>8×</dd></div>
+          <div><dt>per 3-second video view</dt><dd>4–6¢</dd></div>
+          <div><dt>total campaign budget</dt><dd>$3K</dd></div>
+          <div><dt>creatives across four rounds, each run in both audiences</dt><dd>11</dd></div>
+        </dl>
+        <div class="media">
+          <figure class="sq"><img src="media/char-charcuterie.jpg" alt="Char Fitzwater CHARcuterie event flyer"><figcaption>CHARcuterie, because puns work</figcaption></figure>
+          <figure class="sq"><img src="media/char-scoop.jpg" alt="Get the Scoop on Char event graphic"><figcaption>Get the SCOOP on Char</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="char-approved" data-n="9" aria-label="Open carousel: The students have spoken: former students on Char"><img src="media/car/char-approved/1.jpg" alt="The students have spoken: former students on Char"><span class="slides">9 slides</span></button><figcaption>Former students on Char</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-char-talk.jpg" src="media/v-char-talk.mp4"></video><figcaption>"I got this"</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-char-wave.jpg" src="media/v-char-wave.mp4"></video><figcaption>Sign waving</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-char-vo.jpg" src="media/v-char-vo.mp4"></video><figcaption>Voiceover, community meeting</figcaption></figure>
+          <figure class="sq"><img src="media/char-26days.jpg" alt="26 days to go donation graphic"><figcaption>26 days out</figcaption></figure>
+          <figure class="sq"><img src="media/char-donation.jpg" alt="Small donations add up graphic"><figcaption>Finance deadline push</figcaption></figure>
+          <figure class="sq"><img src="media/vote-today.jpg" alt="Early voting is here graphic"><figcaption>Early voting</figcaption></figure>
+          <figure class="sq"><img src="media/char-citypaper.jpg" alt="Char Fitzwater graphic announcing the Charleston City Paper endorsement"><figcaption>Turning an editorial endorsement into a post</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="main">
+          <div class="meta"><span class="who">Ann Shippy</span><span>· SC House District 123</span><span class="tag">Paid</span></div>
+          <h3>Let voters pick the message.</h3>
+          <p class="role">Meta ads: strategy, graphics, video and copy.</p>
+          <p class="txt">Seven creatives in one ad set: a candidate intro, an endorsement, and issue ads on protecting coastal South Carolina, data centers, school vouchers and gerrymandering. Delivery followed performance, and the coastal message pulled ahead of both the bio and the endorsement. New issue ads went in as the race developed.</p>
+          <p class="finding"><b>The coast beat the bio.</b> The ad about protecting coastal South Carolina earned 63% of delivery. The candidate intro earned 4%.</p>
+        </div>
+        <dl class="stats">
+          <div><dt>people reached</dt><dd>93,800+</dd></div>
+          <div><dt>impressions</dt><dd>267K+</dd></div>
+          <div><dt>cost per 1,000 impressions</dt><dd>$5.57</dd></div>
+          <div><dt>creatives tested</dt><dd>7</dd></div>
+        </dl>
+        <div class="media">
+          <figure class="sq"><img src="media/ann-meet.jpg" alt="Meet Ann Shippy story graphic"><figcaption>Candidate intro</figcaption></figure>
+          <figure class="sq"><img src="media/ann-voucher.jpg" alt="Ann Shippy graphic: Public school advocate or voucher champion?"><figcaption>Contrast ad</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="main">
+          <div class="meta"><span class="who">Katie Miller</span><span>· Charleston County Council</span><span class="tag">Paid</span></div>
+          <h3>Two long videos, four that get watched.</h3>
+          <p class="role">Video editing: long-form cut down for the feed.</p>
+          <p class="txt">I took two of Katie's long-form videos and cut them into four short ones built for Instagram. One became one of her higher-viewed posts. We also made a video together for Nikki Next Door, which put her in front of a new audience and pulled about five times the views.</p>
+        </div>
+        <dl class="stats">
+          <div><dt>short videos cut from 2 long-form</dt><dd>4</dd></div>
+          <div><dt>views on our Nikki Next Door collab, about 5× one of her top posts</dt><dd>2,700</dd></div>
+        </dl>
+        <div class="media">
+          <figure><video controls playsinline preload="none" poster="media/v-ann-elephant.jpg" src="media/v-ann-elephant.mp4"></video><figcaption>"Republican? Hear me out."</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case dark">
+        <div class="main">
+          <div class="meta"><span class="who">Nikki Next Door</span><span>· My own channel</span><span class="tag">Creator</span></div>
+          <h3>470,000 views in 90 days. Most from people who don't follow me.</h3>
+          <p class="role">Writing, on camera, editing and graphics.</p>
+          <p class="txt">South Carolina politics, explained the way a neighbor would. CCSD Cliff Notes turns school board meetings into something people actually watch. Most of my Reel views come from people who don't follow me, which is the point: persuasion doesn't happen inside the choir.</p>
+          <p class="finding"><b>Open for partnerships.</b> Paid content, sponsorships and candidate collabs.</p>
+        </div>
+        <dl class="stats">
+          <div><dt>views in the last 90 days</dt><dd>470K</dd></div>
+          <div><dt>people reached in the last 90 days</dt><dd>103K</dd></div>
+          <div><dt>videos past 20,000 views</dt><dd>8</dd></div>
+          <div><dt>shares on a single video</dt><dd>669</dd></div>
+        </dl>
+        <div class="media">
+          <figure><video controls playsinline preload="none" poster="media/v-nnd-colbert.jpg" src="media/v-nnd-colbert.mp4"></video><figcaption>33K views, 2.8K likes</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-nnd-dominion.jpg" src="media/v-nnd-dominion.mp4"></video><figcaption>Dominion and your power bill</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-nnd-freedom.jpg" src="media/v-nnd-freedom.mp4"></video><figcaption>"Make it make sense"</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-nnd-ccsd.jpg" src="media/v-nnd-ccsd.mp4"></video><figcaption>CCSD Cliff Notes, Part 1</figcaption></figure>
+        </div>
+      </article>
+
+      <p class="ground">When I'm not building ads, I'm knocking doors with East Cooper Democrats.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ======================= BRANDS ======================= -->
+<div class="view" id="view-brands" hidden>
+  <section class="c-hero">
+    <div class="wrap">
+      <div class="copy">
+        <span class="label">Brands</span>
+        <h1 class="cond page-h1">Boring categories are my <span class="hl">favorite.</span></h1>
+        <p class="dek">Air purifiers. HVAC. Countertops. Nobody wakes up excited to shop for them, so the content has to give people a reason to care before they need you. I've done that for a startup, a national home services brand, a $6.4M launch, and a grandma who refuses to act her age.</p>
+        <p class="filter">Organic gets you noticed. Paid gets you found when someone's ready to buy. You need both.</p>
+      </div>
+      <figure class="print gold">
+        <img src="media/hvac-your.jpg" alt="Hot pink HVAC.com graphic: Your HVAC, summer warrior, winter ready">
+      </figure>
+    </div>
+  </section>
+
+  <section class="rule" style="padding-block:2.5rem">
+    <div class="wrap">
+      <span class="label">Brands I've worked with</span>
+      <div class="logos">
+        <img src="media/logo-maple.svg" alt="Maple Air">
+        <img src="media/logo-hvac.png" alt="HVAC.com">
+        <img src="media/logo-wedmore.png" alt="James Wedmore">
+        <img src="media/logo-stonesmith.png" alt="StoneSmith Countertops">
+        <img src="media/logo-nyag.png" alt="Not Your Average Grandma">
+        <img src="media/logo-cft.png" alt="Carolina Farm Trust">
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <article class="case" style="border-top:0;padding-top:0">
+        <div class="main">
+          <div class="meta"><span class="who">Maple Air</span><span>· Air purification startup</span><span class="tag">Since Jan 2026</span></div>
+          <h3>Marketing a product while it's still changing.</h3>
+          <p class="role">Lead marketer: strategy, social, video, graphics and paid.</p>
+          <p class="txt">Maple Air makes plasma air purification. When I started, the focus was a whole-home unit that installs in your ductwork. Since then we've rebranded, added portable purifiers to the lineup (AirCell, the newest, has a waitlist), and shifted most of our attention to them. A lot of the sales happen behind the scenes. So my job is less "run the Instagram" and more "build the marketing while the ground moves."</p>
+          <p class="txt">LinkedIn is the main stage. I write and design the content, built the paid side from scratch across LinkedIn, Meta and ChatGPT ads, and keep everything pointed at one idea: Maple Air is the homeowner's advocate, not another sales pitch.</p>
+          <p class="finding"><b>Early adopter.</b> I set up ChatGPT ads for a real client, which most marketers haven't touched yet.</p>
+        </div>
+        <dl class="stats">
+          <div><dt>ad platforms built from scratch: LinkedIn, Meta, ChatGPT</dt><dd>3</dd></div>
+          <div><dt>click-through rate on LinkedIn lead gen, above LinkedIn's typical range (as of Oct 2026)</dt><dd>1.18%</dd></div>
+          <div><dt>LinkedIn followers this year</dt><dd>2×</dd></div>
+          <div><dt>channels in the Homeowner Advocacy Campaign: Google Ads, social, blog and radio</dt><dd>4</dd></div>
+        </dl>
+        <div class="media">
+          <figure><video controls playsinline preload="none" poster="media/v-ma-new.jpg" src="media/v-ma-new.mp4"></video><figcaption>Unboxing, on camera</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="ma-casestudy" data-n="4" aria-label="Open carousel: This is what we found inside a real home in Lake Norman, NC"><img src="media/car/ma-casestudy/1.jpg" alt="This is what we found inside a real home in Lake Norman, NC"><span class="slides">4 slides</span></button><figcaption>Real home, real petri dishes</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="ma-results" data-n="4" aria-label="Open carousel: Real-world testing results series"><img src="media/car/ma-results/1.jpg" alt="Real-world testing results series"><span class="slides">4 slides</span></button><figcaption>Real-world results series</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="ma-pets" data-n="8" aria-label="Open carousel: Pet owners, we have some bad news"><img src="media/car/ma-pets/1.jpg" alt="Pet owners, we have some bad news"><span class="slides">8 slides</span></button><figcaption>Pet owners, we have bad news</figcaption></figure>
+          <figure class="sq"><img src="media/ma-aircell.jpg" alt="Introducing Maple AirCell"><figcaption>AirCell waitlist launch</figcaption></figure>
+          <figure class="sq"><img src="media/ma-smells.jpg" alt="Maple Air ad: Your facility smells"><figcaption>Commercial · post-rebrand</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="ma-floating" data-n="8" aria-label="Open carousel: What's actually floating around your house?"><img src="media/car/ma-floating/1.jpg" alt="What's actually floating around your house?"><span class="slides">8 slides</span></button><figcaption>What's floating in your house?</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="ma-beforeafter" data-n="3" aria-label="Open carousel: Restaurant and gym before and after petri dishes"><img src="media/car/ma-beforeafter/1.jpg" alt="Restaurant and gym before and after petri dishes"><span class="slides">3 slides</span></button><figcaption>Before and after testing</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-ma-plasma.jpg" src="media/v-ma-plasma.mp4"></video><figcaption>How plasma works</figcaption></figure>
+          <figure class="sq"><img src="media/ma-250k.jpg" alt="Maple Air graphic: 250,000+ cubic feet"><figcaption>Portable launch</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="ma-winter" data-n="7" aria-label="Open carousel: 5 reasons your house helps illness spread in winter"><img src="media/car/ma-winter/1.jpg" alt="5 reasons your house helps illness spread in winter"><span class="slides">7 slides</span></button><figcaption>Carousel · pre-rebrand</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="ma-mold" data-n="7" aria-label="Open carousel: Mold in military housing"><img src="media/car/ma-mold/1.jpg" alt="Mold in military housing"><span class="slides">7 slides</span></button><figcaption>Carousel · pre-rebrand</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="main">
+          <div class="meta"><span class="who">HVAC.com</span><span>· Trane Technologies</span><span class="tag">2023–2025</span></div>
+          <h3>No one cares about their HVAC until it breaks.</h3>
+          <p class="role">Senior Social Media &amp; Content Strategist: organic, paid, and on camera.</p>
+          <p class="txt">Usually in July. Homeowners care a lot about their house and almost nothing about the equipment inside it. So we stopped selling equipment and started talking about what it actually gets you: a cool house, clean air, and not sweating through dinner.</p>
+          <p class="txt">I built the social voice and the paid program from the ground up. Seasonal content timed to real homeowner panic moments. Memes, because people share memes and nobody shares a spec sheet. And a Meta setup that tested hooks constantly and retargeted the people who'd already raised a hand. I was also the face of the account, filming dozens of on-camera explainers.</p>
+          <p class="finding"><b>Social became a sales channel.</b> About 6% of total company sales were influenced by social.</p>
+        </div>
+        <dl class="stats">
+          <div><dt>return on social spend</dt><dd>~50×</dd></div>
+          <div><dt>qualified leads</dt><dd>423</dd></div>
+          <div><dt>cost per lead</dt><dd>$71</dd></div>
+          <div><dt>click-through rate on $58K in managed spend</dt><dd>2.97%</dd></div>
+        </dl>
+        <div class="media">
+          <figure><video controls playsinline preload="none" poster="media/v-hvac-blue.jpg" src="media/v-hvac-blue.mp4"></video><figcaption>Is your AC ready for summer?</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-hvac-face.jpg" src="media/v-hvac-face.mp4"></video><figcaption>Going on vacation?</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-ma-sock.jpg" src="media/v-ma-sock.mp4"></video><figcaption>Stinky sock syndrome</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="hvac-expert" data-n="10" aria-label="Open carousel: Ask the Expert: Can I install an air conditioner myself?"><img src="media/car/hvac-expert/1.jpg" alt="Ask the Expert: Can I install an air conditioner myself?"><span class="slides">10 slides</span></button><figcaption>Ask the Expert series</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="hvac-value" data-n="7" aria-label="Open carousel: How a smarter HVAC could increase your home's value"><img src="media/car/hvac-value/1.jpg" alt="How a smarter HVAC could increase your home's value"><span class="slides">7 slides</span></button><figcaption>Home value explainer</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-hvac-walking.jpg" src="media/v-hvac-walking.mp4"></video><figcaption>When your HVAC dies in a heat wave</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-hvac-kelsey.jpg" src="media/v-hvac-kelsey.mp4"></video><figcaption>When QuoteScore saves you money</figcaption></figure>
+          <figure class="sq"><img src="media/meme-kendrick.jpg" alt="HVAC.com meme: Hey you, I heard you need a new HVAC"><figcaption>Meme</figcaption></figure>
+          <figure class="sq"><img src="media/meme-taylor.jpg" alt="HVAC.com meme with Taylor Swift"><figcaption>Meme</figcaption></figure>
+          <figure class="sq"><img src="media/hvac-reddit.jpg" alt="Reddit-style post praising HVAC.com, designed in Canva"><figcaption>Reddit-style social proof, designed in Canva</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="main">
+          <div class="meta"><span class="who">James Wedmore</span><span>· Business by Design</span><span class="tag">2022–2023</span></div>
+          <h3>The audience was there. They were just scrolling past.</h3>
+          <p class="role">Creative Content Director: Instagram, YouTube Shorts and launch coverage.</p>
+          <p class="txt">James had 111K Instagram followers and an account that was coasting. Ahead of a big launch, we swapped lectures for personality: Harry Potter jokes, first-three-second hooks, and 50+ assets a week without losing his voice.</p>
+          <p class="txt">I repurposed the best of it to YouTube Shorts to reach people who'd never find him on Instagram, then ran live coverage all through launch week, because live energy sells.</p>
+          <p class="finding"><b>The launch did $6.4M.</b> Four videos went viral in a single 30-day stretch.</p>
+        </div>
+        <dl class="stats">
+          <div><dt>launch revenue</dt><dd>$6.4M</dd></div>
+          <div><dt>Reels over 10,000 views</dt><dd>17</dd></div>
+          <div><dt>Instagram followers, from 111K</dt><dd>125K</dd></div>
+          <div><dt>assets produced every week</dt><dd>50+</dd></div>
+        </dl>
+        <div class="media">
+          <figure><video controls playsinline preload="none" poster="media/v-wed-hermione.jpg" src="media/v-wed-hermione.mp4"></video><figcaption>"Nitch."</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-wed-wee.jpg" src="media/v-wed-wee.mp4"></video><figcaption>What you thought your launch would look like</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-wed-launch.jpg" src="media/v-wed-launch.mp4"></video><figcaption>What you think your messaging looks like</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-wed-thought.jpg" src="media/v-wed-thought.mp4"></video><figcaption>Thought of the Day</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="wed-goals" data-n="5" aria-label="Open carousel: How to get your goals in 3 steps"><img src="media/car/wed-goals/1.jpg" alt="How to get your goals in 3 steps"><span class="slides">5 slides</span></button><figcaption>Goals carousel</figcaption></figure>
+          <figure class="sq"><img src="media/wed-testimonial.jpg" alt="Business by Design student testimonial graphic"><figcaption>Testimonial graphic</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="main">
+          <div class="meta"><span class="who">StoneSmith Countertops</span><span>· Local business</span><span class="tag">Head of social</span></div>
+          <h3>Install day beat every ad.</h3>
+          <p class="role">Head of social: built it from zero.</p>
+          <p class="txt">StoneSmith didn't need better social. They needed social. I built the whole thing: the look, the voice, the templates, the content plan.</p>
+          <p class="txt">The lesson came fast. Behind-the-scenes install footage pulled 16,000 views with zero ad spend. The "book a free consult" posts? About 500. People don't want a countertop ad. They want to watch a countertop happen.</p>
+          <p class="finding"><b>Reach is coming from new people.</b> 89% of views in the last 90 days came from accounts that don't follow StoneSmith.</p>
+        </div>
+        <dl class="stats">
+          <div><dt>organic views on one install video, no ad spend</dt><dd>16K</dd></div>
+          <div><dt>more views on install footage than sales posts</dt><dd>~30×</dd></div>
+          <div><dt>views in the last 90 days vs. the 90 before</dt><dd>+395%</dd></div>
+          <div><dt>of views from non-followers</dt><dd>89%</dd></div>
+        </dl>
+        <div class="media">
+          <figure class="sq"><img src="media/ss-tetris.jpg" alt="StoneSmith Countertop Tetris graphic"><figcaption>Countertop Tetris</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="ss-hotel" data-n="7" aria-label="Open carousel: Ever notice hotel bathrooms feel better than yours?"><img src="media/car/ss-hotel/1.jpg" alt="Ever notice hotel bathrooms feel better than yours?"><span class="slides">7 slides</span></button><figcaption>Hotel bathrooms</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="ss-quartz" data-n="4" aria-label="Open carousel: Quartz or quartzite?"><img src="media/car/ss-quartz/1.jpg" alt="Quartz or quartzite?"><span class="slides">4 slides</span></button><figcaption>Quartz or quartzite?</figcaption></figure>
+          <figure class="sq"><button type="button" class="carbtn" data-car="ss-kitchen-car" data-n="8" aria-label="Open carousel: There's no such thing as a timeless kitchen"><img src="media/car/ss-kitchen-car/1.jpg" alt="There's no such thing as a timeless kitchen"><span class="slides">8 slides</span></button><figcaption>The timeless kitchen myth</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-ss-inspo.jpg" src="media/v-ss-inspo.mp4"></video><figcaption>Kitchen inspo</figcaption></figure>
+          <figure class="sq"><img src="media/ss-kitchen.jpg" alt="StoneSmith post: pick your kitchen, A B C or D"><figcaption>Engagement post</figcaption></figure>
+          <figure class="sq"><img src="media/ss-testimonial.jpg" alt="StoneSmith Google review graphic"><figcaption>Review graphic</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="main">
+          <div class="meta"><span class="who">Not Your Average Grandma</span><span>· Personal brand</span><span class="tag">Brand rebuild</span></div>
+          <h3>Great voice. Messy grid.</h3>
+          <p class="role">Brand rebuild, visual system and short-form video.</p>
+          <p class="txt">She had the message nailed for women in midlife. The visuals were all over the place: random colors, mixed fonts, no posting rhythm. I audited everything, picked three or four content pillars, built a real visual system, and turned her podcast into a repeatable Reels format: hook, insight, takeaway. Then we tested hooks until we found the ones that stopped the scroll.</p>
+          <p class="finding"><b>We didn't make more content.</b> We made the good stuff easier to find.</p>
+          <div class="ba">
+            <figure><img src="media/nyag-before.jpg" alt="Instagram grid before the rebrand"><figcaption>Before</figcaption></figure>
+            <figure><img src="media/nyag-after.jpg" alt="Instagram grid after the rebrand"><figcaption>After</figcaption></figure>
+          </div>
+        </div>
+        <dl class="stats">
+          <div><dt>more accounts reached in 30 days, to 28.8K</dt><dd>+103%</dd></div>
+          <div><dt>more accounts engaged in the same 30 days</dt><dd>+67%</dd></div>
+        </dl>
+        <div class="media">
+          <figure><video controls playsinline preload="none" poster="media/v-nyag-taylor.jpg" src="media/v-nyag-taylor.mp4"></video><figcaption>Too old to start something new?</figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="media/v-nyag-david.jpg" src="media/v-nyag-david.mp4"></video><figcaption>Don't spoil the kids too much</figcaption></figure>
+          <figure class="sq"><img src="media/nyag-anatomy.jpg" alt="Not Your Average Grandma graphic: Anatomy of a scared settler"><figcaption>Graphic</figcaption></figure>
+          <figure class="sq"><img src="media/meme-kardashian.jpg" alt="Meme: Hey! Life isn't over at 50"><figcaption>Meme</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="main">
+          <div class="meta"><span class="who">Carolina Farm Trust</span><span>· Nonprofit</span><span class="tag">2021–2022</span></div>
+          <h3>Lots of heart. Needed one story.</h3>
+          <p class="role">Senior Marketing &amp; Communications Manager.</p>
+          <p class="txt">Every channel was telling a slightly different version of what Carolina Farm Trust does. I pulled it into one story (local farms, food access, a more connected community) and ran it through everything: social, email, the website, a brand-new TikTok, and the grant proposals. I also launched a new ticketing platform with Meta ads behind it.</p>
+          <p class="finding"><b>The money followed the story.</b> I wrote and designed the grant proposals that brought in $15K+.</p>
+        </div>
+        <dl class="stats">
+          <div><dt>in new grants</dt><dd>$15K+</dd></div>
+          <div><dt>website traffic</dt><dd>+30%</dd></div>
+          <div><dt>volunteer sign-ups</dt><dd>+20%</dd></div>
+          <div><dt>fundraiser profit, year over year</dt><dd>+5%</dd></div>
+        </dl>
+        <div class="media">
+          <figure class="sq"><img src="media/cft-flyer.jpg" alt="Carolina Farm Trust event flyer: A Night at the Museum"><figcaption>Fundraiser event flyer</figcaption></figure>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<!-- ======================= WORK ======================= -->
+<div class="view" id="view-work" hidden>
+  <section>
+    <div class="wrap">
+      <span class="label">The work</span>
+      <h1 class="cond page-h1" style="margin-top:1rem">Hooks, memes, carousels <span class="hl">&amp; receipts.</span></h1>
+      <p class="dek" style="margin-top:1.25rem">A sampler from campaigns, brands and my own channel. Tap any video to play it.</p>
+      <div class="chips" role="group" aria-label="Filter the work">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="video" aria-pressed="false">Video</button>
+        <button type="button" data-f="carousel" aria-pressed="false">Carousels</button>
+        <button type="button" data-f="meme" aria-pressed="false">Memes</button>
+        <button type="button" data-f="graphic" aria-pressed="false">Graphics</button>
+        <button type="button" data-f="political" aria-pressed="false">Political</button>
+      </div>
+      <div class="gallery" id="gallery">
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-hvac-blue.jpg" src="media/v-hvac-blue.mp4"></video><figcaption><b>HVAC.com</b>On camera: Is your AC ready?</figcaption></figure>
+        <figure class="tile" data-k="carousel political"><button type="button" class="carbtn" data-car="char-approved" data-n="9" aria-label="Open carousel: The students have spoken"><img src="media/car/char-approved/1.jpg" alt="The students have spoken"><span class="slides">9 slides</span></button><figcaption><b>Char Fitzwater</b>The students have spoken</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-casestudy" data-n="4" aria-label="Open carousel: Lake Norman home test results"><img src="media/car/ma-casestudy/1.jpg" alt="Lake Norman home test results"><span class="slides">4 slides</span></button><figcaption><b>Maple Air</b>Real home, real petri dishes</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/ss-tetris.jpg" alt="Countertop Tetris"><figcaption><b>StoneSmith</b>Countertop Tetris</figcaption></figure>
+        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-nnd-freedom.jpg" src="media/v-nnd-freedom.mp4"></video><figcaption><b>Nikki Next Door</b>Make it make sense</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="hvac-expert" data-n="10" aria-label="Open carousel: Ask the Expert"><img src="media/car/hvac-expert/1.jpg" alt="Ask the Expert"><span class="slides">10 slides</span></button><figcaption><b>HVAC.com</b>Ask the Expert</figcaption></figure>
+        <figure class="tile" data-k="graphic political"><img src="media/char-charcuterie.jpg" alt="CHARcuterie flyer"><figcaption><b>Char Fitzwater</b>CHARcuterie</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-pets" data-n="8" aria-label="Open carousel: Pet owners, we have bad news"><img src="media/car/ma-pets/1.jpg" alt="Pet owners, we have bad news"><span class="slides">8 slides</span></button><figcaption><b>Maple Air</b>Pet owners, bad news</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-ma-sock.jpg" src="media/v-ma-sock.mp4"></video><figcaption><b>HVAC.com</b>Stinky sock syndrome</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-hotel" data-n="7" aria-label="Open carousel: Hotel bathrooms"><img src="media/car/ss-hotel/1.jpg" alt="Hotel bathrooms"><span class="slides">7 slides</span></button><figcaption><b>StoneSmith</b>Hotel bathrooms</figcaption></figure>
+        <figure class="tile" data-k="graphic political"><img src="media/char-scoop.jpg" alt="Get the Scoop on Char"><figcaption><b>Char Fitzwater</b>Get the SCOOP</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-results" data-n="4" aria-label="Open carousel: Real-world results"><img src="media/car/ma-results/1.jpg" alt="Real-world results"><span class="slides">4 slides</span></button><figcaption><b>Maple Air</b>Real-world results</figcaption></figure>
+        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-char-talk.jpg" src="media/v-char-talk.mp4"></video><figcaption><b>Char Fitzwater</b>"I got this"</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-quartz" data-n="4" aria-label="Open carousel: Quartz or quartzite"><img src="media/car/ss-quartz/1.jpg" alt="Quartz or quartzite"><span class="slides">4 slides</span></button><figcaption><b>StoneSmith</b>Quartz or quartzite?</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-hvac-face.jpg" src="media/v-hvac-face.mp4"></video><figcaption><b>HVAC.com</b>On camera: Going on vacation?</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-floating" data-n="8" aria-label="Open carousel: What's floating in your house"><img src="media/car/ma-floating/1.jpg" alt="What's floating in your house"><span class="slides">8 slides</span></button><figcaption><b>Maple Air</b>What's floating in your house?</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/ma-aircell.jpg" alt="Introducing Maple AirCell"><figcaption><b>Maple Air</b>AirCell launch</figcaption></figure>
+        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-nnd-dominion.jpg" src="media/v-nnd-dominion.mp4"></video><figcaption><b>Nikki Next Door</b>Dominion and your bill</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="hvac-value" data-n="7" aria-label="Open carousel: Smarter HVAC and home value"><img src="media/car/hvac-value/1.jpg" alt="Smarter HVAC and home value"><span class="slides">7 slides</span></button><figcaption><b>HVAC.com</b>Home value</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-kitchen-car" data-n="8" aria-label="Open carousel: Timeless kitchen myth"><img src="media/car/ss-kitchen-car/1.jpg" alt="Timeless kitchen myth"><span class="slides">8 slides</span></button><figcaption><b>StoneSmith</b>The timeless kitchen myth</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-winter" data-n="7" aria-label="Open carousel: Why winter makes houses sick"><img src="media/car/ma-winter/1.jpg" alt="Why winter makes houses sick"><span class="slides">7 slides</span></button><figcaption><b>Maple Air</b>Why winter makes houses sick</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="wed-goals" data-n="5" aria-label="Open carousel: Goals in 3 steps"><img src="media/car/wed-goals/1.jpg" alt="Goals in 3 steps"><span class="slides">5 slides</span></button><figcaption><b>Wedmore</b>Goals in 3 steps</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-mold" data-n="7" aria-label="Open carousel: Mold in military housing"><img src="media/car/ma-mold/1.jpg" alt="Mold in military housing"><span class="slides">7 slides</span></button><figcaption><b>Maple Air</b>Mold in military housing</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-gym" data-n="9" aria-label="Open carousel: January gyms are packed"><img src="media/car/ma-gym/1.jpg" alt="January gyms are packed"><span class="slides">9 slides</span></button><figcaption><b>Maple Air</b>January gyms are packed</figcaption></figure>
+        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-char-wave.jpg" src="media/v-char-wave.mp4"></video><figcaption><b>Char Fitzwater</b>Sign waving</figcaption></figure>
+        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-nnd-colbert.jpg" src="media/v-nnd-colbert.mp4"></video><figcaption><b>Nikki Next Door</b>33K views</figcaption></figure>
+        <figure class="tile" data-k="graphic political"><img src="media/char-citypaper.jpg" alt="Char Fitzwater City Paper endorsement graphic"><figcaption><b>Char Fitzwater</b>Endorsed</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/ma-smells.jpg" alt="Maple Air ad: Your facility smells"><figcaption><b>Maple Air</b>Your facility smells</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-ma-new.jpg" src="media/v-ma-new.mp4"></video><figcaption><b>Maple Air</b>Unboxing</figcaption></figure>
+        <figure class="tile" data-k="graphic political"><img src="media/ann-voucher.jpg" alt="Ann Shippy contrast ad on school vouchers"><figcaption><b>Ann Shippy</b>That's not accountability</figcaption></figure>
+        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-ann-elephant.jpg" src="media/v-ann-elephant.mp4"></video><figcaption><b>Katie Miller</b>Republican? Hear me out.</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/hvac-your.jpg" alt="HVAC.com graphic: Your HVAC"><figcaption><b>HVAC.com</b>Your HVAC, explained</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-wed-hermione.jpg" src="media/v-wed-hermione.mp4"></video><figcaption><b>Wedmore</b>"Nitch."</figcaption></figure>
+        <figure class="tile" data-k="meme"><img src="media/meme-snoop.jpg" alt="HVAC.com meme with Snoop Dogg"><figcaption><b>HVAC.com</b>When you see that replacement quote</figcaption></figure>
+        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-nnd-ccsd.jpg" src="media/v-nnd-ccsd.mp4"></video><figcaption><b>Nikki Next Door</b>CCSD Cliff Notes, Part 1</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-hvac-walking.jpg" src="media/v-hvac-walking.mp4"></video><figcaption><b>HVAC.com</b>Heat wave, Walking Dead edition</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/nyag-alarm.jpg" alt="Not Your Average Grandma graphic: The best time to start is now"><figcaption><b>NYAG</b>The best time to start is now</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-ma-contam.jpg" src="media/v-ma-contam.mp4"></video><figcaption><b>Maple Air</b>The most contaminated room</figcaption></figure>
+        <figure class="tile" data-k="meme"><img src="media/meme-kendrick.jpg" alt="HVAC.com meme: I heard you need a new HVAC"><figcaption><b>HVAC.com</b>Hey you</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-wed-wee.jpg" src="media/v-wed-wee.mp4"></video><figcaption><b>Wedmore</b>Launch expectations</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/wed-graphic.jpg" alt="James Wedmore graphic: I can't do this, but you did"><figcaption><b>Wedmore</b>But you did</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-ss-inspo.jpg" src="media/v-ss-inspo.mp4"></video><figcaption><b>StoneSmith</b>Kitchen inspo</figcaption></figure>
+        <figure class="tile" data-k="meme"><img src="media/meme-kardashian.jpg" alt="Meme: Life isn't over at 50"><figcaption><b>NYAG</b>Life isn't over at 50</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-hvac-kelsey.jpg" src="media/v-hvac-kelsey.mp4"></video><figcaption><b>HVAC.com</b>QuoteScore</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/people-pleaser.jpg" alt="Graphic: 5 ways being a people pleaser impacts your health"><figcaption><b>NYAG</b>People pleasing</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-nyag-taylor.jpg" src="media/v-nyag-taylor.mp4"></video><figcaption><b>NYAG</b>Too old to start?</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/wed-success.jpg" alt="James Wedmore graphic: Success, what people think vs what it looks like"><figcaption><b>Wedmore</b>What success really looks like</figcaption></figure>
+        <figure class="tile" data-k="meme"><img src="media/meme-taylor.jpg" alt="HVAC.com meme with Taylor Swift and Travis Kelce"><figcaption><b>HVAC.com</b>Your HVAC system</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-wed-thought.jpg" src="media/v-wed-thought.mp4"></video><figcaption><b>Wedmore</b>Thought of the Day</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/cft-flyer.jpg" alt="Carolina Farm Trust event flyer"><figcaption><b>Carolina Farm Trust</b>A Night at the Museum</figcaption></figure>
+        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-ma-install.jpg" src="media/v-ma-install.mp4"></video><figcaption><b>Maple Air</b>Install day</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="receipts">
+    <div class="wrap">
+      <span class="label">Receipts</span>
+      <h2 class="cond h2" style="margin-top:1rem">Unprompted, unedited, <span class="p">very much appreciated.</span></h2>
+      <div class="rwall">
+        <figure><img src="media/r-ann-rewind.jpg" alt="Email from Ann Shippy: if I could rewind the clock, I would have hired you six months ago"><figcaption>Ann Shippy · candidate</figcaption></figure>
+        <figure><img src="media/r-char-fantastic.jpg" alt="Email from Char Fitzwater: fantastic all the way around, great marketing communication"><figcaption>Char Fitzwater · candidate</figcaption></figure>
+        <figure><img src="media/r-andrew.jpg" alt="Email from Andrew: Good post today, best one yet. Sending to principal for sure"><figcaption>Maple Air · on a video about germs in schools</figcaption></figure>
+        <figure><img src="media/r-ann-text.jpg" alt="Text from Ann Shippy: I absolutely love it"><figcaption>Ann Shippy · on a video concept</figcaption></figure>
+        <figure><img src="media/r-darlene.jpg" alt="Email from Darlene: love the work you've been doing for us"><figcaption>Maple Air · leadership</figcaption></figure>
+        <figure><img src="media/r-ann-talented.jpg" alt="Email from Ann Shippy: you are so darn talented"><figcaption>Ann Shippy · candidate</figcaption></figure>
+        <figure><img src="media/r-char-amazing.jpg" alt="Email from Char Fitzwater: yet again amazing"><figcaption>Char Fitzwater · candidate</figcaption></figure>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ======================= ABOUT ======================= -->
+<div class="view" id="view-about" hidden>
+  <section class="cover">
+    <div class="wrap">
+      <div class="copy">
+        <span class="label">About</span>
+        <h1 class="cond page-h1">Elder millennial. <span class="w" style="color:#fff">Oregon Trail survivor.</span></h1>
+        <p class="dek">I've been making things for the internet since before "content strategist" was a job. I've survived every algorithm change, every "Facebook is dead" headline, and Vine. I can handle whatever's next.</p>
+      </div>
+      <figure class="print">
+        <img src="media/excited.jpg" alt="Nikki Hill Johnson with arms out, mid-laugh" style="object-position:50% 25%">
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <h2 class="cond h2">The short version.</h2>
+      <div class="reading">
+        <p>I started at AOL in 2006, in broadband marketing and then the music and lifestyle channels, back when we were still figuring out what a homepage was for. Then I spent eight years building an online community of 1,000+ people at BODi. That taught me more about why people show up (and why they stay) than any marketing class could.</p>
+        <p>After that came nonprofit work at Carolina Farm Trust, a $6.4M launch for James Wedmore, and two years making social a real sales channel at HVAC.com. In late 2025 I went independent. Now I split my time between brands that need a senior marketer without hiring one full time, and Democratic campaigns here in South Carolina.</p>
+        <p>I have a sociology degree, which explains a lot. I care more about why people do things than which app they're doing them on.</p>
+        <p>I live in Charleston with my four kids, which explains my comfort with organized chaos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <span class="label">The long version</span>
+      <ol class="timeline">
+        <li><span class="yrs">2025–now</span><div><h3>Nikki Hill Johnson Consulting</h3><span class="ttl">Fractional marketing strategist, social and paid media</span><p>Senior strategy for startups, local businesses and Democratic campaigns, without adding full-time headcount. Current clients include Maple Air and StoneSmith.</p></div></li>
+        <li><span class="yrs">2023–2025</span><div><h3>HVAC.com / Trane Technologies</h3><span class="ttl">Senior Social Media &amp; Content Strategist</span><p>Built the social voice and paid program from scratch. ~50× ROI, 423 qualified leads, $71 cost per lead.</p></div></li>
+        <li><span class="yrs">2022–2023</span><div><h3>Level Five Publishing / James Wedmore</h3><span class="ttl">Creative Content Director</span><p>Instagram, YouTube Shorts and live launch coverage for a $6.4M launch. 17 Reels over 10K views.</p></div></li>
+        <li><span class="yrs">2021–2022</span><div><h3>Carolina Farm Trust</h3><span class="ttl">Senior Marketing &amp; Communications Manager</span><p>One story across every channel. $15K+ in grants, +30% web traffic, +20% volunteers.</p></div></li>
+        <li><span class="yrs">2019–2022</span><div><h3>Independent</h3><span class="ttl">Digital Marketing Strategist</span><p>Social, content and launch strategy for D2C brands, including a 28.5% revenue increase for one client.</p></div></li>
+        <li><span class="yrs">2013–2021</span><div><h3>BODi</h3><span class="ttl">Digital Marketing &amp; Community Growth Strategist</span><p>Built a 1,000+ member online community and a $1M+ business on social. Keynote speaker.</p></div></li>
+        <li><span class="yrs">2006–2011</span><div><h3>AOL</h3><span class="ttl">Broadband Marketing, then AOL Music &amp; Lifestyle channels</span><p>Content, programming and site launches, including StyleList and KitchenDaily.</p></div></li>
+        <li><span class="yrs">Earlier</span><div><h3>Pure Matters · URS Corporation</h3><span class="ttl">Online Community Manager · Marketing &amp; Outreach Coordinator</span><p>Community management across Facebook, Twitter and Pinterest, and outreach for transportation programs.</p></div></li>
+      </ol>
+    </div>
+  </section>
+</div>
+
 <section class="contact" id="contact">
-    <div class="contact-inner fade-up">
-        <p class="section-label">Work Together</p>
-        <h2>Let's talk.</h2>
-        <p>Whether you're hiring, exploring ideas, or looking for a strategic partner, I'd love to hear what you're working on.</p>
-        <a href="mailto:nikki.hill.johnson@gmail.com" class="contact-primary">Start a Conversation</a>
+  <div class="wrap">
+    <span class="label">Let's talk</span>
+    <h2 class="cond">Running for something? Building something? <span class="p">Let's talk.</span></h2>
+    <p>Tell me what you're working on and when it needs to land. I'll tell you honestly whether I can help.</p>
+    <div class="mail">
+      <code id="email">nikki.hill.johnson@gmail.com</code>
+      <button class="copy-btn" type="button" id="copy-email">Copy email</button>
     </div>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/nikkihilljohnson/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://instagram.com/nikkihilljohnson" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-    <div style="display:flex;align-items:center;justify-content:center;gap:1.25rem;margin-bottom:0.75rem;">
-        <a href="https://instagram.com/nikkihilljohnson" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gray-100);color:var(--gray-600);text-decoration:none;transition:background 0.2s,color 0.2s;font-size:1.2rem;" onmouseover="this.style.background='var(--coral)';this.style.color='white'" onmouseout="this.style.background='var(--gray-100)';this.style.color='var(--gray-600)'">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/nikkihilljohnson/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gray-100);color:var(--gray-600);text-decoration:none;transition:background 0.2s,color 0.2s;font-size:1.2rem;" onmouseover="this.style.background='#0077B5';this.style.color='white'" onmouseout="this.style.background='var(--gray-100)';this.style.color='var(--gray-600)'">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        </a>
-    </div>
-    <p>&copy; 2026 Nikki Johnson</p>
-</footer>
+</main>
 
 <script>
-    // Scroll-triggered animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Nav shadow on scroll
-    window.addEventListener('scroll', () => {
-        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    const navToggle = document.getElementById('navToggle');
-    const primaryNav = document.getElementById('primary-nav');
-    if (navToggle && primaryNav) {
-        navToggle.addEventListener('click', () => {
-            const open = primaryNav.classList.toggle('open');
-            navToggle.classList.toggle('open', open);
-            navToggle.setAttribute('aria-expanded', String(open));
-        });
-        primaryNav.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => {
-                primaryNav.classList.remove('open');
-                navToggle.classList.remove('open');
-                navToggle.setAttribute('aria-expanded', 'false');
-            });
-        });
-    }
-
-    // Toggle earlier career section
-    function toggleEarlierCareer(btn) {
-        const cards = document.getElementById('earlierCareer');
-        btn.classList.toggle('open');
-        cards.classList.toggle('show');
-        if (cards.classList.contains('show')) {
-            cards.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-        }
-    }
-
-    // Testimonial slider
-    let currentSlide = 0;
-    const slides = document.getElementById('testimonial-slides');
-    const dots = document.querySelectorAll('.testimonial-dot');
-    const totalSlides = dots.length;
-
-    function goToSlide(n) {
-        currentSlide = n;
-        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentSlide);
-        });
-    }
-
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => goToSlide(i));
-    });
-
-    // Auto-advance testimonials every 6 seconds
-    setInterval(() => {
-        goToSlide((currentSlide + 1) % totalSlides);
-    }, 6000);
-
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
+(function(){
+  document.querySelectorAll("video").forEach(function(v){
+    v.removeAttribute("controls");
+    var w=document.createElement("span");w.className="vwrap";v.parentNode.insertBefore(w,v);w.appendChild(v);
+    var b=document.createElement("button");b.type="button";b.className="play";b.setAttribute("aria-label","Play video");b.innerHTML="<span></span>";w.appendChild(b);
+    b.addEventListener("click",function(){v.controls=true;b.hidden=true;var p=v.play();if(p&&p.catch)p.catch(function(){});});
+  });
+})();
 </script>
+<script>
+(function(){
+  var n=8,k=0,t=null,stage=document.getElementById("rq-stage");
+  function show(i){k=(i+n)%n;for(var j=0;j<n;j++)document.getElementById("rq-"+j).hidden=(j!==k);document.getElementById("rq-n").textContent=(k+1)+" / "+n;}
+  // reserve height of tallest quote so the section doesn't jump
+  function fit(){var h=0;for(var j=0;j<n;j++){var e=document.getElementById("rq-"+j),was=e.hidden;e.hidden=false;e.style.visibility="hidden";h=Math.max(h,e.offsetHeight);e.style.visibility="";e.hidden=was;}stage.style.minHeight=h+"px";}
+  function start(){if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;stop();t=setInterval(function(){show(k+1)},8000);}
+  function stop(){if(t)clearInterval(t);t=null;}
+  document.getElementById("rq-next").onclick=function(){show(k+1);start()};
+  document.getElementById("rq-prev").onclick=function(){show(k-1);start()};
+  stage.addEventListener("mouseenter",stop);stage.addEventListener("mouseleave",start);
+  window.addEventListener("resize",fit);fit();start();
+})();
+</script>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Carousel slides">
+  <div class="lb-track" id="lb-track"></div>
+  <div class="lb-bar"><button type="button" id="lb-prev">Prev</button><span class="lb-count" id="lb-count">1 / 1</span><button type="button" id="lb-next">Next</button><button type="button" class="x" id="lb-close">Close</button></div>
+</div>
+<script>
+(function(){
+  var lb=document.getElementById("lb"),tr=document.getElementById("lb-track"),ct=document.getElementById("lb-count"),n=0,last=null;
+  function idx(){return Math.round(tr.scrollLeft/tr.clientWidth)}
+  function upd(){ct.textContent=(idx()+1)+" / "+n}
+  function go(d){tr.scrollTo({left:(idx()+d)*tr.clientWidth,behavior:"smooth"})}
+  function open(b){last=b;var slug=b.getAttribute("data-car");n=+b.getAttribute("data-n");tr.innerHTML="";
+    for(var i=1;i<=n;i++){var im=document.createElement("img");im.src="media/car/"+slug+"/"+i+".jpg";im.alt="Slide "+i+" of "+n;tr.appendChild(im)}
+    lb.hidden=false;tr.scrollLeft=0;upd();document.getElementById("lb-next").focus()}
+  function close(){lb.hidden=true;tr.innerHTML="";if(last)last.focus()}
+  document.addEventListener("click",function(e){var b=e.target.closest(".carbtn");if(b)open(b)});
+  tr.addEventListener("scroll",upd,{passive:true});
+  document.getElementById("lb-prev").onclick=function(){go(-1)};
+  document.getElementById("lb-next").onclick=function(){go(1)};
+  document.getElementById("lb-close").onclick=close;
+  lb.addEventListener("click",function(e){if(e.target===lb)close()});
+  document.addEventListener("keydown",function(e){if(lb.hidden)return;if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+})();
+</script>
+<footer class="site"><div class="wrap"><span>© 2026 Nikki Hill Johnson · Charleston, SC</span><span>Humans first. Algorithms second.</span></div></footer>
+
+<script>
+(function(){
+  var views=["home","campaigns","brands","work","about"];
+  function show(name,scroll){
+    if(views.indexOf(name)<0) name="home";
+    views.forEach(function(v){
+      document.getElementById("view-"+v).hidden=(v!==name);
+      var b=document.getElementById("nav-"+v);
+      if(v===name) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current");
+    });
+    document.querySelectorAll("video").forEach(function(v){ if(!v.paused) v.pause(); });
+    if(scroll) window.scrollTo(0,0);
+  }
+  document.querySelectorAll("[data-go]").forEach(function(el){
+    el.addEventListener("click",function(){
+      var t=el.getAttribute("data-go");
+      try{history.replaceState(null,"","#"+t);}catch(e){}
+      show(t,true);
+    });
+  });
+  document.querySelectorAll("[data-jump]").forEach(function(el){
+    el.addEventListener("click",function(e){
+      e.preventDefault();
+      document.getElementById(el.getAttribute("data-jump")).scrollIntoView({behavior:"smooth"});
+    });
+  });
+  var h=(location.hash||"").replace("#","");
+  if(h==="contact"){show("home");document.getElementById("contact").scrollIntoView();}
+  else show(h||"home");
+  window.addEventListener("hashchange",function(){var x=(location.hash||"").replace("#","");if(views.indexOf(x)>-1)show(x,true);});
+
+  // one video at a time
+  document.addEventListener("play",function(e){
+    document.querySelectorAll("video").forEach(function(v){ if(v!==e.target && !v.paused) v.pause(); });
+  },true);
+
+  // work filters
+  var chips=document.querySelectorAll(".chips button");
+  chips.forEach(function(c){
+    c.addEventListener("click",function(){
+      var f=c.getAttribute("data-f");
+      chips.forEach(function(o){o.setAttribute("aria-pressed",o===c?"true":"false");});
+      document.querySelectorAll("#gallery .tile").forEach(function(t){
+        t.hidden = !(f==="all" || (" "+t.getAttribute("data-k")+" ").indexOf(" "+f+" ")>-1);
+      });
+    });
+  });
+
+  var btn=document.getElementById("copy-email");
+  btn.addEventListener("click",function(){
+    var el=document.getElementById("email");
+    function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Selected. Press Ctrl/⌘ C";}
+    try{navigator.clipboard.writeText(el.textContent).then(function(){btn.textContent="Copied";setTimeout(function(){btn.textContent="Copy email"},1800)},sel);}catch(e){sel();}
+  });
+})();
+</script>
+
 </body>
 </html>

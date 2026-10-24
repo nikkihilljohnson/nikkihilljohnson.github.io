@@ -1,2 +1,6 @@
 .DS_Store
 **/.DS_Store
+
+# Raw source files stay on this computer. The live site uses the web-sized copies in media/.
+# (Files in Assets/ that were already on GitHub stay there.)
+Assets/
