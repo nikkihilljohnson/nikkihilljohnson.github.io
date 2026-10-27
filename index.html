@@ -355,6 +355,22 @@ main{overflow-x:clip}
 .lbx-nav[disabled]{opacity:.25;cursor:default}
 .lbx-cap{text-align:center;font-size:.85rem;padding:.6rem 3rem 0;min-height:2.2rem;color:#E6E6E6}
 @media (max-width:700px){.lbx-nav{top:auto;bottom:calc(.75rem + env(safe-area-inset-bottom,0px));transform:none;width:2.9rem;height:2.9rem}.lbx-cap{padding-inline:3.6rem}}
+
+/* Oct 27 pm: brand logos, NYAG before/after, case anchors */
+.case{scroll-margin-top:5.5rem}
+.logos img{height:var(--lh,3.6rem);width:auto;max-width:100%;object-fit:contain;filter:grayscale(1) contrast(1.1);transition:filter .2s,opacity .2s,transform .2s}
+.logo-link{display:flex;align-items:center;justify-content:center;width:100%;min-height:5rem;padding:.4rem;border-radius:6px}
+.logo-link:hover img,.logo-link:focus-visible img{filter:none;transform:translateY(-2px)}
+.logo-link:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.lg-maple{--lh:2.5rem}.lg-hvac{--lh:4.6rem}.lg-wedmore{--lh:4.1rem}.lg-stonesmith{--lh:3.9rem}.lg-nyag{--lh:2rem}.lg-cft{--lh:4.9rem}
+.logos{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem 1rem}
+@media (min-width:360px){.logos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:900px){.logos{grid-template-columns:repeat(6,minmax(0,1fr));gap:1.5rem}}
+@media (max-width:899px){.lg-maple{--lh:2rem}.lg-hvac{--lh:3.8rem}.lg-wedmore{--lh:3.4rem}.lg-stonesmith{--lh:3.2rem}.lg-nyag{--lh:1.6rem}.lg-cft{--lh:4rem}}
+.statnote.light{color:var(--grey)}
+.case .ba{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,19rem));gap:clamp(.75rem,3vw,2rem);max-width:none;padding:clamp(1rem,3vw,1.75rem);border:1px solid var(--line);justify-content:center}
+.case .ba img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+.case .ba figcaption{text-align:center}
 </style>
 <style>html,body{margin:0}img{max-width:100%}</style>
 </head>
@@ -666,8 +682,9 @@ main{overflow-x:clip}
       <div class="copy">
         <span class="label">Brands</span>
         <h1 class="cond page-h1">Boring categories are my <span class="hl">favorite.</span></h1>
-        <p class="dek">Air purifiers. HVAC. Countertops. Nobody wakes up excited to shop for them, so the content has to give people a reason to care before they need you. I've done that for a startup, a national home services brand, a $6.4M launch, and a grandma who refuses to act her age.</p>
-        <p class="filter">Organic gets you noticed. Paid gets you found when someone's ready to buy. You need both.</p>
+        <p class="dek">Air purifiers. HVAC. Countertops. Online education. Fitness. I've worked across industries that don't have much in common, except that they all need to give people a reason to pay attention.</p>
+        <p class="dek">Sometimes that means making a complicated product easier to understand. Sometimes it's finding the humor in something ordinary. And sometimes it's building a community around something people genuinely care about.</p>
+        <p class="filter">Organic gives people a reason to care. Paid makes sure more of them see it. You need both.</p>
       </div>
       <figure class="print gold">
         <img src="media/hvac-your.jpg" alt="Hot pink HVAC.com graphic: Your HVAC, summer warrior, winter ready" width="1080" height="1350" loading="lazy" decoding="async">
@@ -679,169 +696,176 @@ main{overflow-x:clip}
     <div class="wrap">
       <span class="label">Brands I've worked with</span>
       <div class="logos">
-        <img src="media/logo-maple.svg" alt="Maple Air">
-        <img src="media/logo-hvac.png" alt="HVAC.com">
-        <img src="media/logo-wedmore.png" alt="James Wedmore">
-        <img src="media/logo-stonesmith.png" alt="StoneSmith Countertops">
-        <img src="media/logo-nyag.png" alt="Not Your Average Grandma">
-        <img src="media/logo-cft.png" alt="Carolina Farm Trust">
+        <a class="logo-link lg-maple" href="#brands" data-jump="case-maple" aria-label="Maple Air: jump to case study"><img src="media/logo-maple.svg" alt="Maple Air"></a>
+        <a class="logo-link lg-hvac" href="#brands" data-jump="case-hvac" aria-label="HVAC.com: jump to case study"><img src="media/logo-hvac.png" alt="HVAC.com"></a>
+        <a class="logo-link lg-wedmore" href="#brands" data-jump="case-wedmore" aria-label="James Wedmore: jump to case study"><img src="media/logo-wedmore.png" alt="James Wedmore"></a>
+        <a class="logo-link lg-stonesmith" href="#brands" data-jump="case-stonesmith" aria-label="StoneSmith Countertops: jump to case study"><img src="media/logo-stonesmith-mark.png" alt="StoneSmith Countertops"></a>
+        <a class="logo-link lg-nyag" href="#brands" data-jump="case-nyag" aria-label="Not Your Average Grandma: jump to case study"><img src="media/logo-nyag.png" alt="Not Your Average Grandma"></a>
+        <a class="logo-link lg-cft" href="#brands" data-jump="case-cft" aria-label="Carolina Farm Trust: jump to case study"><img src="media/logo-cft.png" alt="Carolina Farm Trust"></a>
       </div>
     </div>
   </section>
 
   <section class="rule">
     <div class="wrap">
-      <article class="case" style="border-top:0;padding-top:0">
+      <article class="case" id="case-maple" style="border-top:0;padding-top:0">
         <div class="main">
           <div class="meta"><span class="who">Maple Air</span><span>· Air purification startup</span><span class="tag">Since Jan 2026</span></div>
           <h3>Marketing a product while it's still changing.</h3>
-          <p class="role">Lead marketer: strategy, social, video, graphics and paid.</p>
-          <p class="txt">Maple Air makes plasma air purification. When I started, the focus was a whole-home unit that installs in your ductwork. Since then we've rebranded, added portable purifiers to the lineup (AirCell, the newest, has a waitlist), and shifted most of our attention to them. A lot of the sales happen behind the scenes. So my job is less "run the Instagram" and more "build the marketing while the ground moves."</p>
-          <p class="txt">LinkedIn is the main stage. I write and design the content, built the paid side from scratch across LinkedIn, Meta and ChatGPT ads, and keep everything pointed at one idea: Maple Air is the homeowner's advocate, not another sales pitch.</p>
-          <p class="finding"><b>Early adopter.</b> I set up ChatGPT ads for a real client, which most marketers haven't touched yet.</p>
+          <p class="role">Lead marketer: strategy, social, video, graphics, and paid.</p>
+          <p class="txt">Maple Air is an air purification startup, and the product lineup has changed quite a bit since I came on board. What started as a focus on whole-home systems has expanded into portable air purifiers, which meant rethinking what we were promoting and how we talked about it.</p>
+          <p class="txt">My job is less "run the Instagram" and more "build the marketing while the ground moves."</p>
+          <p class="txt">I've developed content and creative across platforms, built paid advertising programs on LinkedIn, Meta, and ChatGPT, and helped shape messaging around a bigger idea: being the homeowner's advocate, not another company trying to make a sale.</p>
         </div>
+        <div class="statwrap">
         <dl class="stats">
-          <div><dt>ad platforms built from scratch: LinkedIn, Meta, ChatGPT</dt><dd>3</dd></div>
-          <div><dt>click-through rate on LinkedIn lead gen, above LinkedIn's typical range (as of Oct 2026)</dt><dd>1.18%</dd></div>
-          <div><dt>LinkedIn followers this year</dt><dd>2×</dd></div>
-          <div><dt>channels in the Homeowner Advocacy Campaign: Google Ads, social, blog and radio</dt><dd>4</dd></div>
+          <div><dt>Paid advertising platforms built from scratch: LinkedIn, Meta, and ChatGPT</dt><dd>3</dd></div>
+          <div><dt>Click-through rate on a targeted LinkedIn commercial campaign (first week)</dt><dd>1.74%</dd></div>
+          <div><dt>LinkedIn follower growth in 2026</dt><dd>2×</dd></div>
+          <div><dt>Cost per lead on LinkedIn, with 8 leads generated in the first week</dt><dd>$23.41</dd></div>
         </dl>
+          <p class="statnote light">Early results as of October 27, 2026 · LinkedIn figures are from one campaign's first week</p>
+        </div>
         <div class="media">
-          <figure><video playsinline preload="none" poster="media/v-ma-new.jpg" src="media/v-ma-new.mp4" width="480" height="854"></video><figcaption>Unboxing, on camera</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="ma-casestudy" data-n="4" aria-label="Open carousel: This is what we found inside a real home in Lake Norman, NC"><img src="media/car/ma-casestudy/1.jpg" alt="This is what we found inside a real home in Lake Norman, NC" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>Real home, real petri dishes</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="ma-results" data-n="4" aria-label="Open carousel: Real-world testing results series"><img src="media/car/ma-results/1.jpg" alt="Real-world testing results series" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>Real-world results series</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="ma-pets" data-n="8" aria-label="Open carousel: Pet owners, we have some bad news"><img src="media/car/ma-pets/1.jpg" alt="Pet owners, we have some bad news" width="1080" height="1440" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>Pet owners, we have bad news</figcaption></figure>
-          <figure><img src="media/ma-aircell.jpg" alt="Introducing Maple AirCell" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>AirCell waitlist launch</figcaption></figure>
-          <figure><img src="media/ma-smells.jpg" alt="Maple Air ad: Your facility smells" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Commercial · post-rebrand</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="ma-floating" data-n="8" aria-label="Open carousel: What's actually floating around your house?"><img src="media/car/ma-floating/1.jpg" alt="What's actually floating around your house?" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>What's floating in your house?</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="ma-beforeafter" data-n="3" aria-label="Open carousel: Restaurant and gym before and after petri dishes"><img src="media/car/ma-beforeafter/1.jpg" alt="Restaurant and gym before and after petri dishes" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">3 slides</span></button><figcaption>Before and after testing</figcaption></figure>
-          <figure><video playsinline preload="none" poster="media/v-ma-plasma.jpg" src="media/v-ma-plasma.mp4" width="540" height="960"></video><figcaption>How plasma works</figcaption></figure>
-          <figure><img src="media/ma-250k.jpg" alt="Maple Air graphic: 250,000+ cubic feet" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Portable launch</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="ma-winter" data-n="7" aria-label="Open carousel: 5 reasons your house helps illness spread in winter"><img src="media/car/ma-winter/1.jpg" alt="5 reasons your house helps illness spread in winter" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Carousel · pre-rebrand</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="ma-mold" data-n="7" aria-label="Open carousel: Mold in military housing"><img src="media/car/ma-mold/1.jpg" alt="Mold in military housing" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Carousel · pre-rebrand</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-ma-new.jpg" src="media/v-ma-new.mp4" width="480" height="854"></video><figcaption>Product unboxing &amp; demo</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-casestudy" data-n="4" aria-label="Open carousel: This is what we found inside a real home in Lake Norman, NC"><img src="media/car/ma-casestudy/1.jpg" alt="This is what we found inside a real home in Lake Norman, NC" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>What we found inside a real home</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-results" data-n="4" aria-label="Open carousel: Real-world testing results series"><img src="media/car/ma-results/1.jpg" alt="Real-world testing results series" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>Real-world air quality testing</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-pets" data-n="8" aria-label="Open carousel: Pet owners, we have some bad news"><img src="media/car/ma-pets/1.jpg" alt="Pet owners, we have some bad news" width="1080" height="1440" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>Pet owners, this one's for you</figcaption></figure>
+          <figure><img src="media/ma-aircell.jpg" alt="Introducing Maple AirCell" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Introducing Maple AirCell</figcaption></figure>
+          <figure><img src="media/ma-smells.jpg" alt="Maple Air ad: Your facility smells" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Commercial product creative</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-floating" data-n="8" aria-label="Open carousel: What's actually floating around your house?"><img src="media/car/ma-floating/1.jpg" alt="What's actually floating around your house?" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>What's floating around your home?</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-beforeafter" data-n="3" aria-label="Open carousel: Restaurant and gym before and after petri dishes"><img src="media/car/ma-beforeafter/1.jpg" alt="Restaurant and gym before and after petri dishes" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">3 slides</span></button><figcaption>Before &amp; after: air quality testing</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-ma-plasma.jpg" src="media/v-ma-plasma.mp4" width="540" height="960"></video><figcaption>Explaining the science of plasma</figcaption></figure>
+          <figure><img src="media/ma-250k.jpg" alt="Maple Air graphic: 250,000+ cubic feet" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Portable air purification launch</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-winter" data-n="7" aria-label="Open carousel: 5 reasons your house helps illness spread in winter"><img src="media/car/ma-winter/1.jpg" alt="5 reasons your house helps illness spread in winter" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Why winter makes us sick</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-mold" data-n="7" aria-label="Open carousel: Mold in military housing"><img src="media/car/ma-mold/1.jpg" alt="Mold in military housing" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Mold in military housing</figcaption></figure>
         </div>
       </article>
 
-      <article class="case">
+      <article class="case" id="case-stonesmith">
         <div class="main">
-          <div class="meta"><span class="who">HVAC.com</span><span>· Trane Technologies</span><span class="tag">2023–2025</span></div>
+          <div class="meta"><span class="who">StoneSmith Countertops</span><span>· Local business</span><span class="tag">Current client</span></div>
+          <h3>Install day beat every ad.</h3>
+          <p class="role">Head of social: built it from zero.</p>
+          <p class="txt">StoneSmith didn't need better social. They needed social. I built the whole thing: the look, the voice, the templates, and the content plan.</p>
+          <p class="txt">Then we learned something pretty quickly. A behind-the-scenes install video pulled 16,000 organic views. The “book a free consult” posts? Around 500. Turns out people don't want a countertop ad. They want to watch a countertop happen.</p>
+        </div>
+        <dl class="stats">
+          <div><dt>Organic views on one installation video, with no ad spend</dt><dd>16K</dd></div>
+          <div><dt>More views on installation footage than promotional posts</dt><dd>~30×</dd></div>
+          <div><dt>Growth in views over the last 90 days compared with the previous 90 days</dt><dd>+395%</dd></div>
+          <div><dt>Of views from non-followers</dt><dd>89%</dd></div>
+        </dl>
+        <div class="media">
+          <figure><img src="media/ss-tetris.jpg" alt="StoneSmith Countertop Tetris graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Countertop Tetris</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ss-hotel" data-n="7" aria-label="Open carousel: Ever notice hotel bathrooms feel better than yours?"><img src="media/car/ss-hotel/1.jpg" alt="Ever notice hotel bathrooms feel better than yours?" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Why hotel bathrooms feel so luxurious</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ss-quartz" data-n="4" aria-label="Open carousel: Quartz or quartzite?"><img src="media/car/ss-quartz/1.jpg" alt="Quartz or quartzite?" width="1440" height="1800" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>Quartz or quartzite?</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ss-kitchen-car" data-n="8" aria-label="Open carousel: There's no such thing as a timeless kitchen"><img src="media/car/ss-kitchen-car/1.jpg" alt="There's no such thing as a timeless kitchen" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>The timeless kitchen myth</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-ss-inspo.jpg" src="media/v-ss-inspo.mp4" width="540" height="960"></video><figcaption>From inspiration to installation</figcaption></figure>
+          <figure><img src="media/ss-kitchen.jpg" alt="StoneSmith post: pick your kitchen, A B C or D" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Which kitchen would you choose?</figcaption></figure>
+          <figure><img src="media/ss-testimonial.jpg" alt="StoneSmith Google review graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>What our customers are saying</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case" id="case-hvac">
+        <div class="main">
+          <div class="meta"><span class="who">HVAC.com</span><span>· Acquired by Trane Technologies</span><span class="tag">2023–2025</span></div>
           <h3>No one cares about their HVAC until it breaks.</h3>
-          <p class="role">Senior Social Media &amp; Content Strategist: organic, paid, and on camera.</p>
-          <p class="txt">Usually in July. Homeowners care a lot about their house and almost nothing about the equipment inside it. So we stopped selling equipment and started talking about what it actually gets you: a cool house, clean air, and not sweating through dinner.</p>
-          <p class="txt">I built the social voice and the paid program from the ground up. Seasonal content timed to real homeowner panic moments. Memes, because people share memes and nobody shares a spec sheet. And a Meta setup that tested hooks constantly and retargeted the people who'd already raised a hand. I was also the face of the account, filming dozens of on-camera explainers.</p>
+          <p class="role">Senior Social Media &amp; Content Strategist: organic, paid, and on-camera content.</p>
+          <p class="txt">Usually in July. Nobody's scrolling Instagram thinking about their HVAC system. They're thinking about staying cool, keeping their family comfortable, and avoiding a very expensive surprise. So that's what we talked about.</p>
+          <p class="txt">I joined HVAC.com when it was still a startup and stayed through its acquisition by Trane Technologies. I built the social voice and paid program from the ground up, mixing seasonal content, memes, and educational videos with Meta campaigns designed to turn interest into leads. I was also the face of the account, filming dozens of videos that made HVAC a little less boring.</p>
           <p class="finding"><b>Social became a sales channel.</b> About 6% of total company sales were influenced by social.</p>
         </div>
         <dl class="stats">
-          <div><dt>return on social spend</dt><dd>~50×</dd></div>
-          <div><dt>qualified leads</dt><dd>423</dd></div>
-          <div><dt>cost per lead</dt><dd>$71</dd></div>
-          <div><dt>click-through rate on $58K in managed spend</dt><dd>2.97%</dd></div>
+          <div><dt>Return on social spend</dt><dd>~50×</dd></div>
+          <div><dt>Qualified leads</dt><dd>423</dd></div>
+          <div><dt>Cost per lead</dt><dd>$71</dd></div>
+          <div><dt>Click-through rate on $58K in managed spend</dt><dd>2.97%</dd></div>
         </dl>
         <div class="media">
           <figure><video playsinline preload="none" poster="media/v-hvac-blue.jpg" src="media/v-hvac-blue.mp4" width="540" height="960"></video><figcaption>Is your AC ready for summer?</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-hvac-face.jpg" src="media/v-hvac-face.mp4" width="360" height="640"></video><figcaption>Going on vacation?</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-ma-sock.jpg" src="media/v-ma-sock.mp4" width="360" height="640"></video><figcaption>Stinky sock syndrome</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="hvac-expert" data-n="10" aria-label="Open carousel: Ask the Expert: Can I install an air conditioner myself?"><img src="media/car/hvac-expert/1.jpg" alt="Ask the Expert: Can I install an air conditioner myself?" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">10 slides</span></button><figcaption>Ask the Expert series</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="hvac-value" data-n="7" aria-label="Open carousel: How a smarter HVAC could increase your home's value"><img src="media/car/hvac-value/1.jpg" alt="How a smarter HVAC could increase your home's value" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Home value explainer</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="hvac-expert" data-n="10" aria-label="Open carousel: Ask the Expert: Can I install an air conditioner myself?"><img src="media/car/hvac-expert/1.jpg" alt="Ask the Expert: Can I install an air conditioner myself?" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">10 slides</span></button><figcaption>Ask the Expert: HVAC questions answered</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="hvac-value" data-n="7" aria-label="Open carousel: How a smarter HVAC could increase your home's value"><img src="media/car/hvac-value/1.jpg" alt="How a smarter HVAC could increase your home's value" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>How HVAC affects home value</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-hvac-walking.jpg" src="media/v-hvac-walking.mp4" width="540" height="960"></video><figcaption>When your HVAC dies in a heat wave</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-hvac-kelsey.jpg" src="media/v-hvac-kelsey.mp4" width="540" height="960"></video><figcaption>When QuoteScore saves you money</figcaption></figure>
-          <figure><img src="media/meme-kendrick.jpg" alt="HVAC.com meme: Hey you, I heard you need a new HVAC" width="662" height="831" loading="lazy" decoding="async"><figcaption>Meme</figcaption></figure>
-          <figure><img src="media/meme-taylor.jpg" alt="HVAC.com meme with Taylor Swift" width="1374" height="1376" loading="lazy" decoding="async"><figcaption>Meme</figcaption></figure>
-          <figure><img src="media/hvac-reddit.jpg" alt="Reddit-style post praising HVAC.com, designed in Canva" width="1012" height="1800" loading="lazy" decoding="async"><figcaption>Reddit-style social proof, designed in Canva</figcaption></figure>
+          <figure><img src="media/meme-kendrick.jpg" alt="HVAC.com meme: Hey you, I heard you need a new HVAC" width="662" height="831" loading="lazy" decoding="async"><figcaption>Football meets HVAC</figcaption></figure>
+          <figure><img src="media/meme-taylor.jpg" alt="HVAC.com meme with Taylor Swift" width="1374" height="1376" loading="lazy" decoding="async"><figcaption>Saying goodbye to your old HVAC</figcaption></figure>
+          <figure><img src="media/hvac-reddit.jpg" alt="Reddit-style post praising HVAC.com, designed in Canva" width="1012" height="1800" loading="lazy" decoding="async"><figcaption>Turning a Reddit review into social proof</figcaption></figure>
         </div>
       </article>
 
-      <article class="case">
+      <article class="case" id="case-wedmore">
         <div class="main">
           <div class="meta"><span class="who">James Wedmore</span><span>· Business by Design</span><span class="tag">2022–2023</span></div>
           <h3>The audience was there. They were just scrolling past.</h3>
-          <p class="role">Creative Content Director: Instagram, YouTube Shorts and launch coverage.</p>
-          <p class="txt">James had 111K Instagram followers and an account that was coasting. Ahead of a big launch, we swapped lectures for personality: Harry Potter jokes, first-three-second hooks, and 50+ assets a week without losing his voice.</p>
-          <p class="txt">I repurposed the best of it to YouTube Shorts to reach people who'd never find him on Instagram, then ran live coverage all through launch week, because live energy sells.</p>
-          <p class="finding"><b>The launch did $6.4M.</b> Four videos went viral in a single 30-day stretch.</p>
+          <p class="role">Creative Content Director: Instagram, YouTube Shorts, and launch coverage.</p>
+          <p class="txt">James already had an audience of 111K Instagram followers, but the content wasn't getting the attention it could. Ahead of a major launch, we leaned into his personality with pop culture references, stronger opening hooks, and more short-form video. We were producing 50+ creative assets a week without losing what made his content feel like him.</p>
+          <p class="txt">I repurposed our best-performing content for YouTube Shorts to reach new audiences and managed live social coverage throughout launch week.</p>
+          <p class="finding"><b>Four breakout videos in 30 days.</b> Stronger hooks and more personality helped turn an established audience into an engaged one.</p>
         </div>
         <dl class="stats">
-          <div><dt>launch revenue</dt><dd>$6.4M</dd></div>
-          <div><dt>Reels over 10,000 views</dt><dd>17</dd></div>
-          <div><dt>Instagram followers, from 111K</dt><dd>125K</dd></div>
-          <div><dt>assets produced every week</dt><dd>50+</dd></div>
+          <div><dt>Revenue from the launch I supported</dt><dd>$6.4M</dd></div>
+          <div><dt>Reels with more than 10,000 views</dt><dd>17</dd></div>
+          <div><dt>Instagram followers, up from 111K</dt><dd>125K</dd></div>
+          <div><dt>Creative assets produced weekly</dt><dd>50+</dd></div>
         </dl>
         <div class="media">
-          <figure><video playsinline preload="none" poster="media/v-wed-hermione.jpg" src="media/v-wed-hermione.mp4" width="540" height="960"></video><figcaption>"Nitch."</figcaption></figure>
-          <figure><video playsinline preload="none" poster="media/v-wed-wee.jpg" src="media/v-wed-wee.mp4" width="540" height="960"></video><figcaption>What you thought your launch would look like</figcaption></figure>
-          <figure><video playsinline preload="none" poster="media/v-wed-launch.jpg" src="media/v-wed-launch.mp4" width="540" height="960"></video><figcaption>What you think your messaging looks like</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-wed-hermione.jpg" src="media/v-wed-hermione.mp4" width="540" height="960"></video><figcaption>When someone says 'niche'</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-wed-wee.jpg" src="media/v-wed-wee.mp4" width="540" height="960"></video><figcaption>Launch expectations vs. reality</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-wed-launch.jpg" src="media/v-wed-launch.mp4" width="540" height="960"></video><figcaption>When your messaging misses the mark</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-wed-thought.jpg" src="media/v-wed-thought.mp4" width="540" height="960"></video><figcaption>Thought of the Day</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="wed-goals" data-n="5" aria-label="Open carousel: How to get your goals in 3 steps"><img src="media/car/wed-goals/1.jpg" alt="How to get your goals in 3 steps" width="1364" height="1370" loading="lazy" decoding="async"><span class="slides">5 slides</span></button><figcaption>Goals carousel</figcaption></figure>
-          <figure><img src="media/wed-testimonial.jpg" alt="Business by Design student testimonial graphic" width="1356" height="1362" loading="lazy" decoding="async"><figcaption>Testimonial graphic</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="wed-goals" data-n="5" aria-label="Open carousel: How to get your goals in 3 steps"><img src="media/car/wed-goals/1.jpg" alt="How to get your goals in 3 steps" width="1364" height="1370" loading="lazy" decoding="async"><span class="slides">5 slides</span></button><figcaption>How to reach your goals in 3 steps</figcaption></figure>
+          <figure><img src="media/wed-testimonial.jpg" alt="Business by Design student testimonial graphic" width="1356" height="1362" loading="lazy" decoding="async"><figcaption>Celebrating a client's success</figcaption></figure>
         </div>
       </article>
 
-      <article class="case">
-        <div class="main">
-          <div class="meta"><span class="who">StoneSmith Countertops</span><span>· Local business</span><span class="tag">Head of social</span></div>
-          <h3>Install day beat every ad.</h3>
-          <p class="role">Head of social: built it from zero.</p>
-          <p class="txt">StoneSmith didn't need better social. They needed social. I built the whole thing: the look, the voice, the templates, the content plan.</p>
-          <p class="txt">The lesson came fast. Behind-the-scenes install footage pulled 16,000 views with zero ad spend. The "book a free consult" posts? About 500. People don't want a countertop ad. They want to watch a countertop happen.</p>
-          <p class="finding"><b>Reach is coming from new people.</b> 89% of views in the last 90 days came from accounts that don't follow StoneSmith.</p>
-        </div>
-        <dl class="stats">
-          <div><dt>organic views on one install video, no ad spend</dt><dd>16K</dd></div>
-          <div><dt>more views on install footage than sales posts</dt><dd>~30×</dd></div>
-          <div><dt>views in the last 90 days vs. the 90 before</dt><dd>+395%</dd></div>
-          <div><dt>of views from non-followers</dt><dd>89%</dd></div>
-        </dl>
-        <div class="media">
-          <figure><img src="media/ss-tetris.jpg" alt="StoneSmith Countertop Tetris graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Countertop Tetris</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="ss-hotel" data-n="7" aria-label="Open carousel: Ever notice hotel bathrooms feel better than yours?"><img src="media/car/ss-hotel/1.jpg" alt="Ever notice hotel bathrooms feel better than yours?" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Hotel bathrooms</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="ss-quartz" data-n="4" aria-label="Open carousel: Quartz or quartzite?"><img src="media/car/ss-quartz/1.jpg" alt="Quartz or quartzite?" width="1440" height="1800" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>Quartz or quartzite?</figcaption></figure>
-          <figure><button type="button" class="carbtn" data-car="ss-kitchen-car" data-n="8" aria-label="Open carousel: There's no such thing as a timeless kitchen"><img src="media/car/ss-kitchen-car/1.jpg" alt="There's no such thing as a timeless kitchen" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>The timeless kitchen myth</figcaption></figure>
-          <figure><video playsinline preload="none" poster="media/v-ss-inspo.jpg" src="media/v-ss-inspo.mp4" width="540" height="960"></video><figcaption>Kitchen inspo</figcaption></figure>
-          <figure><img src="media/ss-kitchen.jpg" alt="StoneSmith post: pick your kitchen, A B C or D" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Engagement post</figcaption></figure>
-          <figure><img src="media/ss-testimonial.jpg" alt="StoneSmith Google review graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Review graphic</figcaption></figure>
-        </div>
-      </article>
-
-      <article class="case">
+      <article class="case" id="case-nyag">
         <div class="main">
           <div class="meta"><span class="who">Not Your Average Grandma</span><span>· Personal brand</span><span class="tag">Brand rebuild</span></div>
           <h3>Great voice. Messy grid.</h3>
-          <p class="role">Brand rebuild, visual system and short-form video.</p>
-          <p class="txt">She had the message nailed for women in midlife. The visuals were all over the place: random colors, mixed fonts, no posting rhythm. I audited everything, picked three or four content pillars, built a real visual system, and turned her podcast into a repeatable Reels format: hook, insight, takeaway. Then we tested hooks until we found the ones that stopped the scroll.</p>
-          <p class="finding"><b>We didn't make more content.</b> We made the good stuff easier to find.</p>
-          <div class="ba">
+          <p class="role">Brand rebuild, visual system, and short-form video.</p>
+          <p class="txt">Not Your Average Grandma already had a strong message for women navigating midlife. But the Instagram account didn't reflect it. The colors, fonts, and content were all over the place, and there wasn't a consistent posting strategy.</p>
+          <p class="txt">I audited the account, built a cohesive visual identity, and developed three content pillars. Then I turned her podcast into a repeatable short-form video series, testing different hooks to see what actually got people watching.</p>
+          <p class="finding"><b>The voice was already there.</b> The strategy and visuals just needed to catch up.</p>
+        </div>
+        <dl class="stats">
+          <div><dt>Increase in accounts reached vs. the previous 30 days, reaching 28.8K</dt><dd>+103%</dd></div>
+          <div><dt>Increase in accounts engaged over the same period</dt><dd>+67%</dd></div>
+        </dl>
+        <div class="ba" aria-label="Instagram grid before and after the rebuild">
             <figure><img src="media/nyag-before.jpg" alt="Instagram grid before the rebrand" width="252" height="470" loading="lazy" decoding="async"><figcaption>Before</figcaption></figure>
             <figure><img src="media/nyag-after.jpg" alt="Instagram grid after the rebrand" width="254" height="473" loading="lazy" decoding="async"><figcaption>After</figcaption></figure>
           </div>
-        </div>
-        <dl class="stats">
-          <div><dt>more accounts reached in 30 days, to 28.8K</dt><dd>+103%</dd></div>
-          <div><dt>more accounts engaged in the same 30 days</dt><dd>+67%</dd></div>
-        </dl>
         <div class="media">
           <figure><video playsinline preload="none" poster="media/v-nyag-taylor.jpg" src="media/v-nyag-taylor.mp4" width="540" height="960"></video><figcaption>Too old to start something new?</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-nyag-david.jpg" src="media/v-nyag-david.mp4" width="540" height="960"></video><figcaption>Don't spoil the kids too much</figcaption></figure>
-          <figure><img src="media/nyag-anatomy.jpg" alt="Not Your Average Grandma graphic: Anatomy of a scared settler" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>Graphic</figcaption></figure>
-          <figure><img src="media/meme-kardashian.jpg" alt="Meme: Hey! Life isn't over at 50" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>Meme</figcaption></figure>
+          <figure><img src="media/nyag-anatomy.jpg" alt="Not Your Average Grandma graphic: Anatomy of a scared settler" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>The anatomy of a scared settler</figcaption></figure>
+          <figure><img src="media/meme-kardashian.jpg" alt="Meme: Hey! Life isn't over at 50" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>Life isn't over at 50</figcaption></figure>
         </div>
       </article>
 
-      <article class="case">
+      <article class="case" id="case-cft">
         <div class="main">
           <div class="meta"><span class="who">Carolina Farm Trust</span><span>· Nonprofit</span><span class="tag">2021–2022</span></div>
           <h3>Lots of heart. Needed one story.</h3>
           <p class="role">Senior Marketing &amp; Communications Manager.</p>
-          <p class="txt">Every channel was telling a slightly different version of what Carolina Farm Trust does. I pulled it into one story (local farms, food access, a more connected community) and ran it through everything: social, email, the website, a brand-new TikTok, and the grant proposals. I also launched a new ticketing platform with Meta ads behind it.</p>
-          <p class="finding"><b>The money followed the story.</b> I wrote and designed the grant proposals that brought in $15K+.</p>
+          <p class="txt">Carolina Farm Trust was doing important work connecting local farmers, improving food access, and bringing communities together. But its messaging wasn't always consistent across channels. My job was to bring everything under one story people could understand and support.</p>
+          <p class="txt">I carried that message across social media, email, the website, and grant proposals. I also launched the organization's TikTok presence, introduced a new event ticketing platform, and managed Meta ads to support fundraising.</p>
+          <p class="finding"><b>More than social media.</b> The work helped bring in grant funding, grow volunteer participation, and support more profitable fundraising events.</p>
         </div>
         <dl class="stats">
-          <div><dt>in new grants</dt><dd>$15K+</dd></div>
-          <div><dt>website traffic</dt><dd>+30%</dd></div>
-          <div><dt>volunteer sign-ups</dt><dd>+20%</dd></div>
-          <div><dt>fundraiser profit, year over year</dt><dd>+5%</dd></div>
+          <div><dt>In grants awarded</dt><dd>$15K+</dd></div>
+          <div><dt>Increase in website traffic</dt><dd>+30%</dd></div>
+          <div><dt>Increase in volunteer sign-ups</dt><dd>+20%</dd></div>
+          <div><dt>Year-over-year increase in fundraiser profit</dt><dd>+5%</dd></div>
         </dl>
         <div class="media">
           <figure><img src="media/cft-flyer.jpg" alt="Carolina Farm Trust event flyer: A Night at the Museum" width="1374" height="1368" loading="lazy" decoding="async"><figcaption>Fundraiser event flyer</figcaption></figure>
+          <figure><img src="media/cft-sponsors.jpg" alt="Carolina Farm Trust sponsorship packet for Night at the Museum" width="385" height="428" loading="lazy" decoding="async"><figcaption>Sponsorship packet</figcaption></figure>
+          <figure><img src="media/cft-press.jpg" alt="Carolina Farm Trust press release: seed funding for The Urban Farm at Aldersgate" width="438" height="444" loading="lazy" decoding="async"><figcaption>Press release: new urban farm funding</figcaption></figure>
+          <figure><img src="media/cft-grid.jpg" alt="Carolina Farm Trust Instagram feed" width="265" height="548" loading="lazy" decoding="async"><figcaption>The Instagram feed</figcaption></figure>
         </div>
       </article>
     </div>
