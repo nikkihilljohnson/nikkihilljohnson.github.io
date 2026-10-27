@@ -423,6 +423,45 @@ main{overflow-x:clip}
   .tile > :first-child,.btn,nav .talk,.copy-btn{transition:none!important;transform:none!important}
   .ig:hover,.email:hover,.links a:hover,.tile figcaption .cl:hover,.go:hover{animation:none}
 }
+
+/* Receipts carousel (home) */
+.proof-sec{background:var(--blush)}
+.tc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap}
+.tc-ctl{display:flex;gap:.75rem}
+.tc-ctl button{width:3rem;height:3rem;border-radius:50%;border:2px solid var(--ink);background:transparent;font:700 1.1rem var(--sans);cursor:pointer;color:var(--ink);transition:background-color .15s,color .15s}
+.tc-ctl button:hover,.tc-ctl button:focus-visible{background:var(--ink);color:#fff}
+.tc{margin-top:2rem}
+.tc-track{--gap:1.5rem;display:flex;gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;padding:1.25rem max(16px,calc((100vw - var(--wrapw,1144px))/2)) 1.5rem;scroll-padding-inline:max(16px,calc((100vw - var(--wrapw,1144px))/2))}
+.tc-track::-webkit-scrollbar{display:none}
+.tc-track:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.tc-card{flex:0 0 min(85%,24rem);margin:0;scroll-snap-align:start;height:25rem}
+@media (min-width:900px){.tc-card{flex-basis:calc((min(100vw - 32px,1144px) - var(--gap)*2)/2.35);height:27rem}}
+.tc-paper{position:relative;height:100%;box-sizing:border-box;background:#fff;border:2px solid var(--ink);display:flex;flex-direction:column;padding:1.1rem}
+.tc-card:nth-child(odd) .tc-paper{transform:rotate(-.6deg)}
+.tc-card:nth-child(even) .tc-paper{transform:rotate(.5deg)}
+.tc-shot .tc-paper::before{content:"";position:absolute;top:-.85rem;left:50%;width:6rem;height:1.6rem;transform:translateX(-50%) rotate(-3deg);background:rgba(233,185,73,.75);z-index:2}
+.tc-imgbox{position:relative;flex:1;min-height:0;overflow:hidden;cursor:zoom-in;display:flex;flex-direction:column;justify-content:center}
+.tc-imgbox img{display:block;width:100%;height:auto;border:1px solid var(--line);flex:none}
+.tc-imgbox.tall{justify-content:flex-start}
+.tc-imgbox.tall::after{content:"";position:absolute;inset:auto 0 0;height:4.5rem;background:linear-gradient(rgba(255,255,255,0),#fff);pointer-events:none}
+.tc-more{display:none;position:absolute;right:.6rem;bottom:.6rem;z-index:1;font:700 .7rem var(--sans);letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:#fff;border-radius:999px;padding:.4rem .75rem;pointer-events:none}
+.tc-imgbox.tall .tc-more{display:block}
+.tc-shot figcaption{padding-top:.8rem;font-size:.8rem;color:var(--grey);line-height:1.4}
+.tc-shot figcaption b,.tc-quote figcaption b{display:block;color:var(--ink);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:.78rem}
+.tc-quote .tc-paper{padding:1.6rem 1.6rem 1.3rem}
+.tc-mark{font:400 6rem/1 var(--serif);color:var(--pink);height:3.2rem;margin-top:-.6rem;overflow:hidden}
+.tc-quote blockquote::before{content:none!important;display:none!important}
+.tc-quote blockquote{margin:0;flex:1;min-height:0;overflow:auto}
+.tc-quote blockquote p{font:400 clamp(1.08rem,1.6vw,1.22rem)/1.5 var(--serif);margin:0}
+.tc-quote figcaption{display:flex;flex-direction:column;gap:.15rem;padding-top:1rem;border-top:1px solid var(--line);margin-top:1rem;font-size:.82rem;color:var(--grey)}
+.tc-src{align-self:flex-start;margin-top:.45rem;font:700 .66rem var(--sans);letter-spacing:.1em;text-transform:uppercase;border:1.5px solid var(--ink);color:var(--ink);border-radius:999px;padding:.2rem .55rem}
+.tc-dots{display:flex;gap:.55rem;justify-content:center;margin-top:.5rem}
+.tc-dots button{width:.8rem;height:.8rem;border-radius:50%;border:2px solid var(--ink);background:transparent;padding:0;cursor:pointer;position:relative}
+.tc-dots button::after{content:"";position:absolute;inset:-14px}
+.tc-dots button[aria-current="true"]{background:var(--ink)}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:-1px;padding:0;border:0}
+.receipts-link{display:inline-block;margin-top:1rem;font:700 .8rem var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:3px solid var(--pink);padding-bottom:.2rem}
+@media (prefers-reduced-motion:reduce){.tc-track{scroll-behavior:auto}}
 </style>
 <style>html,body{margin:0}img{max-width:100%}</style>
 </head>
@@ -512,52 +551,30 @@ main{overflow-x:clip}
     </div>
   </section>
 
-  <section class="quotes-sec">
-    <div class="wrap rot">
-      <div class="rot-side">
-        <span class="label">What people say</span>
-        <h2 class="cond h2">Don't take my word for it.</h2>
-        <div class="rot-ctl">
-          <button type="button" id="rq-prev" aria-label="Previous testimonial">←</button>
-          <span class="rot-n" id="rq-n" aria-live="polite">1 / 8</span>
-          <button type="button" id="rq-next" aria-label="Next testimonial">→</button>
+  <section class="proof-sec" id="receipts" aria-roledescription="carousel" aria-label="Testimonials">
+    <div class="wrap">
+      <div class="tc-head">
+        <div>
+          <span class="label">Receipts</span>
+          <h2 class="cond h2" style="margin-top:1rem">Unprompted, unedited, <span class="p">very much appreciated.</span></h2>
+        </div>
+        <div class="tc-ctl">
+          <button type="button" class="tc-prev" aria-label="Previous testimonial">←</button>
+          <button type="button" class="tc-next" aria-label="Next testimonial">→</button>
         </div>
       </div>
-      <div class="rot-stage" id="rq-stage">
-        <blockquote class="rq" id="rq-0">
-          <p>If I could rewind the clock, I would have hired you six months ago, but these last 30 days are certainly the most critical and I really feel good about this plan.</p>
-          <footer><b>Ann Shippy</b><span>Candidate, SC House District 123</span></footer>
-        </blockquote>
-        <blockquote class="rq" hidden id="rq-1">
-          <p>Nikki has a rare ability to make even complex products relatable while staying grounded in data. She built campaigns that didn't just look good. They performed. She consistently connected creative storytelling to real business outcomes.</p>
-          <footer><b>Kevin</b><span>Senior Product Manager, HVAC.com (Trane Technologies)</span></footer>
-        </blockquote>
-        <blockquote class="rq" hidden id="rq-2">
-          <p>Nikki blends creative intuition with analytical precision. She understands how social strategy connects to the full funnel and consistently turns ad budgets into measurable results.</p>
-          <footer><b>Jonathan</b><span>Head of Growth, Thel Strategy</span></footer>
-        </blockquote>
-        <blockquote class="rq" hidden id="rq-3">
-          <p>I've been recommending Nikki to other businesses because her content is sharp and instantly elevates how professional our social media looks.</p>
-          <footer><b>Garrett</b><span>CEO, StoneSmith Countertops</span></footer>
-        </blockquote>
-        <blockquote class="rq" hidden id="rq-4">
-          <p>Great marketing communication! Love it!</p>
-          <footer><b>Dr. Char Fitzwater</b><span>Candidate, Charleston County School Board</span></footer>
-        </blockquote>
-        <blockquote class="rq" hidden id="rq-5">
-          <p>Nikki consistently drove results across both paid and organic social while staying organized, creative, and proactive. Even with limited resources, she found fresh ways to connect with audiences and move the business forward.</p>
-          <footer><b>Shelby</b><span>Senior Marketing Manager, Oxbox</span></footer>
-        </blockquote>
-        <blockquote class="rq" hidden id="rq-6">
-          <p>Nikki can take an undefined space and turn it into something cohesive, engaging, and scalable. She combines strong creative instincts with real audience insight, and she brings an energy that makes collaboration genuinely enjoyable.</p>
-          <footer><b>Lee</b><span>Head Creative Strategist, SAUHS Studios</span></footer>
-        </blockquote>
-        <blockquote class="rq" hidden id="rq-7">
-          <p>Love the work you've been doing for us!</p>
-          <footer><b>Darlene</b><span>Maple Air</span></footer>
-        </blockquote>
+    </div>
+    <div class="tc">
+      <div class="tc-track" tabindex="0" aria-label="Testimonials, scroll sideways for more">
+        <figure class="tc-card tc-shot"><div class="tc-paper"><div class="tc-imgbox"><img src="media/r-ann-rewind.jpg" alt="Email from Ann Shippy" width="1179" height="801" loading="lazy" decoding="async"><span class="tc-more" aria-hidden="true">Tap to read</span></div><p class="sr">I can't thank you enough for introducing me to Nikki. This plan is fantastic and Nikki has been so patient. Nikki, if I could rewind the clock, I would have hired you six months ago, but these last 30 days are certainly the most critical and I really feel good about this plan. Ann</p><figcaption><b>Ann Shippy</b> Candidate, SC House District 123 · Email</figcaption></div></figure>
+        <figure class="tc-card tc-quote"><div class="tc-paper"><span class="tc-mark" aria-hidden="true">“</span><blockquote><p>Nikki has a rare ability to make even complex products relatable while staying grounded in data. She built campaigns that didn't just look good. They performed. She consistently connected creative storytelling to real business outcomes.</p></blockquote><figcaption><b>Kevin Middleton</b><span>Senior Product Manager, HVAC.com (Trane Technologies)</span><span class="tc-src">LinkedIn</span></figcaption></div></figure>
+        <figure class="tc-card tc-shot"><div class="tc-paper"><div class="tc-imgbox"><img src="media/r-char-fantastic.jpg" alt="Email from Char Fitzwater" width="1179" height="657" loading="lazy" decoding="async"><span class="tc-more" aria-hidden="true">Tap to read</span></div><p class="sr">This is fantastic all the way around!!! Thank you! Nikki… great marketing communication! Love it!</p><figcaption><b>Dr. Char Fitzwater</b> Candidate, Charleston County School Board · Email</figcaption></div></figure>
+        <figure class="tc-card tc-quote"><div class="tc-paper"><span class="tc-mark" aria-hidden="true">“</span><blockquote><p>I've been recommending Nikki to other businesses because her content is sharp and instantly elevates how professional our social media looks.</p></blockquote><figcaption><b>Garrett Smith</b><span>CEO, StoneSmith Countertops</span><span class="tc-src">Review</span></figcaption></div></figure>
+        <figure class="tc-card tc-shot"><div class="tc-paper"><div class="tc-imgbox"><img src="media/r-andrew.jpg" alt="Email from Maple Air" width="1179" height="1126" loading="lazy" decoding="async"><span class="tc-more" aria-hidden="true">Tap to read</span></div><p class="sr">Good post today – best one yet. Sending to principal for sure!</p><figcaption><b>Maple Air</b> On a video about germs in schools · Email</figcaption></div></figure>
+        <figure class="tc-card tc-quote"><div class="tc-paper"><span class="tc-mark" aria-hidden="true">“</span><blockquote><p>Nikki can take an undefined space and turn it into something cohesive, engaging, and scalable. She combines strong creative instincts with real audience insight, and she brings an energy that makes collaboration genuinely enjoyable.</p></blockquote><figcaption><b>Lee Basnight</b><span>Head Creative Strategist, SAUHS Studios</span><span class="tc-src">LinkedIn</span></figcaption></div></figure>
       </div>
     </div>
+    <div class="wrap"><div class="tc-dots" role="group" aria-label="Choose a testimonial"><button type="button" aria-label="Testimonial 1 of 6"></button><button type="button" aria-label="Testimonial 2 of 6"></button><button type="button" aria-label="Testimonial 3 of 6"></button><button type="button" aria-label="Testimonial 4 of 6"></button><button type="button" aria-label="Testimonial 5 of 6"></button><button type="button" aria-label="Testimonial 6 of 6"></button></div></div>
   </section>
 
   <section>
@@ -937,6 +954,7 @@ main{overflow-x:clip}
       <span class="label">The work</span>
       <h1 class="cond page-h1" style="margin-top:1rem">Hooks, memes, carousels <span class="hl">&amp; receipts.</span></h1>
       <p class="dek" style="margin-top:1.25rem">Campaigns, brands, and whatever else I've made people stop scrolling for. Click around.</p>
+      <a class="receipts-link" href="#home" data-receipts>See the receipts →</a>
       <div class="chips" role="group" aria-label="Filter the work">
         <button type="button" data-f="all" aria-pressed="true">All</button>
         <button type="button" data-f="video" aria-pressed="false">Video</button>
@@ -1000,21 +1018,6 @@ main{overflow-x:clip}
     </div>
   </section>
 
-  <section class="receipts">
-    <div class="wrap">
-      <span class="label">Receipts</span>
-      <h2 class="cond h2" style="margin-top:1rem">Unprompted, unedited, <span class="p">very much appreciated.</span></h2>
-      <div class="rwall">
-        <figure><img src="media/r-ann-rewind.jpg" alt="Email from Ann Shippy: if I could rewind the clock, I would have hired you six months ago" width="1179" height="801" loading="lazy" decoding="async"><figcaption>Ann Shippy · candidate</figcaption></figure>
-        <figure><img src="media/r-char-fantastic.jpg" alt="Email from Char Fitzwater: fantastic all the way around, great marketing communication" width="1179" height="657" loading="lazy" decoding="async"><figcaption>Char Fitzwater · candidate</figcaption></figure>
-        <figure><img src="media/r-andrew.jpg" alt="Email from Andrew: Good post today, best one yet. Sending to principal for sure" width="1179" height="1126" loading="lazy" decoding="async"><figcaption>Maple Air · on a video about germs in schools</figcaption></figure>
-        <figure><img src="media/r-ann-text.jpg" alt="Text from Ann Shippy: I absolutely love it" width="1179" height="1262" loading="lazy" decoding="async"><figcaption>Ann Shippy · on a video concept</figcaption></figure>
-        <figure><img src="media/r-darlene.jpg" alt="Email from Darlene: love the work you've been doing for us" width="1179" height="531" loading="lazy" decoding="async"><figcaption>Maple Air · leadership</figcaption></figure>
-        <figure><img src="media/r-ann-talented.jpg" alt="Email from Ann Shippy: you are so darn talented" width="1179" height="460" loading="lazy" decoding="async"><figcaption>Ann Shippy · candidate</figcaption></figure>
-        <figure><img src="media/r-char-amazing.jpg" alt="Email from Char Fitzwater: yet again amazing" width="1179" height="408" loading="lazy" decoding="async"><figcaption>Char Fitzwater · candidate</figcaption></figure>
-      </div>
-    </div>
-  </section>
 </div>
 
 <!-- ======================= ABOUT ======================= -->
@@ -1078,20 +1081,6 @@ main{overflow-x:clip}
 </section>
 </main>
 
-<script>
-(function(){
-  var n=8,k=0,t=null,stage=document.getElementById("rq-stage");
-  function show(i){k=(i+n)%n;for(var j=0;j<n;j++)document.getElementById("rq-"+j).hidden=(j!==k);document.getElementById("rq-n").textContent=(k+1)+" / "+n;}
-  // reserve height of tallest quote so the section doesn't jump
-  function fit(){var h=0;for(var j=0;j<n;j++){var e=document.getElementById("rq-"+j),was=e.hidden;e.hidden=false;e.style.visibility="hidden";h=Math.max(h,e.offsetHeight);e.style.visibility="";e.hidden=was;}stage.style.minHeight=h+"px";}
-  function start(){if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;stop();t=setInterval(function(){show(k+1)},6250);}
-  function stop(){if(t)clearInterval(t);t=null;}
-  document.getElementById("rq-next").onclick=function(){show(k+1);start()};
-  document.getElementById("rq-prev").onclick=function(){show(k-1);start()};
-  stage.addEventListener("mouseenter",stop);stage.addEventListener("mouseleave",start);
-  window.addEventListener("resize",fit);fit();start();
-})();
-</script>
 <footer class="site"><div class="wrap"><span>© 2026 Nikki Hill Johnson · Charleston, SC</span><span>Humans first. Algorithms second.</span></div></footer>
 
 <div class="lbx" id="lbx" hidden role="dialog" aria-modal="true" aria-label="Enlarged view">
@@ -1169,7 +1158,7 @@ main{overflow-x:clip}
   });
 
   /* ---------- shared lightbox for every portfolio image, video, and carousel ---------- */
-  var GROUPS=".media, #gallery, .rwall, .ba";
+  var GROUPS=".media, #gallery, .rwall, .ba, .tc-track";
   var lbx=document.getElementById("lbx"),stage=document.getElementById("lbx-stage"),cnt=document.getElementById("lbx-count"),
       capEl=document.getElementById("lbx-cap"),prevB=document.getElementById("lbx-prev"),nextB=document.getElementById("lbx-next");
   var seq=[],pos=0,opener=null,isOpen=false;
@@ -1377,6 +1366,44 @@ main{overflow-x:clip}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.08,rootMargin:"0px 0px -6% 0px"});
   items.forEach(function(x){x[0].classList.add("rv");if(x[1])x[0].classList.add(x[1]);io.observe(x[0]);});
   // anything already on screen when a view opens shows right away (no waiting)
+})();
+</script>
+<script>
+/* Receipts carousel: one card at a time, every 7s. Pauses on hover/focus/touch; stops for good after manual navigation. */
+(function(){
+  var sec=document.getElementById("receipts"); if(!sec)return;
+  var track=sec.querySelector(".tc-track"),cards=[].slice.call(track.querySelectorAll(".tc-card")),
+      dots=[].slice.call(sec.querySelectorAll(".tc-dots button")),prev=sec.querySelector(".tc-prev"),next=sec.querySelector(".tc-next");
+  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var stopped=reduce,paused=false,visible=false,timer=null,DELAY=7000;
+  // screenshots taller than their frame get a fade and "Tap to read"
+  function markTall(){sec.querySelectorAll(".tc-imgbox").forEach(function(b){var i=b.querySelector("img");if(!i)return;var h=b.clientWidth*(+i.getAttribute("height")/ +i.getAttribute("width"));b.classList.toggle("tall",h>b.clientHeight+4);});}
+  function maxScroll(){return track.scrollWidth-track.clientWidth;}
+  function pad(){return parseFloat(getComputedStyle(track).scrollPaddingLeft)||0;}
+  function idx(){var x=track.scrollLeft,best=0,bd=1e9;cards.forEach(function(c,i){var d=Math.abs(c.offsetLeft-pad()-x);if(d<bd){bd=d;best=i;}});if(track.scrollLeft>=maxScroll()-4)best=Math.max(best,lastReachable());return best;}
+  function lastReachable(){for(var i=0;i<cards.length;i++){if(cards[i].offsetLeft-pad()>=maxScroll()-4)return i;}return cards.length-1;}
+  function go(i){i=(i+cards.length)%cards.length;track.scrollTo({left:Math.min(cards[i].offsetLeft-pad(),maxScroll()),behavior:reduce?"auto":"smooth"});}
+  function sync(){var k=idx();dots.forEach(function(d,j){if(j===k)d.setAttribute("aria-current","true");else d.removeAttribute("aria-current");});}
+  function tick(){if(stopped||paused||!visible||document.hidden)return;var k=idx();go(k>=lastReachable()?0:k+1);}
+  function start(){clearInterval(timer);if(!stopped)timer=setInterval(tick,DELAY);}
+  function stop(){stopped=true;clearInterval(timer);}
+  prev.addEventListener("click",function(){stop();go(idx()-1);});
+  next.addEventListener("click",function(){stop();var k=idx();go(k>=lastReachable()?0:k+1);});
+  dots.forEach(function(d,j){d.addEventListener("click",function(){stop();go(j);});});
+  ["pointerdown","wheel","keydown"].forEach(function(ev){track.addEventListener(ev,function(e){if(ev==="wheel"&&Math.abs(e.deltaX)<Math.abs(e.deltaY))return;stop();},{passive:true});});
+  sec.addEventListener("mouseenter",function(){paused=true;});
+  sec.addEventListener("mouseleave",function(){paused=false;});
+  sec.addEventListener("focusin",function(){paused=true;});
+  sec.addEventListener("focusout",function(){paused=false;});
+  track.addEventListener("scroll",function(){window.requestAnimationFrame(sync);},{passive:true});
+  if("IntersectionObserver" in window){new IntersectionObserver(function(es){visible=es[0].isIntersecting;},{threshold:.35}).observe(track);}else visible=true;
+  window.addEventListener("resize",function(){markTall();sync();});
+  track.querySelectorAll("img").forEach(function(i){i.addEventListener("load",markTall);});
+  markTall();sync();start();
+  // "See the receipts" link on the Work page
+  document.querySelectorAll("[data-receipts]").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();
+    var jump=function(){sec.scrollIntoView({behavior:reduce?"auto":"smooth"});};
+    if(document.getElementById("view-home").hidden){location.hash="home";setTimeout(jump,60);}else jump();});});
 })();
 </script>
 </body>
