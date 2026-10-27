@@ -371,6 +371,15 @@ main{overflow-x:clip}
 .case .ba{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,19rem));gap:clamp(.75rem,3vw,2rem);max-width:none;padding:clamp(1rem,3vw,1.75rem);border:1px solid var(--line);justify-content:center}
 .case .ba img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
 .case .ba figcaption{text-align:center}
+
+/* Work gallery: ordered masonry (JS places cards left to right; DOM order = reading order) */
+.gallery.masonry{columns:auto;position:relative}
+.gallery.masonry .tile{position:absolute;top:0;left:0;margin:0}
+.tile{margin:0 0 1rem;gap:.35rem}
+.tile figcaption{line-height:1.35}
+.tile figcaption .cl{color:var(--ink);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:.7rem;text-decoration:none;border-bottom:1.5px solid transparent}
+.tile figcaption .cl:hover,.tile figcaption .cl:focus-visible{border-bottom-color:var(--pink)}
+.tile figcaption .sep{color:var(--grey);margin:0 .3rem}
 </style>
 <style>html,body{margin:0}img{max-width:100%}</style>
 </head>
@@ -572,7 +581,7 @@ main{overflow-x:clip}
         <span class="asof dark">Campaigns in progress · as of October 24, 2026</span>
       </div>
 
-      <article class="case first">
+      <article class="case first" id="case-char">
         <div class="main">
           <img class="caselogo" src="media/logo-char.png" alt="Dr. Char Fitzwater, School Board District 1">
           <div class="meta"><span class="who">Char Fitzwater</span><span>· Charleston County School Board, District 1</span><span class="tag">Pro bono</span></div>
@@ -604,7 +613,7 @@ main{overflow-x:clip}
         </div>
       </article>
 
-      <article class="case">
+      <article class="case" id="case-ann">
         <div class="main">
           <div class="meta"><span class="who">Ann Shippy</span><span>· SC House District 123</span><span class="tag">Paid</span></div>
           <h3>Let voters pick the message.</h3>
@@ -626,7 +635,7 @@ main{overflow-x:clip}
         </div>
       </article>
 
-      <article class="case">
+      <article class="case" id="case-katie">
         <div class="main">
           <div class="meta"><span class="who">Katie Miller</span><span>· Charleston County Council</span><span class="tag">Paid</span></div>
           <h3>Two long videos. Four reasons to keep watching.</h3>
@@ -644,7 +653,7 @@ main{overflow-x:clip}
         </div>
       </article>
 
-      <article class="case dark">
+      <article class="case dark" id="case-nnd">
         <div class="main">
           <div class="meta"><span class="who">Nikki Next Door</span><span>· My own channel</span><span class="tag">Creator</span></div>
           <h3>470,000 views in 90 days. Most from people who don't follow me.</h3>
@@ -739,6 +748,8 @@ main{overflow-x:clip}
           <figure><img src="media/ma-250k.jpg" alt="Maple Air graphic: 250,000+ cubic feet" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Portable air purification launch</figcaption></figure>
           <figure><button type="button" class="carbtn" data-car="ma-winter" data-n="7" aria-label="Open carousel: 5 reasons your house helps illness spread in winter"><img src="media/car/ma-winter/1.jpg" alt="5 reasons your house helps illness spread in winter" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Why winter makes us sick</figcaption></figure>
           <figure><button type="button" class="carbtn" data-car="ma-mold" data-n="7" aria-label="Open carousel: Mold in military housing"><img src="media/car/ma-mold/1.jpg" alt="Mold in military housing" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Mold in military housing</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-gym" data-n="9" aria-label="Open carousel: January gyms are packed"><img src="media/car/ma-gym/1.jpg" alt="January gyms are packed" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">9 slides</span></button><figcaption>January gyms are packed (and not just with people)</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-ma-install.jpg" src="media/v-ma-install.mp4" width="540" height="960"></video><figcaption>Install day</figcaption></figure>
         </div>
       </article>
 
@@ -818,6 +829,8 @@ main{overflow-x:clip}
           <figure><video playsinline preload="none" poster="media/v-wed-thought.jpg" src="media/v-wed-thought.mp4" width="540" height="960"></video><figcaption>Thought of the Day</figcaption></figure>
           <figure><button type="button" class="carbtn" data-car="wed-goals" data-n="5" aria-label="Open carousel: How to get your goals in 3 steps"><img src="media/car/wed-goals/1.jpg" alt="How to get your goals in 3 steps" width="1364" height="1370" loading="lazy" decoding="async"><span class="slides">5 slides</span></button><figcaption>How to reach your goals in 3 steps</figcaption></figure>
           <figure><img src="media/wed-testimonial.jpg" alt="Business by Design student testimonial graphic" width="1356" height="1362" loading="lazy" decoding="async"><figcaption>Celebrating a client's success</figcaption></figure>
+          <figure><img src="media/wed-graphic.jpg" alt="James Wedmore graphic: I can't do this, but you did" width="828" height="825" loading="lazy" decoding="async"><figcaption>“But you did”</figcaption></figure>
+          <figure><img src="media/wed-success.jpg" alt="James Wedmore graphic: Success, what people think vs what it looks like" width="829" height="830" loading="lazy" decoding="async"><figcaption>What success really looks like</figcaption></figure>
         </div>
       </article>
 
@@ -843,6 +856,8 @@ main{overflow-x:clip}
           <figure><video playsinline preload="none" poster="media/v-nyag-david.jpg" src="media/v-nyag-david.mp4" width="540" height="960"></video><figcaption>Don't spoil the kids too much</figcaption></figure>
           <figure><img src="media/nyag-anatomy.jpg" alt="Not Your Average Grandma graphic: Anatomy of a scared settler" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>The anatomy of a scared settler</figcaption></figure>
           <figure><img src="media/meme-kardashian.jpg" alt="Meme: Hey! Life isn't over at 50" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>Life isn't over at 50</figcaption></figure>
+          <figure><img src="media/nyag-alarm.jpg" alt="Not Your Average Grandma graphic: The best time to start is now" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>The best time to start is now</figcaption></figure>
+          <figure><img src="media/people-pleaser.jpg" alt="Graphic: 5 ways being a people pleaser impacts your health" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>What people-pleasing does to your health</figcaption></figure>
         </div>
       </article>
 
@@ -878,7 +893,7 @@ main{overflow-x:clip}
     <div class="wrap">
       <span class="label">The work</span>
       <h1 class="cond page-h1" style="margin-top:1rem">Hooks, memes, carousels <span class="hl">&amp; receipts.</span></h1>
-      <p class="dek" style="margin-top:1.25rem">A sampler from campaigns, brands, and my own channel. Tap anything to see it bigger.</p>
+      <p class="dek" style="margin-top:1.25rem">Campaigns, brands, and whatever else I've made people stop scrolling for. Click around.</p>
       <div class="chips" role="group" aria-label="Filter the work">
         <button type="button" data-f="all" aria-pressed="true">All</button>
         <button type="button" data-f="video" aria-pressed="false">Video</button>
@@ -887,58 +902,57 @@ main{overflow-x:clip}
         <button type="button" data-f="graphic" aria-pressed="false">Graphics</button>
         <button type="button" data-f="political" aria-pressed="false">Political</button>
       </div>
+      <!--
+        WORK GALLERY: how to update
+        - One <figure> line = one piece. The order of the lines is the order on the page.
+        - data-client = a key from the client list just below (it adds the clickable client name).
+        - data-k = one or more filters, separated by spaces: video carousel meme graphic political
+        - The caption goes inside <figcaption>. Keep it short.
+        - To feature a piece, copy its line from its case study (or another tile) and paste it where you want it.
+          To unfeature it, delete the line. Media files are never touched.
+        - New client? Add a line to the client list: the key, the name to show, and the case study id it links to.
+      -->
+      <script type="application/json" id="work-clients">{
+  "nnd":        {"name": "Nikki Next Door",          "case": "case-nnd",        "page": "campaigns"},
+  "char":       {"name": "Char Fitzwater",           "case": "case-char",       "page": "campaigns"},
+  "ann":        {"name": "Ann Shippy",               "case": "case-ann",        "page": "campaigns"},
+  "katie":      {"name": "Katie Miller",             "case": "case-katie",      "page": "campaigns"},
+  "maple":      {"name": "Maple Air",                "case": "case-maple",      "page": "brands"},
+  "stonesmith": {"name": "StoneSmith",               "case": "case-stonesmith", "page": "brands"},
+  "hvac":       {"name": "HVAC.com",                 "case": "case-hvac",       "page": "brands"},
+  "wedmore":    {"name": "Wedmore",                  "case": "case-wedmore",    "page": "brands"},
+  "nyag":       {"name": "Not Your Average Grandma", "case": "case-nyag",       "page": "brands"},
+  "cft":        {"name": "Carolina Farm Trust",      "case": "case-cft",        "page": "brands"}
+}</script>
       <div class="gallery" id="gallery">
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-hvac-blue.jpg" src="media/v-hvac-blue.mp4" width="540" height="960"></video><figcaption><b>HVAC.com</b>On camera: Is your AC ready?</figcaption></figure>
-        <figure class="tile" data-k="carousel political"><button type="button" class="carbtn" data-car="char-approved" data-n="9" aria-label="Open carousel: The students have spoken"><img src="media/car/char-approved/1.jpg" alt="The students have spoken" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">9 slides</span></button><figcaption><b>Char Fitzwater</b>The students have spoken</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-casestudy" data-n="4" aria-label="Open carousel: Lake Norman home test results"><img src="media/car/ma-casestudy/1.jpg" alt="Lake Norman home test results" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption><b>Maple Air</b>Real home, real petri dishes</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/ss-tetris.jpg" alt="Countertop Tetris" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>StoneSmith</b>Countertop Tetris</figcaption></figure>
-        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-nnd-freedom.jpg" src="media/v-nnd-freedom.mp4" width="480" height="854"></video><figcaption><b>Nikki Next Door</b>Make it make sense</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="hvac-expert" data-n="10" aria-label="Open carousel: Ask the Expert"><img src="media/car/hvac-expert/1.jpg" alt="Ask the Expert" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">10 slides</span></button><figcaption><b>HVAC.com</b>Ask the Expert</figcaption></figure>
-        <figure class="tile" data-k="graphic political"><img src="media/char-charcuterie.jpg" alt="CHARcuterie flyer" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>Char Fitzwater</b>CHARcuterie</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-pets" data-n="8" aria-label="Open carousel: Pet owners, we have bad news"><img src="media/car/ma-pets/1.jpg" alt="Pet owners, we have bad news" width="1080" height="1440" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption><b>Maple Air</b>Pet owners, bad news</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-ma-sock.jpg" src="media/v-ma-sock.mp4" width="360" height="640"></video><figcaption><b>HVAC.com</b>Stinky sock syndrome</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-hotel" data-n="7" aria-label="Open carousel: Hotel bathrooms"><img src="media/car/ss-hotel/1.jpg" alt="Hotel bathrooms" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption><b>StoneSmith</b>Hotel bathrooms</figcaption></figure>
-        <figure class="tile" data-k="graphic political"><img src="media/char-scoop.jpg" alt="Get the Scoop on Char" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>Char Fitzwater</b>Get the SCOOP</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-results" data-n="4" aria-label="Open carousel: Real-world results"><img src="media/car/ma-results/1.jpg" alt="Real-world results" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption><b>Maple Air</b>Real-world results</figcaption></figure>
-        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-char-talk.jpg" src="media/v-char-talk.mp4" width="480" height="854"></video><figcaption><b>Char Fitzwater</b>"I got this"</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-quartz" data-n="4" aria-label="Open carousel: Quartz or quartzite"><img src="media/car/ss-quartz/1.jpg" alt="Quartz or quartzite" width="1440" height="1800" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption><b>StoneSmith</b>Quartz or quartzite?</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-hvac-face.jpg" src="media/v-hvac-face.mp4" width="360" height="640"></video><figcaption><b>HVAC.com</b>On camera: Going on vacation?</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-floating" data-n="8" aria-label="Open carousel: What's floating in your house"><img src="media/car/ma-floating/1.jpg" alt="What's floating in your house" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption><b>Maple Air</b>What's floating in your house?</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/ma-aircell.jpg" alt="Introducing Maple AirCell" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>Maple Air</b>AirCell launch</figcaption></figure>
-        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-nnd-dominion.jpg" src="media/v-nnd-dominion.mp4" width="480" height="854"></video><figcaption><b>Nikki Next Door</b>Dominion and your bill</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="hvac-value" data-n="7" aria-label="Open carousel: Smarter HVAC and home value"><img src="media/car/hvac-value/1.jpg" alt="Smarter HVAC and home value" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption><b>HVAC.com</b>Home value</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-kitchen-car" data-n="8" aria-label="Open carousel: Timeless kitchen myth"><img src="media/car/ss-kitchen-car/1.jpg" alt="Timeless kitchen myth" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption><b>StoneSmith</b>The timeless kitchen myth</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-winter" data-n="7" aria-label="Open carousel: Why winter makes houses sick"><img src="media/car/ma-winter/1.jpg" alt="Why winter makes houses sick" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption><b>Maple Air</b>Why winter makes houses sick</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="wed-goals" data-n="5" aria-label="Open carousel: Goals in 3 steps"><img src="media/car/wed-goals/1.jpg" alt="Goals in 3 steps" width="1364" height="1370" loading="lazy" decoding="async"><span class="slides">5 slides</span></button><figcaption><b>Wedmore</b>Goals in 3 steps</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-mold" data-n="7" aria-label="Open carousel: Mold in military housing"><img src="media/car/ma-mold/1.jpg" alt="Mold in military housing" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption><b>Maple Air</b>Mold in military housing</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-gym" data-n="9" aria-label="Open carousel: January gyms are packed"><img src="media/car/ma-gym/1.jpg" alt="January gyms are packed" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">9 slides</span></button><figcaption><b>Maple Air</b>January gyms are packed</figcaption></figure>
-        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-char-wave.jpg" src="media/v-char-wave.mp4" width="540" height="960"></video><figcaption><b>Char Fitzwater</b>Sign waving</figcaption></figure>
-        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-nnd-colbert.jpg" src="media/v-nnd-colbert.mp4" width="480" height="854"></video><figcaption><b>Nikki Next Door</b>33K views</figcaption></figure>
-        <figure class="tile" data-k="graphic political"><img src="media/char-citypaper.jpg" alt="Char Fitzwater City Paper endorsement graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>Char Fitzwater</b>Endorsed</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/ma-smells.jpg" alt="Maple Air ad: Your facility smells" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>Maple Air</b>Your facility smells</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-ma-new.jpg" src="media/v-ma-new.mp4" width="480" height="854"></video><figcaption><b>Maple Air</b>Unboxing</figcaption></figure>
-        <figure class="tile" data-k="graphic political"><img src="media/ann-voucher.jpg" alt="Ann Shippy contrast ad on school vouchers" width="1012" height="1800" loading="lazy" decoding="async"><figcaption><b>Ann Shippy</b>That's not accountability</figcaption></figure>
-        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-ann-elephant.jpg" src="media/v-ann-elephant.mp4" width="540" height="960"></video><figcaption><b>Katie Miller</b>Making the case to Republican voters</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/hvac-your.jpg" alt="HVAC.com graphic: Your HVAC" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>HVAC.com</b>Your HVAC, explained</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-wed-hermione.jpg" src="media/v-wed-hermione.mp4" width="540" height="960"></video><figcaption><b>Wedmore</b>"Nitch."</figcaption></figure>
-        <figure class="tile" data-k="meme"><img src="media/meme-snoop.jpg" alt="HVAC.com meme with Snoop Dogg" width="1080" height="1080" loading="lazy" decoding="async"><figcaption><b>HVAC.com</b>When you see that replacement quote</figcaption></figure>
-        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-nnd-ccsd.jpg" src="media/v-nnd-ccsd.mp4" width="540" height="960"></video><figcaption><b>Nikki Next Door</b>CCSD Cliff Notes, Part 1</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-hvac-walking.jpg" src="media/v-hvac-walking.mp4" width="540" height="960"></video><figcaption><b>HVAC.com</b>Heat wave, Walking Dead edition</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/nyag-alarm.jpg" alt="Not Your Average Grandma graphic: The best time to start is now" width="1080" height="1080" loading="lazy" decoding="async"><figcaption><b>NYAG</b>The best time to start is now</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-ma-contam.jpg" src="media/v-ma-contam.mp4" width="480" height="854"></video><figcaption><b>Maple Air</b>The most contaminated room</figcaption></figure>
-        <figure class="tile" data-k="meme"><img src="media/meme-kendrick.jpg" alt="HVAC.com meme: I heard you need a new HVAC" width="662" height="831" loading="lazy" decoding="async"><figcaption><b>HVAC.com</b>Hey you</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-wed-wee.jpg" src="media/v-wed-wee.mp4" width="540" height="960"></video><figcaption><b>Wedmore</b>Launch expectations</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/wed-graphic.jpg" alt="James Wedmore graphic: I can't do this, but you did" width="828" height="825" loading="lazy" decoding="async"><figcaption><b>Wedmore</b>But you did</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-ss-inspo.jpg" src="media/v-ss-inspo.mp4" width="540" height="960"></video><figcaption><b>StoneSmith</b>Kitchen inspo</figcaption></figure>
-        <figure class="tile" data-k="meme"><img src="media/meme-kardashian.jpg" alt="Meme: Life isn't over at 50" width="1080" height="1080" loading="lazy" decoding="async"><figcaption><b>NYAG</b>Life isn't over at 50</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-hvac-kelsey.jpg" src="media/v-hvac-kelsey.mp4" width="540" height="960"></video><figcaption><b>HVAC.com</b>QuoteScore</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/people-pleaser.jpg" alt="Graphic: 5 ways being a people pleaser impacts your health" width="1080" height="1080" loading="lazy" decoding="async"><figcaption><b>NYAG</b>People pleasing</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-nyag-taylor.jpg" src="media/v-nyag-taylor.mp4" width="540" height="960"></video><figcaption><b>NYAG</b>Too old to start?</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/wed-success.jpg" alt="James Wedmore graphic: Success, what people think vs what it looks like" width="829" height="830" loading="lazy" decoding="async"><figcaption><b>Wedmore</b>What success really looks like</figcaption></figure>
-        <figure class="tile" data-k="meme"><img src="media/meme-taylor.jpg" alt="HVAC.com meme with Taylor Swift and Travis Kelce" width="1374" height="1376" loading="lazy" decoding="async"><figcaption><b>HVAC.com</b>Your HVAC system</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-wed-thought.jpg" src="media/v-wed-thought.mp4" width="540" height="960"></video><figcaption><b>Wedmore</b>Thought of the Day</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/cft-flyer.jpg" alt="Carolina Farm Trust event flyer" width="1374" height="1368" loading="lazy" decoding="async"><figcaption><b>Carolina Farm Trust</b>A Night at the Museum</figcaption></figure>
-        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-ma-install.jpg" src="media/v-ma-install.mp4" width="540" height="960"></video><figcaption><b>Maple Air</b>Install day</figcaption></figure>
+        <figure class="tile" data-client="nnd" data-k="video political"><video playsinline preload="none" poster="media/v-nnd-dominion.jpg" src="media/v-nnd-dominion.mp4" width="480" height="854"></video><figcaption>Dominion Energy and your power bill</figcaption></figure>
+        <figure class="tile" data-client="char" data-k="graphic political"><img src="media/char-charcuterie.jpg" alt="CHARcuterie flyer" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>CHARcuterie. Because puns work.</figcaption></figure>
+        <figure class="tile" data-client="maple" data-k="carousel"><button type="button" class="carbtn" data-car="ma-floating" data-n="8" aria-label="Open carousel: What's floating in your house"><img src="media/car/ma-floating/1.jpg" alt="What's floating in your house" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>What's floating around your home?</figcaption></figure>
+        <figure class="tile" data-client="hvac" data-k="video"><video playsinline preload="none" poster="media/v-hvac-blue.jpg" src="media/v-hvac-blue.mp4" width="540" height="960"></video><figcaption>Is your AC ready?</figcaption></figure>
+        <figure class="tile" data-client="stonesmith" data-k="carousel"><button type="button" class="carbtn" data-car="ss-quartz" data-n="4" aria-label="Open carousel: Quartz or quartzite"><img src="media/car/ss-quartz/1.jpg" alt="Quartz or quartzite" width="1440" height="1800" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>Quartz or quartzite?</figcaption></figure>
+        <figure class="tile" data-client="katie" data-k="video political"><video playsinline preload="none" poster="media/v-ann-elephant.jpg" src="media/v-ann-elephant.mp4" width="540" height="960"></video><figcaption>Making the case to Republican voters</figcaption></figure>
+        <figure class="tile" data-client="wedmore" data-k="video meme"><video playsinline preload="none" poster="media/v-wed-hermione.jpg" src="media/v-wed-hermione.mp4" width="540" height="960"></video><figcaption>When someone says “niche”</figcaption></figure>
+        <figure class="tile" data-client="char" data-k="carousel political"><button type="button" class="carbtn" data-car="char-approved" data-n="9" aria-label="Open carousel: The students have spoken"><img src="media/car/char-approved/1.jpg" alt="The students have spoken" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">9 slides</span></button><figcaption>The students have spoken</figcaption></figure>
+        <figure class="tile" data-client="hvac" data-k="meme"><img src="media/meme-kendrick.jpg" alt="HVAC.com meme: I heard you need a new HVAC" width="662" height="831" loading="lazy" decoding="async"><figcaption>Football meets HVAC</figcaption></figure>
+        <figure class="tile" data-client="maple" data-k="graphic"><img src="media/ma-smells.jpg" alt="Maple Air ad: Your facility smells" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Your facility smells</figcaption></figure>
+        <figure class="tile" data-client="ann" data-k="graphic political"><img src="media/ann-voucher.jpg" alt="Ann Shippy contrast ad on school vouchers" width="1012" height="1800" loading="lazy" decoding="async"><figcaption>Public schools or private vouchers?</figcaption></figure>
+        <figure class="tile" data-client="nyag" data-k="video meme"><video playsinline preload="none" poster="media/v-nyag-taylor.jpg" src="media/v-nyag-taylor.mp4" width="540" height="960"></video><figcaption>Too old to start something new?</figcaption></figure>
+        <figure class="tile" data-client="stonesmith" data-k="graphic"><img src="media/ss-tetris.jpg" alt="Countertop Tetris" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Countertop Tetris</figcaption></figure>
+        <figure class="tile" data-client="nnd" data-k="video political"><video playsinline preload="none" poster="media/v-nnd-colbert.jpg" src="media/v-nnd-colbert.mp4" width="480" height="854"></video><figcaption>South Carolina politics, for everyone outside it</figcaption></figure>
+        <figure class="tile" data-client="maple" data-k="carousel"><button type="button" class="carbtn" data-car="ma-casestudy" data-n="4" aria-label="Open carousel: Lake Norman home test results"><img src="media/car/ma-casestudy/1.jpg" alt="Lake Norman home test results" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>What we found inside a real home</figcaption></figure>
+        <figure class="tile" data-client="hvac" data-k="video"><video playsinline preload="none" poster="media/v-ma-sock.jpg" src="media/v-ma-sock.mp4" width="360" height="640"></video><figcaption>Stinky sock syndrome</figcaption></figure>
+        <figure class="tile" data-client="char" data-k="graphic political"><img src="media/char-citypaper.jpg" alt="Char Fitzwater City Paper endorsement graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Turning an endorsement into content</figcaption></figure>
+        <figure class="tile" data-client="wedmore" data-k="carousel"><button type="button" class="carbtn" data-car="wed-goals" data-n="5" aria-label="Open carousel: Goals in 3 steps"><img src="media/car/wed-goals/1.jpg" alt="Goals in 3 steps" width="1364" height="1370" loading="lazy" decoding="async"><span class="slides">5 slides</span></button><figcaption>How to reach your goals in 3 steps</figcaption></figure>
+        <figure class="tile" data-client="nyag" data-k="meme"><img src="media/meme-kardashian.jpg" alt="Meme: Life isn't over at 50" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>Life isn't over at 50</figcaption></figure>
+        <figure class="tile" data-client="char" data-k="video political"><video playsinline preload="none" poster="media/v-char-talk.jpg" src="media/v-char-talk.mp4" width="480" height="854"></video><figcaption>Candidate on camera: “I got this”</figcaption></figure>
+        <figure class="tile" data-client="hvac" data-k="carousel"><button type="button" class="carbtn" data-car="hvac-expert" data-n="10" aria-label="Open carousel: Ask the Expert"><img src="media/car/hvac-expert/1.jpg" alt="Ask the Expert" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">10 slides</span></button><figcaption>Ask the Expert: HVAC questions answered</figcaption></figure>
+        <figure class="tile" data-client="maple" data-k="video"><video playsinline preload="none" poster="media/v-ma-contam.jpg" src="media/v-ma-contam.mp4" width="480" height="854"></video><figcaption>The most contaminated room in your house</figcaption></figure>
+        <figure class="tile" data-client="nnd" data-k="video political"><video playsinline preload="none" poster="media/v-nnd-freedom.jpg" src="media/v-nnd-freedom.mp4" width="480" height="854"></video><figcaption>The SC Freedom Caucus, explained</figcaption></figure>
+        <figure class="tile" data-client="stonesmith" data-k="video"><video playsinline preload="none" poster="media/v-ss-inspo.jpg" src="media/v-ss-inspo.mp4" width="540" height="960"></video><figcaption>From inspiration to installation</figcaption></figure>
+        <figure class="tile" data-client="char" data-k="graphic political"><img src="media/char-scoop.jpg" alt="Get the Scoop on Char" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Get the SCOOP</figcaption></figure>
+        <figure class="tile" data-client="hvac" data-k="meme"><img src="media/meme-snoop.jpg" alt="HVAC.com meme with Snoop Dogg" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>When you see that replacement quote</figcaption></figure>
+        <figure class="tile" data-client="maple" data-k="graphic"><img src="media/ma-aircell.jpg" alt="Introducing Maple AirCell" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Introducing Maple AirCell</figcaption></figure>
+        <figure class="tile" data-client="cft" data-k="graphic"><img src="media/cft-flyer.jpg" alt="Carolina Farm Trust event flyer" width="1374" height="1368" loading="lazy" decoding="async"><figcaption>A Night at the Museum</figcaption></figure>
       </div>
     </div>
   </section>
@@ -967,7 +981,7 @@ main{overflow-x:clip}
       <div class="copy">
         <span class="label">About</span>
         <h1 class="cond page-h1">Elder millennial. <span class="w" style="color:#fff">Oregon Trail survivor.</span></h1>
-        <p class="dek">I've been making things for the internet since before "content strategist" was a job. I've survived every algorithm change, every "Facebook is dead" headline, and Vine. I can handle whatever's next.</p>
+        <p class="dek">I was making videos with a handheld camcorder in my basement long before I had an internet connection, so making content has always been my thing. I started in digital at AOL in 2006, back when "social media manager" wasn't a job title yet. Nearly two decades later, I'm still finding new ways to get people to pay attention.</p>
       </div>
       <figure class="print">
         <img src="media/excited.jpg" alt="Nikki Hill Johnson with arms out, mid-laugh" style="object-position:50% 25%">
@@ -979,10 +993,11 @@ main{overflow-x:clip}
     <div class="wrap split">
       <h2 class="cond h2">The short version.</h2>
       <div class="reading">
-        <p>I started at AOL in 2006, in broadband marketing and then the music and lifestyle channels, back when we were still figuring out what a homepage was for. Then I spent eight years building an online community of 1,000+ people at BODi. That taught me more about why people show up (and why they stay) than any marketing class could.</p>
-        <p>After that came nonprofit work at Carolina Farm Trust, a $6.4M launch for James Wedmore, and two years making social a real sales channel at HVAC.com. In late 2025 I went independent. Now I split my time between brands that need a senior marketer without hiring one full time, and Democratic campaigns here in South Carolina.</p>
-        <p>I have a sociology degree, which explains a lot. I care more about why people do things than which app they're doing them on.</p>
-        <p>I live in Charleston with my four kids, which explains my comfort with organized chaos.</p>
+        <p>I started at AOL in 2006, working in broadband marketing before moving into music and lifestyle content. Then I spent eight years at BODi building an online fitness community of more than 1,000 people. That taught me a lot about what makes people show up, stick around, and actually care.</p>
+        <p>From there, I worked in nonprofit marketing at Carolina Farm Trust, helped lead content for a $6.4 million launch with James Wedmore, and spent two years turning social media into a sales channel at HVAC.com.</p>
+        <p>In late 2025, I went out on my own. Now I work with brands that need experienced marketing leadership and Democratic candidates who need someone who understands both the message and how to get it in front of people.</p>
+        <p>I have a sociology degree, which explains a lot. I've always been more interested in why people do things than which app they're doing them on.</p>
+        <p>I live in the Charleston area with my husband, four kids, three cats, and a dog, which explains my comfort with organized chaos. My favorite platform right now is Threads. It's the only app I open just for fun, which is saying something for someone who opens apps for a living.</p>
       </div>
     </div>
   </section>
@@ -991,14 +1006,13 @@ main{overflow-x:clip}
     <div class="wrap">
       <span class="label">The long version</span>
       <ol class="timeline">
-        <li><span class="yrs">2025–present</span><div><h3>Independent Strategy &amp; Creative</h3><span class="ttl">Fractional marketing strategist, social and paid media</span><p>Senior strategy for startups, local businesses and Democratic campaigns, without adding full-time headcount. Current clients include Maple Air and StoneSmith.</p></div></li>
-        <li><span class="yrs">2023–2025</span><div><h3>HVAC.com / Trane Technologies</h3><span class="ttl">Senior Social Media &amp; Content Strategist</span><p>Built the social voice and paid program from scratch. ~50× ROI, 423 qualified leads, $71 cost per lead.</p></div></li>
-        <li><span class="yrs">2022–2023</span><div><h3>Level Five Publishing / James Wedmore</h3><span class="ttl">Creative Content Director</span><p>Instagram, YouTube Shorts and live launch coverage for a $6.4M launch. 17 Reels over 10K views.</p></div></li>
-        <li><span class="yrs">2021–2022</span><div><h3>Carolina Farm Trust</h3><span class="ttl">Senior Marketing &amp; Communications Manager</span><p>One story across every channel. $15K+ in grants, +30% web traffic, +20% volunteers.</p></div></li>
+        <li><span class="yrs">2025–present</span><div><h3>Independent Strategy &amp; Creative</h3><span class="ttl">Marketing Strategist, Paid Media &amp; Content Creator</span><p>Independent marketing and creative for brands, Democratic candidates, and progressive causes. Strategy, paid media, video, and content that gets people paying attention.</p></div></li>
+        <li><span class="yrs">2023–2025</span><div><h3>HVAC.com / Trane Technologies</h3><span class="ttl">Senior Social Media &amp; Content Strategist</span><p>Built the social voice and paid media program at a growing HVAC startup that was acquired by Trane during my tenure. Helped turn social into a revenue channel, generating 423 qualified leads at $71 per lead and approximately 50× return on social spend.</p></div></li>
+        <li><span class="yrs">2022–2023</span><div><h3>Level Five Publishing / James Wedmore</h3><span class="ttl">Creative Content Director</span><p>Led social content and launch coverage for a $6.4M launch, producing 50+ creative assets weekly and 17 Reels exceeding 10K views.</p></div></li>
+        <li><span class="yrs">2021–2022</span><div><h3>Carolina Farm Trust</h3><span class="ttl">Senior Marketing &amp; Communications Manager</span><p>Unified messaging across social, email, web, and fundraising. Helped secure $15K+ in grants and increase website traffic by 30%.</p></div></li>
         <li><span class="yrs">2019–2022</span><div><h3>Independent</h3><span class="ttl">Digital Marketing Strategist</span><p>Social, content and launch strategy for D2C brands, including a 28.5% revenue increase for one client.</p></div></li>
-        <li><span class="yrs">2013–2021</span><div><h3>BODi</h3><span class="ttl">Digital Marketing &amp; Community Growth Strategist</span><p>Built a 1,000+ member online community and a $1M+ business on social. Keynote speaker.</p></div></li>
-        <li><span class="yrs">2006–2011</span><div><h3>AOL</h3><span class="ttl">Broadband Marketing, then AOL Music &amp; Lifestyle channels</span><p>Content, programming and site launches, including StyleList and KitchenDaily.</p></div></li>
-        <li><span class="yrs">Earlier</span><div><h3>Pure Matters · URS Corporation</h3><span class="ttl">Online Community Manager · Marketing &amp; Outreach Coordinator</span><p>Community management across Facebook, Twitter and Pinterest, and outreach for transportation programs.</p></div></li>
+        <li><span class="yrs">2013–2021</span><div><h3>BODi</h3><span class="ttl">Digital Marketing &amp; Community Growth Strategist</span><p>Built a 1,000+ member online community and a $1M+ social-driven business. Keynote speaker.</p></div></li>
+        <li><span class="yrs">2006–2011</span><div><h3>AOL</h3><span class="ttl">Broadband Marketing, then AOL Music &amp; Lifestyle Channels</span><p>Content, programming, and site launches, including StyleList and KitchenDaily.</p></div></li>
       </ol>
     </div>
   </section>
@@ -1207,15 +1221,53 @@ main{overflow-x:clip}
     if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3)go(dx<0?1:-1);
   },{passive:true});
 
-  /* ---------- work filters ---------- */
+  /* ---------- work gallery: client links, filters, ordered masonry ---------- */
+  var gal=document.getElementById("gallery");
+  var CL={};try{CL=JSON.parse(document.getElementById("work-clients").textContent);}catch(e){}
+  Array.prototype.forEach.call(gal.querySelectorAll(".tile"),function(t){
+    var c=CL[t.getAttribute("data-client")],fc=t.querySelector("figcaption");
+    if(!c||!fc)return;
+    var a=document.createElement("a");a.className="cl";a.textContent=c.name;
+    a.href="#"+c.page;a.setAttribute("aria-label",c.name+": see the case study");
+    a.addEventListener("click",function(e){
+      e.preventDefault();
+      var go=function(){var el=document.getElementById(c.case);if(el)el.scrollIntoView({behavior:"smooth"});};
+      if(current!==c.page){location.hash=c.page;setTimeout(go,60);}else go();
+    });
+    var sep=document.createElement("span");sep.className="sep";sep.setAttribute("aria-hidden","true");sep.textContent="·";
+    fc.insertBefore(sep,fc.firstChild);fc.insertBefore(document.createTextNode(" "),sep);fc.insertBefore(a,sep.previousSibling);
+    fc.insertBefore(document.createTextNode(" "),sep.nextSibling);
+  });
+  function layout(){
+    if(!gal.offsetParent)return; // view hidden
+    gal.classList.add("masonry");
+    var W=gal.clientWidth,gap=16,rowGap=16,n=W>=860?4:(W>=560?3:2);
+    var w=(W-gap*(n-1))/n,h=[];for(var i=0;i<n;i++)h.push(0);
+    Array.prototype.forEach.call(gal.querySelectorAll(".tile"),function(t){
+      if(t.hidden)return;
+      t.style.width=w+"px";
+      var c=0;for(var j=1;j<n;j++)if(h[j]<h[c]-1)c=j;
+      t.style.transform="translate("+(c*(w+gap))+"px,"+h[c]+"px)";
+      h[c]+=t.offsetHeight+rowGap;
+    });
+    gal.style.height=Math.max(0,Math.max.apply(null,h)-rowGap)+"px";
+  }
+  var raf=null;function relayout(){if(raf)return;raf=requestAnimationFrame(function(){raf=null;layout();});}
+  window.addEventListener("resize",relayout);
+  window.addEventListener("hashchange",function(){setTimeout(relayout,0);});
+  window.addEventListener("load",relayout);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(relayout);
+  if("ResizeObserver" in window){var ro=new ResizeObserver(relayout);Array.prototype.forEach.call(gal.querySelectorAll(".tile figcaption, .tile img"),function(x){ro.observe(x);});}
+  relayout();
   var chips=document.querySelectorAll(".chips button");
   chips.forEach(function(c){
     c.addEventListener("click",function(){
       var f=c.getAttribute("data-f");
       chips.forEach(function(o){o.setAttribute("aria-pressed",o===c?"true":"false");});
-      document.querySelectorAll("#gallery .tile").forEach(function(t){
+      gal.querySelectorAll(".tile").forEach(function(t){
         t.hidden = !(f==="all" || (" "+t.getAttribute("data-k")+" ").indexOf(" "+f+" ")>-1);
       });
+      layout();
     });
   });
 
