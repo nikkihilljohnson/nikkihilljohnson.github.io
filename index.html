@@ -337,7 +337,7 @@ main{overflow-x:clip}
 
 /* clickable work */
 .lbable{cursor:zoom-in;transition:transform .15s,box-shadow .15s}
-@media (hover:hover){.lbable:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.14)}}
+@media (hover:hover){.rwall .lbable:hover,.ba .lbable:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.14)}}
 .lbable:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
 
 /* ---- shared lightbox ---- */
@@ -380,6 +380,45 @@ main{overflow-x:clip}
 .tile figcaption .cl{color:var(--ink);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:.7rem;text-decoration:none;border-bottom:1.5px solid transparent}
 .tile figcaption .cl:hover,.tile figcaption .cl:focus-visible{border-bottom-color:var(--pink)}
 .tile figcaption .sep{color:var(--grey);margin:0 .3rem}
+
+/* number odometer (JS adds .odo while rolling; plain text is restored at the end) */
+.odo{display:inline-block;white-space:nowrap}
+.odo .oc{display:inline-block;vertical-align:top;height:var(--w);margin:calc((var(--lh) - var(--w)) / 2) 0;overflow:hidden}
+.odo .os{display:block;will-change:transform}
+.odo .os span{display:block;height:var(--ih);line-height:var(--ih)}
+
+/* ---- motion pass 2: highlighter, reveals, hovers ---- */
+.hl{background:linear-gradient(var(--pink),var(--pink)) 0 0/100% 100% no-repeat}
+@keyframes hlswipe{from{background-size:0% 100%}to{background-size:100% 100%}}
+@media (prefers-reduced-motion:no-preference){
+  .view:not([hidden]) h1 .hl{animation:hlswipe .5s .32s cubic-bezier(.7,0,.25,1) both}
+  html.mo .rv{opacity:0;transform:translateY(14px);transition:opacity .45s ease-out,transform .45s cubic-bezier(.2,.7,.3,1)}
+  html.mo .rv.rv-x{transform:translateX(16px)}
+  html.mo .rv.in{opacity:1;transform:none}
+}
+@keyframes ulin{from{background-size:0% var(--ut)}to{background-size:100% var(--ut)}}
+@media (hover:hover){
+  .tile > :first-child{transition:transform .2s ease}
+  .tile img,.tile video,.media figure img,.media figure video{transition:box-shadow .2s ease}
+  .tile:hover > :first-child{transform:translateY(-3px)}
+  .tile:hover img,.tile:hover video,.media figure:hover img,.media figure:hover video{box-shadow:5px 5px 0 var(--pink)}
+  .ig,.email,.links a,.tile figcaption .cl,.go{--ut:2px;background:linear-gradient(var(--pink),var(--pink)) 0 100%/0% var(--ut) no-repeat}
+  .go{--ut:3px;background-origin:border-box}
+  .ig:hover,.email:hover,.links a:hover{text-decoration-color:transparent;background-size:100% var(--ut);animation:ulin .3s ease-out}
+  .tile figcaption .cl:hover{border-bottom-color:transparent;background-size:100% var(--ut);animation:ulin .3s ease-out}
+  .go:hover{border-bottom-color:transparent;background-size:100% var(--ut);animation:ulin .3s ease-out}
+  .btn,nav .talk,.copy-btn,.chips button,.rail-btn{transition:background-color .15s,color .15s,transform .15s,border-color .15s}
+  .btn.solid:hover{background:var(--pink);border-color:var(--ink);color:var(--ink);transform:translateY(-1px)}
+  .btn.ghost:hover{background:var(--ink);color:#fff;transform:translateY(-1px)}
+  nav .talk:hover{background:var(--pink);color:var(--ink)}
+  .copy-btn:hover{background:#fff;color:var(--ink);transform:translateY(-1px)}
+  .chips button[aria-pressed="false"]:hover{background:var(--blush)}
+  .rail-btn:not(:disabled):hover{background:var(--ink);color:#fff}
+}
+@media (prefers-reduced-motion:reduce){
+  .tile > :first-child,.btn,nav .talk,.copy-btn{transition:none!important;transform:none!important}
+  .ig:hover,.email:hover,.links a:hover,.tile figcaption .cl:hover,.go:hover{animation:none}
+}
 </style>
 <style>html,body{margin:0}img{max-width:100%}</style>
 </head>
@@ -981,7 +1020,7 @@ main{overflow-x:clip}
       <div class="copy">
         <span class="label">About</span>
         <h1 class="cond page-h1">Elder millennial. <span class="w" style="color:#fff">Oregon Trail survivor.</span></h1>
-        <p class="dek">I was making videos with a handheld camcorder in my basement long before I had an internet connection, so making content has always been my thing. I started in digital at AOL in 2006, back when "social media manager" wasn't a job title yet. Nearly two decades later, I'm still finding new ways to get people to pay attention.</p>
+        <p class="dek">I was making videos with a handheld camcorder in my basement before I even had internet. Turns out I've been making content my whole life. I started in digital at AOL in 2006, back when "social media manager" wasn't even a job title. Twenty years later, I'm still finding new ways to get people to pay attention.</p>
       </div>
       <figure class="print">
         <img src="media/excited.jpg" alt="Nikki Hill Johnson with arms out, mid-laugh" style="object-position:50% 25%">
@@ -997,7 +1036,7 @@ main{overflow-x:clip}
         <p>From there, I worked in nonprofit marketing at Carolina Farm Trust, helped lead content for a $6.4 million launch with James Wedmore, and spent two years turning social media into a sales channel at HVAC.com.</p>
         <p>In late 2025, I went out on my own. Now I work with brands that need experienced marketing leadership and Democratic candidates who need someone who understands both the message and how to get it in front of people.</p>
         <p>I have a sociology degree, which explains a lot. I've always been more interested in why people do things than which app they're doing them on.</p>
-        <p>I live in the Charleston area with my husband, four kids, three cats, and a dog, which explains my comfort with organized chaos. My favorite platform right now is Threads. It's the only app I open just for fun, which is saying something for someone who opens apps for a living.</p>
+        <p>I live in the Charleston area with my husband, four kids, three cats, and a dog, which explains my comfort with organized chaos.</p>
       </div>
     </div>
   </section>
@@ -1010,7 +1049,7 @@ main{overflow-x:clip}
         <li><span class="yrs">2023–2025</span><div><h3>HVAC.com / Trane Technologies</h3><span class="ttl">Senior Social Media &amp; Content Strategist</span><p>Built the social voice and paid media program at a growing HVAC startup that was acquired by Trane during my tenure. Helped turn social into a revenue channel, generating 423 qualified leads at $71 per lead and approximately 50× return on social spend.</p></div></li>
         <li><span class="yrs">2022–2023</span><div><h3>Level Five Publishing / James Wedmore</h3><span class="ttl">Creative Content Director</span><p>Led social content and launch coverage for a $6.4M launch, producing 50+ creative assets weekly and 17 Reels exceeding 10K views.</p></div></li>
         <li><span class="yrs">2021–2022</span><div><h3>Carolina Farm Trust</h3><span class="ttl">Senior Marketing &amp; Communications Manager</span><p>Unified messaging across social, email, web, and fundraising. Helped secure $15K+ in grants and increase website traffic by 30%.</p></div></li>
-        <li><span class="yrs">2019–2022</span><div><h3>Independent</h3><span class="ttl">Digital Marketing Strategist</span><p>Social, content and launch strategy for D2C brands, including a 28.5% revenue increase for one client.</p></div></li>
+        <li><span class="yrs">2019–2022</span><div><h3>Independent</h3><span class="ttl">Digital Marketing Strategist</span><p>Social, content, and launch strategy for D2C brands, including a 28.5% revenue increase for one client.</p></div></li>
         <li><span class="yrs">2013–2021</span><div><h3>BODi</h3><span class="ttl">Digital Marketing &amp; Community Growth Strategist</span><p>Built a 1,000+ member online community and a $1M+ social-driven business. Keynote speaker.</p></div></li>
         <li><span class="yrs">2006–2011</span><div><h3>AOL</h3><span class="ttl">Broadband Marketing, then AOL Music &amp; Lifestyle Channels</span><p>Content, programming, and site launches, including StyleList and KitchenDaily.</p></div></li>
       </ol>
@@ -1041,7 +1080,7 @@ main{overflow-x:clip}
   function show(i){k=(i+n)%n;for(var j=0;j<n;j++)document.getElementById("rq-"+j).hidden=(j!==k);document.getElementById("rq-n").textContent=(k+1)+" / "+n;}
   // reserve height of tallest quote so the section doesn't jump
   function fit(){var h=0;for(var j=0;j<n;j++){var e=document.getElementById("rq-"+j),was=e.hidden;e.hidden=false;e.style.visibility="hidden";h=Math.max(h,e.offsetHeight);e.style.visibility="";e.hidden=was;}stage.style.minHeight=h+"px";}
-  function start(){if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;stop();t=setInterval(function(){show(k+1)},8000);}
+  function start(){if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;stop();t=setInterval(function(){show(k+1)},6250);}
   function stop(){if(t)clearInterval(t);t=null;}
   document.getElementById("rq-next").onclick=function(){show(k+1);start()};
   document.getElementById("rq-prev").onclick=function(){show(k-1);start()};
@@ -1281,5 +1320,60 @@ main{overflow-x:clip}
 })();
 </script>
 
+<script>
+/* Odometer-style roll for the big pink stats. Runs once per stat, when it scrolls into view.
+   The real number stays in the HTML; without JS or with reduced motion nothing changes. */
+(function(){
+  if(!("IntersectionObserver" in window))return;
+  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var els=[].slice.call(document.querySelectorAll(".proof .big, .case .stats dd")).filter(function(e){return /\d/.test(e.textContent)&&!e.children.length;});
+  var DUR=1200,EASE="cubic-bezier(.16,.84,.3,1)";
+  function roll(el,delay){
+    var txt=el.textContent,cs=getComputedStyle(el),fs=parseFloat(cs.fontSize),lh=parseFloat(cs.lineHeight);
+    if(!lh||isNaN(lh))lh=fs;
+    var ih=Math.round(fs*1.35),w=Math.max(lh,fs*.98),off=(w-ih)/2;
+    var box=document.createElement("span");box.className="odo";
+    box.style.setProperty("--lh",lh+"px");box.style.setProperty("--ih",ih+"px");box.style.setProperty("--w",w+"px");
+    box.setAttribute("aria-hidden","true");
+    var strips=[],digits=0;
+    for(var i=0;i<txt.length;i++){var ch=txt[i],c=document.createElement("span");c.className="oc";
+      var st=document.createElement("span");st.className="os";st.style.transform="translateY("+off+"px)";
+      if(/\d/.test(ch)){var d=+ch,h="";for(var j=0;j<10+d+1;j++)h+="<span>"+(j%10)+"</span>";st.innerHTML=h;strips.push([st,10+d,digits++]);}
+      else{var one=document.createElement("span");one.textContent=ch;st.appendChild(one);}
+      c.appendChild(st);box.appendChild(c);}
+    el.setAttribute("aria-label",txt);el.textContent="";el.appendChild(box);
+    void box.offsetWidth;
+    strips.forEach(function(x){var st=x[0];
+      st.style.transition="transform "+DUR+"ms "+EASE+" "+(delay+x[2]*60)+"ms";
+      st.style.transform="translateY("+(off-x[1]*ih)+"px)";});
+    setTimeout(function(){el.textContent=txt;el.removeAttribute("aria-label");},delay+digits*60+DUR+80);
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;io.unobserve(e.target);
+      var sibs=[].slice.call(e.target.closest(".proof, .stats").querySelectorAll(".big, dd"));
+      roll(e.target,Math.max(0,sibs.indexOf(e.target))*110);
+    });
+  },{threshold:.6});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+<script>
+/* Gentle reveal for case studies: text block and stats fade up, gallery slides in. Once each. */
+(function(){
+  if(!("IntersectionObserver" in window))return;
+  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var items=[];
+  document.querySelectorAll(".case").forEach(function(c){
+    var m=c.querySelector(":scope > .main"),st=c.querySelector(":scope > .statwrap, :scope > .stats"),
+        g=c.querySelector(":scope > .rail")||c.querySelector(":scope > .media"),ba=c.querySelector(":scope > .ba");
+    if(m)items.push([m,""]);if(st)items.push([st,""]);if(ba)items.push([ba,""]);if(g)items.push([g,"rv-x"]);
+  });
+  document.documentElement.classList.add("mo");
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.08,rootMargin:"0px 0px -6% 0px"});
+  items.forEach(function(x){x[0].classList.add("rv");if(x[1])x[0].classList.add(x[1]);io.observe(x[0]);});
+  // anything already on screen when a view opens shows right away (no waiting)
+})();
+</script>
 </body>
 </html>
