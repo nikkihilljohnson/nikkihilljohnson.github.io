@@ -276,6 +276,84 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
   @keyframes rise{from{transform:translateY(12px);opacity:.35}to{transform:none;opacity:1}}
   @keyframes spin{from{transform:rotate(-40deg) scale(.85)}to{transform:rotate(-10deg) scale(1)}}
 }
+
+/* ---- v4 additions ---- */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hl{white-space:nowrap}
+.menu-btn{display:none;background:none;border:2px solid var(--ink);border-radius:999px;width:2.9rem;height:2.9rem;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.menu-btn .bars,.menu-btn .bars::before,.menu-btn .bars::after{display:block;width:1.15rem;height:2px;background:var(--ink);position:relative;transition:transform .2s}
+.menu-btn .bars::before,.menu-btn .bars::after{content:"";position:absolute;left:0}
+.menu-btn .bars::before{top:-6px}.menu-btn .bars::after{top:6px}
+.menu-open .menu-btn .bars{background:transparent}
+.menu-open .menu-btn .bars::before{transform:translateY(6px) rotate(45deg)}
+.menu-open .menu-btn .bars::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:759px){
+  header.site .wrap{flex-wrap:nowrap;position:relative}
+  .logo{font-size:2rem}
+  .menu-btn{display:inline-flex}
+  header.site nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:2px solid var(--ink);flex-direction:column;align-items:stretch;gap:0;padding:.5rem max(16px,env(safe-area-inset-right,0px)) 1rem max(16px,env(safe-area-inset-left,0px))}
+  header.site.menu-open nav{display:flex}
+  header.site nav button,header.site nav a{font-size:.95rem;padding:.85rem 0;text-align:left;border-bottom:1px solid var(--line)}
+  header.site nav button[aria-current="page"]{box-shadow:none;color:var(--ink);text-decoration:underline;text-decoration-color:var(--pink);text-decoration-thickness:3px;text-underline-offset:6px}
+  header.site nav .talk{margin:1rem 0 0;text-align:center;border-bottom:0;padding:.85rem 1rem}
+  .cover{padding-block:2rem 2.75rem}
+  .cover .wrap,.c-hero .wrap{gap:2.25rem}
+  .copy{gap:1.15rem}
+  .dek{font-size:1.06rem;line-height:1.5}
+  .actions{gap:.6rem}
+  .actions .btn{padding:.7rem 1.05rem;font-size:.72rem;min-height:44px}
+  .print{width:min(100%,19rem)}
+  .sticker{width:7rem;height:7rem;font-size:.85rem;left:-.5rem;bottom:-1.2rem}
+  section{padding-block:clamp(2.75rem,9vw,4rem)}
+  .print.teal::before,.print.gold::before{inset:.8rem -.8rem -.8rem .8rem}
+}
+main{overflow-x:clip}
+.email{font:700 clamp(1.05rem,3.5vw,1.5rem) var(--sans);color:#fff;text-decoration:underline;text-decoration-color:var(--pink);text-decoration-thickness:2px;text-underline-offset:5px;word-break:break-all}
+.ig{align-self:flex-start;color:#fff;font-weight:700;font-size:.9rem;text-decoration:underline;text-decoration-color:var(--pink);text-decoration-thickness:2px;text-underline-offset:4px}
+.statwrap{display:flex;flex-direction:column;gap:1rem;min-width:0}
+.statnote{font-size:.74rem;color:#BDBDBD;letter-spacing:.02em}
+.case .main .txt + .txt{margin-top:-.25rem}
+
+/* ---- portfolio rails ---- */
+.rail{grid-column:1/-1;position:relative;min-width:0}
+.media{--mh:clamp(15rem,40vw,21rem);display:flex;gap:1.1rem;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding-bottom:.8rem;-webkit-overflow-scrolling:touch}
+.media > figure{flex:0 0 auto;width:min-content;margin:0;display:flex;flex-direction:column;gap:.55rem;scroll-snap-align:start}
+.media img,.media video{display:block;height:var(--mh);width:auto;max-width:none;border:1px solid var(--line);background:#fff}
+.media video{background:#000;object-fit:cover}
+.media .carbtn{width:auto;display:block}
+.media .vwrap{display:block}
+.media figcaption{font-size:.78rem;line-height:1.35;color:var(--grey);min-height:2.7em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.case.dark .media figcaption{color:#CFCFCF}
+.case.dark .media img,.case.dark .media video{border-color:#333}
+.rail-btn{display:none}
+@media (hover:hover) and (min-width:900px){
+  .rail-btn{display:grid;place-items:center;position:absolute;top:calc(var(--mh,18rem)/2 - 1.4rem);width:2.8rem;height:2.8rem;border-radius:50%;border:2px solid var(--ink);background:#fff;color:var(--ink);font:700 1.1rem var(--sans);cursor:pointer;z-index:2;box-shadow:0 2px 10px rgba(0,0,0,.12);transition:opacity .2s}
+  .rail-btn.prev{left:-1.2rem}.rail-btn.next{right:-1.2rem}
+  .rail-btn[disabled]{opacity:0;pointer-events:none}
+  .case.dark .rail-btn{border-color:#fff}
+}
+.rail{--mh:clamp(15rem,40vw,21rem)}
+
+/* clickable work */
+.lbable{cursor:zoom-in;transition:transform .15s,box-shadow .15s}
+@media (hover:hover){.lbable:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.14)}}
+.lbable:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+
+/* ---- shared lightbox ---- */
+.lbx{position:fixed;inset:0;z-index:60;background:rgba(12,12,12,.97);display:flex;flex-direction:column;color:#fff;padding:calc(.75rem + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) calc(.75rem + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.lbx-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:3rem}
+.lbx-count{font:700 .8rem var(--sans);letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.lbx-close{background:var(--pink);color:var(--ink);border:0;border-radius:999px;font:700 .8rem var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:.75rem 1.1rem;cursor:pointer;min-height:44px}
+.lbx-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:auto;touch-action:pan-x pan-y pinch-zoom}
+.lbx-stage img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in;user-select:none}
+.lbx-stage.zoom{align-items:flex-start;justify-content:flex-start}
+.lbx-stage.zoom img{max-width:none;max-height:none;cursor:zoom-out}
+.lbx-stage video{max-width:100%;max-height:100%;background:#000}
+.lbx-nav{position:absolute;top:50%;transform:translateY(-50%);width:3rem;height:3rem;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--ink);font:700 1.2rem var(--sans);cursor:pointer;z-index:2}
+.lbx-nav.prev{left:max(8px,env(safe-area-inset-left,0px))}.lbx-nav.next{right:max(8px,env(safe-area-inset-right,0px))}
+.lbx-nav[disabled]{opacity:.25;cursor:default}
+.lbx-cap{text-align:center;font-size:.85rem;padding:.6rem 3rem 0;min-height:2.2rem;color:#E6E6E6}
+@media (max-width:700px){.lbx-nav{top:auto;bottom:calc(.75rem + env(safe-area-inset-bottom,0px));transform:none;width:2.9rem;height:2.9rem}.lbx-cap{padding-inline:3.6rem}}
 </style>
 <style>html,body{margin:0}img{max-width:100%}</style>
 </head>
@@ -286,7 +364,8 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
 <header class="site">
   <div class="wrap">
     <button class="logo" type="button" data-go="home" aria-label="Nikki Hill Johnson, home">nikki hill johnson</button>
-    <nav aria-label="Main">
+    <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span><span class="sr">Menu</span></button>
+    <nav aria-label="Main" id="site-nav">
       <button type="button" data-go="home" id="nav-home">Home</button>
       <button type="button" data-go="campaigns" id="nav-campaigns">Campaigns</button>
       <button type="button" data-go="brands" id="nav-brands">Brands</button>
@@ -304,10 +383,10 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
     <div class="wrap">
       <div class="copy">
         <h1 class="cond"><span>Get real people to care.</span><span class="w">Then get them to act.</span></h1>
-        <p class="dek">I run social, paid media and creative for Democratic candidates, progressive causes, and brands selling things nobody thinks about until they need them. Fifteen years in, and I still read the comments.</p>
+        <p class="dek">I run social, paid media and creative for Democratic candidates, progressive causes, and brands selling things nobody thinks about until they need them.</p>
         <div class="actions">
-          <button class="btn solid" type="button" data-go="campaigns">See the campaign work</button>
-          <button class="btn ghost" type="button" data-go="brands">See the brand work</button>
+          <button class="btn solid" type="button" data-go="campaigns">Political Campaigns</button>
+          <button class="btn ghost" type="button" data-go="brands">Brand Marketing</button>
         </div>
       </div>
       <figure class="print">
@@ -339,15 +418,15 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
       <div class="doors">
         <div class="door">
           <span class="label">Campaigns, causes &amp; creators</span>
-          <h3>Democrats who need voters to know their name, from school board to the first presidential primary in the country.</h3>
-          <p>Paid social, video, graphics, message strategy, and paid partnerships on Nikki Next Door.</p>
-          <button class="go" type="button" data-go="campaigns">See the 2026 campaign work</button>
+          <h3>Candidates running for office, from school board to presidential primaries.</h3>
+          <p>Organizations fighting for change. People who need to be heard.</p>
+          <button class="go" type="button" data-go="campaigns">Explore Campaign Work</button>
         </div>
         <div class="door">
           <span class="label">Brands</span>
           <h3>The categories nobody follows for fun.</h3>
-          <p>Air purification, HVAC, countertops, a $6.4M launch, and a nonprofit or two. Every post and every ad dollar has to earn its attention.</p>
-          <button class="go" type="button" data-go="brands">See the brand work</button>
+          <p>Air purification, HVAC, countertops, online education, and a nonprofit or two. Turns out you can make just about anything interesting.</p>
+          <button class="go" type="button" data-go="brands">Explore Brand Work</button>
         </div>
       </div>
     </div>
@@ -357,7 +436,7 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
     <div class="wrap split">
       <h2 class="cond h2">Humans first. <span class="p">Algorithms second.</span></h2>
       <div class="reading">
-        <p>Nobody follows an air purification company for fun, and nobody shares a school board candidate's bio. People share what makes them feel something, and they act when they trust whoever's asking.</p>
+        <p>An air purification company and a school board candidate don't have much in common. But both need to give people a reason to pay attention. People share what makes them feel something, and they act when they trust whoever's asking.</p>
         <p>So I start with the person on the other side of the screen: what they're worried about, what they'd forward to a friend, what would make them stop scrolling. Then I let the numbers check my work.</p>
         <p>Sometimes that means a 33K-view video about South Carolina politics. Sometimes it means finding out that behind-the-scenes install footage beats every "book a free consult" post by a mile.</p>
       </div>
@@ -377,7 +456,7 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
       </div>
       <div class="rot-stage" id="rq-stage">
         <blockquote class="rq" id="rq-0">
-          <p>If I could rewind the clock, I would have hired you six months ago, but these last 30 days are certainly the most critical and I really feel good about this plan.</p>
+          <p>If I could rewind the clock, I would have hired you six months ago.</p>
           <footer><b>Ann Shippy</b><span>Candidate, SC House District 123</span></footer>
         </blockquote>
         <blockquote class="rq" hidden id="rq-1">
@@ -419,14 +498,14 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
         <h2 class="cond h2" style="margin-top:1rem">Doing this since before it was a job title.</h2>
       </div>
       <div style="display:flex;flex-direction:column;gap:1rem">
-        <p class="serif" style="font-size:1.2rem;line-height:1.55">I started in digital at AOL in 2006. Since then I've built an online community over eight years, run content for a $6.4M launch, made social a revenue channel for a national HVAC brand, and built marketing from scratch for a startup that keeps adding to what it sells.</p>
+        <p class="serif" style="font-size:1.2rem;line-height:1.55">I started in digital at AOL in 2006. Since then, I've spent eight years building an online fitness community, served as head of content for a $6.4M launch, turned social into a revenue channel for a national HVAC brand, and built multiple startups' marketing presences from the ground up.</p>
         <ul class="cv" aria-label="Career">
           <li><b>AOL</b><span>2006–2011</span></li>
           <li><b>BODi</b><span>2013–2021</span></li>
           <li><b>Carolina Farm Trust</b><span>2021–2022</span></li>
           <li><b>James Wedmore</b><span>2022–2023</span></li>
           <li><b>HVAC.com</b><span>2023–2025</span></li>
-          <li><b>Consulting</b><span>2025–now</span></li>
+          <li><b>Independent Strategy &amp; Creative</b><span>2025–present</span></li>
         </ul>
         <button class="go" type="button" data-go="about" style="margin-top:.5rem">The longer version</button>
       </div>
@@ -441,8 +520,8 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
       <div class="copy">
         <span class="label">Campaigns, causes &amp; creators</span>
         <h1 class="cond page-h1">South Carolina is my <span class="hl">home turf.</span></h1>
-        <p class="dek">Paid social, content, message strategy and creator partnerships for Democratic candidates and progressive causes. I've run ads for school board and State House races here, and I make political content South Carolinians actually share. With the first presidential primary in the country headed our way, that local knowledge matters.</p>
-        <p class="filter">I don't work for Republicans. It saves us both a phone call.</p>
+        <p class="dek">Paid social, content, message strategy, and creator partnerships for Democratic candidates and progressive causes. I've run campaigns for school board and State House races, built my own political platform, and know how to make content South Carolinians actually want to share.</p>
+        <p class="dek">With the next presidential primary cycle approaching, I'm looking to bring that local knowledge and experience to campaigns competing in South Carolina.</p>
       </div>
       <figure class="print teal">
         <img src="media/typing.jpg" alt="Nikki at her laptop in a Nevertheless She Persisted t-shirt">
@@ -453,31 +532,19 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
   <section class="rule">
     <div class="wrap">
       <span class="label">What I do for campaigns</span>
-      <h2 class="cond h2" style="margin-top:1rem">The message, the content and the money behind it.</h2>
+      <h2 class="cond h2" style="margin-top:1rem">The message, the content, and the money behind it.</h2>
       <div class="offers">
-        <div class="offer"><h3>Message strategy</h3><p>I set the talking points and the plan: who we're reaching, what they care about, and what we say to get them to act.</p></div>
-        <div class="offer"><h3>Content</h3><p>Short-form video, graphics and copy. I'll edit your footage, and for the right project, I'll film it too.</p></div>
-        <div class="offer"><h3>Paid social</h3><p>Meta ad strategy, voter-file and geographic targeting, budget pacing, creative testing, and a weekly update on what's working.</p></div>
-        <div class="offer creator"><h3>Creator partnerships</h3><p>Paid content and sponsorships on Nikki Next Door, properly disclosed, plus collabs that put your candidate in front of an audience that took years to build.</p></div>
+        <div class="offer"><h3>Message strategy</h3><p>I help shape the message and the plan: who we're reaching, what matters to them, and how to communicate it clearly.</p></div>
+        <div class="offer"><h3>Content</h3><p>Short-form video, graphics, and copy. I'll edit your footage, and for the right project, I'll film it too.</p></div>
+        <div class="offer"><h3>Paid social</h3><p>Meta ad strategy, voter-file and geographic targeting, budget pacing, creative testing, and regular updates on what's working.</p></div>
+        <div class="offer"><h3>Creator partnerships</h3><p>Sponsored content and paid collaborations through Nikki Next Door, with clear disclosure and editorial independence.</p></div>
       </div>
       <div class="pull">
         <blockquote>
-          <p>If I could rewind the clock, I would have hired you six months ago. These last 30 days are certainly the most critical and I really feel good about this plan.</p>
+          <p>If I could rewind the clock, I would have hired you six months ago.</p>
           <footer><b>Ann Shippy</b>, candidate, SC House District 123</footer>
         </blockquote>
       </div>
-    </div>
-  </section>
-
-  <section class="rule">
-    <div class="wrap">
-      <span class="label">How I build a paid campaign</span>
-      <ol class="method">
-        <li><b>Start with the voter file.</b><p>Known voters get the repetition. Everyone else in the area gets low-cost awareness.</p></li>
-        <li><b>Never pay twice.</b><p>Audiences stay separate, so the budget doesn't buy the same person in two places.</p></li>
-        <li><b>Test creative in rounds.</b><p>Several messages run side by side. Delivery shows which one voters respond to, and the next round builds on it.</p></li>
-        <li><b>Report every week.</b><p>What ran, what it cost, who saw it, and what changes next.</p></li>
-      </ol>
     </div>
   </section>
 
@@ -493,29 +560,30 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
           <img class="caselogo" src="media/logo-char.png" alt="Dr. Char Fitzwater, School Board District 1">
           <div class="meta"><span class="who">Char Fitzwater</span><span>· Charleston County School Board, District 1</span><span class="tag">Pro bono</span></div>
           <h3>A school board race, run like a pro campaign.</h3>
-          <p class="role">Everything digital: strategy, graphics, video, copy and Meta ads.</p>
-          <p class="txt">Two audiences that never overlap. Known District 1 voters from the voter file saw the ads about nine times each. Everyone else in the target area got low-cost awareness, with the voter list excluded so no one got paid for twice. Creative ran in rounds, and every version was tested in both audiences.</p>
-          <p class="finding"><b>The voter file paid for itself.</b> Known voters were more than eight times as likely to watch 15 seconds or more as the general audience.</p>
+          <p class="role">Everything digital: strategy, graphics, video, copy, and Meta ads.</p>
+          <p class="txt">With a $3,000 budget, every dollar had a job. I built separate audiences for known District 1 voters and the broader geographic area, using voter-file targeting to prioritize repetition with likely voters while keeping general awareness costs low.</p>
+          <p class="txt">Across four rounds, I tested 11 creatives and adjusted the strategy based on what was working.</p>
         </div>
         <dl class="stats">
-          <div><dt>people reached</dt><dd>99,000+</dd></div>
-          <div><dt>of the matched voter list reached, about 9 times each</dt><dd>80%</dd></div>
-          <div><dt>more likely to watch 15+ seconds: known voters vs. everyone else</dt><dd>8×</dd></div>
-          <div><dt>per 3-second video view</dt><dd>4–6¢</dd></div>
-          <div><dt>total campaign budget</dt><dd>$3K</dd></div>
-          <div><dt>creatives across four rounds, each run in both audiences</dt><dd>11</dd></div>
+          <div><dt>People reached</dt><dd>99,000+</dd></div>
+          <div><dt>Of the matched voter-file audience reached, averaging approximately 9 impressions per person</dt><dd>80%</dd></div>
+          <div><dt>Higher 15-second video viewing rate among the voter-file audience versus the broader audience</dt><dd>8×</dd></div>
+          <div><dt>Cost per 3-second video view</dt><dd>4–6¢</dd></div>
+          <div><dt>Total Meta ad budget</dt><dd>$3K</dd></div>
+          <div><dt>Creatives tested across four rounds</dt><dd>11</dd></div>
         </dl>
         <div class="media">
-          <figure class="sq"><img src="media/char-charcuterie.jpg" alt="Char Fitzwater CHARcuterie event flyer"><figcaption>CHARcuterie, because puns work</figcaption></figure>
-          <figure class="sq"><img src="media/char-scoop.jpg" alt="Get the Scoop on Char event graphic"><figcaption>Get the SCOOP on Char</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="char-approved" data-n="9" aria-label="Open carousel: The students have spoken: former students on Char"><img src="media/car/char-approved/1.jpg" alt="The students have spoken: former students on Char"><span class="slides">9 slides</span></button><figcaption>Former students on Char</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-char-talk.jpg" src="media/v-char-talk.mp4"></video><figcaption>"I got this"</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-char-wave.jpg" src="media/v-char-wave.mp4"></video><figcaption>Sign waving</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-char-vo.jpg" src="media/v-char-vo.mp4"></video><figcaption>Voiceover, community meeting</figcaption></figure>
-          <figure class="sq"><img src="media/char-26days.jpg" alt="26 days to go donation graphic"><figcaption>26 days out</figcaption></figure>
-          <figure class="sq"><img src="media/char-donation.jpg" alt="Small donations add up graphic"><figcaption>Finance deadline push</figcaption></figure>
-          <figure class="sq"><img src="media/vote-today.jpg" alt="Early voting is here graphic"><figcaption>Early voting</figcaption></figure>
-          <figure class="sq"><img src="media/char-citypaper.jpg" alt="Char Fitzwater graphic announcing the Charleston City Paper endorsement"><figcaption>Turning an editorial endorsement into a post</figcaption></figure>
+          <!-- To add work: copy one <figure> line below, change the file and caption. -->
+          <figure><img src="media/char-charcuterie.jpg" alt="Char Fitzwater CHARcuterie event flyer" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>CHARcuterie. Because puns work.</figcaption></figure>
+          <figure><img src="media/char-scoop.jpg" alt="Get the Scoop on Char event graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Campaign event promotion</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="char-approved" data-n="9" aria-label="Open carousel: The students have spoken: former students on Char"><img src="media/car/char-approved/1.jpg" alt="The students have spoken: former students on Char" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">9 slides</span></button><figcaption>Student testimonials, straight from the source</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-char-talk.jpg" src="media/v-char-talk.mp4" width="480" height="854"></video><figcaption>Candidate-led video</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-char-wave.jpg" src="media/v-char-wave.mp4" width="540" height="960"></video><figcaption>Campaign trail reel</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-char-vo.jpg" src="media/v-char-vo.mp4" width="480" height="854"></video><figcaption>Community meeting recap</figcaption></figure>
+          <figure><img src="media/char-26days.jpg" alt="26 days to go donation graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Fundraising countdown</figcaption></figure>
+          <figure><img src="media/char-donation.jpg" alt="Small donations add up graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Small-dollar fundraising push</figcaption></figure>
+          <figure><img src="media/vote-today.jpg" alt="Early voting is here graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Early voting reminder</figcaption></figure>
+          <figure><img src="media/char-citypaper.jpg" alt="Char Fitzwater graphic announcing the Charleston City Paper endorsement" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Turning an editorial endorsement into a post</figcaption></figure>
         </div>
       </article>
 
@@ -523,35 +591,39 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
         <div class="main">
           <div class="meta"><span class="who">Ann Shippy</span><span>· SC House District 123</span><span class="tag">Paid</span></div>
           <h3>Let voters pick the message.</h3>
-          <p class="role">Meta ads: strategy, graphics, video and copy.</p>
-          <p class="txt">Seven creatives in one ad set: a candidate intro, an endorsement, and issue ads on protecting coastal South Carolina, data centers, school vouchers and gerrymandering. Delivery followed performance, and the coastal message pulled ahead of both the bio and the endorsement. New issue ads went in as the race developed.</p>
-          <p class="finding"><b>The coast beat the bio.</b> The ad about protecting coastal South Carolina earned 63% of delivery. The candidate intro earned 4%.</p>
+          <p class="role">Meta ads: strategy, graphics, video, and copy.</p>
+          <p class="txt">I started with a mix of candidate introductions, endorsements, and issue-based ads covering coastal preservation, data centers, school vouchers, and gerrymandering.</p>
+          <p class="txt">The message that pulled ahead? Protecting the Lowcountry. It outperformed both the candidate introduction and the endorsement in ad delivery, so I kept testing new creative as the race developed.</p>
+          <p class="finding"><b>The coast beat the bio.</b> The coastal protection ad received 63% of impressions, compared with just 4% for the candidate introduction.</p>
         </div>
         <dl class="stats">
-          <div><dt>people reached</dt><dd>93,800+</dd></div>
-          <div><dt>impressions</dt><dd>267K+</dd></div>
-          <div><dt>cost per 1,000 impressions</dt><dd>$5.57</dd></div>
-          <div><dt>creatives tested</dt><dd>7</dd></div>
+          <div><dt>People reached</dt><dd>93,800+</dd></div>
+          <div><dt>Impressions</dt><dd>267K+</dd></div>
+          <div><dt>Cost per 1,000 impressions</dt><dd>$5.57</dd></div>
+          <div><dt>Creatives tested</dt><dd>7</dd></div>
         </dl>
         <div class="media">
-          <figure class="sq"><img src="media/ann-meet.jpg" alt="Meet Ann Shippy story graphic"><figcaption>Candidate intro</figcaption></figure>
-          <figure class="sq"><img src="media/ann-voucher.jpg" alt="Ann Shippy graphic: Public school advocate or voucher champion?"><figcaption>Contrast ad</figcaption></figure>
+          <!-- To add work: copy one <figure> line below, change the file and caption. -->
+          <figure><img src="media/ann-meet.jpg" alt="Meet Ann Shippy story graphic" width="1012" height="1800" loading="lazy" decoding="async"><figcaption>Candidate introduction</figcaption></figure>
+          <figure><img src="media/ann-voucher.jpg" alt="Ann Shippy graphic: Public school advocate or voucher champion?" width="1012" height="1800" loading="lazy" decoding="async"><figcaption>School vouchers contrast ad</figcaption></figure>
         </div>
       </article>
 
       <article class="case">
         <div class="main">
           <div class="meta"><span class="who">Katie Miller</span><span>· Charleston County Council</span><span class="tag">Paid</span></div>
-          <h3>Two long videos, four that get watched.</h3>
-          <p class="role">Video editing: long-form cut down for the feed.</p>
-          <p class="txt">I took two of Katie's long-form videos and cut them into four short ones built for Instagram. One became one of her higher-viewed posts. We also made a video together for Nikki Next Door, which put her in front of a new audience and pulled about five times the views.</p>
+          <h3>Two long videos. Four reasons to keep watching.</h3>
+          <p class="role">Video editing and creator collaboration.</p>
+          <p class="txt">I turned two of Katie's longer videos into four short, focused clips for Instagram, each built around a message that could stand on its own.</p>
+          <p class="txt">We also collaborated on a Nikki Next Door video that introduced her to a different audience and brought in about five times the views of one of her better-performing posts.</p>
         </div>
         <dl class="stats">
-          <div><dt>short videos cut from 2 long-form</dt><dd>4</dd></div>
-          <div><dt>views on our Nikki Next Door collab, about 5× one of her top posts</dt><dd>2,700</dd></div>
+          <div><dt>Short-form videos created from two longer recordings</dt><dd>4</dd></div>
+          <div><dt>Views on our Nikki Next Door collaboration, approximately 5× one of her better-performing posts</dt><dd>2,700</dd></div>
         </dl>
         <div class="media">
-          <figure><video controls playsinline preload="none" poster="media/v-ann-elephant.jpg" src="media/v-ann-elephant.mp4"></video><figcaption>"Republican? Hear me out."</figcaption></figure>
+          <!-- To add work: copy one <figure> line below, change the file and caption. -->
+          <figure><video playsinline preload="none" poster="media/v-ann-elephant.jpg" src="media/v-ann-elephant.mp4" width="540" height="960"></video><figcaption>Making the case to Republican voters</figcaption></figure>
         </div>
       </article>
 
@@ -559,21 +631,26 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
         <div class="main">
           <div class="meta"><span class="who">Nikki Next Door</span><span>· My own channel</span><span class="tag">Creator</span></div>
           <h3>470,000 views in 90 days. Most from people who don't follow me.</h3>
-          <p class="role">Writing, on camera, editing and graphics.</p>
-          <p class="txt">South Carolina politics, explained the way a neighbor would. CCSD Cliff Notes turns school board meetings into something people actually watch. Most of my Reel views come from people who don't follow me, which is the point: persuasion doesn't happen inside the choir.</p>
-          <p class="finding"><b>Open for partnerships.</b> Paid content, sponsorships and candidate collabs.</p>
+          <p class="role">Research, writing, on-camera hosting, video editing, and graphics.</p>
+          <p class="txt">South Carolina politics, explained the way a neighbor would. I turn complicated local issues, school board meetings, and state politics into content people actually want to watch and share. No political jargon required.</p>
+          <p class="finding"><b>Open for partnerships.</b> Sponsored content and candidate collaborations through Nikki Next Door. Paid partnerships are disclosed; endorsements aren't for sale.</p>
+          <a class="ig" href="https://instagram.com/nikkihilljohnson" target="_blank" rel="noopener">Explore Nikki Next Door on Instagram →</a>
         </div>
-        <dl class="stats">
-          <div><dt>views in the last 90 days</dt><dd>470K</dd></div>
-          <div><dt>people reached in the last 90 days</dt><dd>103K</dd></div>
-          <div><dt>videos past 20,000 views</dt><dd>8</dd></div>
-          <div><dt>shares on a single video</dt><dd>669</dd></div>
-        </dl>
+        <div class="statwrap">
+          <dl class="stats">
+            <div><dt>Views in the last 90 days</dt><dd>470K</dd></div>
+            <div><dt>People reached in the last 90 days</dt><dd>103K</dd></div>
+            <div><dt>Videos with more than 20,000 views</dt><dd>8</dd></div>
+            <div><dt>Shares on a single video</dt><dd>669</dd></div>
+          </dl>
+          <p class="statnote">As of October 24, 2026 · Instagram insights, including Reels cross-posted to Facebook</p>
+        </div>
         <div class="media">
-          <figure><video controls playsinline preload="none" poster="media/v-nnd-colbert.jpg" src="media/v-nnd-colbert.mp4"></video><figcaption>33K views, 2.8K likes</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-nnd-dominion.jpg" src="media/v-nnd-dominion.mp4"></video><figcaption>Dominion and your power bill</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-nnd-freedom.jpg" src="media/v-nnd-freedom.mp4"></video><figcaption>"Make it make sense"</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-nnd-ccsd.jpg" src="media/v-nnd-ccsd.mp4"></video><figcaption>CCSD Cliff Notes, Part 1</figcaption></figure>
+          <!-- To add work: copy one <figure> line below, change the file and caption. -->
+          <figure><video playsinline preload="none" poster="media/v-nnd-colbert.jpg" src="media/v-nnd-colbert.mp4" width="480" height="854"></video><figcaption>South Carolina politics, for everyone outside it</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-nnd-dominion.jpg" src="media/v-nnd-dominion.mp4" width="480" height="854"></video><figcaption>Dominion Energy and your power bill</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-nnd-freedom.jpg" src="media/v-nnd-freedom.mp4" width="480" height="854"></video><figcaption>The SC Freedom Caucus, explained</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-nnd-ccsd.jpg" src="media/v-nnd-ccsd.mp4" width="540" height="960"></video><figcaption>CCSD school board governance, Cliff Notes Part 1</figcaption></figure>
         </div>
       </article>
 
@@ -593,7 +670,7 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
         <p class="filter">Organic gets you noticed. Paid gets you found when someone's ready to buy. You need both.</p>
       </div>
       <figure class="print gold">
-        <img src="media/hvac-your.jpg" alt="Hot pink HVAC.com graphic: Your HVAC, summer warrior, winter ready">
+        <img src="media/hvac-your.jpg" alt="Hot pink HVAC.com graphic: Your HVAC, summer warrior, winter ready" width="1080" height="1350" loading="lazy" decoding="async">
       </figure>
     </div>
   </section>
@@ -630,18 +707,18 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
           <div><dt>channels in the Homeowner Advocacy Campaign: Google Ads, social, blog and radio</dt><dd>4</dd></div>
         </dl>
         <div class="media">
-          <figure><video controls playsinline preload="none" poster="media/v-ma-new.jpg" src="media/v-ma-new.mp4"></video><figcaption>Unboxing, on camera</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="ma-casestudy" data-n="4" aria-label="Open carousel: This is what we found inside a real home in Lake Norman, NC"><img src="media/car/ma-casestudy/1.jpg" alt="This is what we found inside a real home in Lake Norman, NC"><span class="slides">4 slides</span></button><figcaption>Real home, real petri dishes</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="ma-results" data-n="4" aria-label="Open carousel: Real-world testing results series"><img src="media/car/ma-results/1.jpg" alt="Real-world testing results series"><span class="slides">4 slides</span></button><figcaption>Real-world results series</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="ma-pets" data-n="8" aria-label="Open carousel: Pet owners, we have some bad news"><img src="media/car/ma-pets/1.jpg" alt="Pet owners, we have some bad news"><span class="slides">8 slides</span></button><figcaption>Pet owners, we have bad news</figcaption></figure>
-          <figure class="sq"><img src="media/ma-aircell.jpg" alt="Introducing Maple AirCell"><figcaption>AirCell waitlist launch</figcaption></figure>
-          <figure class="sq"><img src="media/ma-smells.jpg" alt="Maple Air ad: Your facility smells"><figcaption>Commercial · post-rebrand</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="ma-floating" data-n="8" aria-label="Open carousel: What's actually floating around your house?"><img src="media/car/ma-floating/1.jpg" alt="What's actually floating around your house?"><span class="slides">8 slides</span></button><figcaption>What's floating in your house?</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="ma-beforeafter" data-n="3" aria-label="Open carousel: Restaurant and gym before and after petri dishes"><img src="media/car/ma-beforeafter/1.jpg" alt="Restaurant and gym before and after petri dishes"><span class="slides">3 slides</span></button><figcaption>Before and after testing</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-ma-plasma.jpg" src="media/v-ma-plasma.mp4"></video><figcaption>How plasma works</figcaption></figure>
-          <figure class="sq"><img src="media/ma-250k.jpg" alt="Maple Air graphic: 250,000+ cubic feet"><figcaption>Portable launch</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="ma-winter" data-n="7" aria-label="Open carousel: 5 reasons your house helps illness spread in winter"><img src="media/car/ma-winter/1.jpg" alt="5 reasons your house helps illness spread in winter"><span class="slides">7 slides</span></button><figcaption>Carousel · pre-rebrand</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="ma-mold" data-n="7" aria-label="Open carousel: Mold in military housing"><img src="media/car/ma-mold/1.jpg" alt="Mold in military housing"><span class="slides">7 slides</span></button><figcaption>Carousel · pre-rebrand</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-ma-new.jpg" src="media/v-ma-new.mp4" width="480" height="854"></video><figcaption>Unboxing, on camera</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-casestudy" data-n="4" aria-label="Open carousel: This is what we found inside a real home in Lake Norman, NC"><img src="media/car/ma-casestudy/1.jpg" alt="This is what we found inside a real home in Lake Norman, NC" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>Real home, real petri dishes</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-results" data-n="4" aria-label="Open carousel: Real-world testing results series"><img src="media/car/ma-results/1.jpg" alt="Real-world testing results series" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>Real-world results series</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-pets" data-n="8" aria-label="Open carousel: Pet owners, we have some bad news"><img src="media/car/ma-pets/1.jpg" alt="Pet owners, we have some bad news" width="1080" height="1440" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>Pet owners, we have bad news</figcaption></figure>
+          <figure><img src="media/ma-aircell.jpg" alt="Introducing Maple AirCell" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>AirCell waitlist launch</figcaption></figure>
+          <figure><img src="media/ma-smells.jpg" alt="Maple Air ad: Your facility smells" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Commercial · post-rebrand</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-floating" data-n="8" aria-label="Open carousel: What's actually floating around your house?"><img src="media/car/ma-floating/1.jpg" alt="What's actually floating around your house?" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>What's floating in your house?</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-beforeafter" data-n="3" aria-label="Open carousel: Restaurant and gym before and after petri dishes"><img src="media/car/ma-beforeafter/1.jpg" alt="Restaurant and gym before and after petri dishes" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">3 slides</span></button><figcaption>Before and after testing</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-ma-plasma.jpg" src="media/v-ma-plasma.mp4" width="540" height="960"></video><figcaption>How plasma works</figcaption></figure>
+          <figure><img src="media/ma-250k.jpg" alt="Maple Air graphic: 250,000+ cubic feet" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Portable launch</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-winter" data-n="7" aria-label="Open carousel: 5 reasons your house helps illness spread in winter"><img src="media/car/ma-winter/1.jpg" alt="5 reasons your house helps illness spread in winter" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Carousel · pre-rebrand</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ma-mold" data-n="7" aria-label="Open carousel: Mold in military housing"><img src="media/car/ma-mold/1.jpg" alt="Mold in military housing" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Carousel · pre-rebrand</figcaption></figure>
         </div>
       </article>
 
@@ -661,16 +738,16 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
           <div><dt>click-through rate on $58K in managed spend</dt><dd>2.97%</dd></div>
         </dl>
         <div class="media">
-          <figure><video controls playsinline preload="none" poster="media/v-hvac-blue.jpg" src="media/v-hvac-blue.mp4"></video><figcaption>Is your AC ready for summer?</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-hvac-face.jpg" src="media/v-hvac-face.mp4"></video><figcaption>Going on vacation?</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-ma-sock.jpg" src="media/v-ma-sock.mp4"></video><figcaption>Stinky sock syndrome</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="hvac-expert" data-n="10" aria-label="Open carousel: Ask the Expert: Can I install an air conditioner myself?"><img src="media/car/hvac-expert/1.jpg" alt="Ask the Expert: Can I install an air conditioner myself?"><span class="slides">10 slides</span></button><figcaption>Ask the Expert series</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="hvac-value" data-n="7" aria-label="Open carousel: How a smarter HVAC could increase your home's value"><img src="media/car/hvac-value/1.jpg" alt="How a smarter HVAC could increase your home's value"><span class="slides">7 slides</span></button><figcaption>Home value explainer</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-hvac-walking.jpg" src="media/v-hvac-walking.mp4"></video><figcaption>When your HVAC dies in a heat wave</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-hvac-kelsey.jpg" src="media/v-hvac-kelsey.mp4"></video><figcaption>When QuoteScore saves you money</figcaption></figure>
-          <figure class="sq"><img src="media/meme-kendrick.jpg" alt="HVAC.com meme: Hey you, I heard you need a new HVAC"><figcaption>Meme</figcaption></figure>
-          <figure class="sq"><img src="media/meme-taylor.jpg" alt="HVAC.com meme with Taylor Swift"><figcaption>Meme</figcaption></figure>
-          <figure class="sq"><img src="media/hvac-reddit.jpg" alt="Reddit-style post praising HVAC.com, designed in Canva"><figcaption>Reddit-style social proof, designed in Canva</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-hvac-blue.jpg" src="media/v-hvac-blue.mp4" width="540" height="960"></video><figcaption>Is your AC ready for summer?</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-hvac-face.jpg" src="media/v-hvac-face.mp4" width="360" height="640"></video><figcaption>Going on vacation?</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-ma-sock.jpg" src="media/v-ma-sock.mp4" width="360" height="640"></video><figcaption>Stinky sock syndrome</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="hvac-expert" data-n="10" aria-label="Open carousel: Ask the Expert: Can I install an air conditioner myself?"><img src="media/car/hvac-expert/1.jpg" alt="Ask the Expert: Can I install an air conditioner myself?" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">10 slides</span></button><figcaption>Ask the Expert series</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="hvac-value" data-n="7" aria-label="Open carousel: How a smarter HVAC could increase your home's value"><img src="media/car/hvac-value/1.jpg" alt="How a smarter HVAC could increase your home's value" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Home value explainer</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-hvac-walking.jpg" src="media/v-hvac-walking.mp4" width="540" height="960"></video><figcaption>When your HVAC dies in a heat wave</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-hvac-kelsey.jpg" src="media/v-hvac-kelsey.mp4" width="540" height="960"></video><figcaption>When QuoteScore saves you money</figcaption></figure>
+          <figure><img src="media/meme-kendrick.jpg" alt="HVAC.com meme: Hey you, I heard you need a new HVAC" width="662" height="831" loading="lazy" decoding="async"><figcaption>Meme</figcaption></figure>
+          <figure><img src="media/meme-taylor.jpg" alt="HVAC.com meme with Taylor Swift" width="1374" height="1376" loading="lazy" decoding="async"><figcaption>Meme</figcaption></figure>
+          <figure><img src="media/hvac-reddit.jpg" alt="Reddit-style post praising HVAC.com, designed in Canva" width="1012" height="1800" loading="lazy" decoding="async"><figcaption>Reddit-style social proof, designed in Canva</figcaption></figure>
         </div>
       </article>
 
@@ -690,12 +767,12 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
           <div><dt>assets produced every week</dt><dd>50+</dd></div>
         </dl>
         <div class="media">
-          <figure><video controls playsinline preload="none" poster="media/v-wed-hermione.jpg" src="media/v-wed-hermione.mp4"></video><figcaption>"Nitch."</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-wed-wee.jpg" src="media/v-wed-wee.mp4"></video><figcaption>What you thought your launch would look like</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-wed-launch.jpg" src="media/v-wed-launch.mp4"></video><figcaption>What you think your messaging looks like</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-wed-thought.jpg" src="media/v-wed-thought.mp4"></video><figcaption>Thought of the Day</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="wed-goals" data-n="5" aria-label="Open carousel: How to get your goals in 3 steps"><img src="media/car/wed-goals/1.jpg" alt="How to get your goals in 3 steps"><span class="slides">5 slides</span></button><figcaption>Goals carousel</figcaption></figure>
-          <figure class="sq"><img src="media/wed-testimonial.jpg" alt="Business by Design student testimonial graphic"><figcaption>Testimonial graphic</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-wed-hermione.jpg" src="media/v-wed-hermione.mp4" width="540" height="960"></video><figcaption>"Nitch."</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-wed-wee.jpg" src="media/v-wed-wee.mp4" width="540" height="960"></video><figcaption>What you thought your launch would look like</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-wed-launch.jpg" src="media/v-wed-launch.mp4" width="540" height="960"></video><figcaption>What you think your messaging looks like</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-wed-thought.jpg" src="media/v-wed-thought.mp4" width="540" height="960"></video><figcaption>Thought of the Day</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="wed-goals" data-n="5" aria-label="Open carousel: How to get your goals in 3 steps"><img src="media/car/wed-goals/1.jpg" alt="How to get your goals in 3 steps" width="1364" height="1370" loading="lazy" decoding="async"><span class="slides">5 slides</span></button><figcaption>Goals carousel</figcaption></figure>
+          <figure><img src="media/wed-testimonial.jpg" alt="Business by Design student testimonial graphic" width="1356" height="1362" loading="lazy" decoding="async"><figcaption>Testimonial graphic</figcaption></figure>
         </div>
       </article>
 
@@ -715,13 +792,13 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
           <div><dt>of views from non-followers</dt><dd>89%</dd></div>
         </dl>
         <div class="media">
-          <figure class="sq"><img src="media/ss-tetris.jpg" alt="StoneSmith Countertop Tetris graphic"><figcaption>Countertop Tetris</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="ss-hotel" data-n="7" aria-label="Open carousel: Ever notice hotel bathrooms feel better than yours?"><img src="media/car/ss-hotel/1.jpg" alt="Ever notice hotel bathrooms feel better than yours?"><span class="slides">7 slides</span></button><figcaption>Hotel bathrooms</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="ss-quartz" data-n="4" aria-label="Open carousel: Quartz or quartzite?"><img src="media/car/ss-quartz/1.jpg" alt="Quartz or quartzite?"><span class="slides">4 slides</span></button><figcaption>Quartz or quartzite?</figcaption></figure>
-          <figure class="sq"><button type="button" class="carbtn" data-car="ss-kitchen-car" data-n="8" aria-label="Open carousel: There's no such thing as a timeless kitchen"><img src="media/car/ss-kitchen-car/1.jpg" alt="There's no such thing as a timeless kitchen"><span class="slides">8 slides</span></button><figcaption>The timeless kitchen myth</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-ss-inspo.jpg" src="media/v-ss-inspo.mp4"></video><figcaption>Kitchen inspo</figcaption></figure>
-          <figure class="sq"><img src="media/ss-kitchen.jpg" alt="StoneSmith post: pick your kitchen, A B C or D"><figcaption>Engagement post</figcaption></figure>
-          <figure class="sq"><img src="media/ss-testimonial.jpg" alt="StoneSmith Google review graphic"><figcaption>Review graphic</figcaption></figure>
+          <figure><img src="media/ss-tetris.jpg" alt="StoneSmith Countertop Tetris graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Countertop Tetris</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ss-hotel" data-n="7" aria-label="Open carousel: Ever notice hotel bathrooms feel better than yours?"><img src="media/car/ss-hotel/1.jpg" alt="Ever notice hotel bathrooms feel better than yours?" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>Hotel bathrooms</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ss-quartz" data-n="4" aria-label="Open carousel: Quartz or quartzite?"><img src="media/car/ss-quartz/1.jpg" alt="Quartz or quartzite?" width="1440" height="1800" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>Quartz or quartzite?</figcaption></figure>
+          <figure><button type="button" class="carbtn" data-car="ss-kitchen-car" data-n="8" aria-label="Open carousel: There's no such thing as a timeless kitchen"><img src="media/car/ss-kitchen-car/1.jpg" alt="There's no such thing as a timeless kitchen" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>The timeless kitchen myth</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-ss-inspo.jpg" src="media/v-ss-inspo.mp4" width="540" height="960"></video><figcaption>Kitchen inspo</figcaption></figure>
+          <figure><img src="media/ss-kitchen.jpg" alt="StoneSmith post: pick your kitchen, A B C or D" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Engagement post</figcaption></figure>
+          <figure><img src="media/ss-testimonial.jpg" alt="StoneSmith Google review graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Review graphic</figcaption></figure>
         </div>
       </article>
 
@@ -733,8 +810,8 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
           <p class="txt">She had the message nailed for women in midlife. The visuals were all over the place: random colors, mixed fonts, no posting rhythm. I audited everything, picked three or four content pillars, built a real visual system, and turned her podcast into a repeatable Reels format: hook, insight, takeaway. Then we tested hooks until we found the ones that stopped the scroll.</p>
           <p class="finding"><b>We didn't make more content.</b> We made the good stuff easier to find.</p>
           <div class="ba">
-            <figure><img src="media/nyag-before.jpg" alt="Instagram grid before the rebrand"><figcaption>Before</figcaption></figure>
-            <figure><img src="media/nyag-after.jpg" alt="Instagram grid after the rebrand"><figcaption>After</figcaption></figure>
+            <figure><img src="media/nyag-before.jpg" alt="Instagram grid before the rebrand" width="252" height="470" loading="lazy" decoding="async"><figcaption>Before</figcaption></figure>
+            <figure><img src="media/nyag-after.jpg" alt="Instagram grid after the rebrand" width="254" height="473" loading="lazy" decoding="async"><figcaption>After</figcaption></figure>
           </div>
         </div>
         <dl class="stats">
@@ -742,10 +819,10 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
           <div><dt>more accounts engaged in the same 30 days</dt><dd>+67%</dd></div>
         </dl>
         <div class="media">
-          <figure><video controls playsinline preload="none" poster="media/v-nyag-taylor.jpg" src="media/v-nyag-taylor.mp4"></video><figcaption>Too old to start something new?</figcaption></figure>
-          <figure><video controls playsinline preload="none" poster="media/v-nyag-david.jpg" src="media/v-nyag-david.mp4"></video><figcaption>Don't spoil the kids too much</figcaption></figure>
-          <figure class="sq"><img src="media/nyag-anatomy.jpg" alt="Not Your Average Grandma graphic: Anatomy of a scared settler"><figcaption>Graphic</figcaption></figure>
-          <figure class="sq"><img src="media/meme-kardashian.jpg" alt="Meme: Hey! Life isn't over at 50"><figcaption>Meme</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-nyag-taylor.jpg" src="media/v-nyag-taylor.mp4" width="540" height="960"></video><figcaption>Too old to start something new?</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-nyag-david.jpg" src="media/v-nyag-david.mp4" width="540" height="960"></video><figcaption>Don't spoil the kids too much</figcaption></figure>
+          <figure><img src="media/nyag-anatomy.jpg" alt="Not Your Average Grandma graphic: Anatomy of a scared settler" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>Graphic</figcaption></figure>
+          <figure><img src="media/meme-kardashian.jpg" alt="Meme: Hey! Life isn't over at 50" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>Meme</figcaption></figure>
         </div>
       </article>
 
@@ -764,7 +841,7 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
           <div><dt>fundraiser profit, year over year</dt><dd>+5%</dd></div>
         </dl>
         <div class="media">
-          <figure class="sq"><img src="media/cft-flyer.jpg" alt="Carolina Farm Trust event flyer: A Night at the Museum"><figcaption>Fundraiser event flyer</figcaption></figure>
+          <figure><img src="media/cft-flyer.jpg" alt="Carolina Farm Trust event flyer: A Night at the Museum" width="1374" height="1368" loading="lazy" decoding="async"><figcaption>Fundraiser event flyer</figcaption></figure>
         </div>
       </article>
     </div>
@@ -777,7 +854,7 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
     <div class="wrap">
       <span class="label">The work</span>
       <h1 class="cond page-h1" style="margin-top:1rem">Hooks, memes, carousels <span class="hl">&amp; receipts.</span></h1>
-      <p class="dek" style="margin-top:1.25rem">A sampler from campaigns, brands and my own channel. Tap any video to play it.</p>
+      <p class="dek" style="margin-top:1.25rem">A sampler from campaigns, brands, and my own channel. Tap anything to see it bigger.</p>
       <div class="chips" role="group" aria-label="Filter the work">
         <button type="button" data-f="all" aria-pressed="true">All</button>
         <button type="button" data-f="video" aria-pressed="false">Video</button>
@@ -787,57 +864,57 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
         <button type="button" data-f="political" aria-pressed="false">Political</button>
       </div>
       <div class="gallery" id="gallery">
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-hvac-blue.jpg" src="media/v-hvac-blue.mp4"></video><figcaption><b>HVAC.com</b>On camera: Is your AC ready?</figcaption></figure>
-        <figure class="tile" data-k="carousel political"><button type="button" class="carbtn" data-car="char-approved" data-n="9" aria-label="Open carousel: The students have spoken"><img src="media/car/char-approved/1.jpg" alt="The students have spoken"><span class="slides">9 slides</span></button><figcaption><b>Char Fitzwater</b>The students have spoken</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-casestudy" data-n="4" aria-label="Open carousel: Lake Norman home test results"><img src="media/car/ma-casestudy/1.jpg" alt="Lake Norman home test results"><span class="slides">4 slides</span></button><figcaption><b>Maple Air</b>Real home, real petri dishes</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/ss-tetris.jpg" alt="Countertop Tetris"><figcaption><b>StoneSmith</b>Countertop Tetris</figcaption></figure>
-        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-nnd-freedom.jpg" src="media/v-nnd-freedom.mp4"></video><figcaption><b>Nikki Next Door</b>Make it make sense</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="hvac-expert" data-n="10" aria-label="Open carousel: Ask the Expert"><img src="media/car/hvac-expert/1.jpg" alt="Ask the Expert"><span class="slides">10 slides</span></button><figcaption><b>HVAC.com</b>Ask the Expert</figcaption></figure>
-        <figure class="tile" data-k="graphic political"><img src="media/char-charcuterie.jpg" alt="CHARcuterie flyer"><figcaption><b>Char Fitzwater</b>CHARcuterie</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-pets" data-n="8" aria-label="Open carousel: Pet owners, we have bad news"><img src="media/car/ma-pets/1.jpg" alt="Pet owners, we have bad news"><span class="slides">8 slides</span></button><figcaption><b>Maple Air</b>Pet owners, bad news</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-ma-sock.jpg" src="media/v-ma-sock.mp4"></video><figcaption><b>HVAC.com</b>Stinky sock syndrome</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-hotel" data-n="7" aria-label="Open carousel: Hotel bathrooms"><img src="media/car/ss-hotel/1.jpg" alt="Hotel bathrooms"><span class="slides">7 slides</span></button><figcaption><b>StoneSmith</b>Hotel bathrooms</figcaption></figure>
-        <figure class="tile" data-k="graphic political"><img src="media/char-scoop.jpg" alt="Get the Scoop on Char"><figcaption><b>Char Fitzwater</b>Get the SCOOP</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-results" data-n="4" aria-label="Open carousel: Real-world results"><img src="media/car/ma-results/1.jpg" alt="Real-world results"><span class="slides">4 slides</span></button><figcaption><b>Maple Air</b>Real-world results</figcaption></figure>
-        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-char-talk.jpg" src="media/v-char-talk.mp4"></video><figcaption><b>Char Fitzwater</b>"I got this"</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-quartz" data-n="4" aria-label="Open carousel: Quartz or quartzite"><img src="media/car/ss-quartz/1.jpg" alt="Quartz or quartzite"><span class="slides">4 slides</span></button><figcaption><b>StoneSmith</b>Quartz or quartzite?</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-hvac-face.jpg" src="media/v-hvac-face.mp4"></video><figcaption><b>HVAC.com</b>On camera: Going on vacation?</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-floating" data-n="8" aria-label="Open carousel: What's floating in your house"><img src="media/car/ma-floating/1.jpg" alt="What's floating in your house"><span class="slides">8 slides</span></button><figcaption><b>Maple Air</b>What's floating in your house?</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/ma-aircell.jpg" alt="Introducing Maple AirCell"><figcaption><b>Maple Air</b>AirCell launch</figcaption></figure>
-        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-nnd-dominion.jpg" src="media/v-nnd-dominion.mp4"></video><figcaption><b>Nikki Next Door</b>Dominion and your bill</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="hvac-value" data-n="7" aria-label="Open carousel: Smarter HVAC and home value"><img src="media/car/hvac-value/1.jpg" alt="Smarter HVAC and home value"><span class="slides">7 slides</span></button><figcaption><b>HVAC.com</b>Home value</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-kitchen-car" data-n="8" aria-label="Open carousel: Timeless kitchen myth"><img src="media/car/ss-kitchen-car/1.jpg" alt="Timeless kitchen myth"><span class="slides">8 slides</span></button><figcaption><b>StoneSmith</b>The timeless kitchen myth</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-winter" data-n="7" aria-label="Open carousel: Why winter makes houses sick"><img src="media/car/ma-winter/1.jpg" alt="Why winter makes houses sick"><span class="slides">7 slides</span></button><figcaption><b>Maple Air</b>Why winter makes houses sick</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="wed-goals" data-n="5" aria-label="Open carousel: Goals in 3 steps"><img src="media/car/wed-goals/1.jpg" alt="Goals in 3 steps"><span class="slides">5 slides</span></button><figcaption><b>Wedmore</b>Goals in 3 steps</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-mold" data-n="7" aria-label="Open carousel: Mold in military housing"><img src="media/car/ma-mold/1.jpg" alt="Mold in military housing"><span class="slides">7 slides</span></button><figcaption><b>Maple Air</b>Mold in military housing</figcaption></figure>
-        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-gym" data-n="9" aria-label="Open carousel: January gyms are packed"><img src="media/car/ma-gym/1.jpg" alt="January gyms are packed"><span class="slides">9 slides</span></button><figcaption><b>Maple Air</b>January gyms are packed</figcaption></figure>
-        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-char-wave.jpg" src="media/v-char-wave.mp4"></video><figcaption><b>Char Fitzwater</b>Sign waving</figcaption></figure>
-        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-nnd-colbert.jpg" src="media/v-nnd-colbert.mp4"></video><figcaption><b>Nikki Next Door</b>33K views</figcaption></figure>
-        <figure class="tile" data-k="graphic political"><img src="media/char-citypaper.jpg" alt="Char Fitzwater City Paper endorsement graphic"><figcaption><b>Char Fitzwater</b>Endorsed</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/ma-smells.jpg" alt="Maple Air ad: Your facility smells"><figcaption><b>Maple Air</b>Your facility smells</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-ma-new.jpg" src="media/v-ma-new.mp4"></video><figcaption><b>Maple Air</b>Unboxing</figcaption></figure>
-        <figure class="tile" data-k="graphic political"><img src="media/ann-voucher.jpg" alt="Ann Shippy contrast ad on school vouchers"><figcaption><b>Ann Shippy</b>That's not accountability</figcaption></figure>
-        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-ann-elephant.jpg" src="media/v-ann-elephant.mp4"></video><figcaption><b>Katie Miller</b>Republican? Hear me out.</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/hvac-your.jpg" alt="HVAC.com graphic: Your HVAC"><figcaption><b>HVAC.com</b>Your HVAC, explained</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-wed-hermione.jpg" src="media/v-wed-hermione.mp4"></video><figcaption><b>Wedmore</b>"Nitch."</figcaption></figure>
-        <figure class="tile" data-k="meme"><img src="media/meme-snoop.jpg" alt="HVAC.com meme with Snoop Dogg"><figcaption><b>HVAC.com</b>When you see that replacement quote</figcaption></figure>
-        <figure class="tile" data-k="video political"><video controls playsinline preload="none" poster="media/v-nnd-ccsd.jpg" src="media/v-nnd-ccsd.mp4"></video><figcaption><b>Nikki Next Door</b>CCSD Cliff Notes, Part 1</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-hvac-walking.jpg" src="media/v-hvac-walking.mp4"></video><figcaption><b>HVAC.com</b>Heat wave, Walking Dead edition</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/nyag-alarm.jpg" alt="Not Your Average Grandma graphic: The best time to start is now"><figcaption><b>NYAG</b>The best time to start is now</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-ma-contam.jpg" src="media/v-ma-contam.mp4"></video><figcaption><b>Maple Air</b>The most contaminated room</figcaption></figure>
-        <figure class="tile" data-k="meme"><img src="media/meme-kendrick.jpg" alt="HVAC.com meme: I heard you need a new HVAC"><figcaption><b>HVAC.com</b>Hey you</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-wed-wee.jpg" src="media/v-wed-wee.mp4"></video><figcaption><b>Wedmore</b>Launch expectations</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/wed-graphic.jpg" alt="James Wedmore graphic: I can't do this, but you did"><figcaption><b>Wedmore</b>But you did</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-ss-inspo.jpg" src="media/v-ss-inspo.mp4"></video><figcaption><b>StoneSmith</b>Kitchen inspo</figcaption></figure>
-        <figure class="tile" data-k="meme"><img src="media/meme-kardashian.jpg" alt="Meme: Life isn't over at 50"><figcaption><b>NYAG</b>Life isn't over at 50</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-hvac-kelsey.jpg" src="media/v-hvac-kelsey.mp4"></video><figcaption><b>HVAC.com</b>QuoteScore</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/people-pleaser.jpg" alt="Graphic: 5 ways being a people pleaser impacts your health"><figcaption><b>NYAG</b>People pleasing</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-nyag-taylor.jpg" src="media/v-nyag-taylor.mp4"></video><figcaption><b>NYAG</b>Too old to start?</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/wed-success.jpg" alt="James Wedmore graphic: Success, what people think vs what it looks like"><figcaption><b>Wedmore</b>What success really looks like</figcaption></figure>
-        <figure class="tile" data-k="meme"><img src="media/meme-taylor.jpg" alt="HVAC.com meme with Taylor Swift and Travis Kelce"><figcaption><b>HVAC.com</b>Your HVAC system</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-wed-thought.jpg" src="media/v-wed-thought.mp4"></video><figcaption><b>Wedmore</b>Thought of the Day</figcaption></figure>
-        <figure class="tile" data-k="graphic"><img src="media/cft-flyer.jpg" alt="Carolina Farm Trust event flyer"><figcaption><b>Carolina Farm Trust</b>A Night at the Museum</figcaption></figure>
-        <figure class="tile" data-k="video"><video controls playsinline preload="none" poster="media/v-ma-install.jpg" src="media/v-ma-install.mp4"></video><figcaption><b>Maple Air</b>Install day</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-hvac-blue.jpg" src="media/v-hvac-blue.mp4" width="540" height="960"></video><figcaption><b>HVAC.com</b>On camera: Is your AC ready?</figcaption></figure>
+        <figure class="tile" data-k="carousel political"><button type="button" class="carbtn" data-car="char-approved" data-n="9" aria-label="Open carousel: The students have spoken"><img src="media/car/char-approved/1.jpg" alt="The students have spoken" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">9 slides</span></button><figcaption><b>Char Fitzwater</b>The students have spoken</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-casestudy" data-n="4" aria-label="Open carousel: Lake Norman home test results"><img src="media/car/ma-casestudy/1.jpg" alt="Lake Norman home test results" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption><b>Maple Air</b>Real home, real petri dishes</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/ss-tetris.jpg" alt="Countertop Tetris" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>StoneSmith</b>Countertop Tetris</figcaption></figure>
+        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-nnd-freedom.jpg" src="media/v-nnd-freedom.mp4" width="480" height="854"></video><figcaption><b>Nikki Next Door</b>Make it make sense</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="hvac-expert" data-n="10" aria-label="Open carousel: Ask the Expert"><img src="media/car/hvac-expert/1.jpg" alt="Ask the Expert" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">10 slides</span></button><figcaption><b>HVAC.com</b>Ask the Expert</figcaption></figure>
+        <figure class="tile" data-k="graphic political"><img src="media/char-charcuterie.jpg" alt="CHARcuterie flyer" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>Char Fitzwater</b>CHARcuterie</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-pets" data-n="8" aria-label="Open carousel: Pet owners, we have bad news"><img src="media/car/ma-pets/1.jpg" alt="Pet owners, we have bad news" width="1080" height="1440" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption><b>Maple Air</b>Pet owners, bad news</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-ma-sock.jpg" src="media/v-ma-sock.mp4" width="360" height="640"></video><figcaption><b>HVAC.com</b>Stinky sock syndrome</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-hotel" data-n="7" aria-label="Open carousel: Hotel bathrooms"><img src="media/car/ss-hotel/1.jpg" alt="Hotel bathrooms" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption><b>StoneSmith</b>Hotel bathrooms</figcaption></figure>
+        <figure class="tile" data-k="graphic political"><img src="media/char-scoop.jpg" alt="Get the Scoop on Char" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>Char Fitzwater</b>Get the SCOOP</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-results" data-n="4" aria-label="Open carousel: Real-world results"><img src="media/car/ma-results/1.jpg" alt="Real-world results" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption><b>Maple Air</b>Real-world results</figcaption></figure>
+        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-char-talk.jpg" src="media/v-char-talk.mp4" width="480" height="854"></video><figcaption><b>Char Fitzwater</b>"I got this"</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-quartz" data-n="4" aria-label="Open carousel: Quartz or quartzite"><img src="media/car/ss-quartz/1.jpg" alt="Quartz or quartzite" width="1440" height="1800" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption><b>StoneSmith</b>Quartz or quartzite?</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-hvac-face.jpg" src="media/v-hvac-face.mp4" width="360" height="640"></video><figcaption><b>HVAC.com</b>On camera: Going on vacation?</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-floating" data-n="8" aria-label="Open carousel: What's floating in your house"><img src="media/car/ma-floating/1.jpg" alt="What's floating in your house" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption><b>Maple Air</b>What's floating in your house?</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/ma-aircell.jpg" alt="Introducing Maple AirCell" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>Maple Air</b>AirCell launch</figcaption></figure>
+        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-nnd-dominion.jpg" src="media/v-nnd-dominion.mp4" width="480" height="854"></video><figcaption><b>Nikki Next Door</b>Dominion and your bill</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="hvac-value" data-n="7" aria-label="Open carousel: Smarter HVAC and home value"><img src="media/car/hvac-value/1.jpg" alt="Smarter HVAC and home value" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption><b>HVAC.com</b>Home value</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ss-kitchen-car" data-n="8" aria-label="Open carousel: Timeless kitchen myth"><img src="media/car/ss-kitchen-car/1.jpg" alt="Timeless kitchen myth" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption><b>StoneSmith</b>The timeless kitchen myth</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-winter" data-n="7" aria-label="Open carousel: Why winter makes houses sick"><img src="media/car/ma-winter/1.jpg" alt="Why winter makes houses sick" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption><b>Maple Air</b>Why winter makes houses sick</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="wed-goals" data-n="5" aria-label="Open carousel: Goals in 3 steps"><img src="media/car/wed-goals/1.jpg" alt="Goals in 3 steps" width="1364" height="1370" loading="lazy" decoding="async"><span class="slides">5 slides</span></button><figcaption><b>Wedmore</b>Goals in 3 steps</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-mold" data-n="7" aria-label="Open carousel: Mold in military housing"><img src="media/car/ma-mold/1.jpg" alt="Mold in military housing" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption><b>Maple Air</b>Mold in military housing</figcaption></figure>
+        <figure class="tile" data-k="carousel"><button type="button" class="carbtn" data-car="ma-gym" data-n="9" aria-label="Open carousel: January gyms are packed"><img src="media/car/ma-gym/1.jpg" alt="January gyms are packed" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">9 slides</span></button><figcaption><b>Maple Air</b>January gyms are packed</figcaption></figure>
+        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-char-wave.jpg" src="media/v-char-wave.mp4" width="540" height="960"></video><figcaption><b>Char Fitzwater</b>Sign waving</figcaption></figure>
+        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-nnd-colbert.jpg" src="media/v-nnd-colbert.mp4" width="480" height="854"></video><figcaption><b>Nikki Next Door</b>33K views</figcaption></figure>
+        <figure class="tile" data-k="graphic political"><img src="media/char-citypaper.jpg" alt="Char Fitzwater City Paper endorsement graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>Char Fitzwater</b>Endorsed</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/ma-smells.jpg" alt="Maple Air ad: Your facility smells" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>Maple Air</b>Your facility smells</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-ma-new.jpg" src="media/v-ma-new.mp4" width="480" height="854"></video><figcaption><b>Maple Air</b>Unboxing</figcaption></figure>
+        <figure class="tile" data-k="graphic political"><img src="media/ann-voucher.jpg" alt="Ann Shippy contrast ad on school vouchers" width="1012" height="1800" loading="lazy" decoding="async"><figcaption><b>Ann Shippy</b>That's not accountability</figcaption></figure>
+        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-ann-elephant.jpg" src="media/v-ann-elephant.mp4" width="540" height="960"></video><figcaption><b>Katie Miller</b>Making the case to Republican voters</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/hvac-your.jpg" alt="HVAC.com graphic: Your HVAC" width="1080" height="1350" loading="lazy" decoding="async"><figcaption><b>HVAC.com</b>Your HVAC, explained</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-wed-hermione.jpg" src="media/v-wed-hermione.mp4" width="540" height="960"></video><figcaption><b>Wedmore</b>"Nitch."</figcaption></figure>
+        <figure class="tile" data-k="meme"><img src="media/meme-snoop.jpg" alt="HVAC.com meme with Snoop Dogg" width="1080" height="1080" loading="lazy" decoding="async"><figcaption><b>HVAC.com</b>When you see that replacement quote</figcaption></figure>
+        <figure class="tile" data-k="video political"><video playsinline preload="none" poster="media/v-nnd-ccsd.jpg" src="media/v-nnd-ccsd.mp4" width="540" height="960"></video><figcaption><b>Nikki Next Door</b>CCSD Cliff Notes, Part 1</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-hvac-walking.jpg" src="media/v-hvac-walking.mp4" width="540" height="960"></video><figcaption><b>HVAC.com</b>Heat wave, Walking Dead edition</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/nyag-alarm.jpg" alt="Not Your Average Grandma graphic: The best time to start is now" width="1080" height="1080" loading="lazy" decoding="async"><figcaption><b>NYAG</b>The best time to start is now</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-ma-contam.jpg" src="media/v-ma-contam.mp4" width="480" height="854"></video><figcaption><b>Maple Air</b>The most contaminated room</figcaption></figure>
+        <figure class="tile" data-k="meme"><img src="media/meme-kendrick.jpg" alt="HVAC.com meme: I heard you need a new HVAC" width="662" height="831" loading="lazy" decoding="async"><figcaption><b>HVAC.com</b>Hey you</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-wed-wee.jpg" src="media/v-wed-wee.mp4" width="540" height="960"></video><figcaption><b>Wedmore</b>Launch expectations</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/wed-graphic.jpg" alt="James Wedmore graphic: I can't do this, but you did" width="828" height="825" loading="lazy" decoding="async"><figcaption><b>Wedmore</b>But you did</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-ss-inspo.jpg" src="media/v-ss-inspo.mp4" width="540" height="960"></video><figcaption><b>StoneSmith</b>Kitchen inspo</figcaption></figure>
+        <figure class="tile" data-k="meme"><img src="media/meme-kardashian.jpg" alt="Meme: Life isn't over at 50" width="1080" height="1080" loading="lazy" decoding="async"><figcaption><b>NYAG</b>Life isn't over at 50</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-hvac-kelsey.jpg" src="media/v-hvac-kelsey.mp4" width="540" height="960"></video><figcaption><b>HVAC.com</b>QuoteScore</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/people-pleaser.jpg" alt="Graphic: 5 ways being a people pleaser impacts your health" width="1080" height="1080" loading="lazy" decoding="async"><figcaption><b>NYAG</b>People pleasing</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-nyag-taylor.jpg" src="media/v-nyag-taylor.mp4" width="540" height="960"></video><figcaption><b>NYAG</b>Too old to start?</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/wed-success.jpg" alt="James Wedmore graphic: Success, what people think vs what it looks like" width="829" height="830" loading="lazy" decoding="async"><figcaption><b>Wedmore</b>What success really looks like</figcaption></figure>
+        <figure class="tile" data-k="meme"><img src="media/meme-taylor.jpg" alt="HVAC.com meme with Taylor Swift and Travis Kelce" width="1374" height="1376" loading="lazy" decoding="async"><figcaption><b>HVAC.com</b>Your HVAC system</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-wed-thought.jpg" src="media/v-wed-thought.mp4" width="540" height="960"></video><figcaption><b>Wedmore</b>Thought of the Day</figcaption></figure>
+        <figure class="tile" data-k="graphic"><img src="media/cft-flyer.jpg" alt="Carolina Farm Trust event flyer" width="1374" height="1368" loading="lazy" decoding="async"><figcaption><b>Carolina Farm Trust</b>A Night at the Museum</figcaption></figure>
+        <figure class="tile" data-k="video"><video playsinline preload="none" poster="media/v-ma-install.jpg" src="media/v-ma-install.mp4" width="540" height="960"></video><figcaption><b>Maple Air</b>Install day</figcaption></figure>
       </div>
     </div>
   </section>
@@ -847,13 +924,13 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
       <span class="label">Receipts</span>
       <h2 class="cond h2" style="margin-top:1rem">Unprompted, unedited, <span class="p">very much appreciated.</span></h2>
       <div class="rwall">
-        <figure><img src="media/r-ann-rewind.jpg" alt="Email from Ann Shippy: if I could rewind the clock, I would have hired you six months ago"><figcaption>Ann Shippy · candidate</figcaption></figure>
-        <figure><img src="media/r-char-fantastic.jpg" alt="Email from Char Fitzwater: fantastic all the way around, great marketing communication"><figcaption>Char Fitzwater · candidate</figcaption></figure>
-        <figure><img src="media/r-andrew.jpg" alt="Email from Andrew: Good post today, best one yet. Sending to principal for sure"><figcaption>Maple Air · on a video about germs in schools</figcaption></figure>
-        <figure><img src="media/r-ann-text.jpg" alt="Text from Ann Shippy: I absolutely love it"><figcaption>Ann Shippy · on a video concept</figcaption></figure>
-        <figure><img src="media/r-darlene.jpg" alt="Email from Darlene: love the work you've been doing for us"><figcaption>Maple Air · leadership</figcaption></figure>
-        <figure><img src="media/r-ann-talented.jpg" alt="Email from Ann Shippy: you are so darn talented"><figcaption>Ann Shippy · candidate</figcaption></figure>
-        <figure><img src="media/r-char-amazing.jpg" alt="Email from Char Fitzwater: yet again amazing"><figcaption>Char Fitzwater · candidate</figcaption></figure>
+        <figure><img src="media/r-ann-rewind.jpg" alt="Email from Ann Shippy: if I could rewind the clock, I would have hired you six months ago" width="1179" height="801" loading="lazy" decoding="async"><figcaption>Ann Shippy · candidate</figcaption></figure>
+        <figure><img src="media/r-char-fantastic.jpg" alt="Email from Char Fitzwater: fantastic all the way around, great marketing communication" width="1179" height="657" loading="lazy" decoding="async"><figcaption>Char Fitzwater · candidate</figcaption></figure>
+        <figure><img src="media/r-andrew.jpg" alt="Email from Andrew: Good post today, best one yet. Sending to principal for sure" width="1179" height="1126" loading="lazy" decoding="async"><figcaption>Maple Air · on a video about germs in schools</figcaption></figure>
+        <figure><img src="media/r-ann-text.jpg" alt="Text from Ann Shippy: I absolutely love it" width="1179" height="1262" loading="lazy" decoding="async"><figcaption>Ann Shippy · on a video concept</figcaption></figure>
+        <figure><img src="media/r-darlene.jpg" alt="Email from Darlene: love the work you've been doing for us" width="1179" height="531" loading="lazy" decoding="async"><figcaption>Maple Air · leadership</figcaption></figure>
+        <figure><img src="media/r-ann-talented.jpg" alt="Email from Ann Shippy: you are so darn talented" width="1179" height="460" loading="lazy" decoding="async"><figcaption>Ann Shippy · candidate</figcaption></figure>
+        <figure><img src="media/r-char-amazing.jpg" alt="Email from Char Fitzwater: yet again amazing" width="1179" height="408" loading="lazy" decoding="async"><figcaption>Char Fitzwater · candidate</figcaption></figure>
       </div>
     </div>
   </section>
@@ -890,7 +967,7 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
     <div class="wrap">
       <span class="label">The long version</span>
       <ol class="timeline">
-        <li><span class="yrs">2025–now</span><div><h3>Nikki Hill Johnson Consulting</h3><span class="ttl">Fractional marketing strategist, social and paid media</span><p>Senior strategy for startups, local businesses and Democratic campaigns, without adding full-time headcount. Current clients include Maple Air and StoneSmith.</p></div></li>
+        <li><span class="yrs">2025–present</span><div><h3>Independent Strategy &amp; Creative</h3><span class="ttl">Fractional marketing strategist, social and paid media</span><p>Senior strategy for startups, local businesses and Democratic campaigns, without adding full-time headcount. Current clients include Maple Air and StoneSmith.</p></div></li>
         <li><span class="yrs">2023–2025</span><div><h3>HVAC.com / Trane Technologies</h3><span class="ttl">Senior Social Media &amp; Content Strategist</span><p>Built the social voice and paid program from scratch. ~50× ROI, 423 qualified leads, $71 cost per lead.</p></div></li>
         <li><span class="yrs">2022–2023</span><div><h3>Level Five Publishing / James Wedmore</h3><span class="ttl">Creative Content Director</span><p>Instagram, YouTube Shorts and live launch coverage for a $6.4M launch. 17 Reels over 10K views.</p></div></li>
         <li><span class="yrs">2021–2022</span><div><h3>Carolina Farm Trust</h3><span class="ttl">Senior Marketing &amp; Communications Manager</span><p>One story across every channel. $15K+ in grants, +30% web traffic, +20% volunteers.</p></div></li>
@@ -907,9 +984,9 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
   <div class="wrap">
     <span class="label">Let's talk</span>
     <h2 class="cond">Running for something? Building something? <span class="p">Let's talk.</span></h2>
-    <p>Tell me what you're working on and when it needs to land. I'll tell you honestly whether I can help.</p>
+    <p>Tell me what you're working on and what you need. I'll tell you honestly whether I can help.</p>
     <div class="mail">
-      <code id="email">nikki.hill.johnson@gmail.com</code>
+      <a id="email" class="email" href="mailto:nikki.hill.johnson@gmail.com">nikki.hill.johnson@gmail.com</a>
       <button class="copy-btn" type="button" id="copy-email">Copy email</button>
     </div>
     <div class="links">
@@ -920,16 +997,6 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
 </section>
 </main>
 
-<script>
-(function(){
-  document.querySelectorAll("video").forEach(function(v){
-    v.removeAttribute("controls");
-    var w=document.createElement("span");w.className="vwrap";v.parentNode.insertBefore(w,v);w.appendChild(v);
-    var b=document.createElement("button");b.type="button";b.className="play";b.setAttribute("aria-label","Play video");b.innerHTML="<span></span>";w.appendChild(b);
-    b.addEventListener("click",function(){v.controls=true;b.hidden=true;var p=v.play();if(p&&p.catch)p.catch(function(){});});
-  });
-})();
-</script>
 <script>
 (function(){
   var n=8,k=0,t=null,stage=document.getElementById("rq-stage");
@@ -944,68 +1011,179 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
   window.addEventListener("resize",fit);fit();start();
 })();
 </script>
-<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Carousel slides">
-  <div class="lb-track" id="lb-track"></div>
-  <div class="lb-bar"><button type="button" id="lb-prev">Prev</button><span class="lb-count" id="lb-count">1 / 1</span><button type="button" id="lb-next">Next</button><button type="button" class="x" id="lb-close">Close</button></div>
+<footer class="site"><div class="wrap"><span>© 2026 Nikki Hill Johnson · Charleston, SC</span><span>Humans first. Algorithms second.</span></div></footer>
+
+<div class="lbx" id="lbx" hidden role="dialog" aria-modal="true" aria-label="Enlarged view">
+  <div class="lbx-top"><span class="lbx-count" id="lbx-count"></span><button type="button" class="lbx-close" id="lbx-close" aria-label="Close enlarged view">Close ✕</button></div>
+  <div class="lbx-stage" id="lbx-stage"></div>
+  <button type="button" class="lbx-nav prev" id="lbx-prev" aria-label="Previous item">←</button>
+  <button type="button" class="lbx-nav next" id="lbx-next" aria-label="Next item">→</button>
+  <p class="lbx-cap" id="lbx-cap"></p>
 </div>
 <script>
 (function(){
-  var lb=document.getElementById("lb"),tr=document.getElementById("lb-track"),ct=document.getElementById("lb-count"),n=0,last=null;
-  function idx(){return Math.round(tr.scrollLeft/tr.clientWidth)}
-  function upd(){ct.textContent=(idx()+1)+" / "+n}
-  function go(d){tr.scrollTo({left:(idx()+d)*tr.clientWidth,behavior:"smooth"})}
-  function open(b){last=b;var slug=b.getAttribute("data-car");n=+b.getAttribute("data-n");tr.innerHTML="";
-    for(var i=1;i<=n;i++){var im=document.createElement("img");im.src="media/car/"+slug+"/"+i+".jpg";im.alt="Slide "+i+" of "+n;tr.appendChild(im)}
-    lb.hidden=false;tr.scrollLeft=0;upd();document.getElementById("lb-next").focus()}
-  function close(){lb.hidden=true;tr.innerHTML="";if(last)last.focus()}
-  document.addEventListener("click",function(e){var b=e.target.closest(".carbtn");if(b)open(b)});
-  tr.addEventListener("scroll",upd,{passive:true});
-  document.getElementById("lb-prev").onclick=function(){go(-1)};
-  document.getElementById("lb-next").onclick=function(){go(1)};
-  document.getElementById("lb-close").onclick=close;
-  lb.addEventListener("click",function(e){if(e.target===lb)close()});
-  document.addEventListener("keydown",function(e){if(lb.hidden)return;if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
-})();
-</script>
-<footer class="site"><div class="wrap"><span>© 2026 Nikki Hill Johnson · Charleston, SC</span><span>Humans first. Algorithms second.</span></div></footer>
-
-<script>
-(function(){
-  var views=["home","campaigns","brands","work","about"];
+  /* ---------- views + browser history ---------- */
+  var views=["home","campaigns","brands","work","about"], current=null;
   function show(name,scroll){
     if(views.indexOf(name)<0) name="home";
+    current=name;
     views.forEach(function(v){
       document.getElementById("view-"+v).hidden=(v!==name);
       var b=document.getElementById("nav-"+v);
       if(v===name) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current");
     });
-    document.querySelectorAll("video").forEach(function(v){ if(!v.paused) v.pause(); });
     if(scroll) window.scrollTo(0,0);
   }
+  function fromHash(){return (location.hash||"").replace("#","");}
   document.querySelectorAll("[data-go]").forEach(function(el){
     el.addEventListener("click",function(){
       var t=el.getAttribute("data-go");
-      try{history.replaceState(null,"","#"+t);}catch(e){}
-      show(t,true);
+      closeMenu();
+      if(t===current){window.scrollTo(0,0);return;}
+      location.hash=t; /* adds a history entry; hashchange below swaps the view */
     });
+  });
+  window.addEventListener("hashchange",function(){
+    var x=fromHash();
+    if(x==="contact"){return;}
+    show(x||"home",true);
   });
   document.querySelectorAll("[data-jump]").forEach(function(el){
     el.addEventListener("click",function(e){
-      e.preventDefault();
+      e.preventDefault(); closeMenu();
       document.getElementById(el.getAttribute("data-jump")).scrollIntoView({behavior:"smooth"});
     });
   });
-  var h=(location.hash||"").replace("#","");
+  var h=fromHash();
   if(h==="contact"){show("home");document.getElementById("contact").scrollIntoView();}
   else show(h||"home");
-  window.addEventListener("hashchange",function(){var x=(location.hash||"").replace("#","");if(views.indexOf(x)>-1)show(x,true);});
 
-  // one video at a time
-  document.addEventListener("play",function(e){
-    document.querySelectorAll("video").forEach(function(v){ if(v!==e.target && !v.paused) v.pause(); });
-  },true);
+  /* ---------- mobile menu ---------- */
+  var hdr=document.querySelector("header.site"), mb=document.getElementById("menu-btn");
+  function closeMenu(){hdr.classList.remove("menu-open");mb.setAttribute("aria-expanded","false");}
+  mb.addEventListener("click",function(){var o=hdr.classList.toggle("menu-open");mb.setAttribute("aria-expanded",o?"true":"false");});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&hdr.classList.contains("menu-open")){closeMenu();mb.focus();}});
 
-  // work filters
+  /* ---------- video thumbnails: pink play button opens the lightbox ---------- */
+  document.querySelectorAll("main video").forEach(function(v){
+    v.removeAttribute("controls");
+    var w=document.createElement("span");w.className="vwrap";v.parentNode.insertBefore(w,v);w.appendChild(v);
+    var b=document.createElement("button");b.type="button";b.className="play";b.setAttribute("aria-label","Play video"+(cap(v)?": "+cap(v):""));b.innerHTML="<span></span>";w.appendChild(b);
+  });
+  function cap(el){var f=el.closest("figure");var c=f&&f.querySelector("figcaption");return c?c.textContent.trim():"";}
+
+  /* ---------- horizontal rails with desktop arrows ---------- */
+  document.querySelectorAll(".case .media").forEach(function(m){
+    var r=document.createElement("div");r.className="rail";m.parentNode.insertBefore(r,m);
+    var p=document.createElement("button"),n=document.createElement("button");
+    p.type=n.type="button";p.className="rail-btn prev";n.className="rail-btn next";p.innerHTML="←";n.innerHTML="→";
+    p.setAttribute("aria-label","Scroll to earlier work");n.setAttribute("aria-label","Scroll to more work");
+    r.appendChild(p);r.appendChild(m);r.appendChild(n);
+    function upd(){var max=m.scrollWidth-m.clientWidth-2;p.disabled=m.scrollLeft<=2;n.disabled=m.scrollLeft>=max;}
+    function step(d){m.scrollBy({left:d*m.clientWidth*0.8,behavior:"smooth"});}
+    p.addEventListener("click",function(){step(-1)});n.addEventListener("click",function(){step(1)});
+    m.addEventListener("scroll",upd,{passive:true});window.addEventListener("resize",upd);
+    m.querySelectorAll("img").forEach(function(i){i.addEventListener("load",upd)});
+    upd(); setTimeout(upd,600);
+  });
+
+  /* ---------- shared lightbox for every portfolio image, video, and carousel ---------- */
+  var GROUPS=".media, #gallery, .rwall, .ba";
+  var lbx=document.getElementById("lbx"),stage=document.getElementById("lbx-stage"),cnt=document.getElementById("lbx-count"),
+      capEl=document.getElementById("lbx-cap"),prevB=document.getElementById("lbx-prev"),nextB=document.getElementById("lbx-next");
+  var seq=[],pos=0,opener=null,isOpen=false;
+
+  function entriesFor(fig){
+    var c=fig.querySelector(".carbtn"),v=fig.querySelector("video"),i=fig.querySelector("img"),t=cap(fig).replace(/\s+/g," ");
+    if(c){var slug=c.getAttribute("data-car"),n=+c.getAttribute("data-n"),out=[];
+      for(var k=1;k<=n;k++)out.push({type:"img",src:"media/car/"+slug+"/"+k+".jpg",alt:(c.querySelector("img").alt||"")+", slide "+k,cap:t+" · slide "+k+" of "+n,fig:fig});
+      return out;}
+    if(v)return [{type:"video",src:v.getAttribute("src"),poster:v.getAttribute("poster"),w:v.getAttribute("width"),h:v.getAttribute("height"),cap:t,fig:fig}];
+    if(i)return [{type:"img",src:i.getAttribute("src"),alt:i.alt,cap:t,fig:fig}];
+    return [];
+  }
+  function figsIn(g){return Array.prototype.filter.call(g.children,function(f){return f.tagName==="FIGURE"&&!f.hidden;});}
+
+  // make each portfolio item an obvious, keyboard-reachable trigger
+  document.querySelectorAll(GROUPS).forEach(function(g){
+    figsIn(g).forEach(function(f){
+      var t=f.querySelector(".carbtn")||f.querySelector(".play")||f.querySelector("img");
+      if(!t)return;
+      if(t.tagName==="IMG"){t.setAttribute("tabindex","0");t.setAttribute("role","button");t.setAttribute("aria-label","View larger: "+(t.alt||cap(f)));}
+      t.classList.add("lbable");t.setAttribute("data-lbtrigger","");
+    });
+  });
+  document.addEventListener("click",function(e){
+    var t=e.target.closest("[data-lbtrigger]");if(!t)return;
+    e.preventDefault();openFrom(t,t.classList.contains("play"));
+  });
+  document.addEventListener("keydown",function(e){
+    var t=e.target;if((e.key==="Enter"||e.key===" ")&&t.matches&&t.matches("img[data-lbtrigger]")){e.preventDefault();openFrom(t,false);}
+  });
+
+  function openFrom(trigger,autoplay){
+    var fig=trigger.closest("figure"),g=fig.parentElement;
+    seq=[];var start=0;
+    figsIn(g).forEach(function(f){if(f===fig)start=seq.length;seq=seq.concat(entriesFor(f));});
+    opener=trigger;pos=start;
+    lbx.hidden=false;isOpen=true;document.documentElement.style.overflow="hidden";
+    try{history.pushState({lbx:true},"");}catch(e){}
+    render(autoplay);
+    document.getElementById("lbx-close").focus();
+  }
+  function render(autoplay){
+    stage.classList.remove("zoom");stage.innerHTML="";
+    var it=seq[pos];
+    if(it.type==="img"){
+      var im=document.createElement("img");im.src=it.src;im.alt=it.alt||"";
+      im.addEventListener("click",function(){if(window.matchMedia("(hover:hover)").matches)stage.classList.toggle("zoom");});
+      stage.appendChild(im);
+    }else{
+      var v=document.createElement("video");v.src=it.src;v.poster=it.poster||"";v.controls=true;v.playsInline=true;v.setAttribute("playsinline","");v.preload="metadata";
+      if(it.w&&it.h){v.width=+it.w;v.height=+it.h;}
+      stage.appendChild(v);
+      if(autoplay){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+    }
+    cnt.textContent=seq.length>1?(pos+1)+" / "+seq.length:"";
+    capEl.textContent=it.cap||"";
+    prevB.disabled=pos===0;nextB.disabled=pos===seq.length-1;
+    prevB.hidden=nextB.hidden=seq.length<2;
+  }
+  function go(d){var n=pos+d;if(n<0||n>=seq.length)return;pos=n;render(false);}
+  function teardown(){
+    if(!isOpen)return;isOpen=false;
+    stage.querySelectorAll("video").forEach(function(v){v.pause();});
+    stage.innerHTML="";lbx.hidden=true;document.documentElement.style.overflow="";
+    if(opener&&document.body.contains(opener))opener.focus();
+  }
+  function close(){ if(!isOpen)return; if(history.state&&history.state.lbx){history.back();}else{teardown();} }
+  window.addEventListener("popstate",function(){ if(isOpen)teardown(); });
+  window.addEventListener("hashchange",function(){ if(isOpen)teardown(); });
+  document.getElementById("lbx-close").addEventListener("click",close);
+  prevB.addEventListener("click",function(){go(-1)});nextB.addEventListener("click",function(){go(1)});
+  lbx.addEventListener("click",function(e){if(e.target===lbx||e.target===stage)close();});
+  document.addEventListener("keydown",function(e){
+    if(!isOpen)return;
+    if(e.key==="Escape"){e.preventDefault();close();}
+    else if(e.key==="ArrowRight"){go(1);}
+    else if(e.key==="ArrowLeft"){go(-1);}
+    else if(e.key==="Tab"){ // keep focus inside the dialog
+      var f=Array.prototype.filter.call(lbx.querySelectorAll("button,video"),function(x){return !x.hidden&&!x.disabled;});
+      if(!f.length)return;var a=f[0],z=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}
+      else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
+    }
+  });
+  // swipe between items (single finger, not while zoomed or pinching)
+  var sx=null,sy=null;
+  stage.addEventListener("touchstart",function(e){if(e.touches.length===1){sx=e.touches[0].clientX;sy=e.touches[0].clientY;}else sx=null;},{passive:true});
+  stage.addEventListener("touchend",function(e){
+    if(sx===null||stage.classList.contains("zoom")||(window.visualViewport&&window.visualViewport.scale>1.05))return;
+    var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;
+    if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3)go(dx<0?1:-1);
+  },{passive:true});
+
+  /* ---------- work filters ---------- */
   var chips=document.querySelectorAll(".chips button");
   chips.forEach(function(c){
     c.addEventListener("click",function(){
@@ -1017,6 +1195,7 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
     });
   });
 
+  /* ---------- copy email ---------- */
   var btn=document.getElementById("copy-email");
   btn.addEventListener("click",function(){
     var el=document.getElementById("email");
