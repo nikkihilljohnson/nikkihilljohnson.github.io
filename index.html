@@ -134,6 +134,9 @@ blockquote footer b{color:var(--ink)}
 .pull blockquote::before{color:#fff}
 .pull blockquote p{font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.2;max-width:50rem}
 .pull blockquote footer{color:var(--ink)}
+.pull{width:fit-content;max-width:100%;box-sizing:border-box;padding:clamp(1.4rem,3vw,2.2rem) clamp(1.4rem,3.2vw,2.6rem)}
+.pull blockquote::before{display:block;line-height:1;height:2.3rem;margin-top:.35rem;overflow:hidden}
+.pull blockquote p{max-width:42rem;margin:0 0 .9rem}
 
 /* career list */
 .cv{list-style:none;margin:.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));border-top:2px solid var(--ink)}
@@ -315,6 +318,17 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
 main{overflow-x:clip}
 .email{font:700 clamp(1.05rem,3.5vw,1.5rem) var(--sans);color:#fff;text-decoration:underline;text-decoration-color:var(--pink);text-decoration-thickness:2px;text-underline-offset:5px;word-break:break-all}
 .ig{align-self:flex-start;color:#fff;font-weight:700;font-size:.9rem;text-decoration:underline;text-decoration-color:var(--pink);text-decoration-thickness:2px;text-underline-offset:4px}
+/* three-stat grid: lead stat spans the row, two below */
+.stats.three > div:first-child{grid-column:1/-1}
+/* analytics screenshots inside case galleries ("Behind the numbers") */
+.media .bn .pf{height:var(--mh);width:14rem;box-sizing:border-box;padding:.7rem;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;gap:.55rem}
+.media .bn.wide .pf{width:19rem}
+.media .bn.tiny .pf{width:calc(227px + 1.4rem + 2px)}
+.media .bn .pf-tag{font:800 .62rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#C2006A}
+.media .bn img{flex:1 1 auto;min-height:0;width:100%;height:100%;max-width:100%;object-fit:contain;object-position:left top;border:0;background:#fff}
+.media .bn.wide img{object-position:left center}
+.media .bn figcaption{max-width:14rem}
+.media .bn.wide figcaption{max-width:19rem}
 .statwrap{display:flex;flex-direction:column;gap:1rem;min-width:0}
 .statnote{font-size:.74rem;color:#BDBDBD;letter-spacing:.02em}
 .case .main .txt + .txt{margin-top:-.25rem}
@@ -425,8 +439,9 @@ main{overflow-x:clip}
 }
 
 /* Receipts carousel (home) */
-.proof-sec{background:var(--blush)}
-.tc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap}
+.proof-sec{background:var(--blush);padding-top:clamp(2.25rem,5vw,4rem)}
+.tc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem}
+.tc-ctl{flex:none;padding-bottom:.35rem}
 .tc-ctl{display:flex;gap:.75rem}
 .tc-ctl button{width:3rem;height:3rem;border-radius:50%;border:2px solid var(--ink);background:transparent;font:700 1.1rem var(--sans);cursor:pointer;color:var(--ink);transition:background-color .15s,color .15s}
 .tc-ctl button:hover,.tc-ctl button:focus-visible{background:var(--ink);color:#fff}
@@ -462,6 +477,9 @@ main{overflow-x:clip}
 .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:-1px;padding:0;border:0}
 .receipts-link{display:inline-block;margin-top:1rem;font:700 .8rem var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:3px solid var(--pink);padding-bottom:.2rem}
 @media (prefers-reduced-motion:reduce){.tc-track{scroll-behavior:auto}}
+
+/* condensed headlines: a little more air between words */
+.cond{word-spacing:.1em}
 </style>
 <style>html,body{margin:0}img{max-width:100%}</style>
 </head>
@@ -556,7 +574,7 @@ main{overflow-x:clip}
       <div class="tc-head">
         <div>
           <span class="label">Receipts</span>
-          <h2 class="cond h2" style="margin-top:1rem">Unprompted, unedited, <span class="p">very much appreciated.</span></h2>
+          <h2 class="cond h2" style="margin-top:1rem">Don't take my <span class="p" style="display:block">word for it.</span></h2>
         </div>
         <div class="tc-ctl">
           <button type="button" class="tc-prev" aria-label="Previous testimonial">←</button>
@@ -692,6 +710,7 @@ main{overflow-x:clip}
           <!-- To add work: copy one <figure> line below, change the file and caption. -->
           <figure><img src="media/ann-meet.jpg" alt="Meet Ann Shippy story graphic" width="1012" height="1800" loading="lazy" decoding="async"><figcaption>Candidate introduction</figcaption></figure>
           <figure><img src="media/ann-voucher.jpg" alt="Ann Shippy graphic: Public school advocate or voucher champion?" width="1012" height="1800" loading="lazy" decoding="async"><figcaption>School vouchers contrast ad</figcaption></figure>
+            <figure class="bn wide"><div class="pf"><span class="pf-tag">Behind the numbers</span><img src="media/proof/ann-meta-adset.png" alt="Meta Ads Manager, SC House District 123 ad set: 267,153 impressions, 93,843 reach, 2.85 frequency, $5.57 CPM" width="585" height="208" loading="lazy" decoding="async"></div><figcaption>Meta Ads Manager, ad set totals as of Oct 24, 2026</figcaption></figure>
         </div>
       </article>
 
@@ -725,7 +744,7 @@ main{overflow-x:clip}
         <div class="statwrap">
           <dl class="stats">
             <div><dt>Views in the last 90 days</dt><dd>470K</dd></div>
-            <div><dt>People reached in the last 90 days</dt><dd>103K</dd></div>
+            <div><dt>Viewers in the last 90 days</dt><dd>103K</dd></div>
             <div><dt>Videos with more than 20,000 views</dt><dd>8</dd></div>
             <div><dt>Shares on a single video</dt><dd>669</dd></div>
           </dl>
@@ -733,6 +752,7 @@ main{overflow-x:clip}
         </div>
         <div class="media">
           <!-- To add work: copy one <figure> line below, change the file and caption. -->
+            <figure class="bn"><div class="pf"><span class="pf-tag">Behind the numbers</span><img src="media/proof/nnd-views-90d.jpg" alt="Instagram insights: 470,107 views and 103,121 viewers in 90 days" width="1179" height="1212" loading="lazy" decoding="async"></div><figcaption>Instagram insights, 90 days ending Oct 23, 2026</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-nnd-colbert.jpg" src="media/v-nnd-colbert.mp4" width="480" height="854"></video><figcaption>South Carolina politics, for everyone outside it</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-nnd-dominion.jpg" src="media/v-nnd-dominion.mp4" width="480" height="854"></video><figcaption>Dominion Energy and your power bill</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-nnd-freedom.jpg" src="media/v-nnd-freedom.mp4" width="480" height="854"></video><figcaption>The SC Freedom Caucus, explained</figcaption></figure>
@@ -821,9 +841,9 @@ main{overflow-x:clip}
           <p class="txt">StoneSmith didn't need better social. They needed social. I built the whole thing: the look, the voice, the templates, and the content plan.</p>
           <p class="txt">Then we learned something pretty quickly. A behind-the-scenes install video pulled 16,000 organic views. The “book a free consult” posts? Around 500. Turns out people don't want a countertop ad. They want to watch a countertop happen.</p>
         </div>
-        <dl class="stats">
+        <dl class="stats three">
           <div><dt>Organic views on one installation video, with no ad spend</dt><dd>16K</dd></div>
-          <div><dt>More views on installation footage than promotional posts</dt><dd>~30×</dd></div>
+          
           <div><dt>Growth in views over the last 90 days compared with the previous 90 days</dt><dd>+395%</dd></div>
           <div><dt>Of views from non-followers</dt><dd>89%</dd></div>
         </dl>
@@ -833,6 +853,8 @@ main{overflow-x:clip}
           <figure><button type="button" class="carbtn" data-car="ss-quartz" data-n="4" aria-label="Open carousel: Quartz or quartzite?"><img src="media/car/ss-quartz/1.jpg" alt="Quartz or quartzite?" width="1440" height="1800" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>Quartz or quartzite?</figcaption></figure>
           <figure><button type="button" class="carbtn" data-car="ss-kitchen-car" data-n="8" aria-label="Open carousel: There's no such thing as a timeless kitchen"><img src="media/car/ss-kitchen-car/1.jpg" alt="There's no such thing as a timeless kitchen" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>The timeless kitchen myth</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-ss-inspo.jpg" src="media/v-ss-inspo.mp4" width="540" height="960"></video><figcaption>From inspiration to installation</figcaption></figure>
+            <figure class="bn"><div class="pf"><span class="pf-tag">Behind the numbers</span><img src="media/proof/stonesmith-views-90d.jpg" alt="Instagram dashboard: 28,697 views in 90 days, up 395.2% vs. Jul 25" width="1179" height="1130" loading="lazy" decoding="async"></div><figcaption>Instagram views, 90 days ending Oct 23, 2026, vs. the previous 90 days</figcaption></figure>
+            <figure class="bn"><div class="pf"><span class="pf-tag">Behind the numbers</span><img src="media/proof/stonesmith-top-posts-180d.jpg" alt="Instagram posts sorted by views. Top post, an installation video, has 16K views" width="1179" height="2018" loading="lazy" decoding="async"></div><figcaption>Top Instagram posts by views, 180 days ending Oct 23, 2026</figcaption></figure>
           <figure><img src="media/ss-kitchen.jpg" alt="StoneSmith post: pick your kitchen, A B C or D" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Which kitchen would you choose?</figcaption></figure>
           <figure><img src="media/ss-testimonial.jpg" alt="StoneSmith Google review graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>What our customers are saying</figcaption></figure>
         </div>
@@ -844,14 +866,14 @@ main{overflow-x:clip}
           <h3>No one cares about their HVAC until it breaks.</h3>
           <p class="role">Senior Social Media &amp; Content Strategist: organic, paid, and on-camera content.</p>
           <p class="txt">Usually in July. Nobody's scrolling Instagram thinking about their HVAC system. They're thinking about staying cool, keeping their family comfortable, and avoiding a very expensive surprise. So that's what we talked about.</p>
-          <p class="txt">I joined HVAC.com when it was still a startup and stayed through its acquisition by Trane Technologies. I built the social voice and paid program from the ground up, mixing seasonal content, memes, and educational videos with Meta campaigns designed to turn interest into leads. I was also the face of the account, filming dozens of videos that made HVAC a little less boring.</p>
-          <p class="finding"><b>Social became a sales channel.</b> About 6% of total company sales were influenced by social.</p>
+          <p class="txt">I joined HVAC.com when it was still a startup and stayed through its acquisition by Trane Technologies. I built the social voice and paid program from the ground up, mixing seasonal content, memes, and educational videos with Meta campaigns designed to turn social engagement into measurable website conversions. I was also the face of the account, filming dozens of videos that made HVAC a little less boring.</p>
+          <p class="finding"><b>Social became a sales channel.</b> Meta advertising accounted for approximately 6% of total company sales.</p>
         </div>
         <dl class="stats">
-          <div><dt>Return on social spend</dt><dd>~50×</dd></div>
-          <div><dt>Qualified leads</dt><dd>423</dd></div>
-          <div><dt>Cost per lead</dt><dd>$71</dd></div>
-          <div><dt>Click-through rate on $58K in managed spend</dt><dd>2.97%</dd></div>
+          <div><dt>Managed ad spend</dt><dd>$58K</dd></div>
+          <div><dt>Ad impressions</dt><dd>2.7M+</dd></div>
+          <div><dt>Web conversions</dt><dd>811</dd></div>
+          <div><dt>Cost per web conversion</dt><dd>~$72</dd></div>
         </dl>
         <div class="media">
           <figure><video playsinline preload="none" poster="media/v-hvac-blue.jpg" src="media/v-hvac-blue.mp4" width="540" height="960"></video><figcaption>Is your AC ready for summer?</figcaption></figure>
@@ -859,6 +881,7 @@ main{overflow-x:clip}
           <figure><video playsinline preload="none" poster="media/v-ma-sock.jpg" src="media/v-ma-sock.mp4" width="360" height="640"></video><figcaption>Stinky sock syndrome</figcaption></figure>
           <figure><button type="button" class="carbtn" data-car="hvac-expert" data-n="10" aria-label="Open carousel: Ask the Expert: Can I install an air conditioner myself?"><img src="media/car/hvac-expert/1.jpg" alt="Ask the Expert: Can I install an air conditioner myself?" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">10 slides</span></button><figcaption>Ask the Expert: HVAC questions answered</figcaption></figure>
           <figure><button type="button" class="carbtn" data-car="hvac-value" data-n="7" aria-label="Open carousel: How a smarter HVAC could increase your home's value"><img src="media/car/hvac-value/1.jpg" alt="How a smarter HVAC could increase your home's value" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">7 slides</span></button><figcaption>How HVAC affects home value</figcaption></figure>
+            <figure class="bn wide"><div class="pf"><span class="pf-tag">Behind the numbers</span><img src="media/proof/hvac-paid-summary.jpg" alt="Sprout Social Paid Performance Summary for HVAC.com paid campaigns: $58,025.56 total spend, 2,739,769 impressions, 811 web conversions, $71.55 cost per conversion" width="1995" height="1053" loading="lazy" decoding="async"></div><figcaption>Source: Sprout Social · Paid Performance Summary</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-hvac-walking.jpg" src="media/v-hvac-walking.mp4" width="540" height="960"></video><figcaption>When your HVAC dies in a heat wave</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-hvac-kelsey.jpg" src="media/v-hvac-kelsey.mp4" width="540" height="960"></video><figcaption>When QuoteScore saves you money</figcaption></figure>
           <figure><img src="media/meme-kendrick.jpg" alt="HVAC.com meme: Hey you, I heard you need a new HVAC" width="662" height="831" loading="lazy" decoding="async"><figcaption>Football meets HVAC</figcaption></figure>
@@ -912,6 +935,7 @@ main{overflow-x:clip}
             <figure><img src="media/nyag-after.jpg" alt="Instagram grid after the rebrand" width="254" height="473" loading="lazy" decoding="async"><figcaption>After</figcaption></figure>
           </div>
         <div class="media">
+            <figure class="bn tiny"><div class="pf"><span class="pf-tag">Behind the numbers</span><img src="media/proof/nyag-overview-30d.png" alt="Instagram insights: 28.8K accounts reached, up 103%; 607 accounts engaged, up 67.2%" width="227" height="268" loading="lazy" decoding="async" data-lbw="454"></div><figcaption>Instagram insights, May 19 – Jun 17 vs. Apr 19 – May 18</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-nyag-taylor.jpg" src="media/v-nyag-taylor.mp4" width="540" height="960"></video><figcaption>Too old to start something new?</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-nyag-david.jpg" src="media/v-nyag-david.mp4" width="540" height="960"></video><figcaption>Don't spoil the kids too much</figcaption></figure>
           <figure><img src="media/nyag-anatomy.jpg" alt="Not Your Average Grandma graphic: Anatomy of a scared settler" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>The anatomy of a scared settler</figcaption></figure>
@@ -952,9 +976,8 @@ main{overflow-x:clip}
   <section>
     <div class="wrap">
       <span class="label">The work</span>
-      <h1 class="cond page-h1" style="margin-top:1rem">Hooks, memes, carousels <span class="hl">&amp; receipts.</span></h1>
-      <p class="dek" style="margin-top:1.25rem">Campaigns, brands, and whatever else I've made people stop scrolling for. Click around.</p>
-      <a class="receipts-link" href="#home" data-receipts>See the receipts →</a>
+      <h1 class="cond page-h1" style="margin-top:1rem">The stuff that makes people <span class="hl">stop scrolling.</span></h1>
+      <p class="dek" style="margin-top:1.25rem">A little strategy, a lot of creativity, and the occasional questionable meme. Click around.</p>
       <div class="chips" role="group" aria-label="Filter the work">
         <button type="button" data-f="all" aria-pressed="true">All</button>
         <button type="button" data-f="video" aria-pressed="false">Video</button>
@@ -1053,7 +1076,7 @@ main{overflow-x:clip}
       <span class="label">The long version</span>
       <ol class="timeline">
         <li><span class="yrs">2025–present</span><div><h3>Independent Strategy &amp; Creative</h3><span class="ttl">Marketing Strategist, Paid Media &amp; Content Creator</span><p>Independent marketing and creative for brands, Democratic candidates, and progressive causes. Strategy, paid media, video, and content that gets people paying attention.</p></div></li>
-        <li><span class="yrs">2023–2025</span><div><h3>HVAC.com / Trane Technologies</h3><span class="ttl">Senior Social Media &amp; Content Strategist</span><p>Built the social voice and paid media program at a growing HVAC startup that was acquired by Trane during my tenure. Helped turn social into a revenue channel, generating 423 qualified leads at $71 per lead and approximately 50× return on social spend.</p></div></li>
+        <li><span class="yrs">2023–2025</span><div><h3>HVAC.com / Trane Technologies</h3><span class="ttl">Senior Social Media &amp; Content Strategist</span><p>Built the social voice and paid media program at an HVAC startup acquired by Trane. Meta advertising accounted for approximately 6% of company sales.</p></div></li>
         <li><span class="yrs">2022–2023</span><div><h3>Level Five Publishing / James Wedmore</h3><span class="ttl">Creative Content Director</span><p>Led social content and launch coverage for a $6.4M launch, producing 50+ creative assets weekly and 17 Reels exceeding 10K views.</p></div></li>
         <li><span class="yrs">2021–2022</span><div><h3>Carolina Farm Trust</h3><span class="ttl">Senior Marketing &amp; Communications Manager</span><p>Unified messaging across social, email, web, and fundraising. Helped secure $15K+ in grants and increase website traffic by 30%.</p></div></li>
         <li><span class="yrs">2019–2022</span><div><h3>Independent</h3><span class="ttl">Digital Marketing Strategist</span><p>Social, content, and launch strategy for D2C brands, including a 28.5% revenue increase for one client.</p></div></li>
@@ -1169,7 +1192,7 @@ main{overflow-x:clip}
       for(var k=1;k<=n;k++)out.push({type:"img",src:"media/car/"+slug+"/"+k+".jpg",alt:(c.querySelector("img").alt||"")+", slide "+k,cap:t+" · slide "+k+" of "+n,fig:fig});
       return out;}
     if(v)return [{type:"video",src:v.getAttribute("src"),poster:v.getAttribute("poster"),w:v.getAttribute("width"),h:v.getAttribute("height"),cap:t,fig:fig}];
-    if(i)return [{type:"img",src:i.getAttribute("src"),alt:i.alt,cap:t,fig:fig}];
+    if(i)return [{type:"img",src:i.getAttribute("src"),alt:i.alt,cap:(fig.classList.contains("bn")?"Behind the numbers · ":"")+t,lbw:i.getAttribute("data-lbw"),fig:fig}];
     return [];
   }
   function figsIn(g){return Array.prototype.filter.call(g.children,function(f){return f.tagName==="FIGURE"&&!f.hidden;});}
@@ -1205,7 +1228,7 @@ main{overflow-x:clip}
     stage.classList.remove("zoom");stage.innerHTML="";
     var it=seq[pos];
     if(it.type==="img"){
-      var im=document.createElement("img");im.src=it.src;im.alt=it.alt||"";
+      var im=document.createElement("img");im.src=it.src;im.alt=it.alt||"";if(it.lbw)im.style.width=it.lbw+"px";
       im.addEventListener("click",function(){if(window.matchMedia("(hover:hover)").matches)stage.classList.toggle("zoom");});
       stage.appendChild(im);
     }else{
