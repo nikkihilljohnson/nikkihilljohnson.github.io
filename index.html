@@ -511,7 +511,7 @@ main{overflow-x:clip}
 .rc-shot figcaption{font-size:.78rem;line-height:1.4;color:var(--grey)}
 .case.dark .rc-shot figcaption{color:#CFCFCF}
 @media (prefers-reduced-motion:reduce){.js .rc{transition:none}.rc-ic::after{transition:none}}
-.rc-shot.native{width:min(100%,calc(227px + 1.2rem + 2px))}
+.rc-shot.native{width:min(100%,calc(var(--w,227px) + 1.2rem + 2px))}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -714,6 +714,7 @@ main{overflow-x:clip}
         <div class="media">
           <!-- To add work: copy one <figure> line below, change the file and caption. -->
           <figure><img src="media/char-charcuterie.jpg" alt="Char Fitzwater CHARcuterie event flyer" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>CHARcuterie. Because puns work.</figcaption></figure>
+          <figure><img src="media/char-m4l.jpg" alt="Char Fitzwater graphic: Let's end the Moms for Liberty manipulation led by Keith Grybowski" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>Calling out Moms for Liberty</figcaption></figure>
           <figure><img src="media/char-scoop.jpg" alt="Get the Scoop on Char event graphic" width="1080" height="1350" loading="lazy" decoding="async"><figcaption>Campaign event promotion</figcaption></figure>
           <figure><button type="button" class="carbtn" data-car="char-approved" data-n="9" aria-label="Open carousel: The students have spoken: former students on Char"><img src="media/car/char-approved/1.jpg" alt="The students have spoken: former students on Char" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">9 slides</span></button><figcaption>Student testimonials, straight from the source</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-char-talk.jpg" src="media/v-char-talk.mp4" width="480" height="854"></video><figcaption>Candidate-led video</figcaption></figure>
@@ -758,8 +759,11 @@ main{overflow-x:clip}
         </div>
         <div class="media">
           <!-- To add work: copy one <figure> line below, change the file and caption. -->
+          <figure><img src="media/ann-protect.jpg" alt="Ann Shippy ad: Protect what makes this place home. Thoughtful growth. Responsible infrastructure. Protecting our quality of life." width="1080" height="1440" loading="lazy" decoding="async"><figcaption>Coastal protection ad</figcaption></figure>
           <figure><img src="media/ann-meet.jpg" alt="Meet Ann Shippy story graphic" width="1012" height="1800" loading="lazy" decoding="async"><figcaption>Candidate introduction</figcaption></figure>
           <figure><img src="media/ann-voucher.jpg" alt="Ann Shippy graphic: Public school advocate or voucher champion?" width="1012" height="1800" loading="lazy" decoding="async"><figcaption>School vouchers contrast ad</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-ann-gerry.jpg" src="media/v-ann-gerry.mp4" width="540" height="960"></video><figcaption>No more gerrymandering</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-ann-crickets.jpg" src="media/v-ann-crickets.mp4" width="540" height="720" style="aspect-ratio:3/4"></video><figcaption>Where is Jeff Bradley?</figcaption></figure>
         </div>
       </article>
 
@@ -781,6 +785,8 @@ main{overflow-x:clip}
         <div class="media">
           <!-- To add work: copy one <figure> line below, change the file and caption. -->
           <figure><video playsinline preload="none" poster="media/v-ann-elephant.jpg" src="media/v-ann-elephant.mp4" width="540" height="960"></video><figcaption>Making the case to Republican voters</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-katie-dc-infra.jpg" src="media/v-katie-dc-infra.mp4" width="540" height="960"></video><figcaption>Data centers: infrastructure and regulation</figcaption></figure>
+          <figure><video playsinline preload="none" poster="media/v-katie-dc-law.jpg" src="media/v-katie-dc-law.mp4" width="540" height="960"></video><figcaption>Data centers: legislation and regulation</figcaption></figure>
         </div>
       </article>
 
@@ -901,10 +907,10 @@ main{overflow-x:clip}
       <article class="case has-rc" id="case-stonesmith">
         <div class="main">
           <div class="meta"><span class="who">StoneSmith Countertops</span><span>· Local business</span><span class="tag">Current client</span></div>
-          <h3>Install day beat every ad.</h3>
+          <h3>Install day beat every sales pitch.</h3>
           <p class="role">Head of social: built it from zero.</p>
           <p class="txt">StoneSmith didn't need better social. They needed social. I built the whole thing: the look, the voice, the templates, and the content plan.</p>
-          <p class="txt">Then we learned something pretty quickly. A behind-the-scenes install video pulled 16,000 organic views. The “book a free consult” posts? Around 500. Turns out people don't want a countertop ad. They want to watch a countertop happen.</p>
+          <p class="txt">Then we learned something pretty quickly. A behind-the-scenes install video pulled 16,000 organic views. The “book a free consult” posts? Around 500. Turns out people don't want a countertop sales pitch. They want to watch a countertop happen.</p>
         </div>
         <div class="statwrap">
           <span class="label">By the numbers</span>
@@ -983,23 +989,36 @@ main{overflow-x:clip}
         </div>
       </article>
 
-      <article class="case" id="case-wedmore">
+      <article class="case has-rc" id="case-wedmore">
         <div class="main">
           <div class="meta"><span class="who">James Wedmore</span><span>· Business by Design</span><span class="tag">2022–2023</span></div>
           <h3>The audience was there. They were just scrolling past.</h3>
           <p class="role">Creative Content Director: Instagram, YouTube Shorts, and launch coverage.</p>
-          <p class="txt">James already had an audience of 111K Instagram followers, but the content wasn't getting the attention it could. Ahead of a major launch, we leaned into his personality with pop culture references, stronger opening hooks, and more short-form video. We were producing 50+ creative assets a week without losing what made his content feel like him.</p>
+          <p class="txt">James already had an audience of more than 100K Instagram followers, but the content wasn't getting the attention it could. Ahead of a major launch, we leaned into his personality with pop culture references, stronger opening hooks, and more short-form video. We were producing 50+ creative assets a week without losing what made his content feel like him.</p>
           <p class="txt">I repurposed our best-performing content for YouTube Shorts to reach new audiences and managed live social coverage throughout launch week.</p>
-          <p class="finding"><b>Four breakout videos in 30 days.</b> Stronger hooks and more personality helped turn an established audience into an engaged one.</p>
+          <p class="finding"><b>Reach up 540% in 90 days.</b> Stronger hooks and more personality helped turn an established audience into an engaged one.</p>
         </div>
         <div class="statwrap">
           <span class="label">By the numbers</span>
           <dl class="stats">
           <div><dt>Revenue from the launch I supported</dt><dd>$6.4M</dd></div>
-          <div><dt>Reels with more than 10,000 views</dt><dd>17</dd></div>
-          <div><dt>Instagram followers, up from 111K</dt><dd>125K</dd></div>
+          <div><dt>Increase in Instagram accounts reached over 90 days, to 2.8M</dt><dd>+540%</dd></div>
+          <div><dt>New Instagram followers in 90 days</dt><dd>10K+</dd></div>
           <div><dt>Creative assets produced weekly</dt><dd>50+</dd></div>
         </dl>
+          <button type="button" class="rc-btn" aria-expanded="false" aria-controls="rc-wedmore"><span class="rc-ic" aria-hidden="true"></span><span class="rc-t">See the receipts</span></button>
+        </div>
+        <div class="rc" id="rc-wedmore">
+          <div class="rc-in">
+            <div class="rc-body">
+              <div class="rc-head"><span class="label">Behind the numbers</span><p>Screenshots from the original reports. Click any one to enlarge.</p></div>
+              <!-- To add a screenshot: copy one <figure> line below, change the file and caption. -->
+              <div class="rc-grid">
+                <figure class="rc-shot native" style="--w:324px"><img src="media/proof/wedmore-overview-90d.png" alt="Instagram insights, last 90 days: 2.8M accounts reached, up 540%; 56.8K accounts engaged, up 217%; 125K followers, up 9%" width="324" height="395" loading="lazy" decoding="async" data-lbw="648"><figcaption>Instagram insights, Mar 20 – Jun 17 vs. Dec 20 – Mar 19</figcaption></figure>
+                <figure class="rc-shot native" style="--w:258px"><img src="media/proof/wedmore-followers-90d.png" alt="Instagram followers, last 90 days: 125,209 followers, up 9%; net growth 10,404" width="258" height="464" loading="lazy" decoding="async" data-lbw="516"><figcaption>Instagram followers, Mar 20 – Jun 17</figcaption></figure>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="media">
           <figure><video playsinline preload="none" poster="media/v-wed-hermione.jpg" src="media/v-wed-hermione.mp4" width="540" height="960"></video><figcaption>When someone says 'niche'</figcaption></figure>
