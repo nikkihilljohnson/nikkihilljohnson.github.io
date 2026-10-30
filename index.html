@@ -782,6 +782,7 @@ main{overflow-x:clip}
         </div>
         <div class="media">
           <!-- To add work: copy one <figure> line below, change the file and caption. -->
+          <figure><video playsinline preload="none" poster="media/v-katie-trust.jpg" src="media/v-katie-trust.mp4" width="540" height="960"></video><figcaption>Why you can trust Katie on growth</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-ann-elephant.jpg" src="media/v-ann-elephant.mp4" width="540" height="960"></video><figcaption>Making the case to Republican voters</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-katie-dc-infra.jpg" src="media/v-katie-dc-infra.mp4" width="540" height="960"></video><figcaption>Data centers: infrastructure and regulation</figcaption></figure>
           <figure><video playsinline preload="none" poster="media/v-katie-dc-law.jpg" src="media/v-katie-dc-law.mp4" width="540" height="960"></video><figcaption>Data centers: legislation and regulation</figcaption></figure>
@@ -886,6 +887,8 @@ main{overflow-x:clip}
         </div>
         <div class="media">
           <figure><video playsinline preload="none" poster="media/v-ma-new.jpg" src="media/v-ma-new.mp4" width="480" height="854"></video><figcaption>Product unboxing &amp; demo</figcaption></figure>
+          <!-- Motion carousel: add data-motion and put 1.mp4, 2.mp4... (plus a 1.jpg, 2.jpg... still of each) in media/car/<name>/ -->
+          <figure><button type="button" class="carbtn" data-car="ma-aircell" data-n="5" data-motion aria-label="Open animated carousel: Your air purifier has a blind spot"><img src="media/car/ma-aircell/1.jpg" alt="Your air purifier has a blind spot" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">5 slides · motion</span></button><figcaption>Your air purifier has a blind spot</figcaption></figure>
           <figure><button type="button" class="carbtn" data-car="ma-casestudy" data-n="4" aria-label="Open carousel: This is what we found inside a real home in Lake Norman, NC"><img src="media/car/ma-casestudy/1.jpg" alt="This is what we found inside a real home in Lake Norman, NC" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>What we found inside a real home</figcaption></figure>
           <figure><button type="button" class="carbtn" data-car="ma-results" data-n="4" aria-label="Open carousel: Real-world testing results series"><img src="media/car/ma-results/1.jpg" alt="Real-world testing results series" width="1080" height="1350" loading="lazy" decoding="async"><span class="slides">4 slides</span></button><figcaption>Real-world air quality testing</figcaption></figure>
           <figure><button type="button" class="carbtn" data-car="ma-pets" data-n="8" aria-label="Open carousel: Pet owners, we have some bad news"><img src="media/car/ma-pets/1.jpg" alt="Pet owners, we have some bad news" width="1080" height="1440" loading="lazy" decoding="async"><span class="slides">8 slides</span></button><figcaption>Pet owners, this one's for you</figcaption></figure>
@@ -1227,8 +1230,10 @@ main{overflow-x:clip}
       <button class="copy-btn" type="button" id="copy-email">Copy email</button>
     </div>
     <div class="links">
-      <a href="https://www.linkedin.com/in/nikkihilljohnson/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://instagram.com/nikkihilljohnson" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/nikkinextdoorsc" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.tiktok.com/@nikkinextdoorsc" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.linkedin.com/in/nikkihilljohnson/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 </section>
@@ -1319,7 +1324,9 @@ main{overflow-x:clip}
   function entriesFor(fig){
     var c=fig.querySelector(".carbtn"),v=fig.querySelector("video"),i=fig.querySelector("img"),t=cap(fig).replace(/\s+/g," ");
     if(c){var slug=c.getAttribute("data-car"),n=+c.getAttribute("data-n"),out=[];
-      for(var k=1;k<=n;k++)out.push({type:"img",src:"media/car/"+slug+"/"+k+".jpg",alt:(c.querySelector("img").alt||"")+", slide "+k,cap:t+" · slide "+k+" of "+n,fig:fig});
+      var mo=c.hasAttribute("data-motion"),base="media/car/"+slug+"/";
+      for(var k=1;k<=n;k++)out.push(mo?{type:"video",motion:true,src:base+k+".mp4",poster:base+k+".jpg",w:864,h:1080,cap:t+" · slide "+k+" of "+n,fig:fig}
+        :{type:"img",src:base+k+".jpg",alt:(c.querySelector("img").alt||"")+", slide "+k,cap:t+" · slide "+k+" of "+n,fig:fig});
       return out;}
     if(v)return [{type:"video",src:v.getAttribute("src"),poster:v.getAttribute("poster"),w:v.getAttribute("width"),h:v.getAttribute("height"),cap:t,fig:fig}];
     if(i)return [{type:"img",src:i.getAttribute("src"),alt:i.alt,cap:(fig.closest(".rc")?"Behind the numbers · ":"")+t,lbw:i.getAttribute("data-lbw"),fig:fig}];
@@ -1364,6 +1371,7 @@ main{overflow-x:clip}
     }else{
       var v=document.createElement("video");v.src=it.src;v.poster=it.poster||"";v.controls=true;v.playsInline=true;v.setAttribute("playsinline","");v.preload="metadata";
       if(it.w&&it.h){v.width=+it.w;v.height=+it.h;}
+      if(it.motion){v.controls=false;v.muted=true;v.loop=true;v.preload="auto";autoplay=true;}
       stage.appendChild(v);
       if(autoplay){var p=v.play();if(p&&p.catch)p.catch(function(){});}
     }
