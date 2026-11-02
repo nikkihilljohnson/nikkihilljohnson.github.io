@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /color-preview.html
+Disallow: /color-plum.html
+Disallow: /color-teal.html
+Disallow: /color-cobalt.html
+Disallow: /Assets/
+
+Sitemap: https://nikkihilljohnson.com/sitemap.xml
