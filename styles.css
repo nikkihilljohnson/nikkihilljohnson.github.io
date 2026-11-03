@@ -495,3 +495,21 @@ a.logo{text-decoration:none}
 a.go{text-decoration:none;display:inline-block}
 .foot-links{display:flex;flex-wrap:wrap;gap:.25rem 1rem}
 .foot-links a{color:inherit}
+
+/* Nikki Next Door teaser visual (campaigns page) */
+.nnd-vis{position:relative;display:block;align-self:center;justify-self:center;width:min(100%,27rem);text-decoration:none;color:#fff}
+.nnd-fan{display:grid;grid-template-columns:repeat(3,1fr);align-items:center;padding:.5rem 1.25rem 0}
+.nnd-fan img{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border:5px solid #fff;border-radius:6px;box-shadow:0 14px 34px rgba(0,0,0,.5);transition:transform .35s ease}
+.nnd-fan img:nth-child(1){transform:rotate(-7deg) translate(16%,7%)}
+.nnd-fan img:nth-child(2){position:relative;z-index:2;transform:scale(1.14)}
+.nnd-fan img:nth-child(3){transform:rotate(7deg) translate(-16%,7%)}
+.nnd-vis:hover .nnd-fan img:nth-child(1){transform:rotate(-10deg) translate(8%,5%)}
+.nnd-vis:hover .nnd-fan img:nth-child(3){transform:rotate(10deg) translate(-8%,5%)}
+.nnd-mark{position:relative;z-index:3;display:block;margin-top:-2.6rem;text-align:center;font-family:var(--sans);font-stretch:62%;font-weight:900;text-transform:uppercase;line-height:.84}
+.nnd-mark span{display:block}
+.nnd-mark span:first-child{color:var(--pink);font-size:clamp(4.2rem,10vw,6.8rem);text-shadow:0 4px 18px rgba(0,0,0,.55)}
+.nnd-mark span:last-child{color:#fff;font-size:clamp(1.7rem,3.8vw,2.6rem);letter-spacing:.03em}
+@media (max-width:899px){.nnd-vis{width:min(100%,21rem)}}
+@media (prefers-reduced-motion:reduce){.nnd-fan img{transition:none}}
+.btn.pink{background:var(--pink);border-color:var(--pink);color:var(--ink);align-self:flex-start;margin-top:.5rem;transition:background .2s,border-color .2s,transform .2s}
+.btn.pink:hover{background:#fff;border-color:#fff;transform:translateY(-1px)}
