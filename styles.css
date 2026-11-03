@@ -527,3 +527,7 @@ a.go{text-decoration:none;display:inline-block}
 /* rows: number column sizes to the widest number so labels never collide */
 .case .stats.rows{grid-template-columns:max-content minmax(0,1fr);column-gap:1.4rem}
 .case .stats.rows div{grid-column:1/-1;grid-template-columns:subgrid}
+/* case labels: name + tag on one line, office/category on its own line */
+.meta .who{order:1}
+.meta .tag{order:2}
+.meta .sub{order:3;flex-basis:100%;margin-top:.1rem}
