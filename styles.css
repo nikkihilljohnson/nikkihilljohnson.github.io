@@ -513,3 +513,17 @@ a.go{text-decoration:none;display:inline-block}
 @media (prefers-reduced-motion:reduce){.nnd-fan img{transition:none}}
 .btn.pink{background:var(--pink);border-color:var(--pink);color:var(--ink);align-self:flex-start;margin-top:.5rem;transition:background .2s,border-color .2s,transform .2s}
 .btn.pink:hover{background:#fff;border-color:#fff;transform:translateY(-1px)}
+
+/* Campaigns hero: "That's me" tag + arrow */
+.print.tall img{aspect-ratio:4/5;object-position:50% 50%}
+.print.teal.me-shot{width:min(100%,34rem)}
+.me-shot .me-arrow{position:absolute;left:10px;top:10px;width:calc(100% - 20px);height:auto;aspect-ratio:740/925;overflow:visible;pointer-events:none;z-index:2}
+.me-arrow path{fill:none;stroke:var(--pink);stroke-width:11;stroke-linecap:round}
+.me-arrow polygon{fill:var(--pink);stroke:var(--pink);stroke-width:4;stroke-linejoin:round}
+.me-arrow .u{stroke:#fff;stroke-width:19}
+.me-arrow polygon.u{fill:#fff;stroke-width:12}
+.me-tag{position:absolute;right:-1.4rem;top:24%;z-index:3;background:var(--pink);color:var(--ink);font:900 1.35rem/1 var(--sans);font-stretch:62%;text-transform:uppercase;letter-spacing:.02em;padding:.55rem .8rem .5rem;transform:rotate(-5deg);box-shadow:0 6px 16px rgba(0,0,0,.28);white-space:nowrap}
+@media (max-width:899px){.me-tag{right:-.5rem;font-size:1.15rem}}
+/* rows: number column sizes to the widest number so labels never collide */
+.case .stats.rows{grid-template-columns:max-content minmax(0,1fr);column-gap:1.4rem}
+.case .stats.rows div{grid-column:1/-1;grid-template-columns:subgrid}
