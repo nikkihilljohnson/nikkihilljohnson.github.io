@@ -531,3 +531,11 @@ a.go{text-decoration:none;display:inline-block}
 .meta .who{order:1}
 .meta .tag{order:2}
 .meta .sub{order:3;flex-basis:100%;margin-top:.1rem}
+
+/* about: AOL snapshot under "The short version." */
+.short-side{display:flex;flex-direction:column;gap:2rem}
+.snap{margin:0;width:min(100%,15rem);transform:rotate(-2deg);background:#fff;padding:.6rem .6rem .8rem;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--pink)}
+.snap img{display:block;width:100%;height:auto}
+.snap figcaption{padding-top:.6rem;font-size:.76rem;line-height:1.35;color:var(--grey)}
+@media (max-width:899px){.snap{width:min(100%,13rem);margin-left:.4rem}}
+@media (prefers-reduced-motion:reduce){.snap{transform:none}}
