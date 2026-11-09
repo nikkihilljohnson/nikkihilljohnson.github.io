@@ -539,3 +539,18 @@ a.go{text-decoration:none;display:inline-block}
 .snap figcaption{padding-top:.6rem;font-size:.76rem;line-height:1.35;color:var(--grey)}
 @media (max-width:899px){.snap{width:min(100%,13rem);margin-left:.4rem}}
 @media (prefers-reduced-motion:reduce){.snap{transform:none}}
+
+/* 2026-11-09 audit fixes */
+.cover .label::before{background:var(--ink)}
+.tile figcaption .cl{position:relative}
+.tile figcaption .cl::after{content:"";position:absolute;inset:-12px -4px}
+@media (hover:none){.tc-imgbox .tc-more{display:block}}
+@media (max-width:640px){
+  .media figcaption,.tile figcaption,.rc-shot figcaption,.snap figcaption,.tc-shot figcaption{font-size:.85rem}
+  .foot-links{gap:.6rem 1.25rem}
+  .foot-links a{display:inline-block;padding-block:.35rem}
+}
+
+/* 2026-11-09 SEO heading fixes (visual match) */
+h2.label{font-family:var(--sans);line-height:normal}
+.case h2.ch{font-size:clamp(1.9rem,3.6vw,2.7rem);font-stretch:70%;font-weight:900;line-height:1;text-transform:uppercase}
