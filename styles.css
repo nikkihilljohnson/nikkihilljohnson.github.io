@@ -184,7 +184,7 @@ footer.site .wrap{padding-block:1.4rem;font-size:.78rem;color:var(--grey);displa
 .ba img{border:1px solid var(--line);width:100%}
 .ba figcaption{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 .ground{font-family:var(--serif);font-size:1.15rem;padding-top:2.5rem}
-.logos{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem 1.5rem;align-items:center;justify-items:center;margin-top:2rem;padding-top:1.5rem;border-top:2px solid var(--ink)}
+.logos{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem 1.5rem;align-items:center;justify-items:center;margin-top:2rem}
 .logos img{height:clamp(3.5rem,8vw,5.5rem);width:100%;max-width:12rem;object-fit:contain;filter:grayscale(1) contrast(1.1)}
 @media (min-width:900px){.logos{grid-template-columns:repeat(6,1fr)}}
 .caselogo{height:4.5rem;width:auto;align-self:flex-start}
